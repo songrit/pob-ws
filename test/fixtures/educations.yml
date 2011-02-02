@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  school: MyString
+  education_level_id: 1
+  major: MyString
+  edu_begin: 2010-11-28
+  edu_end: 2010-11-28
+  employee_id: 1
+  ref_file: MyString
+  gma_user_id: 1
+
+two:
+  school: MyString
+  education_level_id: 1
+  major: MyString
+  edu_begin: 2010-11-28
+  edu_end: 2010-11-28
+  employee_id: 1
+  ref_file: MyString
+  gma_user_id: 1

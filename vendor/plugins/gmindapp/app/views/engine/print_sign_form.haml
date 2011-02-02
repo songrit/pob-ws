@@ -1,0 +1,12 @@
+.head
+  %title= @xmain.name
+  =javascript_include_tag "disable_enter_key"
+= step(@runseq.form_step, @xvars[:total_form_steps])
+- form_tag({ :action => 'end_sign_form' } , {:onKeyPress=>'return disableEnterKey(event)'}) do
+  = hidden_field_tag 'xmain_id', @xmain.id
+  = hidden_field_tag 'runseq_id', @runseq.id
+  = hidden_field_tag 'step', @xvars[:current_step]
+  %h2= "จัดพิมพ์เอกสาร #{@runseq.name}"
+  = link_to "จัดพิมพ์เอกสาร", url_for(:action=>'signed_document', :id=>@tgel_doc), :target=>'_blank'
+  %p
+  = submit_tag @message

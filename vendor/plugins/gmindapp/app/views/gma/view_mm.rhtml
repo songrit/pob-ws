@@ -1,0 +1,21 @@
+<div id="flashcontent" onmouseover="giveFocus();">
+  Flash plugin or Javascript are turned off.
+  Activate both and reload to view the mindmap
+</div>
+<script type="text/javascript">
+  // <![CDATA[
+  <%= "var fo = new FlashObject('#{file_asset_id('images/visorFreemind.swf')}', 'visorFreeMind', '650', '500', 6, '#9999ff');" %>
+  
+  fo.addParam("quality", "high");
+  fo.addParam("bgcolor", "#ffffff");
+  fo.addVariable("openUrl", "_blank");
+  fo.addVariable("initLoadFile", getMap("<%= file_asset_id(File.basename gma_root) %>"));
+  fo.addVariable("startCollapsedToLevel","2")
+  fo.addVariable("defaultToolTipWordWrap",200);
+  fo.addVariable("min_alpha_buttons",20);
+  fo.addVariable("max_alpha_buttons",100);
+
+  fo.write("flashcontent");
+  // ]]>
+</script>
+

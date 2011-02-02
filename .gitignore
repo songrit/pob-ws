@@ -1,0 +1,12 @@
+.DS_Store
+log
+tmp
+nbproject
+.svn
+.project
+.bundle
+*.sqlite3
+*~
+database.yml
+schema.rb
+doc/upload

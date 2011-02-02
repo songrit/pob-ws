@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  code: MyString
+  code_dla: MyString
+  name: MyString
+  atype: 1
+  balance: 1.5
+  parent_id: 1
+  reported: false
+  gma_user_id: 1
+
+two:
+  code: MyString
+  code_dla: MyString
+  name: MyString
+  atype: 1
+  balance: 1.5
+  parent_id: 1
+  reported: false
+  gma_user_id: 1

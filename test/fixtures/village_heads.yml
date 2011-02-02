@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  fname: MyString
+  lname: MyString
+  moo: 1
+  address: MyString
+  sub_district: MyString
+  district: MyString
+  province: MyString
+  phone: MyString
+  gma_user_id: 1
+
+two:
+  title: MyString
+  fname: MyString
+  lname: MyString
+  moo: 1
+  address: MyString
+  sub_district: MyString
+  district: MyString
+  province: MyString
+  phone: MyString
+  gma_user_id: 1

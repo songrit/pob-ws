@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  content: MyText
+  xmain_id: 1
+  gma_user_id: 1
+
+two:
+  content: MyText
+  xmain_id: 1
+  gma_user_id: 1

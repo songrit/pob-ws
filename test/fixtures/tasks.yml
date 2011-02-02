@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  plan_id: 1
+  code: MyString
+  name: MyString
+  budget: 1.5
+  balance: 1.5
+  gma_user_id: 1
+
+two:
+  plan_id: 1
+  code: MyString
+  name: MyString
+  budget: 1.5
+  balance: 1.5
+  gma_user_id: 1

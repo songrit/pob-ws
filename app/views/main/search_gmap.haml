@@ -1,0 +1,9 @@
+- @waypoints.each do |w|
+  = link_to w.name, "/#{w.code}"
+  = "#{w.address}, #{w.city}, #{w.state} #{w.zip}<br/>"
+- (@doc/".location-name").each do |location|
+  - host, p = location['href'].split("?")
+  - h = CGI::parse(p)
+  = link_to h['name'], :action=>:info, :name=>h['name'].to_s
+  = "#{h['address']}, #{h['city']}, #{h['state']}<br/>"
+

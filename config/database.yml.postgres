@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: elocal
+  username: postgres
+  password: songrit
+  host: localhost
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  database: elocal_test
+  username: postgres
+  password: songrit
+  host: localhost
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: elocal
+  username: postgres
+  password: songrit
+  host: localhost

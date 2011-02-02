@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  brand: MyString
+  color: MyString
+  car_code: MyString
+  vtype: 1
+  gma_user_id: 1
+
+two:
+  brand: MyString
+  color: MyString
+  car_code: MyString
+  vtype: 1
+  gma_user_id: 1

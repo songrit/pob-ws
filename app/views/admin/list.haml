@@ -1,0 +1,22 @@
+%h3 Latest 25 Waypoints
+= will_paginate @waypoints, :class=>'flickr_pagination'
+%table{:width=>"100%"}
+  %tr{:style=>"color:white; background-color:#aaa;"}
+    %th id
+    %th code
+    %th name
+    %th owner
+    %th= link_to "visits", :sort=>"visits"
+    %th= link_to "score", :sort=>"score"
+    %th= link_to "created_at", :sort=>"created_at"
+    %th delete
+  - @waypoints.each do |w|
+    %tr
+      %td= link_to w.id, "/#{w.code}"
+      %td= link_to w.code, "/#{w.code}"
+      %td= w.name
+      %td= link_to w.owner.login, :controller=>"account", :login=>w.owner.login
+      %td(align="right")= w.visits
+      %td(align="right")= w.score
+      %td= date_us w.created_at, :date_only=>true
+      %td(align='center')= link_to image_tag('cross.png'), {:action=>:delete_waypoint, :id=>w.id}, :confirm=>"Delete waypoint #{w.code} ?"

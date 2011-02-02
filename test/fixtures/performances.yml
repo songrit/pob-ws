@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  project_id: 1
+  strategy_id: 1
+  kpi_id: 1
+  target: 1.5
+  gma_user_id: 1
+
+two:
+  project_id: 1
+  strategy_id: 1
+  kpi_id: 1
+  target: 1.5
+  gma_user_id: 1

@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  vision: MyText
+  mission: MyText
+  goal: MyText
+  gma_user_id: 1
+
+two:
+  vision: MyText
+  mission: MyText
+  goal: MyText
+  gma_user_id: 1

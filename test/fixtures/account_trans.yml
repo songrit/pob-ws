@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  account_id: 1
+  description: MyString
+  reported_on: 2011-01-18
+  rtype: 1
+  amount: 1.5
+  gma_user_id: 1
+
+two:
+  account_id: 1
+  description: MyString
+  reported_on: 2011-01-18
+  rtype: 1
+  amount: 1.5
+  gma_user_id: 1

@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  value: 1.5
+  recorded_on: 2010-11-22
+  kpi_id: 1
+  gma_user_id: 1
+
+two:
+  value: 1.5
+  recorded_on: 2010-11-22
+  kpi_id: 1
+  gma_user_id: 1

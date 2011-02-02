@@ -1,0 +1,65 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  code: MyString
+  person_id: 1
+  fname: MyString
+  address_id: 1
+  address_reg_id: 1
+  phone: MyString
+  cell_phone: MyString
+  father_id: 1
+  father_lname: MyString
+  mother_id: 1
+  guardian_id: 1
+  relationship: MyString
+  parent_status: 1
+  comment: MyString
+  resident_type: 1
+  income: 1
+  next_school: MyString
+  illness: MyString
+  blood_type: MyString
+  clinic: MyString
+  caution: MyText
+  allergy: MyText
+  other_nursery: MyText
+  accepted_on: 2011-01-03
+  acquitted_on: 2011-01-03
+  reason: MyText
+  status: 1
+  nursery_id: 1
+  application_form: MyString
+  gma_user_id: 1
+
+two:
+  code: MyString
+  person_id: 1
+  fname: MyString
+  address_id: 1
+  address_reg_id: 1
+  phone: MyString
+  cell_phone: MyString
+  father_id: 1
+  father_lname: MyString
+  mother_id: 1
+  guardian_id: 1
+  relationship: MyString
+  parent_status: 1
+  comment: MyString
+  resident_type: 1
+  income: 1
+  next_school: MyString
+  illness: MyString
+  blood_type: MyString
+  clinic: MyString
+  caution: MyText
+  allergy: MyText
+  other_nursery: MyText
+  accepted_on: 2011-01-03
+  acquitted_on: 2011-01-03
+  reason: MyText
+  status: 1
+  nursery_id: 1
+  application_form: MyString
+  gma_user_id: 1

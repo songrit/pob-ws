@@ -1,0 +1,1 @@
+rsync -ruv vendor/plugins/tgel ~/apps

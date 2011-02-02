@@ -1,0 +1,33 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  reported_on: 2010-12-01
+  leave1: 1.5
+  leave2: 1.5
+  leave3: 1.5
+  leave4: 1.5
+  leave5: 1.5
+  leave6: 1.5
+  leave7: 1.5
+  leave8: 1.5
+  leave9: 1.5
+  missing: 1
+  late: 1
+  employee_id: 1
+  gma_user_id: 1
+
+two:
+  reported_on: 2010-12-01
+  leave1: 1.5
+  leave2: 1.5
+  leave3: 1.5
+  leave4: 1.5
+  leave5: 1.5
+  leave6: 1.5
+  leave7: 1.5
+  leave8: 1.5
+  leave9: 1.5
+  missing: 1
+  late: 1
+  employee_id: 1
+  gma_user_id: 1

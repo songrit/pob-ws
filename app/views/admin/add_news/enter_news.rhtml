@@ -1,0 +1,11 @@
+<%
+  n = News.new
+%>
+<% fields_for n do |f| %>
+  <table width="100%">
+    <tr>
+      <td class="field-name">Subject</td>
+      <td><%= f.text_field :subject, :style => "width:400px;" %></td>
+    </tr>
+  </table>
+<% end %>

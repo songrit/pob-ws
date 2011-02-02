@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  item: MyString
+  class: MyString
+  trip_id: 1
+  waypoint_id: 1
+  gma_user_id: 1
+
+two:
+  item: MyString
+  class: MyString
+  trip_id: 1
+  waypoint_id: 1
+  gma_user_id: 1

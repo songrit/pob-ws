@@ -1,0 +1,18 @@
+<ul>
+  <% @modules.each do |m| %>
+    <% next unless current_user.role.upcase.split(',').include?(m.role.upcase) if m.role %>
+    <% if params[:module]==m.name %>
+      <li class="mc"><%= link_to "<span id='current_module'>#{m.name}</span>","#" %></li>
+    <% else %>
+      <li class="m"><%= link_to "<span>#{m.name}</span>","#" %></li>
+    <% end %>
+  <% end %>
+</ul>
+<script type="text/javascript">
+  $(".m").click( function(e) {
+    $("#middlenavigation").load("/x/main/modules",
+      {module: $('span', this).text()})
+    $("#sidebar_menu").load("/x/main/sidebar",
+      {module: $('span', this).text()})
+  } )
+</script>

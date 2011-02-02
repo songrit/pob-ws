@@ -1,0 +1,9 @@
+<table id="doc" width="100%">
+  <tr>
+    <td class="field-name">ผู้ใช้ที่ต้องการแก้ไข</td>
+    <td><%= select_tag :user_id,
+      options_from_collection_for_select(GmaUser.all(:order=>:fname), :id, :full_name) %></td>
+    <td style="width:50%;">&nbsp;</td>
+  </tr>
+</table>
+

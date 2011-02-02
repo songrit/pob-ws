@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  payment_id: 1
+  doc: MyString
+  item: MyString
+  amount: 1.5
+  deduct: 1.5
+  gsb: 1.5
+  comment: MyString
+  gma_user_id: 1
+
+two:
+  payment_id: 1
+  doc: MyString
+  item: MyString
+  amount: 1.5
+  deduct: 1.5
+  gsb: 1.5
+  comment: MyString
+  gma_user_id: 1

@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  building_type: 1
+  qty: 1
+  purpose: MyString
+  parking: 1
+  utiliized_area: 1
+  construction_id: 1
+  gma_user_id: 1
+
+two:
+  building_type: 1
+  qty: 1
+  purpose: MyString
+  parking: 1
+  utiliized_area: 1
+  construction_id: 1
+  gma_user_id: 1

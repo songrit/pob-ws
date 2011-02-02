@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  person_id: 1
+  address_id: 1
+  status: 1
+  budget: 1
+  underprivileged: 1
+  ref_in: MyString
+  ref_out: MyString
+  moo: 1
+  fname: MyString
+  gma_user_id: 1
+
+two:
+  person_id: 1
+  address_id: 1
+  status: 1
+  budget: 1
+  underprivileged: 1
+  ref_in: MyString
+  ref_out: MyString
+  moo: 1
+  fname: MyString
+  gma_user_id: 1

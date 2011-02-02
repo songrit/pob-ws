@@ -1,0 +1,28 @@
+.label
+  = image_tag "cog.png"
+  Status Gma transaction id
+  = params[:id]
+  %br= @xmain.name
+%table{:width=>"100%"}
+  %tr{:style=>"color:white; background-color:#6A6A6A;"}
+    %th status
+    %th step
+    %th role
+    %th begin
+    %th end
+  - @xmain.gma_runseqs.form_action.each do |r|
+    %tr
+      - if @xmain.status=='X'
+        %td{:align=>'center'}= image_tag 'cancel.png'
+      - else
+        %td{:align=>'center'}= status_icon(r)
+      %td= r.name
+      %td{:align=>'center'}= role_name r.role
+      - if r.start
+        %td= date_us r.start
+      - else
+        %td{:align=>'center'} -
+      - if r.stop
+        %td= date_us r.stop
+      - else
+        %td{:align=>'center'} -

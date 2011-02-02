@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="distribution" content="global" />
+    <meta name="robots" content="follow, all" />
+    <meta name="language" content="en, th" />
+    <title>WorldWaypoint</title>
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+    <%= stylesheet_link_tag "style", "codebox", "tgel", "formtastic", "formtastic_changes" %>
+    <%= javascript_include_tag "application", "disable_enter_key", "flashobject"  %>
+    <%= javascript_include_tag "jquery", "jrails"  %>
+    <meta name="description" content="WorldWaypoint: waypoints of the world." />
+    <meta name="keywords" content="waypoint,gps" />
+  </head>
+  <body>
+    <div id="topnavigation">
+      <ul>
+        <li><%= link_to "<span>home</span>","/" %></li>
+        <li><%= link_to "<span>about</span>", "/tgel/report" %></li>
+        <li><%= link_to "<span>blog</span>", "/tgel/report" %></li>
+        <li><%= link_to "<span>contact</span>","https://www.assembla.com/spaces/efactory/wiki" %></li>
+        <li><%= link_to "<span>#{image_tag 'rssmall.png'}</span>","#", :title=>"RSS" %></li>
+        <li><%= link_to "<span>#{image_tag 'twittersmall.png'}</span>","#", :title => "Twitter" %></li>
+      </ul>
+    </div>
+    <div id="header">
+      <div style="float:right; color:#1C2795;">
+        <%= render :partial => "layouts/login" %>
+      </div>
+      <div style="padding:15px 0 0 100px;">
+        <a href="/"><img class="logo" src="/images/wwp_logo.png" alt="home" style="height:85px; margin-top:-15px;"/></a>
+      </div>
+      <div id="middlenavigation">
+        <ul>
+          <% tgel_modules= TgelModule.all :order=>"seq" %>
+          <% tgel_modules.each do |m| %>
+            <% next unless current_user.role.upcase.split(',').include?(m.role) if m.role %>
+            <li><%= link_to "<span>#{m.name}</span>","/?module=#{m.code}" %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div id="content">
+      <div id="contentmiddle">
+        <div id="notice"><%= flash[:notice] %></div>
+        <div id="contenttitle">
+          <h1><%= @title || "งานที่อยู่ระหว่างดำเนินการ" %></h1>
+        </div>
+        <div class="middlespace"><%= yield %></div>
+      </div>
+      <div id="sidebar">
+        <%
+        if params[:module]
+          tgel_module= TgelModule.find_by_code params[:module]
+          session[:module] = params[:module]
+        elsif session[:module]
+          tgel_module= TgelModule.find_by_code session[:module]
+        else
+          tgel_module= TgelModule.first
+        end
+        %>
+        <% tgel_module.tgel_services.each do |s| %>
+          <% if s.code.downcase=="link" %>
+            <% name, link = s.name.split(":") %>
+            <ul><li><%= link_to name, link %></li></ul>
+          <% else %>
+            <ul><li><%= link_to s.name, "/run/#{s.module}/#{s.code}" %></li></ul>
+          <% end %>
+        <% end %>
+        <!--<hr/>
+        related docs -->
+      </div>
+    </div>
+    <div style="clear:both;"></div>
+    <div id="footer">
+      <div id="copyright">
+        สงวนลิขสิทธิ์ &copy; ๒๕๕๓ - <a href="https://www.assembla.com/spaces/efactory/wiki">eFactory</a> - ระบบบริหารกิจการอุตสาหกรรมครบวงจร<br/>
+        <b>You Are <span style='color:#F8971B;font-style:italic;'>IN CONTROL</span></b>
+      </div>
+    </div>
+  </body>
+</html>
+

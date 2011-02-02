@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyText
+  description: MyText
+  national: MyText
+  province: MyText
+  score: 1
+  weight: 1
+  gma_user_id: 1
+
+two:
+  name: MyText
+  description: MyText
+  national: MyText
+  province: MyText
+  score: 1
+  weight: 1
+  gma_user_id: 1

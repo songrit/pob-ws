@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  employee_id: 1
+  name: MyString
+  received_on: 2010-11-25
+  returned_on: 2010-11-25
+  ref: MyString
+  ref_file: MyString
+  gma_user_id: 1
+
+two:
+  employee_id: 1
+  name: MyString
+  received_on: 2010-11-25
+  returned_on: 2010-11-25
+  ref: MyString
+  ref_file: MyString
+  gma_user_id: 1

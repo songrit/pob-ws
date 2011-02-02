@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  sender_id: 1
+  receiver_type: 1
+  receiver_id: 1
+  mgroup_id: 1
+  subject: MyString
+  body: MyText
+  attachment: MyString
+  gma_user_id: 1
+
+two:
+  sender_id: 1
+  receiver_type: 1
+  receiver_id: 1
+  mgroup_id: 1
+  subject: MyString
+  body: MyText
+  attachment: MyString
+  gma_user_id: 1

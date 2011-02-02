@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  inbox_id: 1
+  outbox_id: 1
+  mcontent_id: 1
+  draft: false
+  read: false
+  gma_user_id: 1
+
+two:
+  inbox_id: 1
+  outbox_id: 1
+  mcontent_id: 1
+  draft: false
+  read: false
+  gma_user_id: 1

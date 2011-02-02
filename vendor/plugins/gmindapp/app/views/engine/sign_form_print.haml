@@ -1,0 +1,17 @@
+%h3 เอกสารต้นฉบับ
+#doc{:style=>'border: dotted blue 1px;'}
+  = @xvars["#{@runseq.code}_original_doc".to_sym]
+
+%h3
+  ข้อความที่มีการลงนาม
+  %br
+  = "โดย#{@user.title} #{@user.fname} #{@user.lname} เมื่อวันที่ #{date_thai(Time.now)} น."
+%style
+  table.signature td { padding:10px; border-bottom: solid black 1px;}
+%table{:class=>'signature'}
+  - params.each do |k,v|
+    - next if @system_attributes.include?(k)
+    %tr
+      %td{:style=>'font-weight: bold;'}= k
+      %td= v
+      %td= image_tag "signature50.png"

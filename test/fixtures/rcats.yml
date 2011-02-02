@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  code: MyString
+  name: MyString
+  code_laas: MyString
+  account_number: MyString
+  gma_user_id: 1
+
+two:
+  code: MyString
+  name: MyString
+  code_laas: MyString
+  account_number: MyString
+  gma_user_id: 1

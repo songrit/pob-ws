@@ -1,0 +1,40 @@
+- w=650
+%table{ :cellSpacing=>'1', :cellPadding=>'4', :width=>w, :bgColor=>'#a1a5a9', :border=>0}
+  %TR
+    %TD{ :width=>w-10, :bgColor=>'#e2e2e2'} ขึ้นทะเบียนผู้ใช้
+  %TR
+    %TD{ :width=>w-10, :bgColor=>'#ffffff'}
+      %TABLE{ :cellSpacing=>0, :cellPadding=>2, :width=>w-10, :border=>0}
+        %TR{ :valign=>'top', :align=>'left' }
+          %TD{ :width=>w-20 }
+            = error_messages_for :user
+            %table
+              - form_for :user, :url=>{:action=>:create}, :html=>{:multipart=>true} do |f|
+                %tr
+                  %td รหัสผู้ใช้งาน
+                  %td= f.text_field 'login'
+                %tr
+                  %td รหัสผ่าน
+                  %td= f.password_field 'password'
+                %tr
+                  %td ยืนยันรหัสผ่าน
+                  %td= password_field_tag 'password_confirmation'
+                %tr
+                  %td คำนำหน้าชื่อ
+                  %td= f.select 'title', %w(นาย นาง นางสาว)
+                %tr
+                  %td ชื่อ
+                  %td= f.text_field 'fname'
+                %tr
+                  %td นามสกุล
+                  %td= f.text_field 'lname'
+                %tr
+                  %td Email
+                  %td= f.text_field 'email'
+                /%tr
+                /  %td สิทธิการใช้งาน
+                /  %td= f.text_field 'role'
+                %tr
+                  %td{:colspan=>2}
+                    = submit_tag "ขึ้นทะเบียน"
+

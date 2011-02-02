@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <%= render :partial => "layouts/head" %>
+  <body>
+    <div id="topnavigation">
+      <%= link_to image_tag('wwp33.png', :id=>"sm_logo"),"/", :border=>0 %>
+      <ul style="padding-left:120px;">
+        <%= render :partial => "layouts/top" %>
+      </ul>
+      <span id="trip">Trip #<%= @trip.id %> <%= @trip.name %></span>
+      <% if login? %>
+      <div id="user_top"><%= current_user.login %></div>
+      <% end %>
+    </div>
+    <div id="content" style="padding-top:10px;">
+      <div id="notice"><%= display_notices %></div>
+      <div id="notice"><%= flash[:notice] %></div>
+      <%= yield %>
+    </div>
+    <div style="clear:both;"></div>
+    <div id="footer">
+      <div id="copyright">
+        &copy; 2010 - WorldWaypoint, LLC<br/>
+      </div>
+    </div>
+  </body>
+</html>
+

@@ -1,0 +1,29 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  address: MyString
+  street: MyString
+  moo: 1
+  sub_district_id: 1
+  district_id: 1
+  province_id: 1
+  phone: MyString
+  address_type: 1
+  doc: MyString
+  latitude: 1.5
+  longitude: 1.5
+  gma_user_id: 1
+
+two:
+  address: MyString
+  street: MyString
+  moo: 1
+  sub_district_id: 1
+  district_id: 1
+  province_id: 1
+  phone: MyString
+  address_type: 1
+  doc: MyString
+  latitude: 1.5
+  longitude: 1.5
+  gma_user_id: 1

@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  ref: MyString
+  deliver_id: 1
+  receiver_id: 1
+  fy: 1
+  receive_on: 2010-10-06
+  gma_user_id: 1
+
+two:
+  ref: MyString
+  deliver_id: 1
+  receiver_id: 1
+  fy: 1
+  receive_on: 2010-10-06
+  gma_user_id: 1

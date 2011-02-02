@@ -1,0 +1,63 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  code: MyString
+  person_id: 1
+  position: MyString
+  position_on: 2010-12-16
+  section_id: 1
+  level: 1
+  salary: 1.5
+  appointed_by: MyString
+  position_code: MyString
+  address_id: 1
+  address_reg_id: 1
+  begin_gov_service_on: 2010-12-16
+  retired_on: 2010-12-16
+  spouse_id: 1
+  father_id: 1
+  mother_id: 1
+  address_relative_id: 1
+  skill: MyText
+  highest_education_id: 1
+  blood_type: MyString
+  status: 1
+  photo: MyString
+  taken_on: 2010-12-16
+  signature: MyString
+  leave_balance: 1.5
+  manpower_id: 1
+  manpower_code: MyString
+  comment: MyString
+  gma_user_id: 1
+
+two:
+  code: MyString
+  person_id: 1
+  position: MyString
+  position_on: 2010-12-16
+  section_id: 1
+  level: 1
+  salary: 1.5
+  appointed_by: MyString
+  position_code: MyString
+  address_id: 1
+  address_reg_id: 1
+  begin_gov_service_on: 2010-12-16
+  retired_on: 2010-12-16
+  spouse_id: 1
+  father_id: 1
+  mother_id: 1
+  address_relative_id: 1
+  skill: MyText
+  highest_education_id: 1
+  blood_type: MyString
+  status: 1
+  photo: MyString
+  taken_on: 2010-12-16
+  signature: MyString
+  leave_balance: 1.5
+  manpower_id: 1
+  manpower_code: MyString
+  comment: MyString
+  gma_user_id: 1

@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  recorded_on: 2010-11-07
+  weight: 1.5
+  height: 1.5
+  head_length: 1.5
+  student_id: 1
+  gma_user_id: 1
+
+two:
+  recorded_on: 2010-11-07
+  weight: 1.5
+  height: 1.5
+  head_length: 1.5
+  student_id: 1
+  gma_user_id: 1

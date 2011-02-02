@@ -1,0 +1,43 @@
+%script{:type=>"text/javascript", :src=>"http://maps.google.com/maps/api/js?sensor=false"}
+:javascript
+
+  var latLng;
+  var map;
+  var marker;
+
+  function initialize(position) {
+    var lat =  position.coords.latitude;
+    var lng =  position.coords.longitude;
+    latLng = new google.maps.LatLng(lat, lng);
+    map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 12,
+      center: latLng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+    marker = new google.maps.Marker({
+      position: latLng,
+      map: map,
+      draggable: true,
+    });
+    google.maps.event.addListener(marker, 'dragend', function(event) {
+      $('#lat').val(event.latLng.lat());
+      $('#lng').val(event.latLng.lng());
+    });
+  }
+
+  function move() {
+    latLng = new google.maps.LatLng($("#lat").val(), $("#lng").val());
+    map.panTo(latLng);
+    marker.setPosition(latLng);
+  }
+
+  navigator.geolocation.getCurrentPosition(initialize);
+
+Latitude:
+= text_field_tag :lat, nil, :style=>"width:200px"
+Longitude:
+= text_field_tag :lng, nil, :style=>"width:200px"
+<p/>
+#map{:style=>"width:690px;height:300px;"}
+%script $("#lat").change(function() {move()})
+%script $("#lng").change(function() {move()})

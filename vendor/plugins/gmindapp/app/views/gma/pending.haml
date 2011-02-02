@@ -1,0 +1,24 @@
+%table{:width=>"100%"}
+  %tr{:style=>"color:white; background-color:#6A6A6A;"}
+    %th xmain
+    %th service
+    %th task
+    %th user
+    %th start
+    %th cancel
+  - @xmains.each do |xmain|
+    - @runseq= GmaRunseq.find(xmain.current_runseq)
+    - next unless @runseq
+    - next unless %w(form output pdf).include?(@runseq.action)
+    - @xmain= xmain
+    /- next unless authorize?
+    %tr
+      %td= link_to xmain.id, :controller=>"gma", :action=>"status", :id=>xmain.id
+      %td= link_to xmain.name, :controller=>"gma", :action=>"status", :id=>xmain.id
+      %td= @runseq.name
+      %td{:align=>'center'}= xmain.gma_user.login
+      %td= date_us xmain.start
+      %td{:align=>'center'}= link_to image_tag("delete.png",                          |
+        :style=>'border:none; float:none;'),                                          |
+        {:controller=>'engine', :action=>'cancel', :id=>xmain.id, :return=>url_for},  |
+        :confirm=>"confirm?"                                                          |

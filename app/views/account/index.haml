@@ -1,0 +1,23 @@
+%h3= @u.full_name
+%style
+  td.field-name {width:100px;}
+%table(width="100%")
+  %tr
+    %td(class="field-name") รหัสผู้ใช้
+    %td(colspan="2")= @u.login
+  %tr
+    %td(class="field-name") ตำแหน่ง
+    %td(colspan="2")= @u.position
+  %tr
+    %td(class="field-name") ส่วน
+    %td(colspan="2")= @u.section.name
+  %tr
+    %td(class="field-name") งาน
+    %td(colspan="2")= @u.subsection.name
+  %tr
+    %td(class="field-name") อีเมลล์
+    %td(colspan="2")= @u.email
+  %tr
+    %td(class="field-name") สิทธิการใช้งาน
+    %td(colspan="2")= @u.role
+%p

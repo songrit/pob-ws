@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<chart caption='รายได้' xAxisName='เดือน' yAxisName='รายได้' showValues='0' numberPrefix=''>
+   <categories>
+      <category label='ต.ค.' />
+      <category label='พ.ย.' />
+      <category label='ธ.ค.' />
+      <category label='ม.ค.' />
+      <category label='ก.พ.' />
+      <category label='มี.ค.' />
+      <category label='เม.ย.' />
+      <category label='พ.ค.' />
+      <category label='มิ.ย.' />
+      <category label='ก.ค.' />
+      <category label='ส.ค.' />
+      <category label='ก.ย.' />
+   </categories>
+   <dataset seriesName='ท้องถิ่นจัดหาเอง'>
+      <set value='827400' />
+      <set value='29800'/>
+      <set value='55800' />
+      <set value='0' />
+      <set value='0' />
+      <set value='0' />
+
+      <set value='0' />
+      <set value='0' />
+      <set value='0' />
+      <set value='0' />
+      <set value='0' />
+      <set value='0' />
+   </dataset>
+   <dataset seriesName='เงินจัดสรร'>
+      <set value='1340000'/>
+      <set value='1150000'/>
+      <set value='1250000'/>
+      <set value='0' />
+      <set value='0' />
+      <set value='0' />
+
+      <set value='0' />
+      <set value='0' />
+      <set value='0' />
+      <set value='0' />
+      <set value='0' />
+      <set value='0' />
+   </dataset>
+   <dataset seriesName='เงินอุดหนุน'>
+      <set value='1530000'/>
+      <set value='2150000'/>
+      <set value='1810000'/>
+      <set value='0' />
+      <set value='0' />
+      <set value='0' />
+
+      <set value='0' />
+      <set value='0' />
+      <set value='0' />
+      <set value='0' />
+      <set value='0' />
+      <set value='0' />
+   </dataset>
+
+   <xtrendlines>
+      <line startValue='42000' color='91C728' displayValue='Target' showOnTop='1'/>
+   </xtrendlines>
+
+   <styles>
+
+      <definition>
+         <style name='CanvasAnim' type='animation' param='_xScale' start='0' duration='1' />
+      </definition>
+
+      <application>
+         <apply toObject='Canvas' styles='CanvasAnim' />
+      </application>   
+
+   </styles>
+
+</chart>

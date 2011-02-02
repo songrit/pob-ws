@@ -1,0 +1,36 @@
+class UsersController < ApplicationController
+#  require "tgel"
+#  include GmaMethods
+  def login
+    user= GmaUser.authenticate params[:login], params[:password]
+    if user
+      session[:user_id]= user.id
+      $user_id= user.id
+      gma_log "LOGIN", "user #{user.login}(#{user.id}) logged in"
+    else
+      gma_log "SECURITY", "user #{params[:login]} log in failure"
+      flash[:notice]= "รหัสไม่ถูกต้อง กรุณาตรวจสอบอีกครั้ง"
+    end
+    redirect_to_root
+  end
+  def logout
+    user= GmaUser.find session[:user_id]
+    gma_log "LOGOUT", "user #{user.login}(#{user.id}) logged out"
+    reset_session
+    redirect_to_root
+  end
+  def new
+    @title= "ขึ้นทะเบียนผู้ใช้"
+    @user= GmaUser.new
+  end
+  def create
+    @user= GmaUser.new params[:user]
+    if @user.save
+      flash[:notice]= "ขึ้นทะเบียนผู้ใช้เรียบร้อยแล้ว"
+      redirect_to "/"
+    else
+      flash[:notice]= "ไม่สามารถขึ้นทะเบียนได้ กรุณาตรวจสอบอีกครั้ง"
+      render :action=>:new
+    end
+  end
+end

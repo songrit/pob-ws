@@ -1,0 +1,28 @@
+.label
+  = image_tag "cog.png"
+  สถานะการดำเนินการ รายการรหัส
+  = params[:id]
+  %br= @xmain.name
+%table{:width=>"100%"}
+  %tr{:style=>"color:white; background-color:#6A6A6A;"}
+    %th สถานะ
+    %th งาน
+    %th อำนาจดำเนินการ
+    %th เริ่มต้น
+    %th สิ้นสุด
+  - @xmain.tgel_runseqs.form_action.each do |r|
+    %tr
+      - if @xmain.status=='X'
+        %td{:align=>'center'}= image_tag 'cancel.png'
+      - else
+        %td{:align=>'center'}= status_icon(r)
+      %td= r.name
+      %td{:align=>'center'}= role_name r.role
+      - if r.start
+        %td= date_thai r.start
+      - else
+        %td{:align=>'center'} -
+      - if r.stop
+        %td= date_thai r.stop
+      - else
+        %td{:align=>'center'} -

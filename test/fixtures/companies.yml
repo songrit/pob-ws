@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  address_id: 1
+  business_type: MyString
+  registered_on: 2010-12-13
+  registration_num: MyString
+  authorized_person_id: 1
+  authorized_person_address_id: 1
+  doc: MyString
+  gma_user_id: 1
+
+two:
+  name: MyString
+  address_id: 1
+  business_type: MyString
+  registered_on: 2010-12-13
+  registration_num: MyString
+  authorized_person_id: 1
+  authorized_person_address_id: 1
+  doc: MyString
+  gma_user_id: 1

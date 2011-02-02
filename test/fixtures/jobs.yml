@@ -1,0 +1,29 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  effective_on: 2010-11-27
+  name: MyString
+  description: MyText
+  section_id: 1
+  level: 1
+  salary: 1.5
+  authorized_by: MyString
+  authorized_position: MyString
+  ref: MyString
+  ref_file: MyString
+  employee_id: 1
+  gma_user_id: 1
+
+two:
+  effective_on: 2010-11-27
+  name: MyString
+  description: MyText
+  section_id: 1
+  level: 1
+  salary: 1.5
+  authorized_by: MyString
+  authorized_position: MyString
+  ref: MyString
+  ref_file: MyString
+  employee_id: 1
+  gma_user_id: 1

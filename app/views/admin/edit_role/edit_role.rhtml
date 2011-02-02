@@ -1,0 +1,17 @@
+<% u= GmaUser.find @xvars[:select_user][:user_id] %>
+<table id="doc" width="100%">
+  <tr>
+    <td class="field-name">ผู้ใช้ที่ต้องการแก้ไข</td>
+    <td><%= u.full_name %></td>
+    <td style="width:50%;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="field-name" valign='top'>สิทธิการใช้งาน</td>
+    <td valign='top'><%= text_field_tag :role, u.role, :style => "width:200px;" %></td>
+    <td style="width:50%;padding-left:10px;">
+      <% GmaRole.all.each do |r| %>
+        <%= r.code %>: <%= r.name %><br/>
+      <% end %>
+    </td>
+  </tr>
+</table>

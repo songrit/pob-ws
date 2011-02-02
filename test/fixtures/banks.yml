@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  code: MyString
+  name: MyString
+  branch: MyString
+  account: MyString
+  atype: 1
+  balance: 1.5
+  gma_user_id: 1
+
+two:
+  code: MyString
+  name: MyString
+  branch: MyString
+  account: MyString
+  atype: 1
+  balance: 1.5
+  gma_user_id: 1

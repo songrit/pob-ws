@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  xmain_id: 1
+  name: MyString
+  description: MyText
+  script: MyText
+  confirm: MyString
+  status: 1
+  submitted_at: 2010-10-01 08:45:27
+  retry: 1
+  gma_user_id: 1
+
+two:
+  xmain_id: 1
+  name: MyString
+  description: MyText
+  script: MyText
+  confirm: MyString
+  status: 1
+  submitted_at: 2010-10-01 08:45:27
+  retry: 1
+  gma_user_id: 1

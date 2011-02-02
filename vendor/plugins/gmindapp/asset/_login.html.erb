@@ -1,0 +1,24 @@
+<% unless session[:user_id] %>
+<b>LOGIN</b>
+  <% form_tag :controller=>"users", :action=>"login" do %>
+    <table id="login">
+      <tr>
+        <td>username:</td>
+        <td><%= text_field_tag :login, nil, :size=>7 %></td>
+      </tr>
+      <tr>
+        <td>password:</td>
+        <td>
+          <%= password_field_tag :password, nil, :size=>7 %>
+          <%= image_submit_tag "play.gif", :title=>"login", :style=>"position:relative; top:4px;" %>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+<% else %>
+  <div id="user">
+    <% user= TgelUser.find(session[:user_id]) %>
+    <%= align_text(user.full_name) %>
+    <%= link_to image_tag("logout.png", :alt=>"sign off", :title=>"ออกจากระบบ"), {:controller=>"users", :action=>"logout"} %>
+  </div>
+<% end %>

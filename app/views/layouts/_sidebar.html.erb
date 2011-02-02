@@ -1,0 +1,32 @@
+<div id="sidebar">
+  <% if gma_module %>
+    <div id="sidebar_menu">
+      <% gma_module.gma_services.each do |s| %>
+        <% next unless s.listed %>
+        <% xml= REXML::Document.new(s.xml).root %>
+        <% unless s.rule.blank? %>
+          <% next if (!eval(s.rule)) %>
+        <% end %>
+        <% unless s.role.blank? %>
+          <% next unless current_user.role.upcase.split(',').include?(s.role.upcase) %>
+        <% end %>
+        <% confirm= get_option_xml("confirm", xml) %>
+        <% confirm_hash = confirm ? {:confirm=> confirm.to_s=='true' ? "Are you sure ?" : confirm} : {} %>
+        <% if s.code.downcase=="link" %>
+          <% name, link = s.name.split(":") %>
+          <ul><li><%= link_to name, link, confirm_hash %></li></ul>
+        <% else %>
+          <ul><li><%= link_to s.name, "/run/#{s.module}/#{s.code}", confirm_hash %></li></ul>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+  <% if home_page? && false %>
+    <div class="featured" style="background-color:#B9FABE;">
+      <h4>ข่าว อปท.</h4>
+      <% @news.each do |n| %>
+        <li><%= a2waypoint n.subject %></li>
+      <% end %>
+    </div>
+  <% end %>
+</div>

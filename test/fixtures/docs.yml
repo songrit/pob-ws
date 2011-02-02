@@ -1,0 +1,27 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  rnum: 1
+  num: MyString
+  issue_on: 2010-07-18
+  dfrom: MyString
+  dto: MyString
+  subject: MyString
+  section_id: 1
+  process_at: 2010-07-18 16:19:20
+  summary: MyText
+  dscan: MyString
+  gma_user_id: 1
+
+two:
+  rnum: 1
+  num: MyString
+  issue_on: 2010-07-18
+  dfrom: MyString
+  dto: MyString
+  subject: MyString
+  section_id: 1
+  process_at: 2010-07-18 16:19:20
+  summary: MyText
+  dscan: MyString
+  gma_user_id: 1

@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  certificate: MyString
+  train_begin: 2010-11-25
+  train_end: 2010-11-25
+  employee_id: 1
+  gma_user_id: 1
+
+two:
+  name: MyString
+  certificate: MyString
+  train_begin: 2010-11-25
+  train_end: 2010-11-25
+  employee_id: 1
+  gma_user_id: 1

@@ -1,0 +1,13 @@
+.head
+  #subtitle= @runseq.name
+  %p
+  =javascript_include_tag "disable_enter_key"
+- form_tag({ :action => 'end_output' } , {:multipart => true, :onKeyPress=>'return disableEnterKey(event)', :class=>'formtastic'}) do
+  = hidden_field_tag 'xmain_id', @xmain.id
+  = hidden_field_tag 'runseq_id', @runseq.id
+  = hidden_field_tag 'step', @xvars[:current_step]
+  #output_link
+    = link_to "PRINT", :controller=>'engine', :action=>'send_pdf', :f=>@t
+  %p
+  = submit_tag @message
+%p

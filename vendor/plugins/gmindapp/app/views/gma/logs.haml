@@ -1,0 +1,27 @@
+= will_paginate @xmains, :class=>'flickr_pagination'
+%table{:width=>"100%"}
+  %tr{:style=>"color:white; background-color:#6A6A6A;"}
+    %th รหัสงาน
+    %th บริการ
+    %th ขั้นตอน
+    %th ผู้เริ่มงาน
+    %th วันที่เริ่มต้น
+    %th สถานะ
+    %th ยกเลิก
+  - @xmains.each do |xmain|
+    - next unless xmain.current_runseq
+    - runseq= GmaRunseq.find(xmain.current_runseq)
+    %tr
+      %td= xmain.id
+      %td= link_to xmain.name, :action=>:debug_xvars, :id=>xmain.id
+      %td= runseq.name
+      - if xmain.gma_user
+        %td{:align=>'center'}= xmain.gma_user.login
+      - else
+        %td{:align=>'center'} ???
+      %td= date_us xmain.start
+      %td{:align=>'center'}= status_icon xmain
+      %td{:align=>'center'}= link_to image_tag("delete.png",                          |
+        :style=>'border:none; float:none;'),                                          |
+        {:controller=>'engine', :action=>'cancel', :id=>xmain.id, :return=>url_for},  |
+        :confirm=>"ยืนยัน?"                                                          |

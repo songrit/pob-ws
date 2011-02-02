@@ -1,0 +1,27 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  formula: MyText
+  unit: MyString
+  score: 1
+  weight: 1
+  s2: 1.5
+  s3: 1.5
+  s4: 1.5
+  s5: 1.5
+  gma_user_id: 1
+
+two:
+  name: MyString
+  description: MyText
+  formula: MyText
+  unit: MyString
+  score: 1
+  weight: 1
+  s2: 1.5
+  s3: 1.5
+  s4: 1.5
+  s5: 1.5
+  gma_user_id: 1

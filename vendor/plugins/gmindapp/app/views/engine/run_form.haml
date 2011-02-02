@@ -1,0 +1,35 @@
+.head
+  = step(@runseq.form_step, @xvars[:total_form_steps])
+  #title
+    %span(style='float:left;')= "รหัสดำเนินการ #{@xmain.id} : #{@xmain.name}"
+    %span(style='float:right;')= @runseq.name
+    &nbsp;
+  = javascript_include_tag "disable_enter_key"
+  = javascript_include_tag 'jquery.autocomplete'
+  - if GMAP
+    %script(src='http://maps.google.com/maps/api/js?sensor=false')
+  = stylesheet_link_tag 'jquery.autocomplete'
+%script
+  function validate() { return true; }
+%p
+- user = current_user || TgelUser.new
+- if @sign
+  .notice= "เอกสารอนุมัติด้วยระบบลายมือชื่ออิเล็กทรอนิกส์ ใช้งานได้เฉพาะเครื่องที่มีการติดตั้งโปรแกรม และกุญแจส่วนบุคคลของ<u>#{user.title} #{user.fname} #{user.lname}</u> เรียบร้อยแล้วเท่านั้น"
+  - form_class = 'sign formtastic'
+  - next_step = 'sign_form'
+- else
+  - form_class = 'formtastic'
+  - next_step = 'end_form'
+/- form_tag({ :action => 'end_form' } , {:multipart => true, :onsubmit=>'return checkform(this);', :onKeyPress=>'return disableEnterKey(event)'}) do
+- form_tag({ :action => next_step } , {:multipart => true, :onKeyPress=>'return disableEnterKey(event)', :onSubmit=>'return validate()', :class=>form_class}) do
+  = hidden_field_tag 'xmain_id', @xmain.id
+  = hidden_field_tag 'runseq_id', @runseq.id
+  = hidden_field_tag 'step', @xvars[:current_step]
+  - if @sign
+    = hidden_field_tag 'login', user.login
+  = render :inline=> @ui
+  %p
+  = submit_tag @message
+%p
+%script
+  $('#content input[type=text]').first().focus();

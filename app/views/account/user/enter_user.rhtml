@@ -1,0 +1,44 @@
+<% user = current_user %>
+<% fields_for user do |f|  %>- 
+  <table width="100%">
+    <tr>
+      <td class="field-name">รหัสผู้ใช้</td>
+      <td><%= user.login %></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="field-name">คำนำหน้า</td>
+      <td colspan='2'><%= f.select :title, ['นาย','นาง','นางสาว'] %></td>
+    </tr>
+    <tr>
+      <td class="field-name">ชื่อ</td>
+      <td colspan='2'><%= f.text_field :fname, :style=>"width:300px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">นามสกุล</td>
+      <td colspan='2'><%= f.text_field :lname, :style=>"width:300px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">ตำแหน่ง</td>
+      <td colspan='2'><%= f.text_field :position, :style=>"width:300px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">ส่วน</td>
+      <td colspan='2'><%= f.collection_select :section_id, Section.all(:order=>:code), :id, :name %></td>
+    </tr>
+    <tr>
+      <td class="field-name">งาน</td>
+      <td colspan='2'><%= f.collection_select :subsection_id, user.section.subsections, :id, :name %></td>
+    </tr>
+    <tr>
+      <td class="field-name">อีเมลล์</td>
+      <td colspan='2'><%= f.text_field :email, :style=>"width:300px;" %></td>
+    </tr>
+  </table>
+<% end %>
+<script type="text/javascript">
+  var animate = "<img src='/images/ajax-loader.gif' alt='loading...' />";
+  $('#user_section_id').change( function(e) {
+    $('#user_subsection_id').load('/users/subsections', {id:$('#user_section_id').val()});
+  })
+</script>

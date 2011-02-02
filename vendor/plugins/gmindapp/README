@@ -1,0 +1,39 @@
+GmindApp
+========
+
+date_select_thai helper
+  put somewhere on the page <%= fix_thai_year %> to fix thai year
+get_image
+  file upload can be done for 2 levels for now
+  using file_field_tag and f.file_field
+  array of Hash may not work properly such as field_set for 'aa[]'
+  uploaded file will be stored under /tmp or IMAGE_LOCATION
+run_if
+  when specify label 'end', it will end the transaction
+  usage: in run/admin/country in kudson app
+name2code
+  all codes will be converted to lowercase, i.e., 'End' is the same as 'end'
+update app
+  in freemind model, if not specify column type, will be default to integer
+service link
+  in service module, can add arbitrary link using link keyword, e.g., link: title: /controller/action
+run_call
+  method under custom controller do not have access to session nor flash
+  in order to create notification, use GmaMethod#notice(s) method, then when you want to display
+    new notices, use GmaMethod#display_notices method
+pdf
+  use refine icon (pencil on paper). use prawn gem to generate .pdf.prawn view like prawnto
+
+Install
+=======
+  include <%= javascript_include_tag "application", "flashobject", "jquery"  %> in layout
+    application.js is used by visorfreemind viewer
+
+
+Example
+=======
+
+Example goes here.
+
+
+Copyright (c) 2010 Songrit Leemakdej, released under the MIT license

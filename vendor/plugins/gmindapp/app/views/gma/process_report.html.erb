@@ -1,0 +1,27 @@
+<div class="label">
+  <%= image_tag "cog.png" %>
+  รายงานกระบวนการที่อยู่ระหว่างดำเนินการ
+</div>
+<table width="100%">
+  <tr style= "color:white; background-color:#6A6A6A;">
+    <th>เลขที่</th>
+    <th>งาน</th>
+    <th>ผู้ยื่นคำร้อง</th>
+    <th>ขั้นตอน</th>
+    <th>อำนาจดำเนินการ</th>
+    <th>เริ่มต้น</th>
+  </tr>
+  <% @xmains.each do |xmain| %>
+    <% runseq= xmain.gma_runseqs.find(:first, :conditions=>" status!='F' ") %>
+    <% next unless runseq  %>
+    <% next unless ui_action?(runseq.action)  %>
+    <tr>
+      <td><%= link_to xmain.id, :action=>:status, :id=>xmain.id %></td>
+      <td><%= xmain.name %></td>
+      <td align= 'center'><%= "#{xmain.gma_user.fname} #{xmain.gma_user.lname}" %></td>
+      <td><%= runseq.name %></td>
+      <td align='center'><%= role_name runseq.role %></td>
+      <td><%= date_thai xmain.start %></td>
+    </tr>
+  <% end %>
+</table>

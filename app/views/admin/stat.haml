@@ -1,0 +1,25 @@
+%table
+  %tr
+    %td GmaUser:
+    %td= GmaUser.count
+  %tr
+    %td Sessions:
+    %td= ActiveRecord::SessionStore::Session.count
+  %tr
+    %td Searches:
+    %td= Search.count
+  %tr
+    %td GmaSearches:
+    %td= GmaSearch.count
+  %tr
+    %td GmaXmains:
+    %td= GmaXmain.count
+  %tr
+    %td GmaRunseqs:
+    %td= GmaRunseq.count
+  %tr
+    %td GmaDocs:
+    %td= GmaDoc.count
+  %tr
+    %td Docs:
+    %td= Doc.count

@@ -1,0 +1,38 @@
+<% org = Org.last || Org.new %>
+<% fields_for org do |f| %>
+  <table id="org" width="100%">
+    <tr>
+      <td class="field-name">ประเภท</td>
+      <td colspan="2"><%= f.text_field :otype, :style => "width:400px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">ประเภทอย่างย่อ</td>
+      <td><%= f.text_field :otype_abbrev, :style => "width:200px;" %></td>
+      <td style="width:50%;">ไม่ต้องใส่เครื่องหมาย</td>
+    </tr>
+    <tr>
+      <td class="field-name">ชื่อ</td>
+      <td colspan="2"><%= f.text_field :name, :style => "width:400px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">ที่อยู่</td>
+      <td colspan="2"><%= f.text_field :address, :style => "width:400px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">อำเภอ</td>
+      <td colspan="2"><%= f.text_field :district, :style => "width:400px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">จังหวัด</td>
+      <td colspan="2"><%= f.text_field :province, :style => "width:400px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">โทรศัพท์</td>
+      <td colspan="2"><%= f.text_field :phone, :style => "width:400px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">จำนวนหมู่บ้าน</td>
+      <td colspan="2"><%= f.text_field :villages, :style => "width:200px;" %></td>
+    </tr>
+  </table>
+<% end %>

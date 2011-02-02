@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  code: MyString
+  name: MyString
+  prefix: MyString
+  latitude: 1.5
+  longitude: 1.5
+  province_id: 1
+  gma_user_id: 1
+
+two:
+  code: MyString
+  name: MyString
+  prefix: MyString
+  latitude: 1.5
+  longitude: 1.5
+  province_id: 1
+  gma_user_id: 1

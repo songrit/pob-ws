@@ -1,0 +1,27 @@
+- w=650
+%table{ :cellSpacing=>'1', :cellPadding=>'4', :width=>w, :bgColor=>'#a1a5a9', :border=>0}
+  %TR
+    %TD{ :width=>w-10, :bgColor=>'#e2e2e2'} Please enter information
+  %TR
+    %TD{ :width=>w-10, :bgColor=>'#ffffff'}
+      %TABLE{ :cellSpacing=>0, :cellPadding=>2, :width=>w-10, :border=>0}
+        %TR{ :valign=>'top', :align=>'left' }
+          %TD{ :width=>w-20 }
+            = error_messages_for :user
+            %table
+              - form_for :user, :url=>{:action=>:create}, :html=>{:multipart=>true} do |f|
+                %tr
+                  %td Username
+                  %td= f.text_field 'login'
+                %tr
+                  %td Password
+                  %td= f.text_field 'password'
+                %tr
+                  %td Email
+                  %td= f.text_field 'email'
+                - @user.role= 'm'
+                = f.hidden_field 'role'
+                %tr
+                  %td{:colspan=>2}
+                    = submit_tag "Register"
+

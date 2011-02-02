@@ -1,0 +1,27 @@
+%table{:width=>"100%"}
+  %tr{:style=>"color:white; background-color:#97BF60;"}
+    %th รหัสดำเนินการ
+    %th งาน
+    %th ขั้นตอน
+    %th ผู้เริ่มงาน
+    %th เริ่มดำเนินการ
+    %th ยกเลิก
+  - @xmains.each do |xmain|
+    - @xmain= xmain
+    - next unless xmain.current_runseq
+    - @runseq= GmaRunseq.find(xmain.current_runseq)
+    - next unless @runseq
+    - next unless %w(form output pdf).include?(@runseq.action)
+    /- debugger
+    - next if @xmain.gma_runseqs.first==@xmain.current_runseq && @xmain.gma_user!=current_user
+    - next unless authorize?
+    %tr
+      %td= link_to xmain.id, :controller=>"engine", :action=>"run", :id=>xmain.id
+      %td= link_to xmain.name, :controller=>"engine", :action=>"run", :id=>xmain.id
+      %td= @runseq.name
+      %td{:align=>'center'}= xmain.gma_user.full_name
+      %td= date_thai xmain.start
+      %td{:align=>'center'}= link_to image_tag("delete.png",                          |
+        :style=>'border:none; float:none;'),                                          |
+        {:controller=>'engine', :action=>'cancel', :id=>xmain.id, :return=>url_for},  |
+        :confirm=>"confirm?"                                                          |

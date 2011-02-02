@@ -1,0 +1,50 @@
+%h3 ขึ้นทะเบียนผู้ใช้ใหม่
+%style
+  td.field-name {width:100px;}
+= error_messages_for :user
+- form_for :user, :url=>{:action=>:create}, :html=>{:multipart=>true} do |f|
+  %table(width="100%")
+    %tr
+      %td(class="field-name") รหัสผู้ใช้
+      %td= f.text_field :login, :style=>"width:200px;"
+      %td#check(style="width:270px;") รหัสผู้ใช้เป็นภาษาอังกฤษ ห้ามใช้ตัวอักษรพิเศษ
+    %tr
+      %td(class="field-name") รหัสผ่าน
+      %td= f.text_field :password, :style=>"width:200px;"
+      %td(style="width:270px;padding-left:20px;") รหัสผ่านเป็นภาษาอังกฤษ ห้ามใช้ตัวอักษรพิเศษ
+    %tr
+      %td(class="field-name") คำนำหน้า
+      %td(colspan="2")= f.select :title, ['นาย','นาง','นางสาว']
+    %tr
+      %td(class="field-name") ชื่อ
+      %td(colspan="2")= f.text_field :fname, :style=>"width:300px;"
+    %tr
+      %td(class="field-name") นามสกุล
+      %td(colspan="2")= f.text_field :lname, :style=>"width:300px;"
+    %tr
+      %td(class="field-name") ตำแหน่ง
+      %td(colspan="2")= f.text_field :position, :style=>"width:300px;"
+    %tr
+      %td(class="field-name") ส่วน
+      %td(colspan="2")= f.collection_select :section_id, Section.all(:order=>:code), :id, :name, {:prompt=>"กรุณาเลือกส่วน"}
+    %tr
+      %td(class="field-name") งาน
+      %td(colspan="2")= f.select :subsection_id, []
+    %tr
+      %td(class="field-name") อีเมลล์
+      %td(colspan="2")= f.text_field :email, :style=>"width:300px;"
+    = f.hidden_field :role
+    %tr
+      %td(colspan="3")= submit_tag "ขึ้นทะเบียน"
+%p
+
+:javascript
+  var animate = "<img src='/images/ajax-loader.gif' alt='loading...' />";
+  $('#user_password').val('');
+  $("#user_login").change( function(e) {
+    $("#check").html(animate).load("/users/check_login",
+      {login:$("#user_login").val()});
+  })
+  $('#user_section_id').change( function(e) {
+    $('#user_subsection_id').load('/users/subsections', {id:$('#user_section_id').val()});
+  })

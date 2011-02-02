@@ -1,0 +1,19 @@
+%h3 Run_call Errors
+#delete(style='float:right')= link_to "delete all", :action=>"delete_run_call_errors"
+= will_paginate @gerrors, :class=>'flickr_pagination'
+%table{:width=>"100%"}
+  %tr{:style=>"color:white; background-color:#6A6A6A;"}
+    %th type
+    %th message
+    %th user
+    %th(style="width:100px;") created_at
+  - @gerrors.each do |e|
+    %tr
+      - p= YAML.load(e.iparams).to_options
+      %td= image_tag(log_type(e.log_type))
+      - if p[:id]
+        %td= link_to e.message, :action=>:debug_xvars, :id=>p[:id]
+      - else
+        %td= e.message
+      %td= link_to e.gma_user.login, :controller=>"account", :login=>e.gma_user.login
+      %td= date_us e.created_at

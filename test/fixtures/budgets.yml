@@ -1,0 +1,35 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  code: MyString
+  name: MyString
+  code_laas: MyString
+  account_number: MyString
+  fy: 1
+  budget: 1.5
+  balance: 1.5
+  fsection_id: 1
+  cat_id: 1
+  ptype_id: 1
+  plan_id: 1
+  task_id: 1
+  law_page: 1
+  law_item: MyString
+  gma_user_id: 1
+
+two:
+  code: MyString
+  name: MyString
+  code_laas: MyString
+  account_number: MyString
+  fy: 1
+  budget: 1.5
+  balance: 1.5
+  fsection_id: 1
+  cat_id: 1
+  ptype_id: 1
+  plan_id: 1
+  task_id: 1
+  law_page: 1
+  law_item: MyString
+  gma_user_id: 1

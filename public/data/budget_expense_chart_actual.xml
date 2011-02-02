@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<chart caption='การดำเนินการจริง' showPercentValues='1' pieRadius='120'>
+   <set label='รายรับ' value='1358814.43' />
+   <set label='รายจ่ายประจำ' value='1498533.06' />
+   <set label='รายจ่ายลงทุน' value='0' />
+</chart>

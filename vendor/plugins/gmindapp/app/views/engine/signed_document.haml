@@ -1,0 +1,19 @@
+= stylesheet_link_tag "document"
+= javascript_include_tag "jquery", "qrcode"
+/- text= "p1+5w0lcvY8lh6hDE9q1UCwLAl1etxluT5juTMWizo67xXzVglnKRogwVkYx bmGL+WGVDtcWpnF0+vydGFEi7ezGnVjwvhNVJvM45l3hIB9VBhJrDH7AJ1MK 5+sCJPFiadKRuTV8y98EmVeXQLgWjaLvsHNuTOf6bksuRRJ2nx0="
+- text = @doc.signature
+- if text
+  - text.gsub!(' ','%20')
+  - text.gsub!('+','%2B')
+  - text.gsub!('=','%3D')
+#text= @doc.data_text
+%table.qr
+  %tr
+    %td
+      - if text
+        = image_tag "http://qrcode.kaywa.com/img.php?s=3&d=#{text}"
+        %br
+      = "http://#{request.env['HTTP_HOST']}#{url_for :controller=>'tgel_signature', :action=>:validate, :id=>params[:id]}"
+%script
+  $('input').attr("disabled", true);
+  $('textarea').attr("disabled", true);
