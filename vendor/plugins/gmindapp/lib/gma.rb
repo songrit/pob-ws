@@ -44,7 +44,7 @@ module Gma
   def current_user
     if @current_user
       # return @current_user
-    elsif (session && session[:user_id])
+    elsif (session && session[:user_id]) && User.exists?(session[:user_id])
       @current_user = User.find(session[:user_id])
     else
       @current_user = User.find_or_create_by_login("anonymous") do |u|
@@ -95,7 +95,7 @@ module Gma
     false
   end
   def login?
-    session[:user_id] && GmaUser.find(session[:user_id]).login!="anonymous"
+    session[:user_id] && GmaUser.exists?(session[:user_id]) && GmaUser.find(session[:user_id]).login!="anonymous"
   end
   alias_method(:logged_in?, :login?)
   

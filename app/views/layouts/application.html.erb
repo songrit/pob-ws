@@ -21,12 +21,12 @@ else
     gma_module= m
     break if m.role.blank?
     if current_user.role
-      break if current_user.role.upcase.split(',').include?(m.role.upcase)
+      break if current_user.role.to_s.upcase.split(',').include?(m.role.upcase)
     end
   end
 end
 if gma_module && gma_module.role
-  gma_module= nil unless current_user.role.upcase.split(',').include?(gma_module.role.upcase)
+  gma_module= nil unless current_user.role.to_s.upcase.split(',').include?(gma_module.role.upcase)
 end
 %>
 <!DOCTYPE html>
