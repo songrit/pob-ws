@@ -1,5 +1,6 @@
 # A sample Gemfile
 source "http://rubygems.org"
+#gem "bcrypt-ruby", :require=>"bcrypt"
 gem "rails", "2.3.5"
 gem "heroku"
 gem "taps", "0.3.14"

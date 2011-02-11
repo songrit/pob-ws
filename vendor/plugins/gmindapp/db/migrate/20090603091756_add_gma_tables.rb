@@ -73,7 +73,7 @@ class AddGmaTables < ActiveRecord::Migration
       t.string   "role"
       t.string   "rule"
       t.integer  "gma_xmain_id"
-      t.integer  "step"
+      t.integer  "rstep"
       t.integer  "form_step"
       t.datetime "start"
       t.datetime "stop"

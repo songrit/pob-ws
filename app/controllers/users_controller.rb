@@ -1,17 +1,36 @@
 class UsersController < ApplicationController
-#  require "Gma"
-#  include GmaMethods
+  # gma methods
+  def update_user
+    u= User.find $user_id
+    u.update_attributes $xvars[:enter][:user]
+    gma_notice "แก้ไขข้อมูลผู้ใช้เรียบร้อยแล้ว"
+  end
+  def change_password
+    get_xvars
+    u= User.find $user_id
+    if User.authenticate u.login, @xvars[:enter][:pwd_old]
+      u.password= @xvars[:enter][:pwd_new]
+      u.save
+      gma_notice "แก้ไขรหัสผ่านเรียบร้อยแล้ว"
+    else
+      gma_notice "รหัสผ่านไม่ถูกต้อง กรุณาติดต่อผู้ดูแลระบบ"
+    end
+  end
+
+  # normal methods
+  def user
+    @u= current_user
+  end
   def login
     user= GmaUser.authenticate params[:login], params[:password]
     if user
       session[:user_id]= user.id
       $user_id= user.id
-#      gma_log "LOGIN", "user #{user.login}(#{user.id}) logged in"
+      gma_log "LOGIN", "user #{user.login}(#{user.id}) logged in"
     else
       gma_log "SECURITY", "user #{params[:login]} log in failure"
       flash[:notice]= "ขออภัย รหัสไม่ถูกต้อง"
     end
-#    redirect_to_root
     redirect_to request.referrer
   end
   def logout
@@ -19,12 +38,8 @@ class UsersController < ApplicationController
 #    gma_log "LOGOUT", "user #{user.login}(#{user.id}) logged out"
     session[:user_id]= nil
     $user_id= anonymous.id
-    if (session[:module] != 'waypoint') && (session[:module] != 'trip')
-      session[:module] = 'waypoint'
-      redirect_to_root
-    else
-      redirect_to request.referrer
-    end
+    session[:module] = 'public'
+    redirect_to_root
   end
   def new
     @title= "Register New User"

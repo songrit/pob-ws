@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
-  helper_method :fiscal_year, :finance_office?, :office_office?,
-    :own_xmain?, :mobile_device?, :atype, :b, :end_of_last_month,
+  helper_method :fiscal_year,
+    :own_xmain?, :mobile_device?, :b, :end_of_last_month,
     :begin_of_last_month, :begin_of_fiscal_year
 
   # protect_from_forgery # See ActionController::RequestForgeryProtection for details
@@ -11,16 +11,6 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
 
-  def finance_office?
-    current_user.role && current_user.role.upcase.split(',').include?('CO') && current_user.section_id==2
-  end
-  def office_office?
-    current_user.role && current_user.role.upcase.split(',').include?('CO') && current_user.section_id==1
-  end
-#----------------------
-  def atype(a)
-    ACCOUNT_TYPE[a-1]
-  end
   def end_of_last_month
     d= Date.today
     dd= Date.new d.year, d.month, 1
