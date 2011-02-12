@@ -15,8 +15,13 @@ class MainController < ApplicationController
 #    render :text => "help"
   end
   def index
-    @news = News.all :limit => 5, :order => "created_at DESC"
-    @xmains= GmaXmain.all :conditions=>"status='R' or status='I' ", :order=>"created_at", :include=>:gma_runseqs
+    if login?
+      @news = News.all :limit => 5, :order => "created_at DESC"
+      @xmains= GmaXmain.all :conditions=>"status='R' or status='I' ", :order=>"created_at", :include=>:gma_runseqs
+      render :template => "main/index_login"
+    else
+      render :template => "main/index_public"
+    end
   end
   def search
     if params[:q]

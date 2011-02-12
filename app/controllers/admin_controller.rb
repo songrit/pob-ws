@@ -1,19 +1,8 @@
 class AdminController < ApplicationController
   before_filter :admin_action, :except=>[:daily_housekeeping, :hourly_housekeeping]
 
-  def gen_fsection
-    if Fsection.first :conditions=>"budget!=0 OR balance!=0"
-      flash[:notice]= "งบปัจจุบันไม่เป็นศูนย์ ไม่สามารถสร้างส่วนใหม่ได้"
-    else
-      Fsection.delete_all
-      Fsection.create :id=>0, :code=>"00", :name=>"งบกลาง", :balance=>0, :budget=>0
-      Section.all.each do |s|
-        Fsection.create :id=>s.id, :code=>s.code, :name=>s.name,
-          :balance=>0, :budget=>0
-      end
-      flash[:notice]= "สร้างส่วนสำหรับงบประมาณเรียบร้อยแล้ว"
-    end
-    redirect_to "/"
+  def ws
+    @log_requests= LogRequest.paginate :per_page=>20, :page => params[:page] ,:order=>"created_at DESC"
   end
   def update_role
     GmaUser.update $xvars[:select_user][:user_id], :role=>$xvars[:edit_role][:role]

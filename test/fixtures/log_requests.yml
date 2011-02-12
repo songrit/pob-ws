@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  status: 1
+  ip: MyString
+  content: MyText
+  gma_user_id: 1
+
+two:
+  status: 1
+  ip: MyString
+  content: MyText
+  gma_user_id: 1

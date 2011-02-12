@@ -10,7 +10,7 @@ class AddGmaTables < ActiveRecord::Migration
       t.integer  "gma_runseq_id"
       t.integer  "gma_user_id"
       t.integer  "gma_service_id"
-      t.text     "ip"
+      t.string     "ip"
       t.boolean  "display"
       t.boolean  "secured", :default=>false
       t.datetime "created_at"
@@ -80,7 +80,7 @@ class AddGmaTables < ActiveRecord::Migration
       t.boolean  "end"
       t.text     "xml"
       t.integer  "gma_user_id"
-      t.text     "ip"
+      t.string   "ip"
       t.datetime "created_at"
       t.datetime "updated_at"
     end
@@ -150,7 +150,7 @@ class AddGmaTables < ActiveRecord::Migration
       t.string   "name"
       t.integer  "location_id"
       t.integer  "gma_user_id"
-      t.text     "ip"
+      t.string   "ip"
       t.datetime "created_at"
       t.datetime "updated_at"
     end

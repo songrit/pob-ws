@@ -1,6 +1,7 @@
 # A sample Gemfile
 source "http://rubygems.org"
-#gem "bcrypt-ruby", :require=>"bcrypt"
+gem "rest-open-uri"
+gem "bcrypt-ruby", :require=>"bcrypt"
 gem "rails", "2.3.5"
 gem "heroku"
 gem "taps", "0.3.14"
@@ -22,7 +23,7 @@ gem "backup"
 gem "prawn"
 group :development do
   gem "ruby-debug"
-  gem "rails-footnotes"
+#  gem "rails-footnotes"
   gem "rspec", "1.3.1"
   gem "rspec-rails", "1.3.3"
 end
