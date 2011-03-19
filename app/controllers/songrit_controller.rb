@@ -6,8 +6,12 @@ class SongritController < ApplicationController
   require 'nokogiri'
   require 'mechanize'
 
-  def disp_xml
-    body= File.open("public/OTA_HotelSearchRQ.xml").read
+  def disp_xml_rq
+    body= File.open("public/OTA/OTA_HotelSearchRQ.xml").read
+    render :xml => body
+  end
+  def disp_xml_rs
+    body= File.open("public/OTA/OTA_HotelSearchRS.xml").read
     render :xml => body
   end
   def get_avail

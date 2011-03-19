@@ -4,7 +4,7 @@ gem "rest-open-uri"
 gem "bcrypt-ruby", :require=>"bcrypt"
 gem "rails", "2.3.5"
 gem "heroku"
-gem "taps", "0.3.14"
+gem "taps"
 gem 'pg'
 gem 'mysql'
 gem "linguistics"

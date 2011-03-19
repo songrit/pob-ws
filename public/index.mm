@@ -2,13 +2,14 @@
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
 <node CREATED="1273819432637" ID="ID_1098419600" MODIFIED="1298545553548" TEXT="pob">
 <node CREATED="1296668805621" ID="ID_1544692121" MODIFIED="1296668807441" POSITION="right" TEXT="services">
-<node CREATED="1297106901190" FOLDED="true" ID="ID_262971886" MODIFIED="1300502942112" TEXT="users: &#xe1c;&#xe39;&#xe49;&#xe43;&#xe0a;&#xe49;">
+<node CREATED="1297106901190" ID="ID_262971886" MODIFIED="1300526313256" TEXT="users: &#xe1c;&#xe39;&#xe49;&#xe43;&#xe0a;&#xe49;">
 <node CREATED="1297106977700" ID="ID_84437594" MODIFIED="1297106980579" TEXT="role: m"/>
 <node CREATED="1297476963476" ID="ID_1750552625" MODIFIED="1297476998622" TEXT="link: &#xe23;&#xe32;&#xe22;&#xe07;&#xe32;&#xe19;&#xe01;&#xe32;&#xe23;&#xe40;&#xe23;&#xe35;&#xe22;&#xe01;&#xe43;&#xe0a;&#xe49; ws: /admin/ws"/>
 <node CREATED="1299288953208" ID="ID_464288020" MODIFIED="1299288987445" TEXT="link: get hotel xml into db: /songrit/get_hotel"/>
 <node CREATED="1300488395815" ID="ID_1871384200" MODIFIED="1300488411315" TEXT="link: get avail xml into db: /songrit/get_avail"/>
 <node CREATED="1299289229016" ID="ID_360048808" MODIFIED="1299289243098" TEXT="link: show last hotel: /songrit/show_hotel"/>
-<node CREATED="1300485622520" ID="ID_5364840" MODIFIED="1300485634091" TEXT="link: display xml: /songrit/disp_xml"/>
+<node CREATED="1300485622520" ID="ID_5364840" MODIFIED="1300526328681" TEXT="link: display xml rq: /songrit/disp_xml_rq"/>
+<node CREATED="1300526334037" ID="ID_1742522023" MODIFIED="1300526341014" TEXT="link: display xml rs: /songrit/disp_xml_rs"/>
 <node CREATED="1297109431419" ID="ID_962537378" MODIFIED="1297109469754" TEXT="link: &#xe02;&#xe49;&#xe2d;&#xe21;&#xe39;&#xe25;&#xe1c;&#xe39;&#xe49;&#xe43;&#xe0a;&#xe49;: /users/user"/>
 <node CREATED="1279700865182" ID="ID_630918549" MODIFIED="1297108050495" TEXT="link:&#xe04;&#xe39;&#xe48;&#xe21;&#xe37;&#xe2d;&#xe01;&#xe32;&#xe23;&#xe43;&#xe0a;&#xe49;&#xe07;&#xe32;&#xe19;: /users/doc"/>
 <node CREATED="1275756504750" ID="ID_1382277695" MODIFIED="1297107000641" TEXT="pwd:&#xe41;&#xe01;&#xe49;&#xe44;&#xe02;&#xe23;&#xe2b;&#xe31;&#xe2a;&#xe1c;&#xe48;&#xe32;&#xe19;">
