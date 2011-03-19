@@ -1,0 +1,15 @@
+%h4(style='text-align:center;') สถานที่อ้างอิง
+= image_tag 'add.png'
+= link_to align_text("ขึ้นทะเบียนสถานที่อ้างอิง"), "/run/hotels/add_poi"
+%table{:class=>'budget_table', :width=>"100%"}
+  %tr{:style=>"color:white; background-color:#6A6A6A;"}
+    %th Name
+    %th Code
+    %th Latitude
+    %th Longitude
+  - @pois.each do |p|
+    %tr
+      %td= p.name
+      %td= p.code
+      %td= p.lat
+      %td= p.lng

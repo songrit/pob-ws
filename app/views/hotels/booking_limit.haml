@@ -1,0 +1,17 @@
+%h4(style='text-align:center;') Booking Limit
+%table{:class=>'budget_table', :width=>"100%"}
+  %tr{:style=>"color:white; background-color:#6A6A6A;"}
+    %th Hotel
+    %th Rate Plan
+    %th Inv
+    %th Start
+    %th End
+    %th Limit
+  - @avails.each do |a|
+    %tr
+      %td= a.hotel.code
+      %td= a.rate_plan_code
+      %td= a.inv_code
+      %td= a.start_on
+      %td= a.end_on
+      %td= a.booking_limit

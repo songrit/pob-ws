@@ -5,6 +5,10 @@ module GmaHelper
       "logout.png"
     when "SECURITY"
       "lock_delete.png"
+    when "LOGIN"
+      "lock_delete.png"
+    else
+      "cross.png"
     end
   end
 end

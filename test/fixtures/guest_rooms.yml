@@ -1,0 +1,31 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  hotel_id: 1
+  code: MyString
+  name: MyString
+  gid: MyString
+  bed_type_code: 1
+  code_context: MyString
+  max_occupancy: 1
+  max_adult_occupancy: 1
+  quantity: 1
+  non_smoking_quantity: 1
+  room_amenity_code: 1
+  info_updated_on: 2011-03-02
+  gma_user_id: 1
+
+two:
+  hotel_id: 1
+  code: MyString
+  name: MyString
+  gid: MyString
+  bed_type_code: 1
+  code_context: MyString
+  max_occupancy: 1
+  max_adult_occupancy: 1
+  quantity: 1
+  non_smoking_quantity: 1
+  room_amenity_code: 1
+  info_updated_on: 2011-03-02
+  gma_user_id: 1

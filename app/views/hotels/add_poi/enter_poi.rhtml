@@ -1,0 +1,25 @@
+<% poi = Poi.new %>
+<table width="100%">
+  <% fields_for poi do |f| %>
+    <tr>
+      <td class="field-name">OTA code</td>
+      <td colspan='2'><%= f.text_field :code, :style=>"width:300px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">Name</td>
+      <td colspan='2'><%= f.text_field :name, :style=>"width:300px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">Description</td>
+      <td colspan='2'><%= f.text_area :description, :cols=>50, :rows => 3  %></td>
+    </tr>
+    <tr>
+      <td class="field-name">Location</td>
+        <td colspan="3"><%= f.point(:width => "690px", :zoom=>14, :lat=>7.888056, :lng=>98.3975) %></td>
+    </tr>
+    <tr>
+      <td class="field-name">City Code</td>
+      <td colspan='2'><%= f.text_field :city_code, :style=>"width:300px;" %></td>
+    </tr>
+  <% end %>
+</table>

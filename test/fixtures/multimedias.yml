@@ -1,0 +1,45 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  item_id: 1
+  category: 1
+  caption: MyString
+  description: MyText
+  version: MyString
+  create_date_time: 2011-03-02 13:42:47
+  unit_of_measure_code: 1
+  file_size: 1
+  file_name: MyString
+  format: MyString
+  url: MyString
+  title: MyString
+  author: MyString
+  copyright_notice: MyString
+  is_original_indicator: false
+  width: 1
+  height: 1
+  mtype: 1
+  xml: MyText
+  gma_user_id: 1
+
+two:
+  item_id: 1
+  category: 1
+  caption: MyString
+  description: MyText
+  version: MyString
+  create_date_time: 2011-03-02 13:42:47
+  unit_of_measure_code: 1
+  file_size: 1
+  file_name: MyString
+  format: MyString
+  url: MyString
+  title: MyString
+  author: MyString
+  copyright_notice: MyString
+  is_original_indicator: false
+  width: 1
+  height: 1
+  mtype: 1
+  xml: MyText
+  gma_user_id: 1

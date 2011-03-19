@@ -4,6 +4,7 @@
 RAILS_GEM_VERSION = '2.3.5' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
+require 'thread'
 require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
@@ -34,7 +35,7 @@ Rails::Initializer.run do |config|
 
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.
-  config.time_zone = 'Bangkok'
+  # config.time_zone = 'Bangkok'
   config.active_record.default_timezone = "Bangkok"
   THAI_MONTHS = %w(มกราคม กุมภาพันธ์ มีนาคม เมษายน พฤษภาคม มิถุนายน กรกฎาคม สิงหาคม กันยายน ตุลาคม พฤศจิกายน ธันวาคม)
   APP_VERSION = '0.1'
@@ -44,5 +45,5 @@ Rails::Initializer.run do |config|
   config.action_controller.session_store = :active_record_store
   IMAGE_LOCATION = "doc/upload"
   CDN = false
-  GMAP = false
+  GMAP = true
 end

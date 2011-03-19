@@ -1,0 +1,4 @@
+- Hotel.column_names.each do |c|
+  = b c+": "
+  = @hotel.send c
+  %br

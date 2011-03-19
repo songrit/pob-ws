@@ -10,7 +10,7 @@
   - @gerrors.each do |e|
     %tr
       - p= YAML.load(e.iparams).to_options
-      %td= image_tag(log_type(e.log_type))
+      %td= image_tag(log_type(e.log_type)) 
       - if p[:id]
         %td= link_to e.message, :action=>:debug_xvars, :id=>p[:id]
       - else

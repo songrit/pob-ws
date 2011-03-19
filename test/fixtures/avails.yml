@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  hotel_id: 1
+  booking_limit: 1
+  start_on: 2011-03-19
+  end_on: 2011-03-19
+  rate_plan_code: MyString
+  inv_code: MyString
+  unique_id: 1
+  unique_id_type: MyString
+  gma_user_id: 1
+
+two:
+  hotel_id: 1
+  booking_limit: 1
+  start_on: 2011-03-19
+  end_on: 2011-03-19
+  rate_plan_code: MyString
+  inv_code: MyString
+  unique_id: 1
+  unique_id_type: MyString
+  gma_user_id: 1

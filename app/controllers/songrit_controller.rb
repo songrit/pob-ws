@@ -2,11 +2,57 @@ class SongritController < ApplicationController
   include ActionView::Helpers::DebugHelper
   include ERB::Util
   require "csv"
-  require "hpricot"
   require "open-uri"
   require 'nokogiri'
   require 'mechanize'
 
+  def disp_xml
+    body= File.open("public/OTA_HotelSearchRQ.xml").read
+    render :xml => body
+  end
+  def get_avail
+    l = LogRequest.find 11
+    doc = Nokogiri::XML(l.content)
+    hotel_code = doc.xpath("//xmlns:AvailStatusMessages").attribute("HotelCode").value
+    hotel_id= 3
+    t = ""
+    doc.xpath("//xmlns:AvailStatusMessage").each do |a|
+      avail = Avail.create :hotel_id => hotel_id,
+        :booking_limit => a.attribute('BookingLimit').value, 
+        :start_on => a.xpath('xmlns:StatusApplicationControl').attribute('Start').value, 
+        :end_on => a.xpath('xmlns:StatusApplicationControl').attribute('End').value, 
+        :rate_plan_code => a.xpath('xmlns:StatusApplicationControl').attribute('RatePlanCode').value, 
+        :inv_code => a.xpath('xmlns:StatusApplicationControl').attribute('InvCode').value, 
+        :unique_id => a.xpath('xmlns:UniqueID').attribute('ID').value, 
+        :unique_id_type => a.xpath('xmlns:UniqueID').attribute('Type').value
+      t << "bl = #{a.attribute('BookingLimit').value}<br/>"
+    end
+    render :text => t, :layout => true 
+  end
+  def get_hotel
+    l= LogRequest.find 7
+    doc = Nokogiri::XML(l.content)
+    hotel= Hotel.new :code=> doc.xpath("//xmlns:HotelDescriptiveContent").attribute("HotelCode").value,
+      :name => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("HotelName").value,
+      :brand_code => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("BrandCode").value,
+      :brand_name => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("BrandName").value,
+      :currency_code => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("CurrencyCode").value,
+      :info_updated_on => doc.xpath("//xmlns:HotelInfo").attribute("LastUpdated").value,
+      :hotel_status_code => Hotel.status(doc.xpath("//xmlns:HotelInfo").attribute("HotelStatus").value),
+      :latitude => doc.xpath("//xmlns:Position").attribute("Latitude").value.to_f,
+      :longitude => doc.xpath("//xmlns:Position").attribute("Longitude").value.to_f,
+      :address => doc.xpath("//xmlns:AddressLine").text,
+      :city_name => doc.xpath("//xmlns:CityName").first.text,
+      :postal_code => doc.xpath("//xmlns:PostalCode").text,
+      :state_prov => doc.xpath("//xmlns:StateProv").first.text, 
+      :country_name => doc.xpath("//xmlns:CountryName").first.text,
+      :description => doc.xpath('//xmlns:TextItem[@Title="Description"]').xpath('xmlns:Description').text
+    hotel.save
+    render :layout => "application", :text => "hello, #{doc.xpath('//xmlns:HotelDescriptiveContent').attribute('HotelName').value}"
+  end
+  def show_hotel
+    @hotel= Hotel.last
+  end
   def test_ip
     render :text => request.ip
   end
