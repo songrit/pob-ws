@@ -4,8 +4,25 @@ class SongritController < ApplicationController
   require "csv"
   require "open-uri"
   require 'nokogiri'
-  require 'mechanize'
+  # require 'geokit'
 
+  def process_hotel_search
+    l = LogRequest.find 14
+    doc = Nokogiri::XML(l.content)
+    ref_point = doc.xpath("//xmlns:RefPoint").first.text
+    hotel_city_code = doc.xpath("//xmlns:HotelRef").attribute("HotelCityCode").value
+    distance = doc.xpath("//xmlns:Radius").attribute("Distance").value
+    distance_measure = doc.xpath("//xmlns:Radius").attribute("DistanceMeasure").value
+    poi = Poi.find_by_name ref_point.upcase
+    if poi
+      @hotels= Hotel.find :all, :origin=>[poi.lat,poi.lng], :within => distance 
+    else
+      @hotels=[]
+    end
+    render :layout => true,:text=>@hotels.inspect
+  end
+  
+  # Utilities, used in User module
   def disp_xml_rq
     body= File.open("public/OTA/OTA_HotelSearchRQ.xml").read
     render :xml => body
@@ -43,8 +60,8 @@ class SongritController < ApplicationController
       :currency_code => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("CurrencyCode").value,
       :info_updated_on => doc.xpath("//xmlns:HotelInfo").attribute("LastUpdated").value,
       :hotel_status_code => Hotel.status(doc.xpath("//xmlns:HotelInfo").attribute("HotelStatus").value),
-      :latitude => doc.xpath("//xmlns:Position").attribute("Latitude").value.to_f,
-      :longitude => doc.xpath("//xmlns:Position").attribute("Longitude").value.to_f,
+      :lat => doc.xpath("//xmlns:Position").attribute("Latitude").value.to_f,
+      :lng => doc.xpath("//xmlns:Position").attribute("Longitude").value.to_f,
       :address => doc.xpath("//xmlns:AddressLine").text,
       :city_name => doc.xpath("//xmlns:CityName").first.text,
       :postal_code => doc.xpath("//xmlns:PostalCode").text,

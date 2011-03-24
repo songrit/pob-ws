@@ -4,13 +4,14 @@ class CreatePois < ActiveRecord::Migration
       t.string :code
       t.string :name
       t.text :description
-      t.float :lat, :precision => 15, :scale => 5
-      t.float :lng, :precision => 15, :scale => 5
+      t.decimal :lat, :precision => 15, :scale => 5
+      t.decimal :lng, :precision => 15, :scale => 5
       t.string :city_code
       t.integer :gma_user_id
 
       t.timestamps
     end
+    add_index :pois, :name
   end
 
   def self.down

@@ -9,11 +9,11 @@ one:
   brand_code: MyString
   brand_name: MyString
   currency_code: MyString
-  info_updated_on: 2011-03-07
+  info_updated_on: 2011-03-23
   hotel_status_code: 1
   built: 1
-  latitude: 1.5
-  longitude: 1.5
+  lat: 1.5
+  lng: 1.5
   location_category: 1
   segment_category: 1
   hotel_category: 1
@@ -36,11 +36,11 @@ two:
   brand_code: MyString
   brand_name: MyString
   currency_code: MyString
-  info_updated_on: 2011-03-07
+  info_updated_on: 2011-03-23
   hotel_status_code: 1
   built: 1
-  latitude: 1.5
-  longitude: 1.5
+  lat: 1.5
+  lng: 1.5
   location_category: 1
   segment_category: 1
   hotel_category: 1

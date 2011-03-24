@@ -1,3 +1,7 @@
 !!! XML
-%OTA_HotelDescriptiveContentNotifRS(xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelDescriptiveContentNotifRS.xsd" Version="01")
+%OTA_HotelSearchRS(xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelSearchRS.xsd" EchoToken="HL" Target="Production" Version="1.003" PrimaryLangID="EN-US" xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance")
   %Success
+  %Properties
+    - @hotels.each do |hotel|
+      %Property{:HotelCode=>hotel.code, :HotelName=>hotel.name, :HotelCodeContext=>hotel.hotel_code_context}
+        %RelativePosition{:Direction=>direction(@poi.ll.heading_to hotel.ll), :Distance=>@poi.ll.distance_to(hotel.ll, :formula=>:flat), :DistanceUnitName=>"Mile"}
