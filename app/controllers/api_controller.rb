@@ -8,6 +8,7 @@ class ApiController < ApplicationController
     hotel_city_code = doc.xpath("//xmlns:HotelRef").attribute("HotelCityCode").value
     distance = doc.xpath("//xmlns:Radius").attribute("Distance").value
     distance_measure = doc.xpath("//xmlns:Radius").attribute("DistanceMeasure").value
+    @criteria= doc.xpath("//xmlns:Criteria")
     @poi = Poi.find_by_name ref_point.upcase
     if @poi
       @hotels= Hotel.find :all, :origin=>@poi.ll, :within => distance 
