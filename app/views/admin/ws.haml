@@ -1,17 +1,15 @@
 = will_paginate @log_requests, :class=>'flickr_pagination'
 %table{:width=>"100%"}
   %tr{:style=>"color:white; background-color:#6A6A6A;"}
-    %th วันที่
+    %th(style="width:100px;") วันที่
     %th id
     %th uri
     %th ip
     %th ข้อความ
-    %th สถานะ
   - @log_requests.each do |l|
     %tr
       %td= date_thai l.created_at
       %td= l.id
-      %td= l.request_uri
+      %td= truncate l.request_uri, 30
       %td= l.ip
-      %td= html_escape truncate(l.content, :length=>100)
-      %td(style="text-align:center;")= l.status
+      %td= html_escape truncate(l.content, 80)
