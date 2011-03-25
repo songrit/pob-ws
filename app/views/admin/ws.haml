@@ -3,6 +3,7 @@
   %tr{:style=>"color:white; background-color:#6A6A6A;"}
     %th วันที่
     %th id
+    %th uri
     %th ip
     %th ข้อความ
     %th สถานะ
@@ -10,6 +11,7 @@
     %tr
       %td= date_thai l.created_at
       %td= l.id
+      %td= l.request_uri
       %td= l.ip
       %td= html_escape truncate(l.content, :length=>100)
       %td(style="text-align:center;")= l.status

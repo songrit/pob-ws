@@ -4,6 +4,7 @@ class CreateLogRequests < ActiveRecord::Migration
       t.integer :status
       t.string :ip
       t.text :content
+      t.string :request_uri
       t.integer :gma_user_id
 
       t.timestamps

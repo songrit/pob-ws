@@ -6,6 +6,9 @@ class SongritController < ApplicationController
   require 'nokogiri'
   # require 'geokit'
 
+  def test_req
+    render :text => request.request_uri
+  end
   def test_api
     body= File.open("public/OTA/OTA_HotelSearchRQ.xml").read
     f= RestClient.post "http://pob-ws.heroku.com/api/hotel_search", body
