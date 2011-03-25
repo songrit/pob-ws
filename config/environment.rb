@@ -36,7 +36,7 @@ Rails::Initializer.run do |config|
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.
   # config.time_zone = 'Bangkok'
-  config.active_record.default_timezone = "Bangkok"
+  # config.active_record.default_timezone = "Bangkok"
   THAI_MONTHS = %w(มกราคม กุมภาพันธ์ มีนาคม เมษายน พฤษภาคม มิถุนายน กรกฎาคม สิงหาคม กันยายน ตุลาคม พฤศจิกายน ธันวาคม)
   APP_VERSION = '0.1'
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
