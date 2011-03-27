@@ -23,8 +23,9 @@ class ApiController < ApplicationController
     LogRequest.log(request,doc.to_s)
     # l= LogRequest.find 7
     # doc = Nokogiri::XML(l.content)
-    hotel= Hotel.new :code=> doc.xpath("//xmlns:HotelDescriptiveContent").attribute("HotelCode").value,
-      :name => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("HotelName").value,
+    code= doc.xpath("//xmlns:HotelDescriptiveContent").attribute("HotelCode").value
+    hotel= Hotel.find_or_create_by_code(code)
+    hotel.update_attributes :name => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("HotelName").value,
       :brand_code => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("BrandCode").value,
       :brand_name => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("BrandName").value,
       :currency_code => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("CurrencyCode").value,

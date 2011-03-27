@@ -2,7 +2,7 @@ class SongritController < ApplicationController
   include ActionView::Helpers::DebugHelper
   include ERB::Util
   require "csv"
-  require "open-uri"
+  # require "open-uri"
   require 'nokogiri'
   # require 'geokit'
 

@@ -2,6 +2,7 @@
 log
 tmp
 nbproject
+.redcar
 .svn
 .project
 .bundle

@@ -1,7 +1,8 @@
-%h2(style="margin-top:0; padding-top:0;") Goal: Feb 18, 11
-\- test message OTA_HotelDescriptiveContentNotifRQ/RS
-
-%h2 Schedule
-\- Feb 14, 11 at 1pm: train GMindApp via Skype
-%br - Feb 17, 11 at 6pm: weekly meeting
-
+%h4 message OTA_HotelDescriptiveContentNotif
+.url http://pob-ws.heroku.com/api/hotel_descriptive_content_notif
+%b Example (Ruby)
+.example response= RestClient.post "http://pob-ws.heroku.com/api/hotel_descriptive_content_notif", xml
+%h4 message OTA_HotelAvailNotif
+.url http://pob-ws.heroku.com/api/hotel_avail_notif
+%h4 message OTA_HotelSearchRQ
+.url http://pob-ws.heroku.com/api/hotel_search
