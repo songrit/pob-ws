@@ -32,11 +32,11 @@ class SongritController < ApplicationController
   
   # Utilities, used in User module
   def disp_xml_rq
-    body= File.open("public/OTA/OTA_HotelSearchRQ.xml").read
+    body= File.open("public/OTA/OTA_HotelAvailRQ100.xml").read
     render :xml => body
   end
   def disp_xml_rs
-    body= File.open("public/OTA/OTA_HotelSearchRS.xml").read
+    body= File.open("public/OTA/OTA_HotelAvailRS.xml").read
     render :xml => body
   end
   def get_avail

@@ -1,4 +1,14 @@
 class ApiController < ApplicationController
+  def hotel_avail
+    doc = Nokogiri::XML(request.body)
+    LogRequest.log(request,doc.to_s)
+    @hotel_codes= doc.xpath("//xmlns:HotelRef").collect do |h|
+      h.attribute("HotelCode").value
+    end
+    @start_on= doc.xpath("//xmlns:StayDateRange").attribute("Start").value.to_date
+    @end_on= doc.xpath("//xmlns:StayDateRange").attribute("End").value.to_date
+    render :text => "done"
+  end
   def hotel_search
     doc = Nokogiri::XML(request.body)
     LogRequest.log(request,doc.to_s)
@@ -43,10 +53,29 @@ class ApiController < ApplicationController
     response.content_type = "application/xml"
     render :layout => false
   end
-  def post
+  def hotel_avail_notif
     doc = Nokogiri::XML(request.body)
     LogRequest.log(request,doc.to_s)
-#    render :text => "hello, #{doc.xpath('//xmlns:HotelDescriptiveContent').attribute('HotelName').value}"
-    render :layout => false 
+    # l = LogRequest.find 12
+    # doc = Nokogiri::XML(l.content)
+    hotel_code = doc.xpath("//xmlns:AvailStatusMessages").attribute("HotelCode").value
+    hotel= Hotel.find_by_code hotel_code
+    if hotel
+      doc.xpath("//xmlns:AvailStatusMessage").each do |a|
+        avail = Avail.create :hotel_id => hotel.id,
+        :booking_limit => a.attribute('BookingLimit').value, 
+        :start_on => a.xpath('xmlns:StatusApplicationControl').attribute('Start').value, 
+        :end_on => a.xpath('xmlns:StatusApplicationControl').attribute('End').value, 
+        :rate_plan_code => a.xpath('xmlns:StatusApplicationControl').attribute('RatePlanCode').value, 
+        :inv_code => a.xpath('xmlns:StatusApplicationControl').attribute('InvCode').value, 
+        :unique_id => a.xpath('xmlns:UniqueID').attribute('ID').value, 
+        :unique_id_type => a.xpath('xmlns:UniqueID').attribute('Type').value
+        # t << "bl = #{a.attribute('BookingLimit').value}<br/>"
+      end
+    else
+      @err= "Hotel code does not exists"
+    end
+    response.content_type = "application/xml"
+    render :layout => false
   end
 end
