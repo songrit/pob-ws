@@ -1,12 +1,22 @@
 require 'spec_helper'
 
 describe ApiController do
+  integrate_views
 
-  describe "HotelPing" do
-    it "should handle HotelPing"
+  describe "Ping" do
+    it "should handle OTA_Ping" do
+      @body= File.open("public/OTA/OTA_PingRQ.xml").read
+      @doc = Nokogiri::XML(@body)
+      echo = @doc.xpath('//xmlns:EchoData').text
+      request.env['content_type'] = 'application/xml'
+      request.env['RAW_POST_DATA'] =  @body
+      post :ping
+      puts response.body
+      # leading and trailing space in data will be stripped
+      response.should have_tag("EchoData", echo.strip) 
+    end
   end
   describe "HotelSearch" do
-    integrate_views
     before do
       Hotel.delete_all
       @body= File.open("public/OTA/OTA_HotelDescriptiveContentNotifRQ.xml").read

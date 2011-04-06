@@ -1,4 +1,11 @@
 class ApiController < ApplicationController
+  def ping
+    doc = Nokogiri::XML(request.body)
+    LogRequest.log(request,doc.to_s)
+    @echo_data= doc.xpath("//xmlns:EchoData").text
+    response.content_type = "application/xml"
+    render :layout => false
+  end
   def hotel_avail
     doc = Nokogiri::XML(request.body)
     LogRequest.log(request,doc.to_s)
