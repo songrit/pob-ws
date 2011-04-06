@@ -14,16 +14,25 @@ class ApiController < ApplicationController
     LogRequest.log(request,doc.to_s)
     # l = LogRequest.find 14
     # doc = Nokogiri::XML(l.content)
-    ref_point = doc.xpath("//xmlns:RefPoint").first.text
-    hotel_city_code = doc.xpath("//xmlns:HotelRef").attribute("HotelCityCode").value
+    @criteria= doc.xpath("//xmlns:Criteria")
     distance = doc.xpath("//xmlns:Radius").attribute("Distance").value
     distance_measure = doc.xpath("//xmlns:Radius").attribute("DistanceMeasure").value
-    @criteria= doc.xpath("//xmlns:Criteria")
-    @poi = Poi.find_by_name ref_point.upcase
-    if @poi
-      @hotels= Hotel.find :all, :origin=>@poi.ll, :within => distance 
-    else
-      @hotels=[]
+    ref_points = doc.xpath("//xmlns:RefPoint")
+    unless ref_points.empty?
+      ref_point = ref_points.first.text
+      hotel_city_code = doc.xpath("//xmlns:HotelRef").attribute("HotelCityCode").value
+      @poi = Poi.find_by_name ref_point.upcase
+      if @poi
+        @poi_coord= @poi.ll
+        @hotels= Hotel.find :all, :origin=>@poi.ll, :within => distance 
+      else
+        @hotels=[]
+      end
+    else # find by coordinates
+      lat= doc.xpath('//xmlns:Position[@Latitude]').attribute('Latitude').value
+      lng= doc.xpath('//xmlns:Position[@Longitude]').attribute('Longitude').value
+      @poi_coord = Geokit::LatLng.new lat,lng
+      @hotels= Hotel.find :all, :origin=>[lat,lng], :within=> distance
     end
     response.content_type = "application/xml"
     render :layout => false

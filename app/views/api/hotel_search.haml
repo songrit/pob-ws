@@ -4,5 +4,5 @@
   %Properties
     - @hotels.each do |hotel|
       %Property{:HotelCode=>hotel.code, :HotelName=>hotel.name, :HotelCodeContext=>hotel.hotel_code_context}
-        %RelativePosition{:Direction=>direction(@poi.ll.heading_to hotel.ll), :Distance=>@poi.ll.distance_to(hotel.ll, :formula=>:flat), :DistanceUnitName=>"Mile"}
+        %RelativePosition{:Direction=>direction(@poi_coord.heading_to hotel.ll), :Distance=>@poi_coord.distance_to(hotel.ll, :formula=>:flat), :DistanceUnitName=>"Mile"}
   = @criteria

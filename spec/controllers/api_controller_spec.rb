@@ -2,9 +2,33 @@ require 'spec_helper'
 
 describe ApiController do
 
+  describe "HotelPing" do
+    it "should handle HotelPing"
+  end
   describe "HotelSearch" do
+    integrate_views
+    before do
+      Hotel.delete_all
+      @body= File.open("public/OTA/OTA_HotelDescriptiveContentNotifRQ.xml").read
+      request.env['content_type'] = 'application/xml'
+      request.env['RAW_POST_DATA'] =  @body
+      post :hotel_descriptive_content_notif
+    end
+    it "should search by coordinates" do
+      body = File.read("public/OTA/OTA_HotelSearchRQ1.xml")
+      # body = File.open("public/OTA/OTA_HotelSearchRQ.xml").read
+      request.env['content_type'] = 'application/xml'
+      request.env['RAW_POST_DATA'] = body
+      post :hotel_search
+      response.should have_tag("Success")
+      response.should have_tag("Property[HotelCode='BOSCO']")
+    end
     it "should provide only available hotels"
     it "should include availability info in the attribute"
+  end
+  
+  describe "HotelRateAmountNotif" do
+    it "should handle HotelRateAmountNotifRQ/RS"
   end
 
   describe "HotelAvail" do
@@ -43,6 +67,7 @@ describe ApiController do
   
   describe "HotelDescriptiveContentNotif" do
     before do
+      Hotel.delete_all
       @body= File.open("public/OTA/OTA_HotelDescriptiveContentNotifRQ.xml").read
       request.env['content_type'] = 'application/xml'
       request.env['RAW_POST_DATA'] =  @body
