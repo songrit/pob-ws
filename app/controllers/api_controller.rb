@@ -5,6 +5,10 @@ class ApiController < ApplicationController
     @echo_data= doc.xpath("//xmlns:EchoData").text
     response.content_type = "application/xml"
     render :layout => false
+  rescue
+    @err= "Invalid Request"
+    response.content_type = "application/xml"
+    render :layout => false
   end
   def hotel_avail
     doc = Nokogiri::XML(request.body)

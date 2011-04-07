@@ -11,9 +11,12 @@ describe ApiController do
       request.env['content_type'] = 'application/xml'
       request.env['RAW_POST_DATA'] =  @body
       post :ping
-      puts response.body
       # leading and trailing space in data will be stripped
       response.should have_tag("EchoData", echo.strip) 
+    end
+    it "should handle invalid request" do
+      post :ping
+      response.should have_tag("Fail")
     end
   end
   describe "HotelSearch" do
