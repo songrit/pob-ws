@@ -6,6 +6,7 @@ gem "rails", "2.3.5"
 gem "heroku"
 gem "taps"
 gem 'mysql'
+gem 'pg' # use for heroku db:push
 gem "linguistics"
 gem "will_paginate"
 gem "RedCloth"
