@@ -23,7 +23,7 @@ module Prawnto
         set_disposition
       end
 
-      # TODO: kept around from railspdf-- maybe not needed anymore? should check.
+      # kept around from railspdf-- maybe not needed anymore? should check.
       def ie_request?
         @controller.request.env['HTTP_USER_AGENT'] =~ /msie/i
       end
@@ -35,7 +35,7 @@ module Prawnto
       end
       memoize :ssl_request?
 
-      # TODO: kept around from railspdf-- maybe not needed anymore? should check.
+      # kept around from railspdf-- maybe not needed anymore? should check.
       def set_pragma
         if ssl_request? && ie_request?
           @controller.headers['Pragma'] = 'public' # added to make ie ssl pdfs work (per naisayer)
@@ -44,7 +44,7 @@ module Prawnto
         end
       end
 
-      # TODO: kept around from railspdf-- maybe not needed anymore? should check.
+      # kept around from railspdf-- maybe not needed anymore? should check.
       def set_cache_control
         if ssl_request? && ie_request?
           @controller.headers['Cache-Control'] = 'maxage=1' # added to make ie ssl pdfs work (per naisayer)

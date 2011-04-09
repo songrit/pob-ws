@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   # gma methods
+  def index
+    redirect_to "/"
+  end
   def update_user
     u= User.find $user_id
     u.update_attributes $xvars[:enter][:user]

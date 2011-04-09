@@ -5,7 +5,7 @@ require File.dirname(__FILE__) + '/../lib/prawnto'
 #require File.dirname(__FILE__) + '/../init'
 
 
-#TODO: ruby1.9: pull same testing scheme from Raw once we're on 1.9
+# ruby1.9: pull same testing scheme from Raw once we're on 1.9
 class BaseTemplateHandlerTest < Test::Unit::TestCase
   include TemplateHandlerTestMocks
   

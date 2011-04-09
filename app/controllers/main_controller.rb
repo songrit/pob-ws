@@ -15,14 +15,29 @@ class MainController < ApplicationController
 #    render :text => "help"
   end
   def index
-    if login?
-      @news = News.all :limit => 5, :order => "created_at DESC"
-      @xmains= GmaXmain.all :conditions=>"status='R' or status='I' ", :order=>"created_at", :include=>:gma_runseqs
-      render :template => "main/index_login"
+    if params[:module]
+      session[:module]= params[:module]
+      redirect_to :controller=>params[:module]
+    elsif login?
+      redirect_to :action => "pending"
     else
-      render :template => "main/index_public"
+      render :template => "main/index_public" 
     end
   end
+  def pending
+    # @news = News.all :limit => 5, :order => "created_at DESC"
+    @xmains= GmaXmain.all :conditions=>"status='R' or status='I' ", :order=>"created_at", :include=>:gma_runseqs
+  end
+  
+  # def index
+  #   if login?
+  #     @news = News.all :limit => 5, :order => "created_at DESC"
+  #     @xmains= GmaXmain.all :conditions=>"status='R' or status='I' ", :order=>"created_at", :include=>:gma_runseqs
+  #     render :template => "main/index_login"
+  #   else
+  #     render :template => "main/index_public"
+  #   end
+  # end
   def search
     if params[:q]
       @q = params[:q]
