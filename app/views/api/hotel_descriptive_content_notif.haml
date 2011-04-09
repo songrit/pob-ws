@@ -1,3 +1,6 @@
 !!! XML
 %OTA_HotelDescriptiveContentNotifRS(xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelDescriptiveContentNotifRS.xsd" Version="01")
-  %Success
+  - if @err
+    %Fail @err
+  - else
+    %Success

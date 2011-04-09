@@ -1,12 +1,10 @@
 class ApiController < ApplicationController
+  rescue_from Nokogiri::XML::XPath::SyntaxError, :with=> :render_fail
+  
   def ping
     doc = Nokogiri::XML(request.body)
     LogRequest.log(request,doc.to_s)
     @echo_data= doc.xpath("//xmlns:EchoData").text
-    response.content_type = "application/xml"
-    render :layout => false
-  rescue
-    @err= "Invalid Request"
     response.content_type = "application/xml"
     render :layout => false
   end
@@ -74,27 +72,44 @@ class ApiController < ApplicationController
     render :layout => false
   end
   def hotel_avail_notif
-    doc = Nokogiri::XML(request.body)
-    LogRequest.log(request,doc.to_s)
-    # l = LogRequest.find 12
-    # doc = Nokogiri::XML(l.content)
+    # doc = Nokogiri::XML(request.body)
+    # LogRequest.log(request,doc.to_s)
+    body= File.open("public/OTA/OTA_HotelAvailNotifRQ.xml").read
+    doc = Nokogiri::XML(body)
+
     hotel_code = doc.xpath("//xmlns:AvailStatusMessages").attribute("HotelCode").value
     hotel= Hotel.find_by_code hotel_code
     if hotel
       doc.xpath("//xmlns:AvailStatusMessage").each do |a|
         avail = Avail.create :hotel_id => hotel.id,
-        :booking_limit => a.attribute('BookingLimit').value, 
-        :start_on => a.xpath('xmlns:StatusApplicationControl').attribute('Start').value, 
-        :end_on => a.xpath('xmlns:StatusApplicationControl').attribute('End').value, 
-        :rate_plan_code => a.xpath('xmlns:StatusApplicationControl').attribute('RatePlanCode').value, 
-        :inv_code => a.xpath('xmlns:StatusApplicationControl').attribute('InvCode').value, 
-        :unique_id => a.xpath('xmlns:UniqueID').attribute('ID').value, 
-        :unique_id_type => a.xpath('xmlns:UniqueID').attribute('Type').value
-        # t << "bl = #{a.attribute('BookingLimit').value}<br/>"
+          :booking_limit => a.attribute('BookingLimit').value, 
+          :start_on => a.xpath('xmlns:StatusApplicationControl').attribute('Start').value, 
+          :end_on => a.xpath('xmlns:StatusApplicationControl').attribute('End').value, 
+          :rate_plan_code => a.xpath('xmlns:StatusApplicationControl').attribute('RatePlanCode').value, 
+          :inv_code => a.xpath('xmlns:StatusApplicationControl').attribute('InvCode').value, 
+          :unique_id => a.xpath('xmlns:UniqueID').attribute('ID').value, 
+          :unique_id_type => a.xpath('xmlns:UniqueID').attribute('Type').value
+        avail.start_on.step(avail.end_on) do |d|
+          aa= Availability.first :conditions=>[
+            'hotel_id=? AND inv_code=? AND limit_on=?', avail.hotel_id, avail.inv_code, d]
+          if aa
+            aa.update_attribute :limit, avail.booking_limit
+          else
+            aa= Availability.create :hotel_id=> avail.hotel_id,
+              :inv_code => avail.inv_code, :limit => avail.booking_limit, :limit_on=> d
+          end
+        end
       end
     else
       @err= "Hotel code does not exists"
     end
+    response.content_type = "application/xml"
+    render :layout => false
+  end
+  
+  private
+  def render_fail
+    @err= "Invalid Request"
     response.content_type = "application/xml"
     render :layout => false
   end

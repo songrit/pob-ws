@@ -3,6 +3,11 @@ require 'spec_helper'
 describe ApiController do
   integrate_views
 
+  it "should rescue_from Nokogiri::XML::XPath::SyntaxError; http://www.simonecarletti.com/blog/2009/12/inside-ruby-on-rails-rescuable-and-rescue_from/" do
+    post :hotel_search
+    response.should have_tag("Fail")
+  end
+
   describe "Ping" do
     it "should handle OTA_Ping" do
       @body= File.open("public/OTA/OTA_PingRQ.xml").read
@@ -62,12 +67,13 @@ describe ApiController do
   end
 
   describe "HotelAvailNotif" do
-    integrate_views
-    it "should handle OTA_HotelAvailNotifRQ" do
+    before do
       body= File.open("public/OTA/OTA_HotelDescriptiveContentNotifRQ.xml").read
       request.env['content_type'] = 'application/xml'
       request.env['RAW_POST_DATA'] =  body
       post :hotel_descriptive_content_notif
+    end
+    it "should handle OTA_HotelAvailNotifRQ" do
       lambda do
         body= File.open("public/OTA/OTA_HotelAvailNotifRQ.xml").read
         request.env['content_type'] = 'application/xml'
@@ -75,6 +81,20 @@ describe ApiController do
         post :hotel_avail_notif
       end.should change(Avail, :count)
       response.should have_tag("Success")
+    end
+    it "should update Availability" do
+      Availability.delete_all
+      body= File.open("public/OTA/OTA_HotelAvailNotifRQ.xml").read
+      request.env['content_type'] = 'application/xml'
+      request.env['RAW_POST_DATA'] =  body
+      post :hotel_avail_notif
+      Availability.all.should_not be_empty
+      lambda do
+        body= File.open("public/OTA/OTA_HotelAvailNotifRQ.xml").read
+        request.env['content_type'] = 'application/xml'
+        request.env['RAW_POST_DATA'] =  body
+        post :hotel_avail_notif
+      end.should_not change(Availability, :count)
     end
   end
   

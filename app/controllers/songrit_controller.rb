@@ -2,10 +2,27 @@ class SongritController < ApplicationController
   include ActionView::Helpers::DebugHelper
   include ERB::Util
   require "csv"
-  # require "open-uri"
   require 'nokogiri'
   # require 'geokit'
 
+  def update_availability
+    avails= Avail.all :order=>"created_at"
+    tt=""
+    avails.each do |a|
+      a.start_on.step(a.end_on) do |d|
+        aa= Availability.first :conditions=>[
+          'hotel_id=? AND inv_code=? AND limit_on=?', a.hotel_id, a.inv_code, d]
+        if aa
+          aa.update_attribute :limit, a.booking_limit
+        else
+          aa= Availability.create! :hotel_id=> a.hotel_id,
+            :inv_code => a.inv_code, :limit => a.booking_limit, :limit_on=> d
+          tt << "create #{aa.hotel_id}: #{aa.limit_on} inv: #{aa.inv_code} limit:#{aa.limit}<br/>"
+        end
+      end
+    end
+    render :text => tt, :layout => true 
+  end
   def test_req
     render :text => request.request_uri
   end
@@ -40,8 +57,8 @@ class SongritController < ApplicationController
     render :xml => body
   end
   def get_avail
-    l = LogRequest.find 11
-    doc = Nokogiri::XML(l.content)
+    body= File.open("public/OTA/OTA_HotelAvailRQ.xml").read
+    doc = Nokogiri::XML(body)
     hotel_code = doc.xpath("//xmlns:AvailStatusMessages").attribute("HotelCode").value
     hotel_id= 3
     t = ""
@@ -59,8 +76,8 @@ class SongritController < ApplicationController
     render :text => t, :layout => true 
   end
   def get_hotel
-    l= LogRequest.find 7
-    doc = Nokogiri::XML(l.content)
+    body= File.open("public/OTA/OTA_HotelDescriptiveContentNotifRQ.xml").read
+    doc = Nokogiri::XML(body)
     hotel= Hotel.new :code=> doc.xpath("//xmlns:HotelDescriptiveContent").attribute("HotelCode").value,
       :name => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("HotelName").value,
       :brand_code => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("BrandCode").value,

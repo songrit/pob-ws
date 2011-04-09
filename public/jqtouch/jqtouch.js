@@ -536,7 +536,7 @@
                 
             }
 
-            // Private touch functions (TODO: insert dirty joke)
+            // Private touch functions (insert dirty joke)
             function touchmove(e) {
                 
                 updateChanges();
@@ -560,7 +560,7 @@
                     $el.makeActive();
                     // New approach:
                     // Fake the double click?
-                    // TODO: Try with all click events (no tap)
+                    // Try with all click events (no tap)
                     // if (deltaT < 40)
                     // {
                     //     setTimeout(function(){
