@@ -5,7 +5,7 @@ describe ApiController do
 
   it "should rescue_from Nokogiri::XML::XPath::SyntaxError; http://www.simonecarletti.com/blog/2009/12/inside-ruby-on-rails-rescuable-and-rescue_from/" do
     post :hotel_search
-    response.should have_tag("Fail")
+    response.should have_tag("Error")
   end
 
   describe "Ping" do
@@ -21,7 +21,7 @@ describe ApiController do
     end
     it "should handle invalid request" do
       post :ping
-      response.should have_tag("Fail")
+      response.should have_tag("Error")
     end
   end
   describe "HotelSearch" do
@@ -31,40 +31,47 @@ describe ApiController do
       request.env['content_type'] = 'application/xml'
       request.env['RAW_POST_DATA'] =  @body
       post :hotel_descriptive_content_notif
-    end
-    it "should search by coordinates" do
+      body= File.open("public/OTA/OTA_HotelAvailNotifRQ.xml").read
+      request.env['content_type'] = 'application/xml'
+      request.env['RAW_POST_DATA'] =  body
+      post :hotel_avail_notif
       body = File.read("public/OTA/OTA_HotelSearchRQ1.xml")
-      # body = File.open("public/OTA/OTA_HotelSearchRQ.xml").read
       request.env['content_type'] = 'application/xml'
       request.env['RAW_POST_DATA'] = body
       post :hotel_search
+    end
+    it "should search by coordinates" do
       response.should have_tag("Success")
       response.should have_tag("Property[HotelCode='BOSCO']")
     end
-    it "should provide only available hotels"
-    it "should include availability info in the attribute"
+    it "should have availability element" do
+      assigns[:start_on].should == Date.new(2004,8,2)
+      assigns[:end_on].should == Date.new(2004,8,4)
+      # puts response.body
+      response.should have_tag("Availability")
+    end      
   end
   
   describe "HotelRateAmountNotif" do
     it "should handle HotelRateAmountNotifRQ/RS"
   end
 
-  describe "HotelAvail" do
-    before do
-      body= File.open("public/OTA/OTA_HotelAvailRQ100.xml").read
-      request.env['content_type'] = 'application/xml'
-      request.env['RAW_POST_DATA'] =  body
-      post :hotel_avail
-    end
-    it "should assign hotel codes" do
-      assigns[:hotel_codes].should == ['BOSCO','LONSU','LONHB']
-    end
-    it "should assign date range" do
-      assigns[:start_on].should == Date.new(2004,8,2)
-      assigns[:end_on].should == Date.new(2004,8,3)
-    end
-    it "should find available hotels"
-  end
+  # describe "HotelAvail" do
+  #   before do
+  #     body= File.open("public/OTA/OTA_HotelAvailRQ100.xml").read
+  #     request.env['content_type'] = 'application/xml'
+  #     request.env['RAW_POST_DATA'] =  body
+  #     post :hotel_avail
+  #   end
+  #   it "should assign hotel codes" do
+  #     assigns[:hotel_codes].should == ['BOSCO','LONSU','LONHB']
+  #   end
+  #   it "should assign date range" do
+  #     assigns[:start_on].should == Date.new(2004,8,2)
+  #     assigns[:end_on].should == Date.new(2004,8,3)
+  #   end
+  #   it "should find available hotels"
+  # end
 
   describe "HotelAvailNotif" do
     before do

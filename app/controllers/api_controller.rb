@@ -1,5 +1,5 @@
 class ApiController < ApplicationController
-  rescue_from Nokogiri::XML::XPath::SyntaxError, :with=> :render_fail
+  rescue_from Nokogiri::XML::XPath::SyntaxError, :with=> :render_err
   
   def ping
     doc = Nokogiri::XML(request.body)
@@ -8,16 +8,16 @@ class ApiController < ApplicationController
     response.content_type = "application/xml"
     render :layout => false
   end
-  def hotel_avail
-    doc = Nokogiri::XML(request.body)
-    LogRequest.log(request,doc.to_s)
-    @hotel_codes= doc.xpath("//xmlns:HotelRef").collect do |h|
-      h.attribute("HotelCode").value
-    end
-    @start_on= doc.xpath("//xmlns:StayDateRange").attribute("Start").value.to_date
-    @end_on= doc.xpath("//xmlns:StayDateRange").attribute("End").value.to_date
-    render :text => "done"
-  end
+  # def hotel_avail
+  #   doc = Nokogiri::XML(request.body)
+  #   LogRequest.log(request,doc.to_s)
+  #   @hotel_codes= doc.xpath("//xmlns:HotelRef").collect do |h|
+  #     h.attribute("HotelCode").value
+  #   end
+  #   @start_on= doc.xpath("//xmlns:StayDateRange").attribute("Start").value.to_date
+  #   @end_on= doc.xpath("//xmlns:StayDateRange").attribute("End").value.to_date
+  #   render :text => "done"
+  # end
   def hotel_search
     doc = Nokogiri::XML(request.body)
     LogRequest.log(request,doc.to_s)
@@ -43,6 +43,8 @@ class ApiController < ApplicationController
       @poi_coord = Geokit::LatLng.new lat,lng
       @hotels= Hotel.find :all, :origin=>[lat,lng], :within=> distance
     end
+    @start_on= doc.xpath("//xmlns:StayDateRange").attribute("Start").value.to_date
+    @end_on= doc.xpath("//xmlns:StayDateRange").attribute("End").value.to_date
     response.content_type = "application/xml"
     render :layout => false
   end
@@ -108,8 +110,9 @@ class ApiController < ApplicationController
   end
   
   private
-  def render_fail
-    @err= "Invalid Request"
+  def render_err
+    @err_type=1
+    @err= "Unknown"
     response.content_type = "application/xml"
     render :layout => false
   end

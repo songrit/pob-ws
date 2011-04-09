@@ -17,4 +17,6 @@ Rails::Initializer.run do |config|
   GMAP = true
   # disable Rails to add timestamp at end of image cause problem in heroku
   ENV["RAILS_ASSET_ID"] = ""
+  # OTA config
+  TARGET = "Test" # or "Production"
 end

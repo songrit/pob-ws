@@ -15,7 +15,7 @@ gem "geokit"
 gem 'geokit-rails'
 gem 'rubyzip', :require => 'zip/zip'
 gem 'haml'
-gem 'hpricot'
+# gem 'hpricot'
 gem "mail", "2.2.1"
 gem "backup"
 gem "prawn"

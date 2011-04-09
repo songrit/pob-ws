@@ -1,6 +1,8 @@
 !!! XML
 %OTA_HotelAvailNotifRS{"xmlns:xsi"=>"http://www.w3.org/2001/XMLSchema-instance", "xmlns"=>"http://www.opentravel.org/OTA/2003/05", "xsi:schemaLocation"=>"http://www.opentravel.org/OTA/2003/05 OTA_HotelAvailNotifRS.xsd", :EchoToken=>"String", :TimeStamp=>Time.now.strftime('%FT%T'), :Target=>"Production", :Version=>"1.001"}
   - if @err
-    %Fail= @err
+    %Errors
+      %Error{:Type=>@err_type}
+        = @err
   - else  
     %Success

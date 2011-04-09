@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<OTA_HotelSearchRS EchoToken='HL' PrimaryLangID='EN-US' Target='Production' Version='1.003' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://www.opentravel.org/OTA/2003/05' xsi:schemaLocation='http://www.opentravel.org/OTA/2003/05 OTA_HotelSearchRS.xsd'>
+<Success></Success>
+<Properties>
+<Property HotelCode='BOSCO' HotelName='Boston Marriott Copley Place'>
+<RelativePosition Direction='W' Distance='0.237533116424037' DistanceUnitName='Mile'></RelativePosition>
+<Availabilities>
+<Availability Date='2004-08-02' InvCode='DLX' Limit='5'></Availability>
+<Availability Date='2004-08-02' InvCode='STD' Limit='25'></Availability>
+<Availability Date='2004-08-03' InvCode='DLX' Limit='5'></Availability>
+<Availability Date='2004-08-03' InvCode='STD' Limit='25'></Availability>
+</Availabilities>
+</Property>
+</Properties>
+<Criteria>
+    <Criterion>
+      <Position Latitude="7.88806"/>
+      <Position Longitude="98.3975"/>
+      <Radius DistanceMeasure="MILES" Distance="1"/>
+      <StayDateRange Start="2004-08-02" End="2004-08-04"/>
+    </Criterion>
+  </Criteria>
+</OTA_HotelSearchRS>

@@ -1,11 +1,16 @@
 !!! XML
 %OTA_HotelSearchRS(xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelSearchRS.xsd" EchoToken="HL" Target="Production" Version="1.003" PrimaryLangID="EN-US" xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance")
   - if @err
-    %Fail @err
+    %Errors
+      %Error{:Type=>@err_type}
+        = @err
   - else
     %Success
     %Properties
       - @hotels.each do |hotel|
         %Property{:HotelCode=>hotel.code, :HotelName=>hotel.name, :HotelCodeContext=>hotel.hotel_code_context}
           %RelativePosition{:Direction=>direction(@poi_coord.heading_to hotel.ll), :Distance=>@poi_coord.distance_to(hotel.ll, :formula=>:flat), :DistanceUnitName=>"Mile"}
+          %Availabilities
+            - hotel.availabilities.all(:conditions=>['limit_on>=? AND limit_on<?',@start_on,@end_on],:order=>'limit_on, inv_code').each do |availability|
+              %Availability{:Date=>availability.limit_on.to_s, :InvCode=>availability.inv_code, :Limit=>availability.limit}
     = @criteria

@@ -24,7 +24,6 @@ GEM
     heroku (1.18.3)
       launchy (~> 0.3.2)
       rest-client (>= 1.4.0, < 1.7.0)
-    hpricot (0.8.4)
     launchy (0.3.7)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
@@ -101,7 +100,6 @@ DEPENDENCIES
   geokit-rails
   haml
   heroku
-  hpricot
   linguistics
   mail (= 2.2.1)
   mechanize

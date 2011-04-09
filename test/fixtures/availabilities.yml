@@ -1,15 +1,15 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  hotel_id: MyString
+  hotel_id: 1
   inv_code: MyString
-  limit_on: 2011-04-07
+  limit_on: 2011-04-10
   limit: 1
   gma_user_id: 1
 
 two:
-  hotel_id: MyString
+  hotel_id: 1
   inv_code: MyString
-  limit_on: 2011-04-07
+  limit_on: 2011-04-10
   limit: 1
   gma_user_id: 1
