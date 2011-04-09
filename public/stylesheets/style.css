@@ -1,5 +1,5 @@
 body {
-  background:#fff;
+  background:#ffffff;
   color:#222;
   font-family:'TH SarabunPSK',Helvetica,Arial,FreeSans,sans-serif;
   font-size:16pt;
@@ -7,7 +7,7 @@ body {
   padding:0;
 }
 #logo a {
-  font: bold 35pt 'TH SarabunPSK'; 
+  font: bold 38pt 'TH SarabunPSK'; 
   color:#006699;
   text-decoration:none;
 }
@@ -16,7 +16,7 @@ body {
   margin:0 auto;
   /*padding:9px 0 8px;*/
   padding:9px 0 8px;
-  width:980px;
+  width:100%;
 }
 
 #topnavigation #current a span,#downloadsource #current a span {
@@ -241,8 +241,8 @@ h3 {
 
 #content {
   margin:0 auto;
-  padding:25px 0 0;
-  width:980px;
+  padding: 0 0;
+  width:100%;
 }
 
 #content blockquote p {
@@ -288,7 +288,6 @@ h3 {
   padding-bottom:0;
   padding-left:22px;
   padding-top:0;
-  width:708px;
 }
 
 #contentmiddle ul {
@@ -312,6 +311,7 @@ h3 {
 
 #copyright {
   font-size:15pt;
+  font-weight: bold;
   margin-top:1px;
   padding:10px 0 10px 0;
   text-align:center;
@@ -350,8 +350,9 @@ h3 {
 /*margin:30px auto 0px;*/
   margin:0 auto;
   padding:0 auto;
-  width:980px;
+  width:100%;
   background:url(../images/bg_sky.jpg);
+  height:200px;
 }
 
 #header img,#topnavigation img,#downloadsource img {
@@ -371,7 +372,7 @@ h3 {
   /*margin:20px auto 20px;*/
   margin:5px auto 5px;
   padding:0;
-  width:980px;
+  width:100%;
 }
 
 #middlenavigation a {
@@ -417,7 +418,7 @@ h3 {
   margin:0;
   padding-right:18px;
   text-align:left;
-  width:230px;
+  width:200px;
 }
 
 #sidebar h2 {
@@ -437,13 +438,14 @@ h3 {
 
 #sidebar ul li a {
   border-bottom:1px dotted #ddd;
+  font-size: 1.2em;
   display:block;
   padding:3px;
   text-decoration:none;
 }
 
 #sidebar ul li a:hover {
-  background:#fdfdfd;
+  background:#cccccc;
   border-bottom:1px dotted #ccc;
   color:#333;
 }
@@ -825,23 +827,6 @@ table.stats td.hed {
   text-align:left;
 }
 
-#content .commentlist ol {
-  margin: 0px;
-  padding: 0px;
-}
-
-#content .commentlist li {
-  margin: 20px 0 0 0;
-  padding: 10px;
-  list-style: none;
-}
-
-#content .commentlist .box-left {
-  margin: 0px 0 0;
-  padding: 0px;
-  border: none;
-}
-
 #head-report {
   text-align: center;
   font-weight:bold;
@@ -860,109 +845,6 @@ table.stats td.hed {
   padding-left: 50px;
 }
 
-/*.right .avatar {
-  float: right;
-  width: auto;
-  margin: 0;
-  padding:1px;
-  border:2px solid #ddd;
-}
-
-.commentlist li p {
-  margin: 0 0px 0px 0;
-}
-
-.commentlist .comment-author {
-  font-size: 18px;
-  font-family:Georgia, "Times New Roman", Times, serif;
-  margin:0px;
-  padding:0;
-  line-height:10px;
-}
-.comment-date {
-  margin:0px;
-  font-family:Georgia, "Times New Roman", Times, serif;
-  font-style:italic;
-  font-size:12px;
-  padding:0;
-}
-
-.commentlist .comment-author a {
-  padding: 0;
-  border: none!important;
-  margin:0px;
-}
-*/
-#content .commentlist ul.children {
-  margin: 0px;
-  padding: 0px;
-}
-
-#content .commentlist .children li {
-  margin: 10px 0px 0 55px;
-  padding: 10px 0px 0px 0px;
-  background: none;
-  border-right: none;
-}
-
-#content .commentlist .children li .reply a:hover  {
-  color:#fff;
-}
-
-.reply a {
-  margin: 0px;
-  padding: 0px;
-  border: none!important;
-  text-decoration: none;
-  float:right;
-  text-align:center;
-  font-size:11px;
-  width:42px;
-  background:url(images/reply_bg.png) no-repeat;
-}
-.reply a:hover {
-  border: none!important;
-  width:42px;
-  background:url(images/reply_bg_hover.png) no-repeat;
-  color:#fff;
-}
-
-#cancel-comment-reply {
-  margin: 10px 0;
-}
-
-#content .commentlist li.depth-1 {
-  border-top:3px solid #ddd;
-}
-
-#content .commentlist li.depth-2, #content .commentlist li.depth-3, #content .commentlist li.depth-4, #content .commentlist li.depth-5, #content .commentlist li.depth-6{
-  border-top:1px solid #ddd;
-}
-
-
-.moderation {
-  padding: 0 0 0 25px;
-}
-.comment-text {
-  padding: 0px;
-}
-
-.trackbacklist {
-  margin: 0px 0 0;
-  padding: 0px 0 0;
-  border-top: 1px solid #eee;
-}
-
-.box-comments {
-  position: relative;
-  padding: 0 0 30px;
-}
-
-.comments-paging {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-}
 input[type=text] {
   width:30em;
   font-size:15px;

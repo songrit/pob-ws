@@ -1,3 +1,0 @@
-#!/bin/bash
-script/server -p6005 --debugger
-#thin start -p6005 --debug

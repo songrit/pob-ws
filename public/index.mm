@@ -2,14 +2,8 @@
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
 <node CREATED="1273819432637" ID="ID_1098419600" MODIFIED="1298545553548" TEXT="pob">
 <node CREATED="1296668805621" ID="ID_1544692121" MODIFIED="1296668807441" POSITION="right" TEXT="services">
-<node CREATED="1297106901190" FOLDED="true" ID="ID_262971886" MODIFIED="1301274759841" TEXT="users: &#xe1c;&#xe39;&#xe49;&#xe43;&#xe0a;&#xe49;">
+<node CREATED="1297106901190" ID="ID_262971886" MODIFIED="1302185302631" TEXT="users: &#xe1c;&#xe39;&#xe49;&#xe43;&#xe0a;&#xe49;">
 <node CREATED="1297106977700" ID="ID_84437594" MODIFIED="1297106980579" TEXT="role: m"/>
-<node CREATED="1297476963476" ID="ID_1750552625" MODIFIED="1297476998622" TEXT="link: &#xe23;&#xe32;&#xe22;&#xe07;&#xe32;&#xe19;&#xe01;&#xe32;&#xe23;&#xe40;&#xe23;&#xe35;&#xe22;&#xe01;&#xe43;&#xe0a;&#xe49; ws: /admin/ws"/>
-<node CREATED="1299288953208" ID="ID_464288020" MODIFIED="1299288987445" TEXT="link: get hotel xml into db: /songrit/get_hotel"/>
-<node CREATED="1300488395815" ID="ID_1871384200" MODIFIED="1300488411315" TEXT="link: get avail xml into db: /songrit/get_avail"/>
-<node CREATED="1299289229016" ID="ID_360048808" MODIFIED="1299289243098" TEXT="link: show last hotel: /songrit/show_hotel"/>
-<node CREATED="1300485622520" ID="ID_5364840" MODIFIED="1300526328681" TEXT="link: display xml rq: /songrit/disp_xml_rq"/>
-<node CREATED="1300526334037" ID="ID_1742522023" MODIFIED="1300526341014" TEXT="link: display xml rs: /songrit/disp_xml_rs"/>
 <node CREATED="1297109431419" ID="ID_962537378" MODIFIED="1297109469754" TEXT="link: &#xe02;&#xe49;&#xe2d;&#xe21;&#xe39;&#xe25;&#xe1c;&#xe39;&#xe49;&#xe43;&#xe0a;&#xe49;: /users/user"/>
 <node CREATED="1279700865182" ID="ID_630918549" MODIFIED="1297108050495" TEXT="link:&#xe04;&#xe39;&#xe48;&#xe21;&#xe37;&#xe2d;&#xe01;&#xe32;&#xe23;&#xe43;&#xe0a;&#xe49;&#xe07;&#xe32;&#xe19;: /users/doc"/>
 <node CREATED="1275756504750" ID="ID_1382277695" MODIFIED="1297107000641" TEXT="pwd:&#xe41;&#xe01;&#xe49;&#xe44;&#xe02;&#xe23;&#xe2b;&#xe31;&#xe2a;&#xe1c;&#xe48;&#xe32;&#xe19;">
@@ -33,7 +27,7 @@
 <node CREATED="1276062721100" ID="ID_982357600" MODIFIED="1276062727685" TEXT="rule: login?"/>
 </node>
 </node>
-<node CREATED="1300502021784" ID="ID_715202980" MODIFIED="1300502034877" TEXT="hotels: &#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;">
+<node CREATED="1300502021784" FOLDED="true" ID="ID_715202980" MODIFIED="1302185376241" TEXT="hotels: &#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;">
 <node CREATED="1300489647312" ID="ID_1764050059" MODIFIED="1300502079574" TEXT="link: &#xe23;&#xe32;&#xe22;&#xe07;&#xe32;&#xe19;&#xe2a;&#xe16;&#xe32;&#xe19;&#xe30;&#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;: /hotels/booking_limit"/>
 <node CREATED="1300499137051" ID="ID_670577063" MODIFIED="1300502956261" TEXT="link: &#xe2a;&#xe16;&#xe32;&#xe19;&#xe17;&#xe35;&#xe48;&#xe2d;&#xe49;&#xe32;&#xe07;&#xe2d;&#xe34;&#xe07;: /hotels/pois"/>
 <node CREATED="1300499089130" ID="ID_341637428" MODIFIED="1300503631658" TEXT="add_poi">
@@ -46,7 +40,7 @@
 </node>
 </node>
 </node>
-<node CREATED="1275752678377" FOLDED="true" ID="ID_1348489452" MODIFIED="1301274773986" TEXT="admin:&#xe1c;&#xe39;&#xe49;&#xe14;&#xe39;&#xe41;&#xe25;&#xe23;&#xe30;&#xe1a;&#xe1a;">
+<node CREATED="1275752678377" FOLDED="true" ID="ID_1348489452" MODIFIED="1302185286057" TEXT="admin:&#xe1c;&#xe39;&#xe49;&#xe14;&#xe39;&#xe41;&#xe25;&#xe23;&#xe30;&#xe1a;&#xe1a;">
 <node CREATED="1275752688167" ID="ID_229996461" MODIFIED="1275752690948" TEXT="role:a"/>
 <node CREATED="1280374214975" ID="ID_980297856" MODIFIED="1280374230097" TEXT="link: &#xe23;&#xe32;&#xe22;&#xe0a;&#xe37;&#xe48;&#xe2d;&#xe1c;&#xe39;&#xe49;&#xe43;&#xe0a;&#xe49;: /admin/users"/>
 <node CREATED="1282722836614" FOLDED="true" ID="ID_1213363124" MODIFIED="1297476958711" TEXT="edit_role:&#xe41;&#xe01;&#xe49;&#xe44;&#xe02;&#xe2a;&#xe34;&#xe17;&#xe18;&#xe34;&#xe01;&#xe32;&#xe23;&#xe43;&#xe0a;&#xe49;&#xe07;&#xe32;&#xe19;">
@@ -113,6 +107,9 @@
 <node CREATED="1281681992475" ID="ID_757791014" MODIFIED="1283285585589" TEXT="link: dbpush modules/services:/admin/db_push_ms"/>
 <node CREATED="1301274783956" ID="ID_567722653" MODIFIED="1301275106573" TEXT="link: rspec result: /spec.html"/>
 <node CREATED="1273706854639" ID="ID_1481857171" MODIFIED="1278500875816" TEXT="link: mind map: /gma/view_mm"/>
+<node CREATED="1302185341804" ID="ID_984707645" MODIFIED="1302185365934" TEXT="link: update_availability: /songrit/update_availability"/>
+<node CREATED="1300526334037" ID="ID_1742522023" MODIFIED="1300526341014" TEXT="link: display xml rs: /songrit/disp_xml_rs"/>
+<node CREATED="1300485622520" ID="ID_5364840" MODIFIED="1300526328681" TEXT="link: display xml rq: /songrit/disp_xml_rq"/>
 <node CREATED="1275447796625" ID="ID_1998592758" MODIFIED="1278500842216" TEXT="link: statistics: /admin/stat"/>
 <node CREATED="1276986518055" ID="ID_1184016852" MODIFIED="1276986529980" TEXT="link: exceptions: /e"/>
 <node CREATED="1275788317299" ID="ID_716276608" MODIFIED="1278500859677" TEXT="link: run_call errors: /gma/run_call_errors"/>
@@ -128,9 +125,13 @@
 <icon BUILTIN="attach"/>
 </node>
 </node>
+<node CREATED="1299289229016" ID="ID_360048808" MODIFIED="1299289243098" TEXT="link: show last hotel: /songrit/show_hotel"/>
+<node CREATED="1300488395815" ID="ID_1871384200" MODIFIED="1300488411315" TEXT="link: get avail xml into db: /songrit/get_avail"/>
+<node CREATED="1299288953208" ID="ID_464288020" MODIFIED="1299288987445" TEXT="link: get hotel xml into db: /songrit/get_hotel"/>
+<node CREATED="1297476963476" ID="ID_1750552625" MODIFIED="1297476998622" TEXT="link: &#xe23;&#xe32;&#xe22;&#xe07;&#xe32;&#xe19;&#xe01;&#xe32;&#xe23;&#xe40;&#xe23;&#xe35;&#xe22;&#xe01;&#xe43;&#xe0a;&#xe49; ws: /admin/ws"/>
 </node>
 </node>
-<node CREATED="1273819465949" FOLDED="true" ID="ID_855471610" MODIFIED="1296668833585" POSITION="right" TEXT="roles">
+<node CREATED="1273819465949" ID="ID_855471610" MODIFIED="1302185289977" POSITION="right" TEXT="roles">
 <node CREATED="1273819847470" ID="ID_1681080231" MODIFIED="1279311618057" TEXT="m: &#xe2a;&#xe21;&#xe32;&#xe0a;&#xe34;&#xe01;"/>
 <node CREATED="1273819855875" ID="ID_1429503284" MODIFIED="1279311626723" TEXT="a: &#xe1c;&#xe39;&#xe49;&#xe14;&#xe39;&#xe41;&#xe25;&#xe23;&#xe30;&#xe1a;&#xe1a;"/>
 <node CREATED="1273819859775" ID="ID_568365839" MODIFIED="1279311634899" TEXT="d: &#xe1c;&#xe39;&#xe49;&#xe1e;&#xe31;&#xe12;&#xe19;&#xe32;&#xe23;&#xe30;&#xe1a;&#xe1a;"/>
@@ -285,7 +286,7 @@
 </node>
 <node CREATED="1298544525200" ID="ID_1407912563" MODIFIED="1298544528292" TEXT="xml: text"/>
 </node>
-<node CREATED="1300485945589" FOLDED="true" ID="ID_299284256" MODIFIED="1300498704725" TEXT="avail">
+<node CREATED="1300485945589" ID="ID_299284256" MODIFIED="1302175309626" TEXT="avail">
 <node CREATED="1300485957932" ID="ID_1775725017" MODIFIED="1300485960627" TEXT="hotel_id"/>
 <node CREATED="1300485981101" ID="ID_1151022985" MODIFIED="1300485987203" TEXT="booking_limit"/>
 <node CREATED="1300485998189" ID="ID_743140691" MODIFIED="1300486036829" TEXT="start_on: date"/>
@@ -295,7 +296,13 @@
 <node CREATED="1300486064038" ID="ID_910341340" MODIFIED="1300486080000" TEXT="unique_id"/>
 <node CREATED="1300486080789" ID="ID_223314052" MODIFIED="1300486095370" TEXT="unique_id_type: string"/>
 </node>
-<node CREATED="1300498685985" ID="ID_352460109" MODIFIED="1300498686839" TEXT="poi">
+<node CREATED="1302175274195" ID="ID_1084649844" MODIFIED="1302175278072" TEXT="availability">
+<node CREATED="1302175279203" ID="ID_1119460552" MODIFIED="1302175303420" TEXT="hotel_id: string"/>
+<node CREATED="1302175312686" ID="ID_1296974766" MODIFIED="1302175320635" TEXT="inv_code: string"/>
+<node CREATED="1302175322715" ID="ID_1037913077" MODIFIED="1302175337937" TEXT="limit_on: date"/>
+<node CREATED="1302175427263" ID="ID_1477229882" MODIFIED="1302175431160" TEXT="limit"/>
+</node>
+<node CREATED="1300498685985" FOLDED="true" ID="ID_352460109" MODIFIED="1302175272183" TEXT="poi">
 <node CREATED="1300498687797" ID="ID_285630251" MODIFIED="1300498693757" TEXT="code: string">
 <node CREATED="1300499058040" ID="ID_160554214" MODIFIED="1300499068819" TEXT="# OTA-REF code list"/>
 <node CREATED="1300499039306" ID="ID_1093468093" MODIFIED="1300499042846" TEXT="23: monument"/>

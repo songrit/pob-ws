@@ -1,7 +1,7 @@
 !!! XML
 %OTA_PingRS{"xmlns:xsi"=>"http://www.w3.org/2001/XMLSchema-instance", "xmlns"=>"http://www.opentravel.org/OTA/2003/05", "xsi:schemaLocation"=>"http://www.opentravel.org/OTA/2003/05 OTA_PingRS.xsd", :EchoToken=>"String", :TimeStamp=>Time.now.strftime('%FT%T'), :Target=>"Production", :Version=>"1.001", :SequenceNmbr=>"1"}
   - if @err
-    %Fail Invalid Request
+    %Fail @err
   - else
     %Success
     %EchoData= @echo_data
