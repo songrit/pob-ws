@@ -1,6 +1,10 @@
 class AdminController < ApplicationController
   before_filter :admin_action, :except=>[:daily_housekeeping, :hourly_housekeeping]
-
+  def view_rq
+    l= LogRequest.find params[:id]
+    # response.content_type = "application/xml"
+    render :xml=>l.content, :layout => false
+  end
   def ws
     @log_requests= LogRequest.paginate :per_page=>20, :page => params[:page] ,:order=>"created_at DESC"
   end

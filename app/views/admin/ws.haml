@@ -12,4 +12,4 @@
       %td= l.id
       %td= truncate l.request_uri, 30
       %td= l.ip
-      %td= html_escape truncate(l.content, 80)
+      %td= link_to html_escape(truncate(l.content, 80)), :action=>'view_rq', :id=>l.id
