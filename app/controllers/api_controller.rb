@@ -1,35 +1,28 @@
 class ApiController < ApplicationController
   rescue_from Nokogiri::XML::XPath::SyntaxError, :with=> :render_err
 
-  def render_response
-    response.content_type = "application/xml"
-    render :layout => false
-  end
   def hotel_res
     doc = Nokogiri::XML(request.body)
-    LogRequest.log(request,doc.to_s)
+    @log_request= LogRequest.log(request,doc.to_s)
     @hotel_code= doc.xpath('//xmlns:BasicPropertyInfo').attribute('HotelCode').value
     @hotel= Hotel.find_by_code @hotel_code
-    debugger
+    @number_of_units= doc.xpath('//xmlns:RoomType').attribute('NumberOfUnits').value.to_i
+    @inv_code= doc.xpath('//xmlns:Inv').attribute('InvCode').value
+    @start_on = doc.xpath('//xmlns:TimeSpan').attribute('Start').value.to_date
+    @end_on = doc.xpath('//xmlns:TimeSpan').attribute('End').value.to_date
+    if check_avail?
+      update_avail
+    else
+      @err= "Your reservation cannot be booked"
+    end
     render_response
   end
   def ping
     doc = Nokogiri::XML(request.body)
     LogRequest.log(request,doc.to_s)
     @echo_data= doc.xpath("//xmlns:EchoData").text
-    response.content_type = "application/xml"
-    render :layout => false
+    render_response
   end
-  # def hotel_avail
-  #   doc = Nokogiri::XML(request.body)
-  #   LogRequest.log(request,doc.to_s)
-  #   @hotel_codes= doc.xpath("//xmlns:HotelRef").collect do |h|
-  #     h.attribute("HotelCode").value
-  #   end
-  #   @start_on= doc.xpath("//xmlns:StayDateRange").attribute("Start").value.to_date
-  #   @end_on= doc.xpath("//xmlns:StayDateRange").attribute("End").value.to_date
-  #   render :text => "done"
-  # end
   def hotel_search
     doc = Nokogiri::XML(request.body)
     LogRequest.log(request,doc.to_s)
@@ -59,8 +52,7 @@ class ApiController < ApplicationController
       @start_on= doc.xpath("//xmlns:StayDateRange").attribute("Start").value.to_date
       @end_on= doc.xpath("//xmlns:StayDateRange").attribute("End").value.to_date
     end
-    response.content_type = "application/xml"
-    render :layout => false
+    render_response
   end
   def hotel_descriptive_content_notif
     doc = Nokogiri::XML(request.body)
@@ -84,8 +76,7 @@ class ApiController < ApplicationController
       :country_name => doc.xpath("//xmlns:CountryName").first.text,
       :description => doc.xpath('//xmlns:TextItem[@Title="Description"]').xpath('xmlns:Description').text
     hotel.save
-    response.content_type = "application/xml"
-    render :layout => false
+    render_response
   end
   def hotel_avail_notif
     # doc = Nokogiri::XML(request.body)
@@ -120,15 +111,37 @@ class ApiController < ApplicationController
     else
       @err= "Hotel code does not exists"
     end
-    response.content_type = "application/xml"
-    render :layout => false
+    render_response
   end
   
   private
-  def render_err
-    @err_type=1
-    @err= "Unknown"
+  def render_response
     response.content_type = "application/xml"
     render :layout => false
+  end
+  def render_err
+    @err_type=1
+    @err ||= "Unknown"
+    render_response
+  end
+  def update_avail
+    @start_on.step(@end_on) do |d|
+      availability= @hotel.availabilities.last(:conditions=>['inv_code=? AND limit_on=?',@inv_code, d])
+      availability.limit -= @number_of_units
+      availability.save
+    end
+  end
+  def check_avail?
+    avail= true
+    @start_on.step(@end_on) do |d|
+      # debugger
+      availability= @hotel.availabilities.last(:conditions=>['inv_code=? AND limit_on=?',@inv_code, d])
+      if availability
+        avail= false if (availability.limit < @number_of_units)
+      else
+        avail= false
+      end
+    end
+    avail
   end
 end

@@ -1,5 +1,12 @@
 require 'spec_helper'
 
+def post_request(method, xml)
+  body= File.open("public/OTA/#{xml}").read
+  request.env['content_type'] = 'application/xml'
+  request.env['RAW_POST_DATA'] =  body
+  post method
+end
+
 describe ApiController do
   integrate_views
 
@@ -9,16 +16,17 @@ describe ApiController do
   end
 
   describe "HotelRes" do
-    it "should handle HotelRes" do
-      @body= File.open("public/OTA/OTA_HotelResRQ.xml").read
-      @doc = Nokogiri::XML(@body)
-      request.env['content_type'] = 'application/xml'
-      request.env['RAW_POST_DATA'] =  @body
-      post :hotel_res
-      puts response.body
+    before do
+      post_request(:hotel_descriptive_content_notif, "OTA_HotelDescriptiveContentNotifRQ.xml")
+      post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ.xml")
     end
-    it "should check if property has availability"
-    it "should update availability"
+
+    it "should handle HotelRes" do
+      post_request :hotel_res, "OTA_HotelResRQ1.xml"
+      @hotel= Hotel.find_by_code 'BOSCO'
+      availability= @hotel.availabilities.last(:conditions=>['inv_code=? AND limit_on=?','STD', '2004-08-02'.to_date])
+      availability.limit.should == 24      
+    end
   end
   
   describe "POB_HotelRegister" do
@@ -47,18 +55,9 @@ describe ApiController do
   describe "HotelSearch" do
     before do
       Hotel.delete_all
-      @body= File.open("public/OTA/OTA_HotelDescriptiveContentNotifRQ.xml").read
-      request.env['content_type'] = 'application/xml'
-      request.env['RAW_POST_DATA'] =  @body
-      post :hotel_descriptive_content_notif
-      body= File.open("public/OTA/OTA_HotelAvailNotifRQ.xml").read
-      request.env['content_type'] = 'application/xml'
-      request.env['RAW_POST_DATA'] =  body
-      post :hotel_avail_notif
-      body = File.read("public/OTA/OTA_HotelSearchRQ1.xml")
-      request.env['content_type'] = 'application/xml'
-      request.env['RAW_POST_DATA'] = body
-      post :hotel_search
+      post_request(:hotel_descriptive_content_notif, "OTA_HotelDescriptiveContentNotifRQ.xml")
+      post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ.xml")
+      post_request(:hotel_search, "OTA_HotelSearchRQ1.xml")
     end
     it "should search by coordinates" do
       response.should have_tag("Success")
@@ -95,10 +94,7 @@ describe ApiController do
 
   describe "HotelAvailNotif" do
     before do
-      body= File.open("public/OTA/OTA_HotelDescriptiveContentNotifRQ.xml").read
-      request.env['content_type'] = 'application/xml'
-      request.env['RAW_POST_DATA'] =  body
-      post :hotel_descriptive_content_notif
+      post_request(:hotel_descriptive_content_notif, "OTA_HotelDescriptiveContentNotifRQ.xml")
     end
     it "should handle OTA_HotelAvailNotifRQ" do
       lambda do
