@@ -17,5 +17,5 @@
           - if @start_on
             %Availabilities
               - hotel.availabilities.all(:conditions=>['limit_on>=? AND limit_on<?',@start_on,@end_on],:order=>'limit_on, inv_code').each do |availability|
-                %Availability{:Date=>availability.limit_on.to_s, :InvCode=>availability.inv_code, :Limit=>availability.limit}
+                %Availability{:Date=>availability.limit_on.to_s, :InvCode=>availability.inv_code, :RatePlanCode=> availability.rate_plan_code, :Limit=>availability.limit}
     = @criteria

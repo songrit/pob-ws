@@ -112,6 +112,7 @@ class ApiController < ApplicationController
             aa.update_attribute :limit, avail.booking_limit
           else
             aa= Availability.create :hotel_id=> avail.hotel_id,
+              :rate_plan_code => avail.rate_plan_code, 
               :inv_code => avail.inv_code, :limit => avail.booking_limit, :limit_on=> d
           end
         end
