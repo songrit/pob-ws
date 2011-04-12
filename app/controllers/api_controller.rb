@@ -55,7 +55,7 @@ class ApiController < ApplicationController
       @poi_coord = Geokit::LatLng.new lat,lng
       @hotels= Hotel.find :all, :origin=>[lat,lng], :within=> distance
     end
-    if doc.xpath("//xmlns:StayDateRange")
+    unless doc.xpath("//xmlns:StayDateRange").empty?
       @start_on= doc.xpath("//xmlns:StayDateRange").attribute("Start").value.to_date
       @end_on= doc.xpath("//xmlns:StayDateRange").attribute("End").value.to_date
     end
