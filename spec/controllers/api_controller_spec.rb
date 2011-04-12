@@ -8,6 +8,26 @@ describe ApiController do
     response.should have_tag("Error")
   end
 
+  describe "HotelRes" do
+    it "should handle HotelRes" do
+      @body= File.open("public/OTA/OTA_HotelResRQ.xml").read
+      @doc = Nokogiri::XML(@body)
+      request.env['content_type'] = 'application/xml'
+      request.env['RAW_POST_DATA'] =  @body
+      post :hotel_res
+      puts response.body
+    end
+    it "should check if property has availability"
+    it "should update availability"
+  end
+  
+  describe "POB_HotelRegister" do
+    it "should update availability upon check-in"
+    it "should update availability upon check-out"
+    it "should receive rate from RQ"
+    it "should calculate tax"
+  end
+  
   describe "Ping" do
     it "should handle OTA_Ping" do
       @body= File.open("public/OTA/OTA_PingRQ.xml").read

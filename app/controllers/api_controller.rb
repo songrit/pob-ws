@@ -1,6 +1,18 @@
 class ApiController < ApplicationController
   rescue_from Nokogiri::XML::XPath::SyntaxError, :with=> :render_err
-  
+
+  def render_response
+    response.content_type = "application/xml"
+    render :layout => false
+  end
+  def hotel_res
+    doc = Nokogiri::XML(request.body)
+    LogRequest.log(request,doc.to_s)
+    @hotel_code= doc.xpath('//xmlns:BasicPropertyInfo').attribute('HotelCode').value
+    @hotel= Hotel.find_by_code @hotel_code
+    debugger
+    render_response
+  end
   def ping
     doc = Nokogiri::XML(request.body)
     LogRequest.log(request,doc.to_s)

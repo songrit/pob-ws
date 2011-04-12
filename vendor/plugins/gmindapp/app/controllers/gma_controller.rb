@@ -168,7 +168,7 @@ class GmaController < ApplicationController
     modules.each do |m|
       next if controller_exists?(m.code)
       t << "= #{m.code}"
-      t << exec_cmd("script/generate controller #{m.code}")
+      t << exec_cmd("script/generate rspec_controller #{m.code}").gsub("\n","<br/>")
     end
     t.join("<br/>")
   end
@@ -258,17 +258,17 @@ class GmaController < ApplicationController
       model_code= name2code(model_name)
       unless model_exists?(model_code)
         attr_list= make_fields(model)+" gma_user_id:integer"
-        t << "ruby script/generate model #{model_code} #{attr_list} --force<br/>"
-        cmd= exec_cmd("ruby script/generate model #{model_code} #{attr_list} --force").gsub("\n","<br/>")
+        t << "script/generate rspec_model #{model_code} #{attr_list} --force<br/>"
+        cmd= exec_cmd("script/generate model #{model_code} #{attr_list} --force").gsub("\n","<br/>")
         t << cmd
         # remove custom layout therefore all controller will default to application.rhtml layout
-        if win32?
-          t << "del app\\views\\layouts\\#{model_code.pluralize}.html.erb"
-          exec_cmd "del app\\views\\layouts\\#{model_code.pluralize}.html.erb"
-        else
-          t << "rm app/views/layouts/#{model_code.pluralize}.html.erb"
-          exec_cmd "rm app/views/layouts/#{model_code.pluralize}.html.erb"
-        end
+        # if win32?
+        #   t << "del app\\views\\layouts\\#{model_code.pluralize}.html.erb"
+        #   exec_cmd "del app\\views\\layouts\\#{model_code.pluralize}.html.erb"
+        # else
+        #   t << "rm app/views/layouts/#{model_code.pluralize}.html.erb"
+        #   exec_cmd "rm app/views/layouts/#{model_code.pluralize}.html.erb"
+        # end
         table_name= model_code.downcase.pluralize
         migration_file= cmd.match(/db\/migrate\/\d+_create_#{table_name}.rb/).to_s
         table_statement= "create_table :#{table_name}, :force=>true do |t|"

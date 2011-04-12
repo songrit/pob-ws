@@ -130,11 +130,12 @@ class AddGmaTables < ActiveRecord::Migration
 
     create_table "gma_ws_queues", :force => true do |t|
       t.string   "url"
+      t.text     "body"
       t.string   "poll_url"
-      t.string   "status",         :limit => 1
+      t.integer  "wait"
+      t.integer  "status"
       t.integer  "gma_runseq_id"
       t.datetime "next_poll_at"
-      t.integer  "wait"
       t.integer  "gma_user_id"
       t.datetime "created_at"
       t.datetime "updated_at"
