@@ -29,11 +29,10 @@ describe ApiController do
     end
   end
   
-  describe "POB_HotelRegister" do
-    it "should update availability upon check-in"
-    it "should update availability upon check-out"
-    it "should receive rate from RQ"
-    it "should calculate tax"
+  describe "HotelStayInfoNotifRQ" do
+    it "should update occupancy upon check-out or end of month"
+    it "should receive total"
+    it "should receive tax"
   end
   
   describe "Ping" do

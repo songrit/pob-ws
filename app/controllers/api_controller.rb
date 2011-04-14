@@ -101,10 +101,12 @@ class ApiController < ApplicationController
             'hotel_id=? AND inv_code=? AND limit_on=?', avail.hotel_id, avail.inv_code, d]
           if aa
             aa.update_attribute :limit, avail.booking_limit
+            aa.update_attribute(:max, avail.booking_limit) if (avail.booking_limit > aa.max)
           else
             aa= Availability.create :hotel_id=> avail.hotel_id,
               :rate_plan_code => avail.rate_plan_code, 
-              :inv_code => avail.inv_code, :limit => avail.booking_limit, :limit_on=> d
+              :inv_code => avail.inv_code, :limit => avail.booking_limit,
+              :limit_on=> d, :max=> avail.booking_limit
           end
         end
       end

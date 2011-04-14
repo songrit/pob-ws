@@ -6,6 +6,7 @@ class CreateAvailabilities < ActiveRecord::Migration
       t.string :rate_plan_code
       t.date :limit_on
       t.integer :limit
+      t.integer :max
       t.integer :gma_user_id
 
       t.timestamps

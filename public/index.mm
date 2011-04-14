@@ -27,8 +27,8 @@
 <node CREATED="1276062721100" ID="ID_982357600" MODIFIED="1276062727685" TEXT="rule: login?"/>
 </node>
 </node>
-<node CREATED="1300502021784" FOLDED="true" ID="ID_715202980" MODIFIED="1302185376241" TEXT="hotels: &#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;">
-<node CREATED="1300489647312" ID="ID_1764050059" MODIFIED="1300502079574" TEXT="link: &#xe23;&#xe32;&#xe22;&#xe07;&#xe32;&#xe19;&#xe2a;&#xe16;&#xe32;&#xe19;&#xe30;&#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;: /hotels/booking_limit"/>
+<node CREATED="1300502021784" ID="ID_715202980" MODIFIED="1302654403564" TEXT="hotels: &#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;">
+<node CREATED="1300489647312" ID="ID_1764050059" MODIFIED="1302761628482" TEXT="link: &#xe2a;&#xe16;&#xe32;&#xe19;&#xe30;&#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;: /hotels/hotels"/>
 <node CREATED="1300499137051" ID="ID_670577063" MODIFIED="1300502956261" TEXT="link: &#xe2a;&#xe16;&#xe32;&#xe19;&#xe17;&#xe35;&#xe48;&#xe2d;&#xe49;&#xe32;&#xe07;&#xe2d;&#xe34;&#xe07;: /hotels/pois"/>
 <node CREATED="1300499089130" ID="ID_341637428" MODIFIED="1300503631658" TEXT="add_poi">
 <icon BUILTIN="closed"/>
@@ -313,8 +313,8 @@
 <node CREATED="1302596831566" ID="ID_1016204559" MODIFIED="1302596837858" TEXT="rate_plan_code: string"/>
 <node CREATED="1302175322715" ID="ID_1037913077" MODIFIED="1302175337937" TEXT="limit_on: date"/>
 <node CREATED="1302175427263" ID="ID_1477229882" MODIFIED="1302175431160" TEXT="limit"/>
+<node CREATED="1302650272149" ID="ID_194621675" MODIFIED="1302650473954" TEXT="max"/>
 </node>
-<node CREATED="1302590004803" ID="ID_97968673" MODIFIED="1302590009274" TEXT="reservation"/>
 </node>
 </node>
 </map>

@@ -1,6 +1,12 @@
 class HotelsController < ApplicationController
   def index
-    redirect_to :action => "booking_limit"
+    redirect_to :action => "hotels"
+  end
+  def hotels
+    @hotels= Hotel.all
+    @marker_image= "cat/hotel.png"
+    @waypoint= @hotels.first
+    @waypoint_name= @waypoint.code
   end
   def avail
     hotel_id= params[:id]
@@ -10,8 +16,9 @@ class HotelsController < ApplicationController
       ['hotel_id=? AND limit_on>= ? AND limit_on<= ?',hotel_id,d1,d2]
     render :text => "text to render..."
   end
-  def booking_limit
-    @avails = Avail.all
+  def availability
+    @hotel= Hotel.find params[:id]
+    @avails = @hotel.avails
   end
   def create_poi
     Poi.create $xvars[:enter_poi][:poi]

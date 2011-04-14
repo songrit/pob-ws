@@ -51,6 +51,7 @@ class ActiveRecord::Base
         self.gma_user_id= user_id if user_id
       end
     end
+  rescue
   end
 end
 

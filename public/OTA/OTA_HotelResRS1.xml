@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<OTA_HotelResRS SequenceNmbr='1' Target='Test' TimeStamp='2011-04-12T22:42:03' Version='1.001' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://www.opentravel.org/OTA/2003/05' xsi:schemaLocation='http://www.opentravel.org/OTA/2003/05 OTA_HotelResRS.xsd'>
+<Success></Success>
+<HotelReservations>
+<HotelReservation>
+<ResGlobalInfo>
+<HotelReservationIDs>
+<HotelReservationID ResID_Value='265'></HotelReservationID>
+</HotelReservationIDs>
+</ResGlobalInfo>
+</HotelReservation>
+</HotelReservations>
+</OTA_HotelResRS>

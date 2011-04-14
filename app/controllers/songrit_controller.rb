@@ -7,7 +7,7 @@ class SongritController < ApplicationController
 
   def update_availability
     avails= Avail.all :order=>"created_at"
-    tt=""
+    tt="" ; count = 0
     avails.each do |a|
       a.start_on.step(a.end_on) do |d|
         aa= Availability.first :conditions=>[
@@ -16,11 +16,14 @@ class SongritController < ApplicationController
           aa.update_attribute :limit, a.booking_limit
         else
           aa= Availability.create! :hotel_id=> a.hotel_id,
-            :inv_code => a.inv_code, :limit => a.booking_limit, :limit_on=> d
+            :inv_code => a.inv_code, :limit => a.booking_limit, 
+            :limit_on=> d, :max=> a.booking_limit
           tt << "create #{aa.hotel_id}: #{aa.limit_on} inv: #{aa.inv_code} limit:#{aa.limit}<br/>"
+          count += 1
         end
       end
     end
+    tt << "<hr/>Finish update availability, #{count} records created"
     render :text => tt, :layout => true 
   end
   def test_req
