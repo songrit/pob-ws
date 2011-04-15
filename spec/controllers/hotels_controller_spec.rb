@@ -12,7 +12,7 @@ describe HotelsController do
     get :hotels
     response.should be_success
   end
-  it "should show reservation by year/month/day"
+  it "should show reservation by year/month/day (http://pob-ws.local/songrit/cal)"
   it "should show occupancy by year/month/day"
   it "should have hotels management for PAO"
   

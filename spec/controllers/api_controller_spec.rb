@@ -154,5 +154,6 @@ describe ApiController do
       hotel= Hotel.find id
       hotel.name.should == "Songrit"
     end
+    it "allow multimedia"
   end
 end

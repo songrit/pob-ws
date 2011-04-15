@@ -10,7 +10,7 @@ require File.join(File.dirname(__FILE__), 'boot')
 Rails::Initializer.run do |config|
   config.time_zone = 'Bangkok'
   THAI_MONTHS = %w(มกราคม กุมภาพันธ์ มีนาคม เมษายน พฤษภาคม มิถุนายน กรกฎาคม สิงหาคม กันยายน ตุลาคม พฤศจิกายน ธันวาคม)
-  APP_VERSION = '0.1'
+  APP_VERSION = '1.0'
   config.action_controller.session_store = :active_record_store
   IMAGE_LOCATION = "doc/upload"
   CDN = false

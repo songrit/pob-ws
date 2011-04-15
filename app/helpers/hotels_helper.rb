@@ -11,7 +11,8 @@ module HotelsHelper
       js << "  icon: '/images/#{@marker_image}'"
       js << "});"
       js << "google.maps.event.addListener(marker_#{i}, 'click', function() {"
-      js << "  window.location = '/hotels/availability/#{h.id}';"
+      # js << "  window.location = '/hotels/availability/#{h.id}';"
+      js << "  window.location = '/songrit/cal';"
       js << "});"
     end
     js << ""
