@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  hotel_id: 1
+  qty: 1
+  amount: 1.5
+  tax: 1.5
+  stay_on: 2011-04-19
+  gma_user_id: 1
+
+two:
+  hotel_id: 1
+  qty: 1
+  amount: 1.5
+  tax: 1.5
+  stay_on: 2011-04-19
+  gma_user_id: 1

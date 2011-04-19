@@ -30,19 +30,36 @@ describe ApiController do
   end
   
   describe "HotelStayInfoNotifRQ" do
-    it "should update occupancy upon check-out or end of month"
-    it "should receive total"
-    it "should receive tax"
+    before(:each) do
+      post_request(:hotel_descriptive_content_notif, "OTA_HotelDescriptiveContentNotifRQ.xml")
+      RestClient.should_receive(:get).at_least(:once).and_return(File.read "public/data/currency.xml")
+      post_request :hotel_stay_info_notif, "OTA_HotelStayInfoNotifRQ.xml"
+    end
+    it "should convert tax to THB (http://themoneyconverter.com/THB/rss.xml)" do
+      (1/assigns[:rates][:USD]).should be_close 30, 1
+      assigns[:total].should be_close 36021, 1
+      assigns[:tax_total].should be_close 5223, 1
+    end
+    it "should update Stay upon check-out or end of month" do
+      Stay.count.should == 3
+      assigns[:hotel].stays.sum(:amount).should be_close 36021, 1
+      assigns[:hotel].stays.sum(:tax).should be_close 5223, 1
+    end
+    it "should update existing records" do
+      post_request :hotel_stay_info_notif, "OTA_HotelStayInfoNotifRQ.xml"
+      Stay.count.should == 3
+      assigns[:hotel].stays.sum(:qty).should == 6
+      assigns[:hotel].stays.sum(:amount).should be_close 36021*2, 2
+      assigns[:hotel].stays.sum(:tax).should be_close 5223*2, 2
+    end
   end
   
   describe "Ping" do
     it "should handle OTA_Ping" do
+      post_request(:ping, "OTA_PingRQ.xml")
       @body= File.open("public/OTA/OTA_PingRQ.xml").read
       @doc = Nokogiri::XML(@body)
       echo = @doc.xpath('//xmlns:EchoData').text
-      request.env['content_type'] = 'application/xml'
-      request.env['RAW_POST_DATA'] =  @body
-      post :ping
       # leading and trailing space in data will be stripped
       response.should have_tag("EchoData", echo.strip) 
     end
@@ -73,23 +90,6 @@ describe ApiController do
   describe "HotelRateAmountNotif" do
     it "should handle HotelRateAmountNotifRQ/RS"
   end
-
-  # describe "HotelAvail" do
-  #   before do
-  #     body= File.open("public/OTA/OTA_HotelAvailRQ100.xml").read
-  #     request.env['content_type'] = 'application/xml'
-  #     request.env['RAW_POST_DATA'] =  body
-  #     post :hotel_avail
-  #   end
-  #   it "should assign hotel codes" do
-  #     assigns[:hotel_codes].should == ['BOSCO','LONSU','LONHB']
-  #   end
-  #   it "should assign date range" do
-  #     assigns[:start_on].should == Date.new(2004,8,2)
-  #     assigns[:end_on].should == Date.new(2004,8,3)
-  #   end
-  #   it "should find available hotels"
-  # end
 
   describe "HotelAvailNotif" do
     before do

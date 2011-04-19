@@ -1,6 +1,60 @@
 class ApiController < ApplicationController
   rescue_from Nokogiri::XML::XPath::SyntaxError, :with=> :render_err
 
+  def hotel_stay_info_notif
+    @doc = Nokogiri::XML(request.body)
+    @log_request= LogRequest.log(request,@doc.to_s)
+    @hotel_code= (@doc/'StayInfos').first[:HotelCode]
+    @number_of_units= (@doc/'RoomRate').first[:NumberOfUnits].to_i
+    unless Hotel.exists?(:code=>@hotel_code)
+      @err= "Unable to find Hotel"
+    else
+      update_hotel_stay
+    end
+  end
+  def update_hotel_stay
+    @room_charges= (@doc/'RevenueDetail[@PMSRevenueCode="11"]')
+    @rooms= []
+    @exchange_rates= Nokogiri::XML(RestClient.get "http://themoneyconverter.com/THB/rss.xml")
+    @rates= {:THB=>1}
+    (@exchange_rates/'item').each do |e|
+      unit= (e/'title').text.match(/(...)\/THB/)[1]
+      rate = (e/'description').text.match(/1 Thai Baht = (.+?)\s.+/)[1]
+      @rates[unit.to_sym]= rate.to_f
+    end
+    @room_charges.each do |charge|
+      amount= charge.attribute('Amount').value.to_f
+      currency= charge.attribute('CurrencyCode').value
+      rate= @rates[currency.to_sym] ? 1/@rates[currency.to_sym] : 0
+      @rooms << {:amount=>amount,
+        :currency=> currency,
+        :amount_th => amount*rate, 
+        :date=> charge.attribute('TransactionDate').value.to_date}
+    end
+    @total= @rooms.inject(0) {|sum,room| sum+room[:amount_th]}
+    @taxes= []
+    @tax_charges= (@doc/'//xmlns:RevenueDetail[@PMSRevenueCode="12"]')
+    @tax_charges.each do |charge|
+      amount= charge.attribute('Amount').value.to_f
+      currency= charge.attribute('CurrencyCode').value
+      rate= @rates[currency.to_sym] ? 1/@rates[currency.to_sym] : 0
+      @taxes << {:amount=> amount,
+        :currency=> currency,
+        :amount_th=> amount*rate,
+        :date=> charge.attribute('TransactionDate').value.to_date}
+    end
+    @tax_total= @taxes.inject(0) {|sum,tax| sum+tax[:amount_th]}
+    @hotel= Hotel.find_by_code @hotel_code
+    @rooms.each do |room|
+      stay = @hotel.stays.find_or_create_by_stay_on room[:date]
+      stay.qty += @number_of_units
+      stay.amount += room[:amount_th]
+      tax= @taxes.find {|t| t[:date]= room[:date]}
+      tax_amount = tax ? tax[:amount_th] : 0
+      stay.tax += tax_amount
+      stay.save
+    end
+  end
   def hotel_res
     doc = Nokogiri::XML(request.body)
     @log_request= LogRequest.log(request,doc.to_s)
