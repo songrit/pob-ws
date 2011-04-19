@@ -1,5 +1,6 @@
 class ApiController < ApplicationController
-  rescue_from Nokogiri::XML::XPath::SyntaxError, :with=> :render_err
+  # rescue_from Nokogiri::XML::XPath::SyntaxError, :with=> :render_err
+  rescue_from StandardError, :with=> :render_err
 
   def hotel_stay_info_notif
     @doc = Nokogiri::XML(request.body)

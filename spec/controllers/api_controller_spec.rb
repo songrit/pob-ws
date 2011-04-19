@@ -11,7 +11,7 @@ describe ApiController do
   integrate_views
 
   it "should rescue_from Nokogiri::XML::XPath::SyntaxError; http://www.simonecarletti.com/blog/2009/12/inside-ruby-on-rails-rescuable-and-rescue_from/" do
-    post :hotel_search
+    post :hotel_stay_info_notif
     response.should have_tag("Error")
   end
 
