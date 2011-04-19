@@ -13,3 +13,11 @@
 %h4 message OTA_HotelSearchRQ
 .url http://pob-ws.heroku.com/api/hotel_search
 .note can request multiple properties
+%h4 message OTA_HotelStayInfoNotifRQ
+.url http://pob-ws.heroku.com/api/hotel_stay_info_notif
+.note must submit when guest check out and end of month
+.note= h "<StayInfos HotelCode> is used to indicate hotel reporting"
+.note= h "<RoomRate NumberOfUnits> is used to report number of units stay"
+.note The RevenueCategoryCode value of 9 indicates this is a Room charge
+.note The RevenueCategoryCode value of 12 indicates this is a Tax charge
+

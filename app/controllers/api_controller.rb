@@ -14,7 +14,7 @@ class ApiController < ApplicationController
     end
   end
   def update_hotel_stay
-    @room_charges= (@doc/'RevenueDetail[@PMSRevenueCode="11"]')
+    @room_charges= @doc/'RevenueCategory[@RevenueCategoryCode="9"]'/'RevenueDetail'
     @rooms= []
     @exchange_rates= Nokogiri::XML(RestClient.get "http://themoneyconverter.com/THB/rss.xml")
     @rates= {:THB=>1}
@@ -34,7 +34,7 @@ class ApiController < ApplicationController
     end
     @total= @rooms.inject(0) {|sum,room| sum+room[:amount_th]}
     @taxes= []
-    @tax_charges= (@doc/'//xmlns:RevenueDetail[@PMSRevenueCode="12"]')
+    @tax_charges= @doc/'RevenueCategory[@RevenueCategoryCode="12"]'/'RevenueDetail'
     @tax_charges.each do |charge|
       amount= charge.attribute('Amount').value.to_f
       currency= charge.attribute('CurrencyCode').value
