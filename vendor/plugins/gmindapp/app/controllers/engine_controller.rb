@@ -46,7 +46,7 @@ class EngineController < ApplicationController
         if service
           f= "app/views/#{service.module}/#{service.code}/#{@runseq.code}.rhtml"
           @ui= File.read(f)
-          @message = "ดำเนินการต่อ &gt;"
+          @message = defined?(MSG_NEXT) ? MSG_NEXT : "Next &gt;"
           #      @message = "Done" if @runseq.form_step==@xvars[:total_form_steps]
         else
           flash[:notice]= "ไม่สามารถค้นหาบริการที่ต้องการได้"
@@ -211,7 +211,7 @@ class EngineController < ApplicationController
           :ip=> get_ip, :gma_service_id=>service.id, :display=>display,
           :secured => @xmain.gma_service.secured
       end
-      @message = "ดำเนินการต่อ"
+      @message = defined?(MSG_NEXT) ? MSG_NEXT : "Next &gt;"
       @message = "สิ้นสุดการทำงาน" if @runseq.end
       eval "@xvars[:#{@runseq.code}] = url_for(:controller=>'engine', :action=>'document', :id=>@gma_doc.id)"
     else
@@ -394,32 +394,32 @@ class EngineController < ApplicationController
     end
     end_action(next_runseq)
   end
-  def ws_dispatch
-    GmaWsQueue.all(:conditions=>["status != 'F'"]).each do |ws|
-      puts "Time now is #{Time.now} next poll at is #{ws.next_poll_at}\n"
-      next if Time.now < ws.next_poll_at
-      puts "process #{ws.id}"
-      result= REXML::Document.new(http(ws.poll_url)).root
-      if result and result.elements['async']
-        ws.poll_url= result.elements['async'].attributes['poll_url']
-        wait= result.elements['async'].attributes['wait'].to_i
-        ws.wait = wait unless wait==0
-        ws.next_poll_at = Time.now + ws.wait*60
-        ws.status= 'R'
-        ws.save
-      else
-        @runseq= GmaRunseq.find ws.gma_runseq_id
-        @xmain= @runseq.gma_xmain
-        @xvars= @xmain.xvars
-        @xvars[@runseq.code.to_sym] = @xvars[:result]= result.to_s
-        ws.status= 'F'
-        @runseq.status='F'
-        @xmain.xvars= @xvars
-        @xmain.save; @runseq.save; ws.save
-      end
-    end
-    render :text => "done"
-  end
+  # def ws_dispatch
+  #   GmaWsQueue.all(:conditions=>["status != 'F'"]).each do |ws|
+  #     puts "Time now is #{Time.now} next poll at is #{ws.next_poll_at}\n"
+  #     next if Time.now < ws.next_poll_at
+  #     puts "process #{ws.id}"
+  #     result= REXML::Document.new(http(ws.poll_url)).root
+  #     if result and result.elements['async']
+  #       ws.poll_url= result.elements['async'].attributes['poll_url']
+  #       wait= result.elements['async'].attributes['wait'].to_i
+  #       ws.wait = wait unless wait==0
+  #       ws.next_poll_at = Time.now + ws.wait*60
+  #       ws.status= 'R'
+  #       ws.save
+  #     else
+  #       @runseq= GmaRunseq.find ws.gma_runseq_id
+  #       @xmain= @runseq.gma_xmain
+  #       @xvars= @xmain.xvars
+  #       @xvars[@runseq.code.to_sym] = @xvars[:result]= result.to_s
+  #       ws.status= 'F'
+  #       @runseq.status='F'
+  #       @xmain.xvars= @xvars
+  #       @xmain.save; @runseq.save; ws.save
+  #     end
+  #   end
+  #   render :text => "done"
+  # end
   def run_redirect
     init_vars(params[:id])
     next_runseq= @xmain.gma_runseqs.first :conditions=>["id != ? AND code = ?",@runseq.id, @runseq.code]

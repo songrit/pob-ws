@@ -22,7 +22,7 @@ module Gma
      form  = page.forms.first
      form.file_uploads.first.file_name = f
      result = agent.submit(form)
-     result.links[1].uri.to_s
+     result.links[2].uri.to_s
   end
   def gma_notice(s)
     GmaNotice.create :message=>s, :unread=>true

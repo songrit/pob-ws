@@ -1,4 +1,6 @@
 <% 
+@org= Org.last
+@title = "#{@org.otype}#{@org.name}"
 @amodules= [] # authorized modules
 @gma_modules= GmaModule.all(:order=>"seq").each do |m|
   if m.role
@@ -33,42 +35,42 @@ end
 <html>
   <%= render :partial => "layouts/head" %>
   <body>
-    <div id="header">
+    <div id="header" style="height:100px;">
       <div style="float:right; color:#1C2795;">
         <%= render :partial => "layouts/login" %>
       </div>
-      <div id="logo" style="padding:5px 0 0 50px; height: 122px;">
+      <div id="logo" style="padding:5px 0 0 50px;">
         <a href="/">
-            <%= image_tag 'phuket150.png', :style=>'float:left;padding-right:10px;' %>
-            ระบบแลกเปลี่ยนข้อมูลกลางสำหรับธุรกิจท่องเที่ยวและระบบโรงแรมลูกข่าย
+            <%= image_tag 'logo_bangtanai100.png', :style=>'float:left;margin-top:-5px;' %>
+            <div class="title" style="padding-top:15px; text-align:center;">
+              <%= @title %>
+          </div>
         </a>
-      </div>
-      <div id="search">
-        <% @search = GmaSearch.new %>
-        <% form_for(@search, :url => { :controller=>"main", :action => "search" }) do |f| %>
-          <%= f.text_field "q", :style=>"width:320px;" %>
-          <%= f.submit "ค้นหา" %>
-        <% end %>
       </div>
       <% if @amodules.size>0 %>
         <%= render :partial => "layouts/modules", :object => @amodules, :locals=>{:gma_module=>gma_module}  %>
       <% end %>
     </div>
     <div id="content">
+      <%= render :partial => "layouts/sidebar", :locals=>{:gma_module=>gma_module} %>
       <div id="contentmiddle">
         <div id="notice"><%= display_notices %></div>
         <div id="notice"><%= flash[:notice] %></div>
         <div id="middlespace"><%= yield %></div>
       </div>
-      <%= render :partial => "layouts/sidebar", :locals=>{:gma_module=>gma_module} %>
     </div>
     <div style="clear:both;"></div>
     <div id="footer">
       <div id="copyright">
-        <%= "Phuket Online Booking #{APP_VERSION}" %>
-        powered by <a href="http://gmindapp.com">GMindApp</a><br/>
+        องค์การบริหารส่วนตำบลบางตะไนย์
+        43/8 หมู่ 5 ตำบลบางตะไนย์ อำเภอปากเกร็ด จังหวัดนนทบุรี 11120
+        โทร 02-501-7321
       </div>
     </div>
   </body>
 </html>
-
+<script type='text/javascript'>
+  $(function() {
+    $('#contentmiddle').css('width',window.innerWidth-260); 
+  })
+</script>

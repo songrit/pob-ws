@@ -23,10 +23,10 @@ gem "prawn"
 group :development do
   gem "ruby-debug"
   gem "rails-footnotes"
+end
+group :test do
   gem "rspec-core"
   gem "rspec", "1.3.1"
   gem "rspec-rails", "1.3.3"
-end
-group :test do
   gem "syntax"
 end

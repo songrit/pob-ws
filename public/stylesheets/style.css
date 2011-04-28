@@ -7,52 +7,9 @@ body {
   padding:0;
 }
 #logo a {
-  font: bold 38pt 'TH SarabunPSK'; 
+  font: bold 40pt 'TH SarabunPSK'; 
   color:#006699;
   text-decoration:none;
-}
-
-#topnavigation {
-  margin:0 auto;
-  /*padding:9px 0 8px;*/
-  padding:9px 0 8px;
-  width:100%;
-}
-
-#topnavigation #current a span,#downloadsource #current a span {
-  background-position:100% -125px;
-}
-
-#topnavigation #current a,#topnavigation a:hover,#downloadsource #current a,#downloadsource a:hover {
-  background-position:0 -125px;
-}
-
-#topnavigation a {
-  background:url(images/tab-left.png) no-repeat left top;
-  float:left;
-  font-size:15px;
-  margin-right:8px;
-  padding:0 0 0 9px;
-  text-decoration:none;
-}
-
-#topnavigation a span {
-  background:url(images/tab-right.png) no-repeat right top;
-  color:#fff;
-  display:block;
-  float:none;
-  padding:3px 9px 3px 0;
-}
-
-#topnavigation a:hover span,#downloadsource a:hover span {
-  background-position:100% -125px;
-  color:#fff;
-}
-
-#topnavigation ul,.cattopic ul {
-  list-style-type:none;
-  margin:0;
-  padding-left:0;
 }
 
 #check_status {
@@ -78,6 +35,10 @@ body {
 }
 
 td.num {text-align:right;}
+td.group {width:100px;font-weight:bold;}
+td.people {text-align:center}
+div.person {display:inline-block}
+
 
 .field-name {
   font-size:1.2em;
@@ -288,17 +249,18 @@ h3 {
   padding-bottom:0;
   padding-left:22px;
   padding-top:0;
+  /*width:708px;*/
 }
 
 #contentmiddle ul {
-  list-style:none;
+  /*list-style:none;*/
   margin:0;
-  padding:0 0 20px;
+  padding:0 0;
 }
 
 #contentmiddle ul li {
   margin:0;
-  padding:5px 0 0;
+  padding:0 0;
 }
 
 #contentmiddle ul li a:hover {
@@ -370,7 +332,7 @@ h3 {
   -webkit-border-radius: 10px;
   float:left;
   /*margin:20px auto 20px;*/
-  margin:5px auto 5px;
+  margin:0 auto;
   padding:0;
   width:100%;
 }
@@ -398,7 +360,7 @@ h3 {
 
 #middlenavigation ul {
   border-left:1px solid #eee;
-  margin:6px 6px 6px 0;
+  margin:0 6px 0 0;
   overflow:hidden;
   padding:0;
   position:relative;
@@ -409,7 +371,7 @@ h3 {
   clear:both;
   margin-bottom:20px;
   padding:1px;
-  width:695px;
+  /*width:695px;*/
 }
 
 #sidebar {
@@ -455,42 +417,6 @@ h3 {
   margin:0;
   padding:5px 0 0;
 }
-
-#sidebar-bottom {
-  clear:both;
-  padding:0;
-  width:280px;
-}
-
-#sidebar-left {
-  float:left;
-  padding:0;
-  width:130px;
-}
-
-#sidebar-middle {
-  float:right;
-  width:280px;
-}
-
-#sidebar-right {
-  float:right;
-  padding:0;
-  width:130px;
-}
-
-#sidebar-top {
-  margin-top:0;
-  padding:0;
-  width:280px;
-}
-
-#sidebar_clear {
-  clear:both;
-  height:10px;
-  width:100%;
-}
-
 .button {
   color: #37B2E9;
   font-size: 9pt;
