@@ -25,7 +25,6 @@ group :development do
   gem "rails-footnotes"
 end
 group :test do
-  gem "rspec-core"
   gem "rspec", "1.3.1"
   gem "rspec-rails", "1.3.3"
   gem "syntax"
