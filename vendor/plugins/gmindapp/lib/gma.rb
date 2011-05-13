@@ -723,13 +723,16 @@ module ActionView
 
   //]]>
   </script>
-  Latitude: #{self.text_field :lat, :style=>"width:200px"}
-  Longitude: #{self.text_field :lng, :style=>"width:200px"}
+  Latitude: #{self.text_field :lat}
+  Longitude: #{self.text_field :lng}
   <p/>
   <div id='map_#{self.object_name}' style='width:#{o[:width]}; height:#{o[:height]};'></div>
   <script>
     $('##{self.object_name}_lat').change(function() {move()})
     $('##{self.object_name}_lng').change(function() {move()})
+    var w= $("input[id*=lat]").parent().width();
+    $("input[id*=lat]").css('width',w/4.5+'px')
+    $("input[id*=lng]").css('width',w/4.5+'px')
   </script>
 EOT
       end

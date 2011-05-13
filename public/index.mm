@@ -2,7 +2,7 @@
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
 <node CREATED="1273819432637" ID="ID_1098419600" MODIFIED="1298545553548" TEXT="pob">
 <node CREATED="1296668805621" ID="ID_1544692121" MODIFIED="1296668807441" POSITION="right" TEXT="services">
-<node CREATED="1297106901190" ID="ID_262971886" MODIFIED="1305167389270" TEXT="users: &#xe1c;&#xe39;&#xe49;&#xe43;&#xe0a;&#xe49;">
+<node CREATED="1297106901190" FOLDED="true" ID="ID_262971886" MODIFIED="1305277564942" TEXT="users: &#xe1c;&#xe39;&#xe49;&#xe43;&#xe0a;&#xe49;">
 <node CREATED="1297106977700" ID="ID_84437594" MODIFIED="1297106980579" TEXT="role: m"/>
 <node CREATED="1305167395897" ID="ID_157418452" MODIFIED="1305167419560" TEXT="link: &#xe07;&#xe32;&#xe19;&#xe17;&#xe35;&#xe48;&#xe2d;&#xe22;&#xe39;&#xe48;&#xe23;&#xe30;&#xe2b;&#xe27;&#xe48;&#xe32;&#xe07;&#xe14;&#xe33;&#xe40;&#xe19;&#xe34;&#xe19;&#xe01;&#xe32;&#xe23;: /main/pending"/>
 <node CREATED="1297109431419" ID="ID_962537378" MODIFIED="1297109469754" TEXT="link: &#xe02;&#xe49;&#xe2d;&#xe21;&#xe39;&#xe25;&#xe1c;&#xe39;&#xe49;&#xe43;&#xe0a;&#xe49;: /users/user"/>
@@ -28,7 +28,7 @@
 <node CREATED="1276062721100" ID="ID_982357600" MODIFIED="1276062727685" TEXT="rule: login?"/>
 </node>
 </node>
-<node CREATED="1300502021784" ID="ID_715202980" MODIFIED="1302654403564" TEXT="hotels: &#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;">
+<node CREATED="1300502021784" FOLDED="true" ID="ID_715202980" MODIFIED="1305277567154" TEXT="hotels: &#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;">
 <node CREATED="1300489647312" ID="ID_1764050059" MODIFIED="1302761628482" TEXT="link: &#xe2a;&#xe16;&#xe32;&#xe19;&#xe30;&#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;: /hotels/hotels"/>
 <node CREATED="1300499137051" ID="ID_670577063" MODIFIED="1300502956261" TEXT="link: &#xe2a;&#xe16;&#xe32;&#xe19;&#xe17;&#xe35;&#xe48;&#xe2d;&#xe49;&#xe32;&#xe07;&#xe2d;&#xe34;&#xe07;: /hotels/pois"/>
 <node CREATED="1300499089130" ID="ID_341637428" MODIFIED="1300503631658" TEXT="add_poi">
@@ -43,12 +43,25 @@
 </node>
 <node CREATED="1304090638634" ID="ID_769440526" MODIFIED="1304090673759" TEXT="pao: &#xe2d;&#xe1a;&#xe08;.">
 <node CREATED="1304090673765" ID="ID_1094049168" MODIFIED="1304091874190" TEXT="link: &#xe2a;&#xe23;&#xe38;&#xe1b;&#xe04;&#xe48;&#xe32;&#xe18;&#xe23;&#xe23;&#xe21;&#xe40;&#xe19;&#xe35;&#xe22;&#xe21;&#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;: /pao"/>
-<node CREATED="1304090820380" ID="ID_691222956" MODIFIED="1304090843876" TEXT="add_hotel">
-<node CREATED="1304090843880" ID="ID_946908530" MODIFIED="1304090874515" TEXT="enter_rr1">
+<node CREATED="1304090820380" ID="ID_691222956" MODIFIED="1305277583488" TEXT="add_hotel: &#xe02;&#xe36;&#xe49;&#xe19;&#xe17;&#xe30;&#xe40;&#xe1a;&#xe35;&#xe22;&#xe19;&#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;">
+<node CREATED="1304090843880" ID="ID_946908530" MODIFIED="1305277605590" TEXT="enter_rr1: &#xe41;&#xe1a;&#xe1a; &#xe2d;&#xe1a;&#xe08;.&#xe23;&#xe23;.&#xe51;">
 <icon BUILTIN="attach"/>
 </node>
-<node CREATED="1304090858838" ID="ID_1004250685" MODIFIED="1304090881018" TEXT="create_hotel">
+<node CREATED="1304090858838" ID="ID_1004250685" MODIFIED="1305281554447" TEXT="create_hotel: &#xe1a;&#xe31;&#xe19;&#xe17;&#xe36;&#xe01;&#xe02;&#xe49;&#xe2d;&#xe21;&#xe39;&#xe25;&#xe17;&#xe31;&#xe48;&#xe27;&#xe44;&#xe1b;">
 <icon BUILTIN="bookmark"/>
+</node>
+<node CREATED="1305281329577" ID="ID_239888843" MODIFIED="1305281487988" TEXT="enter_room">
+<icon BUILTIN="attach"/>
+</node>
+<node CREATED="1305281477623" ID="ID_261786683" MODIFIED="1305281804716" TEXT="create_room: &#xe1a;&#xe31;&#xe19;&#xe17;&#xe36;&#xe01;&#xe02;&#xe49;&#xe2d;&#xe21;&#xe39;&#xe25;&#xe2b;&#xe49;&#xe2d;&#xe07;&#xe1e;&#xe31;&#xe01;">
+<icon BUILTIN="bookmark"/>
+</node>
+<node CREATED="1286333348708" ID="ID_1728152605" MODIFIED="1305281438733" TEXT="$xvars[:enter_room][:done]">
+<icon BUILTIN="help"/>
+<node CREATED="1286333688827" ID="ID_1999001065" MODIFIED="1305281444962" TEXT="n: enter_room"/>
+</node>
+<node CREATED="1305281509980" ID="ID_539057079" MODIFIED="1305281536296" TEXT="print_doc: &#xe25;&#xe07;&#xe19;&#xe32;&#xe21;">
+<icon BUILTIN="pencil"/>
 </node>
 </node>
 </node>
@@ -344,7 +357,9 @@
 <node CREATED="1304511141374" ID="ID_1615129829" MODIFIED="1304511144263" TEXT="province_id"/>
 <node CREATED="1304511147723" ID="ID_992431336" MODIFIED="1304511151601" TEXT="phone: string"/>
 <node CREATED="1304511152284" ID="ID_411921632" MODIFIED="1304511163415" TEXT="owner_name: string"/>
-<node CREATED="1304511164261" ID="ID_581455824" MODIFIED="1304511432549" TEXT="owner_age"/>
+<node CREATED="1305280902633" ID="ID_1516361576" MODIFIED="1305280907921" TEXT="owner_dob: date">
+<node CREATED="1305280955194" ID="ID_1308035268" MODIFIED="1305280960047" TEXT="# date of birth"/>
+</node>
 <node CREATED="1304511172148" ID="ID_1834347974" MODIFIED="1304511358281" TEXT="owner_citizen: string">
 <node CREATED="1304511200239" ID="ID_367831499" MODIFIED="1304511205212" TEXT="# &#xe2a;&#xe31;&#xe0d;&#xe0a;&#xe32;&#xe15;&#xe34;"/>
 </node>
@@ -370,7 +385,7 @@
 <node CREATED="1304511537703" ID="ID_227082351" MODIFIED="1304511542472" TEXT="manager_province_id"/>
 <node CREATED="1304511546658" ID="ID_1118592331" MODIFIED="1304511551593" TEXT="manager_phone: string"/>
 <node CREATED="1304511566167" ID="ID_287966876" MODIFIED="1304511579807" TEXT="total_rooms"/>
-<node CREATED="1304511595198" ID="ID_1822682698" MODIFIED="1304511608872" TEXT="brochure: string"/>
+<node CREATED="1304511595198" ID="ID_1822682698" MODIFIED="1305282977111" TEXT="doc: string"/>
 <node CREATED="1304577404554" ID="ID_1179579940" MODIFIED="1304577410590" TEXT="code: string"/>
 <node CREATED="1304577411680" ID="ID_1710355964" MODIFIED="1304577422729" TEXT="lat: float"/>
 <node CREATED="1304577427699" ID="ID_856275041" MODIFIED="1304577430980" TEXT="lng: float"/>

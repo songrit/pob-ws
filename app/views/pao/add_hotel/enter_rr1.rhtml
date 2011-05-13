@@ -29,6 +29,106 @@
       <td class="field-name">ตำบล</td>
       <td colspan='2'><%= f.select :sub_district_id, [] %></td>
     </tr>
+    <tr>
+      <td class="field-name">โทรศัพท์</td>
+      <td colspan='2'><%= f.text_field :phone, :style=>"width:300px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">นามเจ้าของ</td>
+      <td colspan='2'><%= f.text_field :owner_name, :style=>"width:300px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">วันเกิด</td>
+      <td colspan='2'><%= f.text_field :owner_dob, :style=>"width:300px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">สัญชาติ</td>
+      <td colspan='2'><%= f.text_field :owner_citizen, :style=>"width:300px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">เชื้อชาติ</td>
+      <td colspan='2'><%= f.text_field :owner_national, :style=>"width:300px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">ที่อยู่</td>
+      <td colspan='2'><%= f.text_field :owner_address, :style=>"width:300px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">ถนน</td>
+      <td colspan='2'><%= f.text_field :owner_street, :style=>"width:300px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">จังหวัด</td>
+      <td colspan='2'><%= f.collection_select :owner_province_id, Province.all, :id, :name, :selected=>66 %></td>
+    </tr>
+    <tr>
+      <td class="field-name">อำเภอ</td>
+      <td colspan='2'><%= f.collection_select :owner_district_id, Province.find(66).districts, :id, :name, :prompt=>"กรุณาเลือกอำเภอ" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">ตำบล</td>
+      <td colspan='2'><%= f.select :owner_sub_district_id, [] %></td>
+    </tr>
+    <tr>
+      <td class="field-name">โทรศัพท์</td>
+      <td colspan='2'><%= f.text_field :owner_phone, :style=>"width:300px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">นามผู้ควบคุมและจัดการ</td>
+      <td colspan='2'><%= f.text_field :manager_name, :style=>"width:300px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">วันเกิด</td>
+      <td colspan='2'><%= f.text_field :manager_dob, :style=>"width:300px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">สัญชาติ</td>
+      <td colspan='2'><%= f.text_field :manager_citizen, :style=>"width:300px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">เชื้อชาติ</td>
+      <td colspan='2'><%= f.text_field :manager_national, :style=>"width:300px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">ที่อยู่</td>
+      <td colspan='2'><%= f.text_field :manager_address, :style=>"width:300px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">ถนน</td>
+      <td colspan='2'><%= f.text_field :manager_street, :style=>"width:300px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">จังหวัด</td>
+      <td colspan='2'><%= f.collection_select :manager_province_id, Province.all, :id, :name, :selected=>66 %></td>
+    </tr>
+    <tr>
+      <td class="field-name">อำเภอ</td>
+      <td colspan='2'><%= f.collection_select :manager_district_id, Province.find(66).districts, :id, :name, :prompt=>"กรุณาเลือกอำเภอ" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">ตำบล</td>
+      <td colspan='2'><%= f.select :manager_sub_district_id, [] %></td>
+    </tr>
+    <tr>
+      <td class="field-name">โทรศัพท์</td>
+      <td colspan='2'><%= f.text_field :manager_phone, :style=>"width:300px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">จำนวนห้องทั้งสิ้น</td>
+      <td colspan='2'><%= f.text_field :total_rooms, :style=>"width:300px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">เอกสารประกอบ</td>
+      <td colspan='2'><%= f.file_field :brochure, :style=>"width:300px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">รหัส</td>
+      <td colspan='2'><%= f.text_field :code, :style=>"width:300px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">ที่ตั้ง</td>
+      <td colspan="2"><%= f.point(:width => "100%", :zoom=>14, :lat=>7.888056, :lng=>98.3975) %></td>
+    </tr>
   <% end %>
 </table>
 <%= fix_thai_year %>
@@ -38,6 +138,18 @@
   });
   $('#rr1_district_id').change(function() {
     $('#rr1_sub_district_id').html('').load('/pao/get_sub_districts/'+$('#rr1_district_id option:selected').val());
+  });
+  $('#rr1_owner_province_id').change(function() {
+    $('#rr1_owner_district_id').html('').load('/pao/get_districts/'+$('#rr1_owner_province_id option:selected').val());
+  });
+  $('#rr1_owner_district_id').change(function() {
+    $('#rr1_owner_sub_district_id').html('').load('/pao/get_sub_districts/'+$('#rr1_owner_district_id option:selected').val());
+  });
+  $('#rr1_manager_province_id').change(function() {
+    $('#rr1_manager_district_id').html('').load('/pao/get_districts/'+$('#rr1_manager_province_id option:selected').val());
+  });
+  $('#rr1_manager_district_id').change(function() {
+    $('#rr1_manager_sub_district_id').html('').load('/pao/get_sub_districts/'+$('#rr1_manager_district_id option:selected').val());
   });
 </script>
 
