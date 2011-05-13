@@ -1,0 +1,43 @@
+<% rr1 = Rr1.new %>
+<table width="100%">
+  <% fields_for :rr1 do |f| %>
+    <tr>
+      <td class="field-name">เขียนที่</td>
+      <td colspan='2'><%= f.text_field :at, :style=>"width:300px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">ชื่อโรงแรม</td>
+      <td colspan='2'><%= f.text_field :hotel_name, :style=>"width:300px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">ตั้งอยู่เลขที่</td>
+      <td colspan='2'><%= f.text_field :address, :style=>"width:300px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">ถนน</td>
+      <td colspan='2'><%= f.text_field :street, :style=>"width:300px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">จังหวัด</td>
+      <td colspan='2'><%= f.collection_select :province_id, Province.all, :id, :name, :selected=>66 %></td>
+    </tr>
+    <tr>
+      <td class="field-name">อำเภอ</td>
+      <td colspan='2'><%= f.collection_select :district_id, Province.find(66).districts, :id, :name, :prompt=>"กรุณาเลือกอำเภอ" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">ตำบล</td>
+      <td colspan='2'><%= f.select :sub_district_id, [] %></td>
+    </tr>
+  <% end %>
+</table>
+<%= fix_thai_year %>
+<script type="text/javascript" >
+  $('#rr1_province_id').change(function() {
+    $('#rr1_district_id').html('').load('/pao/get_districts/'+$('#rr1_province_id option:selected').val());
+  });
+  $('#rr1_district_id').change(function() {
+    $('#rr1_sub_district_id').html('').load('/pao/get_sub_districts/'+$('#rr1_district_id option:selected').val());
+  });
+</script>
+

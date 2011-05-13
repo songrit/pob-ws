@@ -20,12 +20,10 @@ gem 'haml'
 gem "mail", "2.2.1"
 gem "backup"
 gem "prawn"
+gem "rspec", "1.3.1"
+gem "rspec-rails", "1.3.3"
+gem "syntax"
 group :development do
   gem "ruby-debug"
   gem "rails-footnotes"
-end
-group :test do
-  gem "rspec", "1.3.1"
-  gem "rspec-rails", "1.3.3"
-  gem "syntax"
 end

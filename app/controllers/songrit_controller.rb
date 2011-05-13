@@ -5,6 +5,9 @@ class SongritController < ApplicationController
   require 'nokogiri'
   # require 'geokit'
 
+  def test_province
+    @provinces= Province.all :order=>'name'
+  end
   def update_availability
     avails= Avail.all :order=>"created_at"
     tt="" ; count = 0
