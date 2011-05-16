@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
     dd= Date.new year, 10, 1
   end
   def b(s)
-    "<b>#{s}</b>"
+    s ? "<b>#{s}</b>" : " - "
   end
   def login_laas
     ff=FireWatir::Firefox.new :waitTime=>4

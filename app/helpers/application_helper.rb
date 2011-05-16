@@ -3,6 +3,9 @@ module ApplicationHelper
   require "fusion_charts_helper"
   include FusionChartsHelper
 
+  def age(dob)
+    Time.now.year-dob.year
+  end
   def direction(d)
     case d
     when 0..45

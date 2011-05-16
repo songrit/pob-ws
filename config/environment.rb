@@ -19,4 +19,5 @@ Rails::Initializer.run do |config|
   ENV["RAILS_ASSET_ID"] = ""
   # OTA config
   TARGET = "Test" # or "Production"
+  MSG_NEXT = "ดำเนินการต่อ"
 end

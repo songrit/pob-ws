@@ -1,0 +1,55 @@
+<% rr1= Rr1.find $xvars[:rr1_id] %>
+<style>
+  .para {text-indent: 5em;}
+  .right { text-align:right; padding-right:20px;}
+  #rr1_head { text-align:center; font-weight: bold; text-decoration:underline; font-size: 120%;}
+  .room {text-indent: 7em; display:block;}
+  .sig {margin-left:4.5in; text-align:center; width:3in; }
+</style>
+<div class='right'>แบบ อบจ. รร.1</div>
+<div id='rr1_head'>แบบระเบียนโรงแรม</div>
+<div class='right'>เขียนที่ <%= b rr1.at %></div>
+<div class='right'>วันที่ <%= b date_thai(Time.now, :date_only=>true, :month_full=>true) %></div>
+<p/>
+<p class='para'>ข้าพเจ้าขอแจ้งรายละเอียดโรงแรมต่อองค์การบริหารส่วนจังหวัดภูเก็ต ดังมีรายการต่อไปนี้</p>
+<p class='para'>1. ชื่อโรงแรม <%= b rr1.hotel_name %> ตั้งอยู่เลขที่ <%= b rr1.address %> ถนน <%= b rr1.street %>
+  ตำบล<%= b rr1.sub_district.try(:name) %> 
+  อำเภอ<%= b rr1.district.try(:name) %> 
+  จังหวัด<%= b rr1.province.try(:name) %> 
+  โทร <%= b rr1.phone %>
+</p>
+<p class='para'>2. นามเจ้าของ <%= b rr1.owner_name %> อายุ <%= b age(rr1.owner_dob) %> ปี
+  สัญชาติ <%= b rr1.owner_citizen %> เชื้อชาติ <%= b rr1.owner_national %>
+  อยู่ที่ <%= b rr1.owner_address %> ถนน <%= b rr1.owner_street %>
+  ตำบล<%= b rr1.owner_sub_district.try(:name) %> 
+  อำเภอ<%= b rr1.owner_district.try(:name) %> 
+  จังหวัด<%= b rr1.owner_province.try(:name) %> 
+  โทร <%= b rr1.owner_phone %>
+</p>
+<p class='para'>3. นามผู้ควบคุมและจัดการโรงแรม <%= b rr1.manager_name %> อายุ <%= b age(rr1.manager_dob) %> ปี
+  สัญชาติ <%= b rr1.manager_citizen %> เชื้อชาติ <%= b rr1.manager_national %>
+  อยู่ที่ <%= b rr1.manager_address %> ถนน <%= b rr1.manager_street %>
+  ตำบล<%= b rr1.manager_sub_district.try(:name) %> 
+  อำเภอ<%= b rr1.manager_district.try(:name) %> 
+  จังหวัด<%= b rr1.manager_province.try(:name) %> 
+  โทร <%= b rr1.manager_phone %>
+</p>
+<p class='para'>4. จำนวนห้องพักสำหรับให้เช่ามีจำนวนทั้งสิ้น <%= b rr1.rooms.map(&:qty).sum %> ห้อง/หลัง ตามรายละเอียดดังนี้
+<% rr1.rooms.each_with_index do |r,i| %>
+  <span class='room'><%= "(#{i+1})" %> ชนิดห้องพัก <%= b r.name %>
+  จำนวน <%= b r.qty %> ห้อง/หลัง</span>
+<% end %>
+<p/>
+<p class='para'>5. ข้าพเจ้าได้แนบแผ่นพับอัตราค่าห้องพักเพื่อประกอบการพิจารณา จำนวน <%= b rr1.brochure %> ฉบับ
+</p>
+<p class='para'>ข้าพเจ้าขอรับรองว่ารายการที่แจ้งตามแบบ อบจ. รร. 1 ถูกต้องเป็นความจริงทุกประการ
+  หากมีการเปลี่ยนแปลงชนิด จำนวน และอัตราห้องพัก ข้าพเจ้าจะยื่นแบบ อบจ. รร. 1 ใหม่
+  ให้ถูกต้องตามความเป็นจริงให้เสร็จสิ้นภายใน 15 วัน นับตั้งแต่วันที่มีการเปลี่ยนแปลง
+</p>
+<p />
+<div class='sig'>(ลงชื่อ) <%= '.'*80 %></div>
+<div class='sig'>( <%= rr1.manager_name %> )</div>
+<div class='sig'>ผู้ควบคุมและจัดการโรงแรม</div>
+<p />
+<strong>หมายเหตุ</strong> ให้ใช้แบบ อบจ. รร. 1 ในครั้งแรกที่ยื่นชำระค่าธรรมเนียมและทุกครั้งที่มีการเปลี่ยนแปลง
+

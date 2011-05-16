@@ -64,9 +64,14 @@ end
     </div>
     <div style="clear:both;"></div>
     <div id="footer">
+      <% t = "Phuket Online Booking #{APP_VERSION} "+
+        "Powered by <a href='http://gmindapp.googlecode.com'>GMindApp</a>. "+
+        "Best viewed by "
+      %>
       <div id="copyright">
-        <%= "Phuket Online Booking #{APP_VERSION}" %>
-        powered by <a href="http://gmindapp.com">GMindApp</a><br/>
+        <%= align_text t,6 %>
+        <%= link_to image_tag("google_chrome24.png"), "http://www.google.com/chrome", :target=>'_blank' %>
+        <br/>
       </div>
     </div>
   </body>

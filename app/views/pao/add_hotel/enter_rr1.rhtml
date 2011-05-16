@@ -19,7 +19,7 @@
     </tr>
     <tr>
       <td class="field-name">จังหวัด</td>
-      <td colspan='2'><%= f.collection_select :province_id, Province.all, :id, :name, :selected=>66 %></td>
+      <td colspan='2'><%= f.collection_select :province_id, Province.all, :id, :name, :selected=>66, :prompt=>"กรุณาเลือกจังหวัด" %></td>
     </tr>
     <tr>
       <td class="field-name">อำเภอ</td>
@@ -39,7 +39,7 @@
     </tr>
     <tr>
       <td class="field-name">วันเกิด</td>
-      <td colspan='2'><%= f.text_field :owner_dob, :style=>"width:300px;" %></td>
+      <td colspan='2'><%= f.date_select_year :owner_dob, :start_year=>Time.now.year-100, :end_year=>Time.now.year-15 %></td>
     </tr>
     <tr>
       <td class="field-name">สัญชาติ</td>
@@ -59,7 +59,7 @@
     </tr>
     <tr>
       <td class="field-name">จังหวัด</td>
-      <td colspan='2'><%= f.collection_select :owner_province_id, Province.all, :id, :name, :selected=>66 %></td>
+      <td colspan='2'><%= f.collection_select :owner_province_id, Province.all, :id, :name, :selected=>66, :prompt=>"กรุณาเลือกจังหวัด" %></td>
     </tr>
     <tr>
       <td class="field-name">อำเภอ</td>
@@ -79,7 +79,7 @@
     </tr>
     <tr>
       <td class="field-name">วันเกิด</td>
-      <td colspan='2'><%= f.text_field :manager_dob, :style=>"width:300px;" %></td>
+      <td colspan='2'><%= f.date_select_year :manager_dob, :start_year=>Time.now.year-100, :end_year=>Time.now.year-15 %></td>
     </tr>
     <tr>
       <td class="field-name">สัญชาติ</td>
@@ -114,12 +114,12 @@
       <td colspan='2'><%= f.text_field :manager_phone, :style=>"width:300px;" %></td>
     </tr>
     <tr>
-      <td class="field-name">จำนวนห้องทั้งสิ้น</td>
-      <td colspan='2'><%= f.text_field :total_rooms, :style=>"width:300px;" %></td>
+      <td class="field-name">เอกสารประกอบ</td>
+      <td colspan='2'><%= f.file_field :doc, :style=>"width:300px;" %></td>
     </tr>
     <tr>
-      <td class="field-name">เอกสารประกอบ</td>
-      <td colspan='2'><%= f.file_field :brochure, :style=>"width:300px;" %></td>
+      <td class="field-name">จำนวนแผ่นพับอัตราค่าห้องพัก</td>
+      <td colspan='2'><%= f.text_field :brochure, :style=>"width:200px;" %> ฉบับ</td>
     </tr>
     <tr>
       <td class="field-name">รหัส</td>

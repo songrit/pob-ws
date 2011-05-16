@@ -5,6 +5,12 @@ class SongritController < ApplicationController
   require 'nokogiri'
   # require 'geokit'
 
+  def fix_tambon
+    SubDistrict.all.each do |s|
+      s.update_attribute :name, s.name.sub(/^ตำบล/,'')
+    end
+    render :text => "done" 
+  end
   def test_province
     @provinces= Province.all :order=>'name'
   end
@@ -115,20 +121,6 @@ class SongritController < ApplicationController
     d= Date.today
     dd= Date.new d.year, d.month, 1
     render :text=> dd-1
-  end
-  def send_dloc_mail
-    count= 0
-    DlocMail.unsent.each do |m|
-      from= "dlocthai@gmail.com"
-      #    if m.recipient =~ /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/
-      Notifier.deliver_gma(from, m.recipient.chomp(","), m.subject, m.body||="" )
-      #    end
-      m.sent= true
-      m.save
-      count += 1
-    end
-    logger.info "#{Time.now}: sent #{count} mails\n\n"
-    render :text => "#{Time.now}: sent #{count} mails\n\n"
   end
   def test_user_agent
     render :text => request.user_agent

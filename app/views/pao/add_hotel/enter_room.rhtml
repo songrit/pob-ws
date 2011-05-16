@@ -1,0 +1,23 @@
+<% room = Room.new %>
+<table width="100%">
+  <% fields_for :room do |f| %>
+    <tr>
+      <td class="field-name">ชนิดห้องพัก</td>
+      <td colspan='2'><%= f.text_field :name, :style=>"width:300px;" %></td>
+    </tr>
+    <tr>
+      <td class="field-name">จำนวน</td>
+      <td colspan=2>
+        <%= f.text_field :qty, :style=>"width:200px;" %>
+        ห้อง / หลัง
+      </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td colspan="2">
+        <%= radio_button_tag :done, 'y'  %> สิ้นสุดการบันทึกชนิดห้องพัก
+        <%= radio_button_tag :done, 'n', true  %> ยังมีรายการบันทึกต่อ
+      </td>
+    </tr>
+  <% end %>
+</table>
