@@ -9,6 +9,7 @@ one:
   district_id: 1
   province_id: 1
   phone: MyString
+  zip: MyString
   owner_name: MyString
   owner_dob: 2011-05-16
   owner_citizen: MyString
@@ -45,6 +46,7 @@ two:
   district_id: 1
   province_id: 1
   phone: MyString
+  zip: MyString
   owner_name: MyString
   owner_dob: 2011-05-16
   owner_citizen: MyString

@@ -9,6 +9,7 @@ class CreateRr1s < ActiveRecord::Migration
       t.integer :district_id
       t.integer :province_id
       t.string :phone
+      t.string :zip
       t.string :owner_name
       t.date :owner_dob
       t.string :owner_citizen
