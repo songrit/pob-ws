@@ -2,7 +2,7 @@
   = step(@runseq.form_step, @xvars[:total_form_steps])
   #title
     %span(style='float:left;')= "รหัสดำเนินการ #{@xmain.id} : #{@xmain.name}"
-    %span(style='float:right;')= @runseq.name
+    %span(style='float:right;padding-right: 20px;')= @runseq.name
     &nbsp;
   /= javascript_include_tag "disable_enter_key"
   /= javascript_include_tag 'jquery.autocomplete'

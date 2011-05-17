@@ -36,9 +36,10 @@ describe PaoController do
     r= clean_data(rr1.attributes.to_options)
     r.should == @rr1
   end
-  it "should add room"
+  it "should assign hotel to user"
+  it "should receive fee (rr3)"
+  it "should have account receivable report"
+  it "should have revenue analysis report"
   it "should edit hotel"
   it "should remove hotel"
-  it "should receive fee"
-  it "should generate reports"
 end
