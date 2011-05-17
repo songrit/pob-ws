@@ -1,0 +1,33 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  rr1_id: 1
+  addition: 1
+  month: 1
+  balance_in: 1.5
+  balance: 1.5
+  balance_out: 1.5
+  amount: 1.5
+  fee: 1.5
+  interest: 1.5
+  fine: 1.5
+  total: 1.5
+  receipt_book: 1
+  receipt_no: 1
+  gma_user_id: 1
+
+two:
+  rr1_id: 1
+  addition: 1
+  month: 1
+  balance_in: 1.5
+  balance: 1.5
+  balance_out: 1.5
+  amount: 1.5
+  fee: 1.5
+  interest: 1.5
+  fine: 1.5
+  total: 1.5
+  receipt_book: 1
+  receipt_no: 1
+  gma_user_id: 1
