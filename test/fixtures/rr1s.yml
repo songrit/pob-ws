@@ -11,7 +11,7 @@ one:
   phone: MyString
   zip: MyString
   owner_name: MyString
-  owner_dob: 2011-05-16
+  owner_dob: 2011-05-17
   owner_citizen: MyString
   owner_national: MyString
   owner_address: MyString
@@ -21,7 +21,7 @@ one:
   owner_province_id: 1
   owner_phone: MyString
   manager_name: MyString
-  manager_dob: 2011-05-16
+  manager_dob: 2011-05-17
   manager_citizen: MyString
   manager_national: MyString
   manager_address: MyString
@@ -35,6 +35,8 @@ one:
   code: MyString
   lat: 1.5
   lng: 1.5
+  fee: 1.5
+  total_fee: 1.5
   gma_user_id: 1
 
 two:
@@ -48,7 +50,7 @@ two:
   phone: MyString
   zip: MyString
   owner_name: MyString
-  owner_dob: 2011-05-16
+  owner_dob: 2011-05-17
   owner_citizen: MyString
   owner_national: MyString
   owner_address: MyString
@@ -58,7 +60,7 @@ two:
   owner_province_id: 1
   owner_phone: MyString
   manager_name: MyString
-  manager_dob: 2011-05-16
+  manager_dob: 2011-05-17
   manager_citizen: MyString
   manager_national: MyString
   manager_address: MyString
@@ -72,4 +74,6 @@ two:
   code: MyString
   lat: 1.5
   lng: 1.5
+  fee: 1.5
+  total_fee: 1.5
   gma_user_id: 1
