@@ -55,12 +55,12 @@ end
       <% end %>
     </div>
     <div id="content">
+      <%= render :partial => "layouts/sidebar", :locals=>{:gma_module=>gma_module} %>
       <div id="contentmiddle">
         <div id="notice"><%= display_notices %></div>
         <div id="notice"><%= flash[:notice] %></div>
         <div id="middlespace"><%= yield %></div>
       </div>
-      <%= render :partial => "layouts/sidebar", :locals=>{:gma_module=>gma_module} %>
     </div>
     <div style="clear:both;"></div>
     <div id="footer">
