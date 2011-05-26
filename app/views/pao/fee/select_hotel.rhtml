@@ -1,0 +1,42 @@
+﻿<%= javascript_include_tag "jquery.ui.core" %>
+<%= javascript_include_tag "jquery.ui.widget" %>
+<%= javascript_include_tag "jquery.ui.position" %>
+<%= javascript_include_tag "jquery.ui.autocomplete" %>
+
+<%= stylesheet_link_tag "jquery.ui","jquery.ui.autocomplete" %>
+<style>
+.ui-autocomplete-loading { background: white url('/images/ajax-loader-circle.gif') right center no-repeat; }
+</style>
+
+<table width="100%">
+  <tr>
+    <td class="field-name" valign="top">ชื่อโรงแรม</td>
+    <td colspan='2'>
+      <%= text_field_tag :hotel_name,'', :style=>"width:300px;" %>
+      <div id="address">กรุณาเลือกจากรายชื่อที่ปรากฏเท่านั้น ถ้าเป็นโรงแรมใหม่ จะต้องขึ้นทะเบียน รร. ๑ ก่อน</div>
+      <%= hidden_field_tag :hotel_id %>
+    </td>
+  </tr>
+</table>
+<script>
+  $(function(){
+    $('input[value="ดำเนินการต่อ"]').attr('disabled','disabled')
+    $("#hotel_name").autocomplete({
+      source: "/hotels/rr3_hotels",
+      minLength: 2,
+      search: function(e,ui) { reset_hotel() },
+      select: function(e,ui) { select_hotel(ui.item.label) }
+    });
+  });
+  function reset_hotel() {
+    $("#hotel_id").removeAttr('value');
+    $("#address").text("");
+    $('input[value="ดำเนินการต่อ"]').attr('disabled','disabled')
+  };
+  function select_hotel(label) {
+    var result = label.split(":");
+    $("#hotel_id").val(result[0]);
+    $("#address").text(result[1]);
+    $('input[value="ดำเนินการต่อ"]').removeAttr('disabled')
+  };
+</script>

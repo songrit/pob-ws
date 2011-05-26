@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  section: MyString
+  payee: MyString
+  item: MyString
+  amount: 1.5
+  gma_user_id: 1
+
+two:
+  section: MyString
+  payee: MyString
+  item: MyString
+  amount: 1.5
+  gma_user_id: 1

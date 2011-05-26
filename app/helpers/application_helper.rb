@@ -54,9 +54,9 @@ module ApplicationHelper
   end
   def num_satang(n)
     return "-" unless n
-    satang = ((n-n.to_i)*100).to_s
+    satang = (n-n.to_i)*100
     # return satang=="0" ? "-" : satang
-    satang.to_i
+    satang.round.to_s
   end
   def nbsp(n)
     "&nbsp;"*n

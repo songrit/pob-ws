@@ -35,8 +35,9 @@ class CreateRr1s < ActiveRecord::Migration
       t.string :code
       t.float :lat
       t.float :lng
-      t.float :fee
-      t.float :total_fee
+      t.float :pending_fee, :default => 0 
+      t.integer :pending_qty, :default => 0
+      t.float :total_fee, :default => 0
       t.integer :gma_user_id
 
       t.timestamps

@@ -461,11 +461,24 @@ module Gma
   def make_fields(n)
     f= ""
     n.each_element('node') do |nn|
-      next if nn.attributes['TEXT'] =~ /\#.*/
-      k,v= nn.attributes['TEXT'].split(/:\s*/,2)
-      v ||= 'integer'
-      v= 'float' if v=~/double/i
-      f << " #{name2code(k.strip)}:#{v.strip} "
+      text = nn.attributes['TEXT']
+      next if text =~ /\#.*/ 
+      # sometimes freemind puts all fields inside a blank node
+      unless text.empty?
+        k,v= text.split(/:\s*/,2)
+        v ||= 'integer'
+        v= 'float' if v=~/double/i
+        f << " #{name2code(k.strip)}:#{v.strip} "
+      else
+        nn.each_element('node') do |nnn|
+          text1 = nnn.attributes['TEXT']
+          next if text1 =~ /\#.*/ 
+          k,v= text1.split(/:\s*/,2)
+          v ||= 'integer'
+          v= 'float' if v=~/double/i
+          f << " #{name2code(k.strip)}:#{v.strip} "
+        end
+      end
     end
     f
   end

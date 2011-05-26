@@ -27,4 +27,11 @@ class HotelsController < ApplicationController
   def pois
     @pois = Poi.all
   end
+  
+  # ajax
+  def rr3_hotels
+    @hotels= Rr1.find :all, :conditions=>['hotel_name LIKE ?', "%#{params[:term]}%"], :limit=>10
+    @select= @hotels.map {|p| {:label=>"#{p.id}:#{p.hotel_name} #{p.full_address}", :value => p.hotel_name }}
+    render :json=>@select
+  end
 end

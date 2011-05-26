@@ -1,159 +1,80 @@
-<% rr3 = Rr3.new %>
+<marquee loop=3>Hello from Songrit</marquee>
+<% 
+  rr1 = Rr1.find $xvars[:select_hotel][:hotel_id]
+  rr3 = Rr3.new :month=>30.days.ago, :balance_out => 0 
+  pending_fee= rr1.pending_fee || 0
+  pending_qty= rr1.pending_qty || 0
+%>
 <table width="100%">
-  <% fields_for :rr3 do |f| %>
+  <% fields_for rr3 do |f| %>
     <tr>
-      <td class="field-name">เขียนที่</td>
-      <td colspan='2'><%= f.text_field :at, :style=>"width:300px;" %></td>
+      <td class="field-name" valign="top">โรงแรม</td>
+      <td colspan='2'>
+        <%= rr1.hotel_name %>
+      </td>
     </tr>
     <tr>
-      <td class="field-name">ชื่อโรงแรม</td>
-      <td colspan='2'><%= f.text_field :hotel_name, :style=>"width:300px;" %></td>
+      <td class="field-name" />
+      <td>
+        <%= radio_button_tag :normal, 'y', true  %> ยื่นปรกติ
+        <%= radio_button_tag :normal, 'n'  %> ยื่นเพิ่มเติม
+      </td>
     </tr>
     <tr>
-      <td class="field-name">ตั้งอยู่เลขที่</td>
-      <td colspan='2'><%= f.text_field :address, :style=>"width:300px;" %></td>
+      <td class="field-name">ยื่นเพิ่มเติมครั้งที่</td>
+      <td colspan='2'><%= f.text_field :addition, :style=>"width:100px;" %></td>
     </tr>
     <tr>
-      <td class="field-name">ถนน</td>
-      <td colspan='2'><%= f.text_field :street, :style=>"width:300px;" %></td>
+      <td class="field-name">เดือน</td>
+      <td colspan='2'><%= f.date_select :month, :discard_day=>true, :use_month_names=>THAI_MONTHS, :order=>[:month, :year] %></td>
     </tr>
     <tr>
-      <td class="field-name">จังหวัด</td>
-      <td colspan='2'><%= f.collection_select :province_id, Province.all, :id, :name, :selected=>66, :prompt=>"กรุณาเลือกจังหวัด" %></td>
+      <td class="field-name">ลูกหนี้ค่าเช่าห้องพักยกมา ณ ต้นเดือน</td>
+      <td colspan='2' id="balance_in"><%= pending_fee %></td>
     </tr>
     <tr>
-      <td class="field-name">อำเภอ</td>
-      <td colspan='2'><%= f.collection_select :district_id, Province.find(66).districts, :id, :name, :prompt=>"กรุณาเลือกอำเภอ" %></td>
+      <td class="field-name">จำนวนห้อง / หลัง</td>
+      <td colspan='2' id="balance_in"><%= pending_qty %></td>
     </tr>
     <tr>
-      <td class="field-name">ตำบล</td>
-      <td colspan='2'><%= f.select :sub_district_id, [] %></td>
+      <td class="field-name">ปริมาณและรายได้ค่าเช่าห้องพักเดือนนี้</td>
+      <td colspan='2'><%= f.text_field :balance, :style=>"width:300px;" %></td>
     </tr>
     <tr>
-      <td class="field-name">โทรศัพท์</td>
-      <td colspan='2'><%= f.text_field :phone, :style=>"width:300px;" %></td>
+      <td class="field-name">จำนวนห้อง / หลัง</td>
+      <td colspan='2'><%= f.text_field :qty, :style=>"width:100px;" %></td>
     </tr>
     <tr>
-      <td class="field-name">รหัสไปรษณีย์</td>
-      <td colspan='2'><%= f.text_field :zip, :style=>"width:300px;" %></td>
+      <td class="field-name">ลูกหนี้ค่าเช่าห้องพักยกไปเดือนหน้า</td>
+      <td colspan='2'><%= f.text_field :balance_out, :style=>"width:300px;" %></td>
     </tr>
     <tr>
-      <td class="field-name">นามเจ้าของ</td>
-      <td colspan='2'><%= f.text_field :owner_name, :style=>"width:300px;" %></td>
+      <td class="field-name">จำนวนห้อง / หลัง</td>
+      <td colspan='2'><%= f.text_field :qty_out, :style=>"width:100px;" %></td>
     </tr>
     <tr>
-      <td class="field-name">วันเกิด</td>
-      <td colspan='2'><%= f.date_select_year :owner_dob, :start_year=>Time.now.year-100, :end_year=>Time.now.year-15 %></td>
+      <td class="field-name">ค่าเช่าห้องพักที่เรียกเก็บเดือนนี้</td>
+      <td colspan='2' id='amount' />
     </tr>
     <tr>
-      <td class="field-name">สัญชาติ</td>
-      <td colspan='2'><%= f.text_field :owner_citizen, :style=>"width:300px;" %></td>
-    </tr>
-    <tr>
-      <td class="field-name">เชื้อชาติ</td>
-      <td colspan='2'><%= f.text_field :owner_national, :style=>"width:300px;" %></td>
-    </tr>
-    <tr>
-      <td class="field-name">ที่อยู่</td>
-      <td colspan='2'><%= f.text_field :owner_address, :style=>"width:300px;" %></td>
-    </tr>
-    <tr>
-      <td class="field-name">ถนน</td>
-      <td colspan='2'><%= f.text_field :owner_street, :style=>"width:300px;" %></td>
-    </tr>
-    <tr>
-      <td class="field-name">จังหวัด</td>
-      <td colspan='2'><%= f.collection_select :owner_province_id, Province.all, :id, :name, :selected=>66, :prompt=>"กรุณาเลือกจังหวัด" %></td>
-    </tr>
-    <tr>
-      <td class="field-name">อำเภอ</td>
-      <td colspan='2'><%= f.collection_select :owner_district_id, Province.find(66).districts, :id, :name, :prompt=>"กรุณาเลือกอำเภอ" %></td>
-    </tr>
-    <tr>
-      <td class="field-name">ตำบล</td>
-      <td colspan='2'><%= f.select :owner_sub_district_id, [] %></td>
-    </tr>
-    <tr>
-      <td class="field-name">โทรศัพท์</td>
-      <td colspan='2'><%= f.text_field :owner_phone, :style=>"width:300px;" %></td>
-    </tr>
-    <tr>
-      <td class="field-name">นามผู้ควบคุมและจัดการ</td>
-      <td colspan='2'><%= f.text_field :manager_name, :style=>"width:300px;" %></td>
-    </tr>
-    <tr>
-      <td class="field-name">วันเกิด</td>
-      <td colspan='2'><%= f.date_select_year :manager_dob, :start_year=>Time.now.year-100, :end_year=>Time.now.year-15 %></td>
-    </tr>
-    <tr>
-      <td class="field-name">สัญชาติ</td>
-      <td colspan='2'><%= f.text_field :manager_citizen, :style=>"width:300px;" %></td>
-    </tr>
-    <tr>
-      <td class="field-name">เชื้อชาติ</td>
-      <td colspan='2'><%= f.text_field :manager_national, :style=>"width:300px;" %></td>
-    </tr>
-    <tr>
-      <td class="field-name">ที่อยู่</td>
-      <td colspan='2'><%= f.text_field :manager_address, :style=>"width:300px;" %></td>
-    </tr>
-    <tr>
-      <td class="field-name">ถนน</td>
-      <td colspan='2'><%= f.text_field :manager_street, :style=>"width:300px;" %></td>
-    </tr>
-    <tr>
-      <td class="field-name">จังหวัด</td>
-      <td colspan='2'><%= f.collection_select :manager_province_id, Province.all, :id, :name, :selected=>66 %></td>
-    </tr>
-    <tr>
-      <td class="field-name">อำเภอ</td>
-      <td colspan='2'><%= f.collection_select :manager_district_id, Province.find(66).districts, :id, :name, :prompt=>"กรุณาเลือกอำเภอ" %></td>
-    </tr>
-    <tr>
-      <td class="field-name">ตำบล</td>
-      <td colspan='2'><%= f.select :manager_sub_district_id, [] %></td>
-    </tr>
-    <tr>
-      <td class="field-name">โทรศัพท์</td>
-      <td colspan='2'><%= f.text_field :manager_phone, :style=>"width:300px;" %></td>
-    </tr>
-    <tr>
-      <td class="field-name">เอกสารประกอบ</td>
-      <td colspan='2'><%= f.file_field :doc, :style=>"width:300px;" %></td>
-    </tr>
-    <tr>
-      <td class="field-name">จำนวนแผ่นพับอัตราค่าห้องพัก</td>
-      <td colspan='2'><%= f.text_field :brochure, :style=>"width:200px;" %> ฉบับ</td>
-    </tr>
-    <tr>
-      <td class="field-name">รหัส</td>
-      <td colspan='2'><%= f.text_field :code, :style=>"width:300px;" %></td>
-    </tr>
-    <tr>
-      <td class="field-name">ที่ตั้ง</td>
-      <td colspan="2"><%= f.point(:width => "100%", :zoom=>14, :lat=>7.888056, :lng=>98.3975) %></td>
+      <td class="field-name">ค่าธรรมเนียมที่นำส่ง</td>
+      <td colspan='2' id='fee' />
     </tr>
   <% end %>
 </table>
 <%= fix_thai_year %>
-<script type="text/javascript" >
-  $('#rr1_province_id').change(function() {
-    $('#rr1_district_id').html('').load('/pao/get_districts/'+$('#rr1_province_id option:selected').val());
-  });
-  $('#rr1_district_id').change(function() {
-    $('#rr1_sub_district_id').html('').load('/pao/get_sub_districts/'+$('#rr1_district_id option:selected').val());
-  });
-  $('#rr1_owner_province_id').change(function() {
-    $('#rr1_owner_district_id').html('').load('/pao/get_districts/'+$('#rr1_owner_province_id option:selected').val());
-  });
-  $('#rr1_owner_district_id').change(function() {
-    $('#rr1_owner_sub_district_id').html('').load('/pao/get_sub_districts/'+$('#rr1_owner_district_id option:selected').val());
-  });
-  $('#rr1_manager_province_id').change(function() {
-    $('#rr1_manager_district_id').html('').load('/pao/get_districts/'+$('#rr1_manager_province_id option:selected').val());
-  });
-  $('#rr1_manager_district_id').change(function() {
-    $('#rr1_manager_sub_district_id').html('').load('/pao/get_sub_districts/'+$('#rr1_manager_district_id option:selected').val());
-  });
+<%= javascript_include_tag "jshashtable-2.1","jquery.numberformatter-1.2.2.min" %>
+<script type="text/javascript" charset="utf-8">
+$('#rr3_balance').change(function() {
+  var amount= parseInt($('#balance_in').text())+parseInt($('#rr3_balance').val())-parseInt($('#rr3_balance_out').val());
+  $('#amount').text($.formatNumber(amount,{format:"#,##0.00"}));
+  var fee= amount/100;
+  $('#fee').text($.formatNumber(fee,{format:"#,##0.00"}));
+});
+$('#rr3_balance_out').change(function() {
+  var amount= parseInt($('#balance_in').text())+parseInt($('#rr3_balance').val())-parseInt($('#rr3_balance_out').val());
+  $('#amount').text($.formatNumber(amount,{format:"#,##0.00"}));
+  var fee= amount/100;
+  $('#fee').text($.formatNumber(fee,{format:"#,##0.00"}));
+})
 </script>
-
