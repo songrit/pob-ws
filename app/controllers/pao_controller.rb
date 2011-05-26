@@ -21,11 +21,18 @@ class PaoController < ApplicationController
     rr3.amount = rr1.pending_fee+rr3.balance-rr3.balance_out
     rr3.fee = rr3.amount/100
     rr3.total = rr3.fee+rr3.interest+rr3.fine
+    item = "ค่าธรรมเนียมบำรุง อบจ. จากผู้เข้าพักในโรงแรม ประจำเดือน #{THAI_MONTHS[rr3.month.month]} #{rr3.month.year+543}"
+    receipt= Receipt.create :section=> "กองคลัง",
+      :payee => rr1.hotel_name, :item => item, :amount => rr3.fee
+    rr3.receipt_book= 9000
+    rr3.receipt_no= receipt.id
     rr1.pending_fee = rr3.balance_out
     rr1.pending_qty = rr3.qty_out
     rr1.total_fee += rr3.total
     rr1.save
+    rr3.save
     $xvars[:rr3_id]= rr3.id
+    $xvars[:receipt_id]= receipt.id
   end
   
   # ajax
