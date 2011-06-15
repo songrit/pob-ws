@@ -74,6 +74,11 @@ describe PaoController do
     assigns[:revenues][0][:qty].should == 1
     assigns[:revenues][0][:qty_ytd].should == 1
   end
+  it "should show list of hotels" do
+    @rr1s= mock_model(Rr1)
+    get :hotels
+    assigns[:rr1s].should == [@rr1s]
+  end
   it "should be able to edit rr1 hotel"
   it "should assign hotel to user"
   it "should receive fee (rr3)"

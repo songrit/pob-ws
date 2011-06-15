@@ -78,6 +78,7 @@
 <icon BUILTIN="pencil"/>
 </node>
 </node>
+<node CREATED="1308122907803" ID="ID_1146768142" MODIFIED="1308122927973" TEXT="link: &#xe23;&#xe32;&#xe22;&#xe0a;&#xe37;&#xe48;&#xe2d;&#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;: /pao/hotels"/>
 </node>
 <node CREATED="1275752678377" FOLDED="true" ID="ID_1348489452" MODIFIED="1302830718503" TEXT="admin:&#xe1c;&#xe39;&#xe49;&#xe14;&#xe39;&#xe41;&#xe25;&#xe23;&#xe30;&#xe1a;&#xe1a;">
 <node CREATED="1275752688167" ID="ID_229996461" MODIFIED="1275752690948" TEXT="role:a"/>

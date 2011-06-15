@@ -16,6 +16,9 @@ class PaoController < ApplicationController
         :total_ytd=>total_ytd, :qty_ytd => qty_ytd, :name=>name }
     end
   end
+  def hotels
+    @rr1s= Rr1.all :order=>:district_id
+  end
 
   # gma
   def create_hotel
