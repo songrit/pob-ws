@@ -1,7 +1,7 @@
 class PaoController < ApplicationController
   def index
     @revenues= []
-    @districts= Rr3.all(:group=>:district_id,
+    @districts= Rr3.all(:group=>:district_id, :select => "district_id", 
       :conditions => ['month >= ? and month<= ?', 
       Date.new(Time.now.year,1,1), end_of_last_month]).
       map(&:district_id)
