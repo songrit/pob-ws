@@ -10,7 +10,6 @@
   ประจำเดือน
   = THAI_MONTHS[m.month-1]
   = m.year+543
-  = THAI_MONTHS
 - if @revenues.size > 0
   %canvas(id="donut2" width="600" height="300") [No canvas support]
 :css
@@ -45,7 +44,7 @@
     %td.num= b currency(grand_total[:total_ytd])
 
 - totals= @revenues.each.map {|r| r[:total]}
-- districts= @revenues.each.map {|r| r[:name]}
+- districts= @revenues.each.map {|r| r[:name]+" "}
 :javascript
   function getGradient(obj, color)
   {
