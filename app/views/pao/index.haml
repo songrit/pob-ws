@@ -6,11 +6,11 @@
 
 .label สรุปการรับเงินค่าธรรมเนียมบำรุงองค์การบริหารส่วนจังหวัดจากผู้เข้าพักในโรงแรม
 - m= end_of_last_month
-= "end of last month="+m.to_s
 .label
   ประจำเดือน
   = THAI_MONTHS[m.month-1]
   = m.year+543
+  = THAI_MONTHS
 - if @revenues.size > 0
   %canvas(id="donut2" width="600" height="300") [No canvas support]
 :css
