@@ -5,6 +5,8 @@ class CreateReceipts < ActiveRecord::Migration
       t.string :payee
       t.string :item
       t.float :amount
+      t.integer :gma_xmain_id
+      t.integer :gma_runseq_id
       t.integer :gma_user_id
 
       t.timestamps

@@ -1,0 +1,81 @@
+/- render_chart_html '/FusionCharts/StackedColumn2D.swf', '/data/revenue_chart.xml', '', 'myFirstHTML', 600, 400, false
+= javascript_include_tag "rgraph/RGraph.common.core.js"
+= javascript_include_tag "rgraph/RGraph.common.annotate.js"
+= javascript_include_tag "rgraph/RGraph.common.tooltips.js"
+= javascript_include_tag "rgraph/RGraph.pie.js"
+
+.label สรุปการรับเงินค่าธรรมเนียมบำรุงองค์การบริหารส่วนจังหวัดจากผู้เข้าพักในโรงแรม
+- m= end_of_last_month
+.label
+  ประจำเดือน
+  = THAI_MONTHS[m.month-1]
+  = m.year+543
+%canvas(id="donut2" width="600" height="300") [No canvas support]
+:css
+  #revenue td, #revenue th { border:1px solid black; padding:3px; }
+%table(id='revenue' style='width:100%; border-collapse: collapse')
+  %tr
+    %th(rowspan=2) พื้นที่
+    %th(colspan=2) จำนวนราย
+    %th(colspan=2) รับเงินค่าธรรมเนียม
+  %tr
+    %th (เดือนนี้)
+    %th (แต่ต้นปี)
+    %th (เดือนนี้)
+    %th (แต่ต้นปี)
+    - grand_total= {:qty=>0, :qty_ytd=>0, :total => 0, :total_ytd => 0 }
+  - @revenues.each do |r|
+    %tr
+      %td= r[:name]
+      %td.num= r[:qty]
+      - grand_total[:qty] += r[:qty]
+      %td.num= r[:qty_ytd]
+      - grand_total[:qty_ytd] += r[:qty_ytd]
+      %td.num= currency r[:total]
+      - grand_total[:total] += r[:total]
+      %td.num= currency r[:total_ytd]
+      - grand_total[:total_ytd] += r[:total_ytd]
+  %tr
+    %td= b "รวม"
+    %td.num= b grand_total[:qty]
+    %td.num= b grand_total[:qty_ytd]
+    %td.num= b currency(grand_total[:total])
+    %td.num= b currency(grand_total[:total_ytd])
+
+- totals= @revenues.each.map {|r| r[:total]}
+- districts= @revenues.each.map {|r| r[:name]}
+:javascript
+  function getGradient(obj, color)
+  {
+      var gradient = obj.context.createRadialGradient(obj.canvas.width / 2, obj.canvas.height / 2, 0, obj.canvas.width / 2, obj.canvas.height / 2, 200);
+      gradient.addColorStop(0, 'black');
+      gradient.addColorStop(0.5, color);
+      gradient.addColorStop(1, 'black');
+      
+      return RGraph.isIE8() ? color : gradient;
+  }
+  window.onload = function ()
+  {
+    var donut2 = new RGraph.Pie('donut2', #{totals.inspect.to_s});
+    var gradient1 = getGradient(donut2, 'cyan');
+    var gradient2 = getGradient(donut2, 'green');
+    var gradient3 = getGradient(donut2, 'pink');
+    var gradient4 = getGradient(donut2, 'yellow');
+    var gradient5 = getGradient(donut2, 'grey');
+    var gradient6 = getGradient(donut2, 'cyan');
+    var gradient7 = getGradient(donut2, 'red');
+    var gradient8 = getGradient(donut2, '#ddd');
+    var gradient9 = getGradient(donut2, 'blue');
+
+    donut2.Set('chart.variant', 'donut');
+    donut2.Set('chart.labels', #{districts.inspect.to_s});
+    donut2.Set('chart.text.font', 'TH SarabunPSK');
+    donut2.Set('chart.text.size', 12);
+    /* donut2.Set('chart.title', "ประจำเดือน");*/
+    donut2.Set('chart.gutter', 35);
+    donut2.Set('chart.strokestyle', 'rgba(0,0,0,0)');
+    donut2.Set('chart.colors', [gradient1, gradient2, gradient3, gradient4, gradient5, gradient6, gradient7, gradient8, gradient9]);
+    $('#donut2').width($('#middlespace').width());
+    
+    donut2.Draw();    
+  }
