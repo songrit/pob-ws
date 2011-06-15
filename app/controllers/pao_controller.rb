@@ -24,6 +24,7 @@ class PaoController < ApplicationController
   def create_hotel
     rr1= Rr1.create $xvars[:enter_rr1][:rr1]
     $xvars[:rr1_id]= rr1.id
+    $xvars[:p][:return]= "/pao"
   end
   def create_room
     unless $xvars[:enter_room][:room][:name].empty?
@@ -52,6 +53,7 @@ class PaoController < ApplicationController
     rr3.save
     $xvars[:rr3_id]= rr3.id
     $xvars[:receipt_id]= receipt.id
+    $xvars[:p][:return]= "/pao"
   end
   
   # ajax
