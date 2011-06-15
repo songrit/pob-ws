@@ -12,18 +12,18 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
 
   def end_of_last_month
-    d= Date.today
-    dd= Date.new d.year, d.month, 1
+    now= Time.now
+    dd= Date.new now.year, now.month, 1
     dd-1
   end
   def begin_of_last_month
-    d= Date.today
-    if d.month==1
+    now= Time.now
+    if now.month==1
       m = 12
-      y = d.year-1
+      y = now.year-1
     else
-      m = d.month-1
-      y = d.year
+      m = now.month-1
+      y = now.year
     end
     dd= Date.new y, m, 1
   end
