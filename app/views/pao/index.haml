@@ -10,7 +10,8 @@
   ประจำเดือน
   = THAI_MONTHS[m.month-1]
   = m.year+543
-%canvas(id="donut2" width="600" height="300") [No canvas support]
+- if @revenues.size > 0
+  %canvas(id="donut2" width="600" height="300") [No canvas support]
 :css
   #revenue td, #revenue th { border:1px solid black; padding:3px; }
 %table(id='revenue' style='width:100%; border-collapse: collapse')
