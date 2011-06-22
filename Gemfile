@@ -7,12 +7,12 @@ gem "heroku"
 gem "taps"
 # gem 'mysql'
 gem 'ruby-mysql'
-gem 'pg' # use for heroku db:push
+# gem 'pg', :group=>"test" # use for heroku db:push
 gem "linguistics"
 gem "will_paginate"
 gem "RedCloth"
 gem "mechanize"
-gem "rmagick", :require => "RMagick"
+# gem "rmagick", :require => "RMagick"
 gem "geokit"
 gem 'geokit-rails'
 gem 'rubyzip', :require => 'zip/zip'
