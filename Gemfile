@@ -5,7 +5,8 @@ gem "bcrypt-ruby", :require=>"bcrypt"
 gem "rails", "2.3.5"
 gem "heroku"
 gem "taps"
-gem 'mysql'
+# gem 'mysql'
+gem 'ruby-mysql'
 gem 'pg' # use for heroku db:push
 gem "linguistics"
 gem "will_paginate"

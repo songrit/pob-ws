@@ -26,7 +26,7 @@ describe PaoController do
       :amount=>652908, :fee=>6529.08, :interest=>0, :fine=>0, 
       :total=>6529.08, :receipt_book=>nil, :receipt_no=>nil, :district_id => 545  }
     $xvars= {:enter_rr1=>{:rr1=>@rr1}, :enter_rr3=>{:rr3=>@rr3}, 
-      :select_hotel => {:hotel_id=>rr1.id} }
+      :select_hotel => {:hotel_id=>rr1.id}, :p=>{} }
   end
   # clean up data created by Rails and convert dates to SQL format
   def clean_data(r)
@@ -76,6 +76,7 @@ describe PaoController do
   end
   it "should show list of hotels" do
     @rr1s= mock_model(Rr1)
+    Rr1.should_receive(:find).and_return([@rr1s])
     get :hotels
     assigns[:rr1s].should == [@rr1s]
   end
