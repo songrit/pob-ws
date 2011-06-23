@@ -25,12 +25,6 @@
       %td(class="field-name") ตำแหน่ง
       %td(colspan="2")= f.text_field :position, :style=>"width:300px;"
     %tr
-      %td(class="field-name") ส่วน
-      %td(colspan="2")= f.collection_select :section_id, Section.all(:order=>:code), :id, :name, {:prompt=>"กรุณาเลือกส่วน"}
-    %tr
-      %td(class="field-name") งาน
-      %td(colspan="2")= f.select :subsection_id, []
-    %tr
       %td(class="field-name") อีเมลล์
       %td(colspan="2")= f.text_field :email, :style=>"width:300px;"
     = f.hidden_field :role
