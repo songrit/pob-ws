@@ -8,7 +8,8 @@ body {
 }
 #logo a {
   font: bold 40pt 'TH SarabunPSK'; 
-  color:#006699;
+  /*color:#006699;*/
+  color: #C2075C;
   text-decoration:none;
 }
 
@@ -325,7 +326,8 @@ h3 {
 
 #middlenavigation {
   /*background:#fefefe;*/
-  background:#D8F7FA;
+  /*background:#D8F7FA;*/
+  background: #FECCCB;
   border-bottom:2px solid #eee;
   border-top:2px solid #eee;
   -moz-border-radius: 10px;

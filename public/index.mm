@@ -28,7 +28,7 @@
 <node CREATED="1276062721100" ID="ID_982357600" MODIFIED="1276062727685" TEXT="rule: login?"/>
 </node>
 </node>
-<node CREATED="1300502021784" FOLDED="true" ID="ID_715202980" MODIFIED="1305277567154" TEXT="hotels: &#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;">
+<node CREATED="1300502021784" ID="ID_715202980" MODIFIED="1308801003102" TEXT="hotels: &#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;">
 <node CREATED="1300489647312" ID="ID_1764050059" MODIFIED="1302761628482" TEXT="link: &#xe2a;&#xe16;&#xe32;&#xe19;&#xe30;&#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;: /hotels/hotels"/>
 <node CREATED="1300499137051" ID="ID_670577063" MODIFIED="1300502956261" TEXT="link: &#xe2a;&#xe16;&#xe32;&#xe19;&#xe17;&#xe35;&#xe48;&#xe2d;&#xe49;&#xe32;&#xe07;&#xe2d;&#xe34;&#xe07;: /hotels/pois"/>
 <node CREATED="1300499089130" ID="ID_341637428" MODIFIED="1300503631658" TEXT="add_poi">
@@ -41,7 +41,7 @@
 </node>
 </node>
 </node>
-<node CREATED="1304090638634" ID="ID_769440526" MODIFIED="1304090673759" TEXT="pao: &#xe2d;&#xe1a;&#xe08;.">
+<node CREATED="1304090638634" FOLDED="true" ID="ID_769440526" MODIFIED="1308800368091" TEXT="pao: &#xe2d;&#xe1a;&#xe08;.">
 <node CREATED="1304090673765" ID="ID_1094049168" MODIFIED="1304091874190" TEXT="link: &#xe2a;&#xe23;&#xe38;&#xe1b;&#xe04;&#xe48;&#xe32;&#xe18;&#xe23;&#xe23;&#xe21;&#xe40;&#xe19;&#xe35;&#xe22;&#xe21;&#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;: /pao"/>
 <node CREATED="1304090820380" ID="ID_691222956" MODIFIED="1305277583488" TEXT="add_hotel: &#xe02;&#xe36;&#xe49;&#xe19;&#xe17;&#xe30;&#xe40;&#xe1a;&#xe35;&#xe22;&#xe19;&#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;">
 <node CREATED="1304090843880" ID="ID_946908530" MODIFIED="1305277605590" TEXT="enter_rr1: &#xe41;&#xe1a;&#xe1a; &#xe2d;&#xe1a;&#xe08;.&#xe23;&#xe23;.&#xe51;">
@@ -80,7 +80,7 @@
 </node>
 <node CREATED="1308122907803" ID="ID_1146768142" MODIFIED="1308122927973" TEXT="link: &#xe23;&#xe32;&#xe22;&#xe0a;&#xe37;&#xe48;&#xe2d;&#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;: /pao/hotels"/>
 </node>
-<node CREATED="1275752678377" FOLDED="true" ID="ID_1348489452" MODIFIED="1302830718503" TEXT="admin:&#xe1c;&#xe39;&#xe49;&#xe14;&#xe39;&#xe41;&#xe25;&#xe23;&#xe30;&#xe1a;&#xe1a;">
+<node CREATED="1275752678377" FOLDED="true" ID="ID_1348489452" MODIFIED="1308800960209" TEXT="admin:&#xe1c;&#xe39;&#xe49;&#xe14;&#xe39;&#xe41;&#xe25;&#xe23;&#xe30;&#xe1a;&#xe1a;">
 <node CREATED="1275752688167" ID="ID_229996461" MODIFIED="1275752690948" TEXT="role:a"/>
 <node CREATED="1280374214975" ID="ID_980297856" MODIFIED="1280374230097" TEXT="link: &#xe23;&#xe32;&#xe22;&#xe0a;&#xe37;&#xe48;&#xe2d;&#xe1c;&#xe39;&#xe49;&#xe43;&#xe0a;&#xe49;: /admin/users"/>
 <node CREATED="1282722836614" FOLDED="true" ID="ID_1213363124" MODIFIED="1297476958711" TEXT="edit_role:&#xe41;&#xe01;&#xe49;&#xe44;&#xe02;&#xe2a;&#xe34;&#xe17;&#xe18;&#xe34;&#xe01;&#xe32;&#xe23;&#xe43;&#xe0a;&#xe49;&#xe07;&#xe32;&#xe19;">

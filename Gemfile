@@ -27,4 +27,5 @@ gem "syntax"
 group :development do
   gem "ruby-debug"
   gem "rails-footnotes"
+  gem "rails-erd"
 end
