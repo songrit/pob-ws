@@ -7,7 +7,7 @@
     %th โทรศัพท์
   - @rr1s.each do |rr|
     %tr
-      %td(align='center')= rr.district.name
+      %td(align='center')= rr.district.try(:name)
       %td= rr.hotel_name
       %td= rr.manager_name
       %td= rr.manager_phone
