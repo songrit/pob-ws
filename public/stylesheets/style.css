@@ -281,9 +281,11 @@ h3 {
 }
 
 #footer {
-  background:#658DB5;
+  /*background:#658DB5;*/
+  background: #FECCCB;
   clear:both;
-  color:#ddd;
+  /*color:#ddd;*/
+  color: #C2075C;
   margin:20px auto 0;
   padding:0;
   text-align:left;
@@ -291,7 +293,7 @@ h3 {
 }
 
 #footer a {
-  color:white;
+/*color:white;*/
   font-weight: bold;
 }
 
