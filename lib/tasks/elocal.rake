@@ -6,6 +6,7 @@ namespace :elocal do
   
   desc "cancel all pending tasks"
   task :cancel=>:environment do
+    GmaXmain.update_all "status='X'", "status='I'"
     GmaXmain.update_all "status='X'", "status='R'"
   end
 end
