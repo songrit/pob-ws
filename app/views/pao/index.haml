@@ -27,7 +27,7 @@
     - grand_total= {:qty=>0, :qty_ytd=>0, :total => 0, :total_ytd => 0 }
   - @revenues.each do |r|
     %tr
-      %td= r[:name]
+      %td= link_to r[:name], :action=>:detail, :id=>r[:district_id]
       %td.num= r[:qty]
       - grand_total[:qty] += r[:qty]
       %td.num= r[:qty_ytd]

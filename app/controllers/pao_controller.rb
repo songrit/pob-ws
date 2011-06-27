@@ -16,6 +16,11 @@ class PaoController < ApplicationController
         :total_ytd=>total_ytd, :qty_ytd => qty_ytd, :name=>name }
     end
   end
+  def detail
+    @begin_of_year= Date.new Time.now.year
+    @rr1s= Rr1.all :conditions => {:district_id=>params[:id]}, :order => "hotel_name" 
+    @district_name= District.find(params[:id]).name
+  end
   def hotels
     @rr1s= Rr1.all :order=>:district_id
   end

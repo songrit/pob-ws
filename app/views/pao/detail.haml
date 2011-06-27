@@ -1,0 +1,36 @@
+.label
+  บัญชีรายชื่อโรงแรม/ที่พัก ที่ยื่นชำระค่าธรรมเนียมบำรุงองค์การบริหารส่วนจังหวัดจากผู้เข้าพักโรงแรม
+  %br
+  = "ตั้งแต่วันที่ #{date_thai begin_of_last_month, :date_only=>true, :month_full=>true} ถึง #{date_thai end_of_last_month, :date_only=>true, :month_full=>true}"
+
+:css
+  #revenue td, #revenue th { border:1px solid black; padding:3px; }
+  .num { text-align:right }
+  .center { text-align:center }
+%table(id='revenue' style='width:100%; border-collapse: collapse')
+  %tr
+    %th ลำดับที่
+    %th พื้นที่
+    %th โรงแรม / ที่พัก
+    %th 
+      ใบอนุญาต
+      %br
+      (เล่มที่/เลขที่)
+    %th 
+      ค่าธรรมเนียม
+      %br
+      เดือนนี้
+    %th 
+      ค่าธรรมเนียม
+      %br
+      แต่ต้นปี
+  - @rr1s.each_with_index do |rr1, i|
+    - ytd = Rr3.sum(:fee, :conditions=>['month>=? AND rr1_id=?', @begin_of_year, rr1.id])
+    - this_month = Rr3.sum(:fee, :conditions=>['month>=? AND month<=? AND rr1_id=?', begin_of_last_month, end_of_last_month, rr1.id])
+    %tr
+      %td.num= i+1
+      %td.center= @district_name
+      %td= rr1.hotel_name
+      %td.center= rr1.license || '-'
+      %td.num= num this_month
+      %td.num= num ytd
