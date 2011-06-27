@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   def end_of_last_month
     now= Time.now
-    dd= Date.new now.year, now.month, 1
+    dd= Date.new now.year, now.month
     dd-1
   end
   def begin_of_last_month
