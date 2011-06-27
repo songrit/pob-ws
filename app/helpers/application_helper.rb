@@ -64,8 +64,8 @@ module ApplicationHelper
   def home_page?
     request.path=='/'
   end
-  def num(n)
-    return n==0 ? "-" : number_to_currency(n,:unit=>'', :precision=>0)
+  def num(n, precision=0)
+    return n==0 ? "-" : number_to_currency(n,:unit=>'', :precision=>precision)
   end
   def currency(n)
     return n==0 ? "-" : number_to_currency(n,:unit=>'')

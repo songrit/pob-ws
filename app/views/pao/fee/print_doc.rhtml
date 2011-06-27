@@ -1,0 +1,126 @@
+<% 
+  rr3 = Rr3.find $xvars[:rr3_id]
+  rr1 = rr3.rr1
+  receipt = Receipt.find $xvars[:receipt_id]
+%>
+<style>
+  .para {text-indent: 5em;}
+  .right { text-align:right; padding-right:20px;}
+  .center { text-align:center; }
+  .room {text-indent: 7em; display:block;}
+  .sig { margin-left:3.5in; text-align:center; width:5in; }
+  .zone { border: 2px solid black; font-weight: bold; display: inline-block; padding: 0 5px;}
+  td { padding: 5px; }
+  table { width: 90%; margin: 0 auto;}
+</style>
+<table border="1" cellspacing="0" cellpadding="0">
+  <tr>
+    <td colspan="2">
+      แบบยื่นรายการนำส่งเงินค่าธรรมเนียมบำรุงองค์การบริหารส่วนจังหวัดจากผู้พักในโรงแรม<br/>
+      ตามมาตรา 65 แห่งพระราชบัญญัติองค์การบริหารส่วนจังหวัด พ.ศ. 2540
+    </td>
+    <td style="text-align:center;width:1.2in;">แบบ อบจ. รร. 3</td>
+  </tr>
+  <tr>
+    <td valign="top" style="width:4.5in;">
+      <div class="zone">ก</div><p/>
+      ชื่อโรงแรม
+      <%= b rr1.hotel_name %><br/>
+      ตั้งอยู่เลขที่
+      <%= b rr1.address %> <%= b rr1.street %><br/>
+      ตำบล <%= b rr1.sub_district.name %> อำเภอ <%= b rr1.district.name %><br/>
+      จังหวัด <%= b rr1.province.name %> รหัส <%= b rr1.zip %><br/>
+      โทรศัพท์ <%= b rr1.phone %>
+    </td>
+    <td colspan="2" valign="top">
+      <div class="zone">ข</div>
+      <%= check_box_tag :addition,1,!rr3.addition, :style=>"margin-left:10px;" %> 
+      ยื่นปรกติ
+      <%= check_box_tag :addition,1,rr3.addition %> ยื่นเพิ่มเติมครั้งที่
+      <%= b rr3.addition %><p/>
+      นำส่งประจำเดือน <%= b MONTHS[rr3.month.month-1] %> พ.ศ. <%= b rr3.month.year + 543 %>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <div class="zone">ค</div><br/>
+      <table border="1" cellspacing="0" cellpadding="0" style="width:100%;">
+        <tr><th>ที่</th><th>รายการ</th><th>ห้อง/หลัง</th><th>จำนวนเงิน</th></tr>
+        <tr>
+          <td>1</td>
+          <td>ลูกหนี้ค่าเช่าห้องพักยกมา ณ ต้นเดือน</td>
+          <td class="right"><%= b num(rr3.qty_in) %></td>
+          <td class="right"><%= b num(rr3.balance_in,2) %></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>ปริมาณและรายได้ค่าเช่าห้องพักเดือนนี้</td>
+          <td class="right"><%= b num(rr3.qty) %></td>
+          <td class="right"><%= b num(rr3.balance,2) %></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>ลูกหนี้ค่าเช่าห้องพักยกไปเดือนหน้า</td>
+          <td class="right"><%= b num(rr3.qty_out) %></td>
+          <td class="right"><%= b num(rr3.balance_out,2) %></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>ค่าเช่าห้องพักที่เรียกเก็บเดือนนี้ ( 1 + 2 - 3 )</td>
+          <td class="right">-</td>
+          <td class="right"><%= b num(rr3.amount,2) %></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>ค่าธรรมเนียมที่นำส่ง ( 4 x 1% )</td>
+          <td class="right">-</td>
+          <td class="right"><%= b num(rr3.fee,2) %></td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>ดอกเบี้ยร้อยละ 7.5 ต่อปี</td>
+          <td class="right">-</td>
+          <td class="right"><%= b num(rr3.interest,2) %></td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>เงินเพิ่มร้อยละ 1.5 ต่อเดือน</td>
+          <td class="right">-</td>
+          <td class="right"><%= b num(rr3.fine,2) %></td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>รวมเงินค่าธรรมเนียมที่ต้องนำส่งทั้งสิ้น ( 5 + 6 + 7 )</td>
+          <td class="right">-</td>
+          <td class="right"><%= b num(rr3.total,2) %></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td><%= b "( #{thai_baht rr3.total} )" %> </td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table><p/>&nbsp;<p/>
+      <div class='sig'>(ลงชื่อ) <%= '.'*80 %> ผู้ควบคุมและจัดการโรงแรม</div>
+      <div class='sig'>( <%= rr1.manager_name %> )</div>
+      <div class='sig'>ยื่นวันที่ <%= date_thai Time.now, :date_only=>true %></div><p/>
+    </td>
+  </tr>
+  <tr>
+    <th colspan="3">สำหรับเจ้าพนักงาน</th>
+  </tr>
+  <tr>
+    <td colspan="3">
+      ได้รับเงินตามใบเสร็จรับเงินองค์การบริหารส่วนจังหวัด ใบเสร็จเล่มที่
+      <%= b rr3.receipt_book %>
+      เลขที่ <%= b rr3.receipt_no %>
+      จำนวนเงิน <%= b num(rr3.total) %> บาท
+      ( <%= thai_baht rr3.total %> )
+      <p />
+      <div class='sig'>(ลงชื่อ) <%= '.'*80 %> ผู้รับเงิน</div>
+      <div class='sig'>( <%= '.'*80 %> )</div>
+      <div class='sig'>ตำแหน่ง<%= '.'*80 %></div>
+      <div class='sig'>วันที่ <%= '.'*80 %></div><p/>
+    </td>
+  </tr>
+</table>
