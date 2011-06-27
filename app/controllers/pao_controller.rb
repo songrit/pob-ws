@@ -8,8 +8,10 @@ class PaoController < ApplicationController
     # @district_names= District.find(@districts).map(&:name)
     @districts.each do |d|
       name= District.find(d).name
-      qty= Rr3.count :conditions => ['month >= ? and month<= ? and district_id= ?', begin_of_last_month, end_of_last_month, d ]
-      qty_ytd= Rr3.count :conditions => ['month >= ? and month<= ? and district_id= ?', Date.new(Time.now.year,1,1), end_of_last_month, d ]
+      rr3_this_month= Rr3.all :conditions => ['month >= ? and month<= ? and district_id= ?', begin_of_last_month, end_of_last_month, d ]
+      qty= rr3_this_month.map(&:rr1_id).uniq.count
+      rr3_ytd= Rr3.all :conditions => ['month >= ? and month<= ? and district_id= ?', Date.new(Time.now.year,1,1), end_of_last_month, d ]
+      qty_ytd= rr3_ytd.map(&:rr1_id).uniq.count
       total= Rr3.sum :total, :conditions => ['month >= ? and month<= ? and district_id= ?', begin_of_last_month, end_of_last_month, d ]
       total_ytd= Rr3.sum :total, :conditions => ['month >= ? and month<= ? and district_id= ?', Date.new(Time.now.year,1,1), end_of_last_month, d ]
       @revenues << {:district_id=>d, :total=>total, :qty=>qty, 
