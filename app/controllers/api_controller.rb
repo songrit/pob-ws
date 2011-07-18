@@ -134,10 +134,10 @@ class ApiController < ApplicationController
     render_response
   end
   def hotel_avail_notif
-    # doc = Nokogiri::XML(request.body)
-    # LogRequest.log(request,doc.to_s)
-    body= File.open("public/OTA/OTA_HotelAvailNotifRQ.xml").read
-    doc = Nokogiri::XML(body)
+    doc = Nokogiri::XML(request.body)
+    LogRequest.log(request,doc.to_s)
+    # body= File.open("public/OTA/OTA_HotelAvailNotifRQ.xml").read
+    # doc = Nokogiri::XML(body)
 
     hotel_code = doc.xpath("//xmlns:AvailStatusMessages").attribute("HotelCode").value
     hotel= Hotel.find_by_code hotel_code
