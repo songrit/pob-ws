@@ -4,6 +4,7 @@ class CreateAvailabilities < ActiveRecord::Migration
       t.integer :hotel_id
       t.string :inv_code
       t.string :rate_plan_code
+      t.float :rate
       t.date :limit_on
       t.integer :limit
       t.integer :max

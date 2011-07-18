@@ -6,6 +6,7 @@ class CreateAvails < ActiveRecord::Migration
       t.date :start_on
       t.date :end_on
       t.string :rate_plan_code
+      t.float :rate
       t.string :inv_code
       t.integer :unique_id
       t.string :unique_id_type

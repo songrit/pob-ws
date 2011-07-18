@@ -3,9 +3,10 @@
 one:
   hotel_id: 1
   booking_limit: 1
-  start_on: 2011-03-19
-  end_on: 2011-03-19
+  start_on: 2011-07-18
+  end_on: 2011-07-18
   rate_plan_code: MyString
+  rate: 1.5
   inv_code: MyString
   unique_id: 1
   unique_id_type: MyString
@@ -14,9 +15,10 @@ one:
 two:
   hotel_id: 1
   booking_limit: 1
-  start_on: 2011-03-19
-  end_on: 2011-03-19
+  start_on: 2011-07-18
+  end_on: 2011-07-18
   rate_plan_code: MyString
+  rate: 1.5
   inv_code: MyString
   unique_id: 1
   unique_id_type: MyString

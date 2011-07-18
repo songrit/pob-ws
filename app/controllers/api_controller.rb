@@ -148,6 +148,7 @@ class ApiController < ApplicationController
           :start_on => a.xpath('xmlns:StatusApplicationControl').attribute('Start').value, 
           :end_on => a.xpath('xmlns:StatusApplicationControl').attribute('End').value, 
           :rate_plan_code => a.xpath('xmlns:StatusApplicationControl').attribute('RatePlanCode').value, 
+          :rate => a.xpath('xmlns:StatusApplicationControl').attribute('Rate').value.to_f, 
           :inv_code => a.xpath('xmlns:StatusApplicationControl').attribute('InvCode').value, 
           :unique_id => a.xpath('xmlns:UniqueID').attribute('ID').value, 
           :unique_id_type => a.xpath('xmlns:UniqueID').attribute('Type').value
@@ -160,6 +161,7 @@ class ApiController < ApplicationController
           else
             aa= Availability.create :hotel_id=> avail.hotel_id,
               :rate_plan_code => avail.rate_plan_code, 
+              :rate => avail.rate, 
               :inv_code => avail.inv_code, :limit => avail.booking_limit,
               :limit_on=> d, :max=> avail.booking_limit
           end
