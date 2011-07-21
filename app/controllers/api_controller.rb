@@ -79,9 +79,10 @@ class ApiController < ApplicationController
     render_response
   end
   def hotel_search
+    # debugger
     doc = Nokogiri::XML(request.body)
     LogRequest.log(request,doc.to_s)
-    # l = LogRequest.find 14
+    # l = LogRequest.find 9
     # doc = Nokogiri::XML(l.content)
     @criteria= doc.xpath("//xmlns:Criteria")
     distance = doc.xpath("//xmlns:Radius").attribute("Distance").value

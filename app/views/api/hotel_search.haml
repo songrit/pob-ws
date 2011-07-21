@@ -4,6 +4,7 @@
   "xsi:schemaLocation"=>"http://www.opentravel.org/OTA/2003/05 HotelSearchRS.xsd", |
   :TimeStamp=>Time.now.strftime('%FT%T'), |
   :Target=>TARGET, :Version=>"1.001", :SequenceNmbr=>"1"} |
+  
   - if @err
     %Errors
       %Error{:Type=>@err_type}
@@ -17,5 +18,5 @@
           - if @start_on
             %Availabilities
               - hotel.availabilities.all(:conditions=>['limit_on>=? AND limit_on<=?',@start_on,@end_on],:order=>'limit_on, inv_code').each do |availability|
-              %Availability{:Date=>availability.limit_on.to_s, :InvCode=>availability.inv_code, :Rate=> availability.rate, :RatePlanCode=> availability.rate_plan_code, :Limit=>availability.limit}
-    = @criteria
+                %Availability{:Date=>availability.limit_on.to_s, :InvCode=>availability.inv_code, :Rate=> availability.rate, :RatePlanCode=> availability.rate_plan_code, :Limit=>availability.limit}
+    = @criteria.to_s
