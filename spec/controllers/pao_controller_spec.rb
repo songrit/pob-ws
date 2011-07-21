@@ -19,7 +19,7 @@ describe PaoController do
       :manager_name=>"นายเคนเน็ท จาค๊อป มิลเลอร์", 
       :owner_district_id=>nil, :owner_address=>"1870", 
       :hotel_name=>"ซีซี บลูม โฮเต็ล", :brochure=>nil, :pending_qty=>0, 
-      :pending_fee => 0, :total_fee => 0.0, :zip => nil  }
+      :pending_fee => 0, :total_fee => 0.0, :zip => nil, :license => "123"   }
     rr1= Rr1.create @rr1
     @rr3= {:rr1_id=>rr1.id, :month=>begin_of_last_month, :balance_in=>0, :qty_in=>0, 
       :balance=>652908, :qty=>265, :balance_out=>0, :qty_out=>0, 

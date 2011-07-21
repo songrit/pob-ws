@@ -144,12 +144,13 @@ class ApiController < ApplicationController
     hotel= Hotel.find_by_code hotel_code
     if hotel
       doc.xpath("//xmlns:AvailStatusMessage").each do |a|
+        rate_attr = a.xpath('xmlns:StatusApplicationControl').attribute('Rate')
         avail = Avail.create :hotel_id => hotel.id,
           :booking_limit => a.attribute('BookingLimit').value, 
           :start_on => a.xpath('xmlns:StatusApplicationControl').attribute('Start').value, 
           :end_on => a.xpath('xmlns:StatusApplicationControl').attribute('End').value, 
           :rate_plan_code => a.xpath('xmlns:StatusApplicationControl').attribute('RatePlanCode').value, 
-          :rate => a.xpath('xmlns:StatusApplicationControl').attribute('Rate').value.to_f, 
+          :rate => (rate_attr ? rate_attr.value.to_f : 0), 
           :inv_code => a.xpath('xmlns:StatusApplicationControl').attribute('InvCode').value, 
           :unique_id => a.xpath('xmlns:UniqueID').attribute('ID').value, 
           :unique_id_type => a.xpath('xmlns:UniqueID').attribute('Type').value
@@ -179,7 +180,8 @@ class ApiController < ApplicationController
     response.content_type = "application/xml"
     render :layout => false
   end
-  def render_err
+  def render_err(e)
+    # debugger
     @err_type=1
     @err ||= "Unknown"
     render_response

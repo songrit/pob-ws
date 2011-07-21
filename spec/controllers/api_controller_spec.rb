@@ -80,6 +80,7 @@ describe ApiController do
       post_request(:hotel_search, "OTA_HotelSearchRQ1.xml")
     end
     it "should search by coordinates" do
+      # puts response.body
       response.should have_tag("Success")
       response.should have_tag("Property[HotelCode='BOSCO']")
     end
