@@ -90,6 +90,10 @@ describe ApiController do
       # puts response.body
       response.should have_tag("Availability")
     end      
+    it "should have property description" do
+      # puts response.body
+      response.should have_tag("Property[Description]")
+    end
   end
   
   describe "HotelRateAmountNotif" do
