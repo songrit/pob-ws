@@ -3,6 +3,7 @@ class Hotel < ActiveRecord::Base
   has_many :avails
   has_many :availabilities, :order => "inv_code, limit_on" 
   has_many :stays
+  has_many :contact_infos
   
   def ll
     Geokit::LatLng.new lat,lng

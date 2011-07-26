@@ -1,0 +1,31 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  hotel_id: 1
+  address: MyString
+  city: MyString
+  zip: MyString
+  state: MyString
+  country: MyString
+  phone_location_type: 1
+  phone_tech_type: 1
+  phone_use_type: 1
+  area_city_code: MyString
+  country_access_code: MyString
+  phone_number: MyString
+  gma_user_id: 1
+
+two:
+  hotel_id: 1
+  address: MyString
+  city: MyString
+  zip: MyString
+  state: MyString
+  country: MyString
+  phone_location_type: 1
+  phone_tech_type: 1
+  phone_use_type: 1
+  area_city_code: MyString
+  country_access_code: MyString
+  phone_number: MyString
+  gma_user_id: 1

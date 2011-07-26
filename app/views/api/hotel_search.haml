@@ -14,6 +14,8 @@
     %Properties
       - @hotels.each do |hotel|
         %Property{:HotelCode=>hotel.code, :HotelName=>hotel.name, :HotelCodeContext=>hotel.hotel_code_context, :Description=>hotel.description}
+          - contact= hotel.contact_infos.last
+          %ContactInfo{:AddressLine=>contact.address, :CityName=>contact.city, :PostalCode=>contact.zip, :StateProv=>contact.state, :CountryName=>contact.country, :PhoneNumber=>contact.phone_number }
           %RelativePosition{:Direction=>direction(@poi_coord.heading_to hotel.ll), :Distance=>@poi_coord.distance_to(hotel.ll, :formula=>:flat), :DistanceUnitName=>"Mile", :Latitude=>hotel.lat, :Longitude=>hotel.lng}
           - if @start_on
             %Availabilities

@@ -132,6 +132,22 @@ class ApiController < ApplicationController
       :country_name => doc.xpath("//xmlns:CountryName").first.text,
       :description => doc.xpath('//xmlns:TextItem[@Title="Description"]').xpath('xmlns:Description').text
     hotel.save
+    contact= doc.xpath("//xmlns:ContactInfo")
+    address= (contact/"Address").first
+    phone= (contact/"Phone").first
+    # debugger
+    contact_info= ContactInfo.create :hotel_id => hotel.id, 
+      :address=>(address/"AddressLine").text,
+      :city => (address/"CityName").text, 
+      :zip => (address/"PostalCode").text,
+      :state => (address/"StateProv").attribute("StateCode").value, 
+      :country => (address/"CountryName").text,
+      :phone_location_type => phone.attribute("PhoneLocationType").try(:value).try(:to_i), 
+      :phone_tech_type => phone.attribute("PhoneTechType").try(:value).try(:to_i), 
+      :phone_use_type => phone.attribute("PhoneUseType").try(:value).try(:to_i), 
+      :area_city_code => phone.attribute("AreaCityCode").try(:value), 
+      :country_access_code => phone.attribute("CountryAccessCode").try(:value), 
+      :phone_number => phone.attribute("PhoneNumber").try(:value)
     render_response
   end
   def hotel_avail_notif

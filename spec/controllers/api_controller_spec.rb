@@ -132,6 +132,7 @@ describe ApiController do
   describe "HotelDescriptiveContentNotif" do
     before do
       Hotel.delete_all
+      ContactInfo.delete_all
       @body= File.open("public/OTA/OTA_HotelDescriptiveContentNotifRQ.xml").read
       request.env['content_type'] = 'application/xml'
       request.env['RAW_POST_DATA'] =  @body
@@ -162,6 +163,15 @@ describe ApiController do
       end.should_not change(Hotel, :count)
       hotel= Hotel.find id
       hotel.name.should == "Songrit"
+    end
+    it "create contact info" do
+      post :hotel_descriptive_content_notif
+      hotel= Hotel.last
+      contact_info= hotel.contact_infos.last
+      contact_info.address.should == "110 Huntington Avenue"
+      contact_info.state.should == "MA"
+      contact_info.country.should == "USA"
+      contact_info.phone_number.should == "1-800-228-9290"
     end
     it "allow multimedia"
   end
