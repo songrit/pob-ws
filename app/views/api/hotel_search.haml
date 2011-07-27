@@ -17,6 +17,10 @@
           - contact= hotel.contact_infos.last
           %ContactInfo{:AddressLine=>contact.address, :CityName=>contact.city, :PostalCode=>contact.zip, :StateProv=>contact.state, :CountryName=>contact.country, :PhoneNumber=>contact.phone_number }
           %RelativePosition{:Direction=>direction(@poi_coord.heading_to hotel.ll), :Distance=>@poi_coord.distance_to(hotel.ll, :formula=>:flat), :DistanceUnitName=>"Mile", :Latitude=>hotel.lat, :Longitude=>hotel.lng}
+          %MultimediaDescriptions
+            - hotel.multimedia_descriptions.each do |m|
+              = m.xml
+              
           - if @start_on
             %Availabilities
               - hotel.availabilities.all(:conditions=>['limit_on>=? AND limit_on<=?',@start_on,@end_on],:order=>'limit_on, inv_code').each do |availability|

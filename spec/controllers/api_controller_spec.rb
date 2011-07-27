@@ -80,19 +80,20 @@ describe ApiController do
       post_request(:hotel_search, "OTA_HotelSearchRQ1.xml")
     end
     it "should search by coordinates" do
-      # puts response.body
       response.should have_tag("Success")
       response.should have_tag("Property[HotelCode='BOSCO']")
     end
     it "should have availability element" do
       assigns[:start_on].should == Date.new(2004,8,2)
       assigns[:end_on].should == Date.new(2004,8,4)
-      # puts response.body
       response.should have_tag("Availability")
     end      
     it "should have property description" do
-      # puts response.body
       response.should have_tag("Property[Description]")
+    end
+    it "should have MultimediaDescription" do
+      # puts response.body
+      response.should have_tag("MultimediaDescription")
     end
   end
   
@@ -133,6 +134,7 @@ describe ApiController do
     before do
       Hotel.delete_all
       ContactInfo.delete_all
+      MultimediaDescription.delete_all
       @body= File.open("public/OTA/OTA_HotelDescriptiveContentNotifRQ.xml").read
       request.env['content_type'] = 'application/xml'
       request.env['RAW_POST_DATA'] =  @body
@@ -172,7 +174,22 @@ describe ApiController do
       contact_info.state.should == "MA"
       contact_info.country.should == "USA"
       contact_info.phone_number.should == "1-800-228-9290"
+      @body= File.open("public/OTA/OTA_HotelDescriptiveContentNotifRQ3.xml").read
+      request.env['content_type'] = 'application/xml'
+      request.env['RAW_POST_DATA'] =  @body
+      post :hotel_descriptive_content_notif
+      hotel= Hotel.find_by_code("RTPPTSOF")
+      contact_info= hotel.contact_infos.last
+      contact_info.address.should == "BP 60008FAA'A TAHITI"
+      contact_info.country.should == "FRENCH POLYNESIA"
+      contact_info.phone_number.should == "689/866600"
     end
-    it "allow multimedia"
+    it "handle MultimediaDescription" do
+      @body= File.open("public/OTA/OTA_HotelDescriptiveContentNotifRQ3.xml").read
+      request.env['content_type'] = 'application/xml'
+      request.env['RAW_POST_DATA'] =  @body
+      post :hotel_descriptive_content_notif
+      MultimediaDescription.count.should == 11
+    end
   end
 end

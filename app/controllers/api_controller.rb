@@ -24,25 +24,25 @@ class ApiController < ApplicationController
       @rates[unit.to_sym]= rate.to_f
     end
     @room_charges.each do |charge|
-      amount= charge.attribute('Amount').value.to_f
+      amount= charge.attribute('Amount').try(:value).try(:to_f)
       currency= charge.attribute('CurrencyCode').value
       rate= @rates[currency.to_sym] ? 1/@rates[currency.to_sym] : 0
       @rooms << {:amount=>amount,
         :currency=> currency,
         :amount_th => amount*rate, 
-        :date=> charge.attribute('TransactionDate').value.to_date}
+        :date=> charge.attribute('TransactionDate').try(:value).try(:to_date)}
     end
     @total= @rooms.inject(0) {|sum,room| sum+room[:amount_th]}
     @taxes= []
     @tax_charges= @doc/'RevenueCategory[@RevenueCategoryCode="12"]'/'RevenueDetail'
     @tax_charges.each do |charge|
-      amount= charge.attribute('Amount').value.to_f
+      amount= charge.attribute('Amount').try(:value).try(:to_f)
       currency= charge.attribute('CurrencyCode').value
       rate= @rates[currency.to_sym] ? 1/@rates[currency.to_sym] : 0
       @taxes << {:amount=> amount,
         :currency=> currency,
         :amount_th=> amount*rate,
-        :date=> charge.attribute('TransactionDate').value.to_date}
+        :date=> charge.attribute('TransactionDate').try(:value).try(:to_date)}
     end
     @tax_total= @taxes.inject(0) {|sum,tax| sum+tax[:amount_th]}
     @hotel= Hotel.find_by_code @hotel_code
@@ -61,10 +61,10 @@ class ApiController < ApplicationController
     @log_request= LogRequest.log(request,doc.to_s)
     @hotel_code= doc.xpath('//xmlns:BasicPropertyInfo').attribute('HotelCode').value
     @hotel= Hotel.find_by_code @hotel_code
-    @number_of_units= doc.xpath('//xmlns:RoomType').attribute('NumberOfUnits').value.to_i
+    @number_of_units= doc.xpath('//xmlns:RoomType').attribute('NumberOfUnits').try(:value).try(:to_i)
     @inv_code= doc.xpath('//xmlns:Inv').attribute('InvCode').value
-    @start_on = doc.xpath('//xmlns:TimeSpan').attribute('Start').value.to_date
-    @end_on = doc.xpath('//xmlns:TimeSpan').attribute('End').value.to_date
+    @start_on = doc.xpath('//xmlns:TimeSpan').attribute('Start').try(:value).try(:to_date)
+    @end_on = doc.xpath('//xmlns:TimeSpan').attribute('End').try(:value).try(:to_date)
     if check_avail?
       update_avail
     else
@@ -105,8 +105,8 @@ class ApiController < ApplicationController
       @hotels= Hotel.find :all, :origin=>[lat,lng], :within=> distance
     end
     unless doc.xpath("//xmlns:StayDateRange").empty?
-      @start_on= doc.xpath("//xmlns:StayDateRange").attribute("Start").value.to_date
-      @end_on= doc.xpath("//xmlns:StayDateRange").attribute("End").value.to_date
+      @start_on= doc.xpath("//xmlns:StayDateRange").attribute("Start").try(:value).try(:to_date)
+      @end_on= doc.xpath("//xmlns:StayDateRange").attribute("End").try(:value).try(:to_date)
     end
     render_response
   end
@@ -117,37 +117,45 @@ class ApiController < ApplicationController
     # doc = Nokogiri::XML(l.content)
     code= doc.xpath("//xmlns:HotelDescriptiveContent").attribute("HotelCode").value
     hotel= Hotel.find_or_create_by_code(code)
-    hotel.update_attributes :name => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("HotelName").value,
-      :brand_code => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("BrandCode").value,
-      :brand_name => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("BrandName").value,
-      :currency_code => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("CurrencyCode").value,
-      :info_updated_on => doc.xpath("//xmlns:HotelInfo").attribute("LastUpdated").value,
-      :hotel_status_code => Hotel.status(doc.xpath("//xmlns:HotelInfo").attribute("HotelStatus").value),
-      :lat => doc.xpath("//xmlns:Position").attribute("Latitude").value.to_f,
-      :lng => doc.xpath("//xmlns:Position").attribute("Longitude").value.to_f,
-      :address => doc.xpath("//xmlns:AddressLine").text,
-      :city_name => doc.xpath("//xmlns:CityName").first.text,
-      :postal_code => doc.xpath("//xmlns:PostalCode").text,
-      :state_prov => doc.xpath("//xmlns:StateProv").first.text, 
-      :country_name => doc.xpath("//xmlns:CountryName").first.text,
-      :description => doc.xpath('//xmlns:TextItem[@Title="Description"]').xpath('xmlns:Description').text
+    hotel.update_attributes :name => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("HotelName").try(:value),
+      :brand_code => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("BrandCode").try(:value),
+      :brand_name => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("BrandName").try(:value),
+      :currency_code => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("CurrencyCode").try(:value),
+      :info_updated_on => doc.xpath("//xmlns:HotelInfo").attribute("LastUpdated").try(:value),
+      :hotel_status_code => Hotel.status(doc.xpath("//xmlns:HotelInfo").attribute("HotelStatus").try(:value)),
+      :lat => doc.xpath("//xmlns:Position").attribute("Latitude").try(:value).try(:to_f),
+      :lng => doc.xpath("//xmlns:Position").attribute("Longitude").try(:value).try(:to_f),
+      :address => doc.xpath("//xmlns:AddressLine").try(:text),
+      :city_name => doc.xpath("//xmlns:CityName").first.try(:text),
+      :postal_code => doc.xpath("//xmlns:PostalCode").try(:text),
+      :state_prov => doc.xpath("//xmlns:StateProv").first.try(:text), 
+      :country_name => doc.xpath("//xmlns:CountryName").first.try(:text),
+      :description => doc.xpath('//xmlns:TextItem[@Title="Description"]').xpath('xmlns:Description').try(:text)
     hotel.save
+    doc.xpath("//xmlns:MultimediaDescription").each do |m|
+      MultimediaDescription.create :hotel_id => hotel.id, :xml => m.to_s 
+    end
     contact= doc.xpath("//xmlns:ContactInfo")
     address= (contact/"Address").first
     phone= (contact/"Phone").first
-    # debugger
+    state= (address/"StateProv")
+    # debugger if code=="RTPPTSOF"
     contact_info= ContactInfo.create :hotel_id => hotel.id, 
-      :address=>(address/"AddressLine").text,
-      :city => (address/"CityName").text, 
-      :zip => (address/"PostalCode").text,
-      :state => (address/"StateProv").attribute("StateCode").value, 
-      :country => (address/"CountryName").text,
-      :phone_location_type => phone.attribute("PhoneLocationType").try(:value).try(:to_i), 
-      :phone_tech_type => phone.attribute("PhoneTechType").try(:value).try(:to_i), 
-      :phone_use_type => phone.attribute("PhoneUseType").try(:value).try(:to_i), 
-      :area_city_code => phone.attribute("AreaCityCode").try(:value), 
-      :country_access_code => phone.attribute("CountryAccessCode").try(:value), 
-      :phone_number => phone.attribute("PhoneNumber").try(:value)
+      :address=>(address/"AddressLine").try(:text),
+      :city => (address/"CityName").try(:text), 
+      :zip => (address/"PostalCode").try(:text),
+      :country => (address/"CountryName").try(:text)
+      unless state.blank?
+      contact_info.update_attribute :state, state.attribute("StateCode").try(:value)
+    end
+    if phone
+      contact_info.update_attributes :phone_location_type => phone.attribute("PhoneLocationType").try(:value).try(:to_i),
+        :phone_tech_type => phone.attribute("PhoneTechType").try(:value).try(:to_i), 
+        :phone_use_type => phone.attribute("PhoneUseType").try(:value).try(:to_i), 
+        :area_city_code => phone.attribute("AreaCityCode").try(:value), 
+        :country_access_code => phone.attribute("CountryAccessCode").try(:value), 
+        :phone_number => phone.attribute("PhoneNumber").try(:value)
+    end
     render_response
   end
   def hotel_avail_notif
@@ -162,13 +170,13 @@ class ApiController < ApplicationController
       doc.xpath("//xmlns:AvailStatusMessage").each do |a|
         rate_attr = a.xpath('xmlns:StatusApplicationControl').attribute('Rate')
         avail = Avail.create :hotel_id => hotel.id,
-          :booking_limit => a.attribute('BookingLimit').value, 
-          :start_on => a.xpath('xmlns:StatusApplicationControl').attribute('Start').value, 
-          :end_on => a.xpath('xmlns:StatusApplicationControl').attribute('End').value, 
-          :rate_plan_code => a.xpath('xmlns:StatusApplicationControl').attribute('RatePlanCode').value, 
-          :rate => (rate_attr ? rate_attr.value.to_f : 0), 
-          :inv_code => a.xpath('xmlns:StatusApplicationControl').attribute('InvCode').value, 
-          :unique_id => a.xpath('xmlns:UniqueID').attribute('ID').value, 
+          :booking_limit => a.attribute('BookingLimit').try(:value), 
+          :start_on => a.xpath('xmlns:StatusApplicationControl').attribute('Start').try(:value), 
+          :end_on => a.xpath('xmlns:StatusApplicationControl').attribute('End').try(:value), 
+          :rate_plan_code => a.xpath('xmlns:StatusApplicationControl').attribute('RatePlanCode').try(:value), 
+          :rate => (rate_attr ? rate_attr.try(:value).try(:to_f) : 0), 
+          :inv_code => a.xpath('xmlns:StatusApplicationControl').attribute('InvCode').try(:value), 
+          :unique_id => a.xpath('xmlns:UniqueID').attribute('ID').try(:value), 
           :unique_id_type => a.xpath('xmlns:UniqueID').attribute('Type').value
         avail.start_on.step(avail.end_on) do |d|
           aa= Availability.first :conditions=>[

@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  hotel_id: 1
+  xml: MyText
+  gma_user_id: 1
+
+two:
+  hotel_id: 1
+  xml: MyText
+  gma_user_id: 1

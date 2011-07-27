@@ -55,6 +55,7 @@ class GmaController < ApplicationController
     @t << "if you change models in freemind, please destroy scaffold and tables before update app"
     @t << process_models
     @t << exec_cmd("rake db:migrate").gsub("\n","<br/>")
+    @t << exec_cmd("rake db:test:clone").gsub("\n","<br/>")
     @t << process_services
     @t << gen_controllers
     @t << gen_views
