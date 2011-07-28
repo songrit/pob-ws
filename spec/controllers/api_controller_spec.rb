@@ -191,5 +191,15 @@ describe ApiController do
       post :hotel_descriptive_content_notif
       MultimediaDescription.count.should == 11
     end
+    it "keep all digits for lat, lng" do
+      @body= File.open("public/OTA/OTA_HotelDescriptiveContentNotifRQ4.xml").read
+      request.env['content_type'] = 'application/xml'
+      request.env['RAW_POST_DATA'] =  @body
+      post :hotel_descriptive_content_notif
+      hotel= Hotel.find_by_code("SONGRIT")
+      # debugger
+      hotel.lat.should == 7.771828058680014
+      hotel.lng.should == 98.3205502599717
+    end
   end
 end

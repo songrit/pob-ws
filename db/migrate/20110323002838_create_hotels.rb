@@ -12,8 +12,8 @@ class CreateHotels < ActiveRecord::Migration
       t.date :info_updated_on
       t.integer :hotel_status_code
       t.integer :built
-      t.decimal :lat, :precision => 15, :scale => 5
-      t.decimal :lng, :precision => 15, :scale => 5
+      t.decimal :lat, :precision => 25, :scale => 15
+      t.decimal :lng, :precision => 25, :scale => 15
       t.integer :location_category
       t.integer :segment_category
       t.integer :hotel_category

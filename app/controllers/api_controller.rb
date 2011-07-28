@@ -117,14 +117,15 @@ class ApiController < ApplicationController
     # doc = Nokogiri::XML(l.content)
     code= doc.xpath("//xmlns:HotelDescriptiveContent").attribute("HotelCode").value
     hotel= Hotel.find_or_create_by_code(code)
+    # debugger if code=="SONGRIT"
     hotel.update_attributes :name => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("HotelName").try(:value),
       :brand_code => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("BrandCode").try(:value),
       :brand_name => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("BrandName").try(:value),
       :currency_code => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("CurrencyCode").try(:value),
       :info_updated_on => doc.xpath("//xmlns:HotelInfo").attribute("LastUpdated").try(:value),
       :hotel_status_code => Hotel.status(doc.xpath("//xmlns:HotelInfo").attribute("HotelStatus").try(:value)),
-      :lat => doc.xpath("//xmlns:Position").attribute("Latitude").try(:value).try(:to_f),
-      :lng => doc.xpath("//xmlns:Position").attribute("Longitude").try(:value).try(:to_f),
+      :lat => doc.xpath("//xmlns:Position").attribute("Latitude").try(:value),
+      :lng => doc.xpath("//xmlns:Position").attribute("Longitude").try(:value),
       :address => doc.xpath("//xmlns:AddressLine").try(:text),
       :city_name => doc.xpath("//xmlns:CityName").first.try(:text),
       :postal_code => doc.xpath("//xmlns:PostalCode").try(:text),

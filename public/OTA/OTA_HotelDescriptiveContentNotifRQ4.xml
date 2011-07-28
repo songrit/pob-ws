@@ -1,0 +1,327 @@
+
+<?xml version="1.0" encoding="utf-8"?> 
+<OTA_HotelDescriptiveContentNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelDescriptiveContentNotifRQ.xsd" Version="2.001"> 
+  <HotelDescriptiveContents> 
+    <HotelDescriptiveContent BrandCode="SRT" BrandName="SRT" CurrencyCode="THB" HotelCode="SONGRIT" HotelName="Songrit Hotel" LanguageCode="TH"> 
+      <HotelInfo HotelStatus="Open" LastUpdated="2011-07-27T07:42:26" Start="0000-00-00" WhenBuilt="0000"> 
+        <CategoryCodes> 
+          <LocationCategory Code="3" CodeDetail="Location Type: City"/> 
+        </CategoryCodes> 
+        <Descriptions> 
+          <MultimediaDescriptions> 
+            <MultimediaDescription> 
+              <TextItems> 
+                <TextItem Title="Description"> 
+                  <Description>The tropical Burasari Resort is located along Patong Beach, a 10-minute walk from Jungceylon Shopping Mall. The resort offers free Wi-Fi, 2 outdoor pools and a restaurant.
+ 
+Burasari Resort is a 10-minute walk from nightlife district Bangla Road. The resort is a 40-minute drive from Phuket International Airport. Upon request, the hotel provides airport shuttle service at a fee.
+ 
+Resort Burasari's rooms are air conditioned and come with private balconies or terraces. Satellite TV, a minibar and tea/coffee maker are provided in all rooms. Selected rooms feature direct pool access.
+ 
+Guests can relax on lounge chairs by the pool, and enjoy the surrounding greenery. Spa by Burasari provides traditional Thai massage and beauty treatments. The hotel also offers a tour desk and car rental.
+ 
+Kantok Restaurant serves authentic local dishes and a daily breakfast buffet. It offers outdoor dining and evening dance performances. Refreshing drinks are served at Misty Bar, Pool Bar and Juice Bar
+                 </Description> 
+                </TextItem> 
+            </TextItems> 
+          </MultimediaDescription>s&gt; 
+        </MultimediaDescriptions> 
+        <Position Latitude="7.771828058680014" Longitude="98.3205502599717"/> 
+        <Services> 
+          <Service Code="3"> 
+            <MultimediaDescriptions> 
+              <MultimediaDescription> 
+                <TextItems> 
+                  <TextItem Title="24-hour security"> 
+                    <Description>This A Description2</Description> 
+                  </TextItem> 
+                </TextItems> 
+              </MultimediaDescription> 
+            </MultimediaDescriptions> 
+          </Service> 
+          <Service Code="44"> 
+            <MultimediaDescriptions> 
+              <MultimediaDescription> 
+                <TextItems> 
+                  <TextItem Title="Game room"> 
+                    <Description>Game room for child</Description> 
+                  </TextItem> 
+                </TextItems> 
+              </MultimediaDescription> 
+            </MultimediaDescriptions> 
+          </Service> 
+        </Services> 
+      </Descriptions> 
+      <Policies> 
+				<Policy> 
+					<CancelPolicy> 
+						<CancelPenalty> 
+							<PenaltyDescription Name="Cancellation Policy"> 
+								<Text>6:00 PM</Text> 
+							</PenaltyDescription> 
+						</CancelPenalty> 
+					</CancelPolicy> 
+					<GuaranteePaymentPolicy> 
+						<GuaranteePayment PaymentCode="2"/> 
+						<!--Payment Code 2 = Direct bill from OTA Code Table PMT--> 
+					</GuaranteePaymentPolicy> 
+					<PolicyInfoCodes> 
+						<PolicyInfoCode> 
+							<Description Name="Oversold - Phone Call Home/Business"> 
+								<Text>Y</Text> 
+							</Description> 
+						</PolicyInfoCode> 
+						<PolicyInfoCode Name="OversoldArrangeAccommodations"/> 
+						<PolicyInfoCode Name="OversoldPayOneNightRoom"/> 
+						<PolicyInfoCode Name="OversoldArrangeTransportation"/> 
+					</PolicyInfoCodes> 
+					<CheckoutCharges> 
+						<CheckoutCharge CodeDetail="Late Check-Out Available" Type="Late"> 
+							<Description Name="Late Check-Out Fees"> 
+								<Text>00</Text> 
+							</Description> 
+						</CheckoutCharge> 
+					</CheckoutCharges> 
+					<PolicyInfo CheckInTime="16:00:00" CheckOutTime="12:00:00" KidsStayFree="true" TotalGuestCount="5"/> 
+					<TaxPolicies> 
+						<TaxPolicy Amount="5" Code="7"/> 
+						<!--Code 7 = Food & beverage tax from OTA Code Table FTT--> 
+						<TaxPolicy Code="10" NightsForTaxExemptionQuantity="90" Percent="5.7"/> 
+						<!--Code 10 = Occupancy tax from OTA Code Table FTT--> 
+						<TaxPolicy Code="17" Percent="12.45"/> 
+						<!--Code 17 = Total tax from OTA Code Table FTT--> 
+						<TaxPolicy Amount="2.75" Code="27"/> 
+						<!--Code 27 = Miscellaneous from OTA Code Table FTT--> 
+					</TaxPolicies> 
+				</Policy> 
+			</Policies> 
+      <AreaInfo> 
+				<RefPoints> 
+					<RefPoint Distance=".3" IndexPointCode="3" Name="Expway, Route 93, Mass. Turnpike"> 
+						<!--Index Point Code 3 = Highway from OTA Code Table IPC--> 
+						<Transportations> 
+							<Transportation> 
+								<MultimediaDescriptions> 
+									<MultimediaDescription> 
+										<TextItems> 
+											<TextItem Title="Directions to Highway from Property"> 
+												<Description>Please call the hotel for directions</Description> 
+											</TextItem> 
+										</TextItems> 
+									</MultimediaDescription> 
+								</MultimediaDescriptions> 
+							</Transportation> 
+						</Transportations> 
+					</RefPoint> 
+				</RefPoints> 
+				<Attractions LastUpdated="2004-11-10T15:50:30"> 
+					<Attraction AttractionCategoryCode="1" AttractionName="Boston" Code="BOS" CourtesyPhone="true"> 
+						<!--Attraction Category Code 1 = Airport from OTA Code Table ACC--> 
+						<Contact> 
+							<Addresses> 
+								<Address> 
+									<CityName>BOSTON</CityName> 
+									<StateProv>MA</StateProv> 
+									<CountryName>US</CountryName> 
+								</Address> 
+							</Addresses> 
+							<Phones> 
+								<Phone PhoneLocationType="2" PhoneNumber="8002353426" PhoneTechType="1" PhoneUseType="5"/> 
+								<!--Phone Location Type 2 = Central reservations office from OTA Code Table PLT, Phone Tech Type 1 = Voice from OTA Code Table PTT, Phone Use Type 5 = Contact from OTA Code Table PUT--> 
+							</Phones> 
+						</Contact> 
+						<MultimediaDescriptions> 
+							<MultimediaDescription> 
+								<TextItems> 
+									<TextItem Title="Sort Order"> 
+										<Description>1</Description> 
+									</TextItem> 
+									<TextItem Title="AirportName/Code"> 
+										<Description>Boston (BOS)</Description> 
+									</TextItem> 
+									<TextItem Title="Driving Instructions from Airport"> 
+										<Description>East on Mass Turnpike (Route 90).  Take the Copley Square exit which exits onto Stuart Street.  At the first light turn left onto Dartmouth Street.  At the next light turn left onto Huntington Avenue and stay in the left lane.  At the light under the skybridge make a u-turn to the left.  The hotel is in the right.</Description> 
+									</TextItem> 
+								</TextItems> 
+							</MultimediaDescription> 
+						</MultimediaDescriptions> 
+						<RefPoints> 
+							<RefPoint Direction="W" Distance="4"> 
+								<Transportations> 
+									<Transportation Description="Drive Time to Airport" TransportationCode="5" TypicalTravelTime="20"/> 
+									<!--Transportation Code 5 = Car from OTA Code Table TRP--> 
+									<Transportation Amount="10" CodeDetail="Fee" Description="Shuttle Service from Airport" NotificationRequired="On Request" TransportationCode="17"/> 
+									<!--Transportation Code 17 = Shuttle from OTA Code Table TRP--> 
+									<Transportation Amount="1" Description="Subway from Airport to Hotel Fee (one-way)" TransportationCode="18"/> 
+									<!--Transportation Code 18 = Subway from OTA Code Table TRP--> 
+									<Transportation Amount="30" Description="Estimated Taxi Fee (one-way)" TransportationCode="20"/> 
+									<!--Transportation Code 20 = Taxi from OTA Code Table TRP--> 
+									<Transportation Amount="10" CodeDetail="On Request" Description="Alternate Transportation Fee" TransportationCode="26"> 
+										<!--Transportation Code 26 = Other or alternate from OTA Code Table TRP--> 
+										<MultimediaDescriptions> 
+											<MultimediaDescription> 
+												<TextItems> 
+													<TextItem Title="Alternate Transportation Name"> 
+														<Description>Boston Hotels Shuttle</Description> 
+													</TextItem> 
+												</TextItems> 
+											</MultimediaDescription> 
+										</MultimediaDescriptions> 
+									</Transportation> 
+									<Transportation Description="Drive Time to Airport in Rush Hour" TransportationCode="27" TypicalTravelTime="30"/> 
+									<!--Transportation Code 27 = Car/rush hour from OTA Code Table TRP--> 
+									<Transportation Amount="35" Description="Estimated Taxi Fee (one-way) Rush Hour" TransportationCode="28"/> 
+									<!--Transportation Code 28 = Taxi/rush hour from OTA Code Table TRP--> 
+								</Transportations> 
+							</RefPoint> 
+						</RefPoints> 
+					</Attraction> 
+					<Attraction AttractionCategoryCode="62" AttractionName="Quincy Market/Faneuil Hall"> 
+						<!--Attraction Category Code 62 = Other from OTA Code Table ACC--> 
+						<Contact> 
+							<Addresses> 
+								<Address> 
+									<CityName>Boston</CityName> 
+									<StateProv>MA</StateProv> 
+									<CountryName>USA</CountryName> 
+								</Address> 
+							</Addresses> 
+						</Contact> 
+						<RefPoints> 
+							<RefPoint Distance="1"> 
+								<Transportations> 
+									<Transportation CodeDetail="N/A" TransportationCode="17"/> 
+									<!--Transportation Code 17 = Shuttle from OTA Code Table TRP--> 
+								</Transportations> 
+							</RefPoint> 
+						</RefPoints> 
+					</Attraction> 
+				</Attractions> 
+				<Recreations> 
+					<Recreation> 
+						<MultimediaDescriptions> 
+							<MultimediaDescription> 
+								<TextItems> 
+									<TextItem Title="Recreational Summary"> 
+										<Description>Full health club with indoor pool and workout facilities.  Nearby are many jogging areas and other health facilities with more complete information available through our concierge.  Golf and tennis nearby.</Description> 
+									</TextItem> 
+								</TextItems> 
+							</MultimediaDescription> 
+						</MultimediaDescriptions> 
+					</Recreation> 
+					<Recreation Code="36" CodeDetail="Onsite" Name="The Health Club"> 
+						<!--Code 36 = Health club from OTA Code Table RST--> 
+						<OperationSchedules> 
+							<OperationSchedule> 
+								<OperationTimes> 
+									<OperationTime End="23:00:00" Fri="true" Mon="true" Start="05:30:00" Thur="true" Tue="true" Weds="true"/> 
+									<OperationTime End="23:00:00" Sat="true" Start="06:00:00" Sun="true"/> 
+								</OperationTimes> 
+							</OperationSchedule> 
+							<OperationSchedule> 
+								<Charge Amount="0"/> 
+							</OperationSchedule> 
+						</OperationSchedules> 
+						<RefPoints> 
+							<RefPoint Distance="0"/> 
+						</RefPoints> 
+						<MultimediaDescriptions> 
+							<MultimediaDescription> 
+								<TextItems> 
+									<TextItem Title="Sort Order"> 
+										<Description>1</Description> 
+									</TextItem> 
+									<TextItem Title="Year fitness center equipment was most recently replaced"> 
+										<Description>2000</Description> 
+									</TextItem> 
+									<TextItem Title="Fitness Center Type"> 
+										<Description>EXTENSIVE</Description> 
+									</TextItem> 
+								</TextItems> 
+							</MultimediaDescription> 
+						</MultimediaDescriptions> 
+						<RecreationDetails> 
+							<RecreationDetail Code="35"> 
+								<!--Code 35 = Classes available from OTA Code Table REC--> 
+								<Description Name="Fitness Classes"> 
+									<Text>N/A</Text> 
+								</Description> 
+							</RecreationDetail> 
+							<RecreationDetail Code="41"> 
+								<!--Code 41 = Services available from OTA Code Table REC--> 
+								<Description Name="Fitness Service"> 
+									<Text>Massages</Text> 
+								</Description> 
+							</RecreationDetail> 
+						</RecreationDetails> 
+					</Recreation> 
+					<Recreation Code="122" Name="Indoor Pool"> 
+						<!--Code 122 = Indoor pool from OTA Code Table RST--> 
+						<OperationSchedules> 
+							<OperationSchedule> 
+								<OperationTimes> 
+									<OperationTime End="23:00:00" Fri="true" Mon="true" Start="05:30:00" Thur="true" Tue="true" Weds="true"/> 
+									<OperationTime End="23:00:00" Sat="true" Start="06:00:00" Sun="true"/> 
+								</OperationTimes> 
+							</OperationSchedule> 
+						</OperationSchedules> 
+						<MultimediaDescriptions> 
+							<MultimediaDescription> 
+								<TextItems> 
+									<TextItem Title="Sort Order"> 
+										<Description>1</Description> 
+									</TextItem> 
+								</TextItems> 
+							</MultimediaDescription> 
+						</MultimediaDescriptions> 
+						<RecreationDetails> 
+							<RecreationDetail Code="30" CodeDetail="Yes"/> 
+							<!--Code 30 = Heated pool from OTA Code Table REC--> 
+							<RecreationDetail Code="32"> 
+								<!--Code 32 = Pool depth from OTA Code Table REC--> 
+								<Description Name="Swimming Pool Depth"> 
+									<Text>5" 6"</Text> 
+								</Description> 
+							</RecreationDetail> 
+							<RecreationDetail Code="40"> 
+								<!--Code 40 = Restricted age for children without adult supervision from OTA Code Table REC--> 
+								<Description Name="Restricted age for Children w/o Adult Supervision"> 
+									<Text>16</Text> 
+								</Description> 
+							</RecreationDetail> 
+							<RecreationDetail Code="43"> 
+								<!--Code 43 = Towels available from OTA Code Table REC--> 
+								<Description Name="Towels Provided for Guest at Indoor Swimming Pool"> 
+									<Text>Yes</Text> 
+								</Description> 
+							</RecreationDetail> 
+							<RecreationDetail> 
+								<Description Name="Swimming Pool Location Indoor"> 
+									<Text>5th Floor</Text> 
+								</Description> 
+							</RecreationDetail> 
+						</RecreationDetails> 
+					</Recreation> 
+				</Recreations> 
+			</AreaInfo> 
+      <ContactInfo ContactProfileType="Property Info"> 
+					<Addresses> 
+						<Address UseType="7"> 
+							<!--Use Type 7 = Physical from OTA Code Table AUT--> 
+							<AddressLine>102 songrit, rawai </AddressLine> 
+							<CityName>Muang</CityName> 
+							<PostalCode>83000</PostalCode> 
+							<StateProv StateCode="PHUKET"/> 
+							<CountryName>THAILAND</CountryName> 
+						</Address> 
+					</Addresses> 
+					<Phones> 
+						<Phone PhoneLocationType="1" PhoneNumber="076-884-488" PhoneTechType="1" PhoneUseType="6"/> 
+						<!--Phone Location Type 1 = Brand reservations office from OTA Code Table PLT, Phone Tech Type 1 = Voice from OTA Code Table PTT, Phone Use Type = 1 Emergency contact from OTA Code Table PUT--> 
+						<Phone AreaCityCode="617" CountryAccessCode="1" PhoneLocationType="4" PhoneNumber="236-5800" PhoneTechType="1" PhoneUseType="5"/> 
+						<!--Phone Location Type 4 = Property direct from OTA Code Table PLT, Phone Tech Type 1 = Voice from OTA Code Table PTT, Phone Use Type 5 = Contact from OTA Code Table PUT--> 
+					</Phones> 
+				</ContactInfo> 
+    </HotelInfo> 
+  </HotelDescriptiveContent>s&gt; 
+</HotelDescriptiveContents></OTA_HotelDescriptiveContentNotifRQ> 
