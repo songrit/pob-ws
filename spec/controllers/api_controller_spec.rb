@@ -85,7 +85,7 @@ describe ApiController do
     end
     it "should have availability element" do
       assigns[:start_on].should == Date.new(2004,8,2)
-      assigns[:end_on].should == Date.new(2004,8,4)
+      assigns[:end_on].should == Date.new(2004,8,3)
       response.should have_tag("Availability")
     end      
     it "should have property description" do

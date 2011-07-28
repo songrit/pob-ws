@@ -3,8 +3,14 @@ class SongritController < ApplicationController
   include ERB::Util
   require "csv"
   require 'nokogiri'
+  require "rest_client"
   # require 'geokit'
 
+  def test_api
+    body= File.open("public/OTA/OTA_HotelDescriptiveContentNotifRQ4.xml").read
+    f= RestClient.post "http://pob-ws.heroku.com/api/hotel_descriptive_content_notif", body
+    render :xml => f.body
+  end
   def fix_tambon
     SubDistrict.all.each do |s|
       s.update_attribute :name, s.name.sub(/^ตำบล/,'')
@@ -37,11 +43,6 @@ class SongritController < ApplicationController
   end
   def test_req
     render :text => request.request_uri
-  end
-  def test_api
-    body= File.open("public/OTA/OTA_HotelSearchRQ.xml").read
-    f= RestClient.post "http://pob-ws.heroku.com/api/hotel_search", body
-    render :xml => f.body
   end
   def process_hotel_search
     l = LogRequest.find 14

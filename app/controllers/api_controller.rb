@@ -106,7 +106,7 @@ class ApiController < ApplicationController
     end
     unless doc.xpath("//xmlns:StayDateRange").empty?
       @start_on= doc.xpath("//xmlns:StayDateRange").attribute("Start").try(:value).try(:to_date)
-      @end_on= doc.xpath("//xmlns:StayDateRange").attribute("End").try(:value).try(:to_date)
+      @end_on= doc.xpath("//xmlns:StayDateRange").attribute("End").try(:value).try(:to_date)-1
     end
     render_response
   end
