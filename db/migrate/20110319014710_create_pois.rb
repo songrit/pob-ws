@@ -4,8 +4,8 @@ class CreatePois < ActiveRecord::Migration
       t.string :code
       t.string :name
       t.text :description
-      t.decimal :lat, :precision => 15, :scale => 5
-      t.decimal :lng, :precision => 15, :scale => 5
+      t.decimal :lat, :precision => 25, :scale => 15
+      t.decimal :lng, :precision => 25, :scale => 15
       t.string :city_code
       t.integer :gma_user_id
 
