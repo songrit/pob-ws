@@ -1,6 +1,5 @@
 class CreateAvails < ActiveRecord::Migration
   def self.up
-    drop_table :avails
     create_table :avails, :force=>true do |t|
       t.integer :hotel_id
       t.integer :booking_limit

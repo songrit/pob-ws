@@ -20,6 +20,8 @@
           %MultimediaDescriptions
             - hotel.multimedia_descriptions.each do |m|
               = m.xml
+          - unless hotel.facility.blank?
+            = hotel.facility
           - if @start_on
             %Availabilities
               - hotel.availabilities.all(:conditions=>['limit_on>=? AND limit_on<=?',@start_on,@end_on],:order=>'limit_on, inv_code').each do |availability|

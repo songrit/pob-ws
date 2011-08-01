@@ -117,7 +117,7 @@ class ApiController < ApplicationController
     # doc = Nokogiri::XML(l.content)
     code= doc.xpath("//xmlns:HotelDescriptiveContent").attribute("HotelCode").value
     hotel= Hotel.find_or_create_by_code(code)
-    # debugger if code=="SONGRIT"
+    # debugger if code=="BOSCO"
     hotel.update_attributes :name => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("HotelName").try(:value),
       :brand_code => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("BrandCode").try(:value),
       :brand_name => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("BrandName").try(:value),
@@ -131,7 +131,9 @@ class ApiController < ApplicationController
       :postal_code => doc.xpath("//xmlns:PostalCode").try(:text),
       :state_prov => doc.xpath("//xmlns:StateProv").first.try(:text), 
       :country_name => doc.xpath("//xmlns:CountryName").first.try(:text),
-      :description => doc.xpath('//xmlns:TextItem[@Title="Description"]').xpath('xmlns:Description').try(:text)
+      :description => doc.xpath('//xmlns:TextItem[@Title="Description"]').xpath('xmlns:Description').try(:text),
+      :facility => doc.xpath("//xmlns:FacilityInfo").try(:to_s)
+
     hotel.save
     doc.xpath("//xmlns:MultimediaDescription").each do |m|
       MultimediaDescription.create :hotel_id => hotel.id, :xml => m.to_s 

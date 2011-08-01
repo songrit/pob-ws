@@ -105,7 +105,12 @@ describe ApiController do
       post_request(:hotel_search, "OTA_HotelSearchRQ1.xml")
       response.body.should include_text("Renovation Area Completion Date 1")
     end
-    it "returns FacilityInfo"
+    it "returns FacilityInfo" do
+      post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ7.xml")
+      post_request(:hotel_search, "OTA_HotelSearchRQ1.xml")
+      dump_response "dump.xml"
+      response.body.should have_tag("FacilityInfo")
+    end
   end
   
   describe "HotelAvailNotif" do
@@ -194,6 +199,10 @@ describe ApiController do
       hotel.lat.should == 7.771828058680014
       hotel.lng.should == 98.3205502599717
     end
-    it "should keep FacilityInfo"
+    it "should keep FacilityInfo" do
+      post_request :hotel_descriptive_content_notif, "OTA_HotelDescriptiveContentNotifRQ.xml"
+      hotel= Hotel.find_by_code("BOSCO")
+      hotel.facility.should have_tag("FacilityInfo")
+    end
   end
 end

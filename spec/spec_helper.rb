@@ -52,3 +52,7 @@ Spec::Runner.configure do |config|
   #
   # For more information take a look at Spec::Runner::Configuration and Spec::Runner
 end
+
+def dump_response(name="dump.html")
+  File.open(RAILS_ROOT + "/tmp/#{name}", "w"){ |f| f.puts response.body }
+end
