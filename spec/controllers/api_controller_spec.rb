@@ -76,50 +76,56 @@ describe ApiController do
     before do
       Hotel.delete_all
       post_request(:hotel_descriptive_content_notif, "OTA_HotelDescriptiveContentNotifRQ.xml")
-      post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ.xml")
-      post_request(:hotel_search, "OTA_HotelSearchRQ1.xml")
     end
     it "should search by coordinates" do
+      post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ.xml")
+      post_request(:hotel_search, "OTA_HotelSearchRQ1.xml")
       response.should have_tag("Success")
       response.should have_tag("Property[HotelCode='BOSCO']")
     end
     it "should have availability element" do
+      post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ.xml")
+      post_request(:hotel_search, "OTA_HotelSearchRQ1.xml")
       assigns[:start_on].should == Date.new(2004,8,2)
       assigns[:end_on].should == Date.new(2004,8,3)
       response.should have_tag("Availability")
     end      
     it "should have property description" do
+      post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ.xml")
+      post_request(:hotel_search, "OTA_HotelSearchRQ1.xml")
       response.should have_tag("Property[Description]")
     end
     it "should have MultimediaDescription" do
-      # puts response.body
+      post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ.xml")
+      post_request(:hotel_search, "OTA_HotelSearchRQ1.xml")
       response.should have_tag("MultimediaDescription")
     end
+    it "returns Multimedia for Availability" do
+      post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ7.xml")
+      post_request(:hotel_search, "OTA_HotelSearchRQ1.xml")
+      response.body.should include_text("Renovation Area Completion Date 1")
+    end
+    it "returns FacilityInfo"
   end
   
-  describe "HotelRateAmountNotif" do
-    it "should handle HotelRateAmountNotifRQ/RS"
-  end
-
   describe "HotelAvailNotif" do
     before do
       post_request(:hotel_descriptive_content_notif, "OTA_HotelDescriptiveContentNotifRQ.xml")
     end
+    it "keep Multimedia from HotelAvail" do
+      post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ7.xml")
+      a= Availability.first
+      a.avail.multimedias.should include_text("Renovation Area Completion Date 1")
+    end
     it "should handle OTA_HotelAvailNotifRQ" do
       lambda do
-        body= File.open("public/OTA/OTA_HotelAvailNotifRQ.xml").read
-        request.env['content_type'] = 'application/xml'
-        request.env['RAW_POST_DATA'] =  body
-        post :hotel_avail_notif
+        post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ.xml")
       end.should change(Avail, :count)
       response.should have_tag("Success")
     end
     it "should update Availability" do
       Availability.delete_all
-      body= File.open("public/OTA/OTA_HotelAvailNotifRQ.xml").read
-      request.env['content_type'] = 'application/xml'
-      request.env['RAW_POST_DATA'] =  body
-      post :hotel_avail_notif
+      post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ.xml")
       Availability.all.should_not be_empty
       lambda do
         body= File.open("public/OTA/OTA_HotelAvailNotifRQ.xml").read
@@ -158,10 +164,7 @@ describe ApiController do
       id= hotel.id
       hotel.name.should == "Boston Marriott Copley Place"
       lambda do
-        body= File.open("public/OTA/OTA_HotelDescriptiveContentNotifRQ1.xml").read
-        request.env['content_type'] = 'application/xml'
-        request.env['RAW_POST_DATA'] =  body
-        post :hotel_descriptive_content_notif
+        post_request :hotel_descriptive_content_notif, "OTA_HotelDescriptiveContentNotifRQ1.xml"
       end.should_not change(Hotel, :count)
       hotel= Hotel.find id
       hotel.name.should == "Songrit"
@@ -174,10 +177,7 @@ describe ApiController do
       contact_info.state.should == "MA"
       contact_info.country.should == "USA"
       contact_info.phone_number.should == "1-800-228-9290"
-      @body= File.open("public/OTA/OTA_HotelDescriptiveContentNotifRQ3.xml").read
-      request.env['content_type'] = 'application/xml'
-      request.env['RAW_POST_DATA'] =  @body
-      post :hotel_descriptive_content_notif
+      post_request :hotel_descriptive_content_notif, "OTA_HotelDescriptiveContentNotifRQ3.xml"
       hotel= Hotel.find_by_code("RTPPTSOF")
       contact_info= hotel.contact_infos.last
       contact_info.address.should == "BP 60008FAA'A TAHITI"
@@ -185,21 +185,15 @@ describe ApiController do
       contact_info.phone_number.should == "689/866600"
     end
     it "handle MultimediaDescription" do
-      @body= File.open("public/OTA/OTA_HotelDescriptiveContentNotifRQ3.xml").read
-      request.env['content_type'] = 'application/xml'
-      request.env['RAW_POST_DATA'] =  @body
-      post :hotel_descriptive_content_notif
+      post_request :hotel_descriptive_content_notif, "OTA_HotelDescriptiveContentNotifRQ3.xml"
       MultimediaDescription.count.should == 11
     end
     it "keep all digits for lat, lng" do
-      @body= File.open("public/OTA/OTA_HotelDescriptiveContentNotifRQ4.xml").read
-      request.env['content_type'] = 'application/xml'
-      request.env['RAW_POST_DATA'] =  @body
-      post :hotel_descriptive_content_notif
+      post_request :hotel_descriptive_content_notif, "OTA_HotelDescriptiveContentNotifRQ4.xml"
       hotel= Hotel.find_by_code("SONGRIT")
-      # debugger
       hotel.lat.should == 7.771828058680014
       hotel.lng.should == 98.3205502599717
     end
+    it "should keep FacilityInfo"
   end
 end

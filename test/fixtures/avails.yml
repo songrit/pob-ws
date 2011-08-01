@@ -3,23 +3,25 @@
 one:
   hotel_id: 1
   booking_limit: 1
-  start_on: 2011-07-18
-  end_on: 2011-07-18
+  start_on: 2011-07-31
+  end_on: 2011-07-31
   rate_plan_code: MyString
   rate: 1.5
   inv_code: MyString
   unique_id: 1
   unique_id_type: MyString
+  multimedia: MyText
   gma_user_id: 1
 
 two:
   hotel_id: 1
   booking_limit: 1
-  start_on: 2011-07-18
-  end_on: 2011-07-18
+  start_on: 2011-07-31
+  end_on: 2011-07-31
   rate_plan_code: MyString
   rate: 1.5
   inv_code: MyString
   unique_id: 1
   unique_id_type: MyString
+  multimedia: MyText
   gma_user_id: 1

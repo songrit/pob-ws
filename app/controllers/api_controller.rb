@@ -1,5 +1,5 @@
 class ApiController < ApplicationController
-  # rescue_from Nokogiri::XML::XPath::SyntaxError, :with=> :render_err
+  # unused: rescue_from Nokogiri::XML::XPath::SyntaxError, :with=> :render_err
   rescue_from StandardError, :with=> :render_err
 
   def hotel_stay_info_notif
@@ -170,6 +170,7 @@ class ApiController < ApplicationController
     if hotel
       doc.xpath("//xmlns:AvailStatusMessage").each do |a|
         rate_attr = a.xpath('xmlns:StatusApplicationControl').attribute('Rate')
+        # debugger if a.xpath('xmlns:UniqueID').attribute('ID').try(:value) == "7"
         avail = Avail.create :hotel_id => hotel.id,
           :booking_limit => a.attribute('BookingLimit').try(:value), 
           :start_on => a.xpath('xmlns:StatusApplicationControl').attribute('Start').try(:value), 
@@ -178,7 +179,11 @@ class ApiController < ApplicationController
           :rate => (rate_attr ? rate_attr.try(:value).try(:to_f) : 0), 
           :inv_code => a.xpath('xmlns:StatusApplicationControl').attribute('InvCode').try(:value), 
           :unique_id => a.xpath('xmlns:UniqueID').attribute('ID').try(:value), 
-          :unique_id_type => a.xpath('xmlns:UniqueID').attribute('Type').value
+          :unique_id_type => a.xpath('xmlns:UniqueID').attribute('Type').try(:value),
+          :multimedias => (a/"MultimediaDescriptions").first.to_s
+        # unless multimedias.empty?
+        #   avail.update_attribute :multimedias, multimedias.to_s
+        # end
         avail.start_on.step(avail.end_on) do |d|
           aa= Availability.first :conditions=>[
             'hotel_id=? AND inv_code=? AND limit_on=?', avail.hotel_id, avail.inv_code, d]
@@ -187,6 +192,7 @@ class ApiController < ApplicationController
             aa.update_attribute(:max, avail.booking_limit) if (avail.booking_limit > aa.max)
           else
             aa= Availability.create :hotel_id=> avail.hotel_id,
+              :avail_id => avail.id, 
               :rate_plan_code => avail.rate_plan_code, 
               :rate => avail.rate, 
               :inv_code => avail.inv_code, :limit => avail.booking_limit,

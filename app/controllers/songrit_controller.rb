@@ -11,6 +11,11 @@ class SongritController < ApplicationController
     f= RestClient.post "http://pob-ws.heroku.com/api/hotel_descriptive_content_notif", body
     render :xml => f.body
   end
+  def test_api1
+    body= File.open("public/OTA/OTA_HotelSearchRQ2.xml").read
+    f= RestClient.post "http://pob-ws.heroku.com/api/hotel_search", body
+    render :xml => f.body
+  end
   def fix_tambon
     SubDistrict.all.each do |s|
       s.update_attribute :name, s.name.sub(/^ตำบล/,'')
