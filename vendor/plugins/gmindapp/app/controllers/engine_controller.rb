@@ -4,6 +4,10 @@ class EngineController < ApplicationController
   include ERB::Util
   include Prawn::Measurements
 
+  def help
+    @t = File.read(params[:f])
+    render :layout => "utf8"
+  end
   def init
     @service= GmaService.first :conditions=>['module=? AND code=?',
       params[:module], params[:service] ]
@@ -45,6 +49,7 @@ class EngineController < ApplicationController
         service= @xmain.gma_service
         if service
           f= "app/views/#{service.module}/#{service.code}/#{@runseq.code}.rhtml"
+          @f_help= "app/views/#{service.module}/#{service.code}/#{@runseq.code}.redcloth"
           @ui= File.read(f)
           @message = defined?(MSG_NEXT) ? MSG_NEXT : "Next &gt;"
           #      @message = "Done" if @runseq.form_step==@xvars[:total_form_steps]

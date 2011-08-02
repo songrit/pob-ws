@@ -11,7 +11,7 @@ class MainController < ApplicationController
     flash[:notice]= "could not find transaction id <b> #{params[:id]} </b>"
     redirect_to_root
   end
-  def help
+  def help0
 #    render :text => "help"
   end
   def index

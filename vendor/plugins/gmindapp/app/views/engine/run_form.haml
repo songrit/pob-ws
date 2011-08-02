@@ -2,7 +2,11 @@
   = step(@runseq.form_step, @xvars[:total_form_steps])
   #title
     %span(style='float:left;')= "รหัสดำเนินการ #{@xmain.id} : #{@xmain.name}"
-    %span(style='float:right;padding-right: 20px;')= @runseq.name
+    %span(style='float:right;padding-right: 20px;')
+      = @runseq.name
+      - if File.exists?(@f_help)
+        &nbsp;
+        = link_to "วิธีกรอกแบบ", {:controller=>"engine", :action=>"help", :f=>@f_help}, :target=>"_blank"
     &nbsp;
 %script
   function validate() { return true; }

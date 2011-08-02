@@ -80,6 +80,7 @@ describe PaoController do
     get :hotels
     assigns[:rr1s].should == [@rr1s]
   end
+  it "associate user to hotel"
   it "should be able to edit rr1 hotel"
   it "should assign hotel to user"
   it "should receive fee (rr3)"
