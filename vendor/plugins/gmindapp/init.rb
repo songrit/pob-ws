@@ -60,3 +60,4 @@ class ActionView::Base
   Linguistics::use( :en )
   Float.extend Linguistics
 end
+

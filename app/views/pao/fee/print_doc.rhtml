@@ -37,8 +37,8 @@
       <%= check_box_tag :addition,1,!rr3.addition, :style=>"margin-left:10px;" %> 
       ยื่นปรกติ
       <%= check_box_tag :addition,1,rr3.addition %> ยื่นเพิ่มเติมครั้งที่
-      <%= b rr3.addition %><p/>
-      นำส่งประจำเดือน <%= b MONTHS[rr3.month.month-1] %> พ.ศ. <%= b rr3.month.year + 543 %>
+      <%= b rr3.addition %>
+      <%= render "pao/fee/month", :rr3=>rr3 %>
     </td>
   </tr>
   <tr>

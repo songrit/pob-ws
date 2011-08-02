@@ -1,0 +1,65 @@
+<div style="margin:0;">
+นำส่งประจำเดือน (ให้ทำเครื่องหมาย &#10003; ในช่อง &#9744; หน้าชื่อเดือน)<br/>
+พ.ศ. <%= b rr3.month.year + 543 %>
+</div>
+<style type="text/css" media="all">
+  td { padding:0; }
+</style>
+<table style="border-spacing:0;">
+  <tr>
+    <td>
+      <%= check_box_tag :month, 1, rr3.month.month==1 %>
+      มกราคม
+    </td>
+    <td>
+      <%= check_box_tag :month, 1, rr3.month.month==2 %>
+      กุมภาพันธ์
+    </td>
+    <td>
+      <%= check_box_tag :month, 1, rr3.month.month==3 %>
+      มีนาคม
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= check_box_tag :month, 1, rr3.month.month==4 %>
+      เมษายน
+    </td>
+    <td>
+      <%= check_box_tag :month, 1, rr3.month.month==5 %>
+      พฤษภาคม
+    </td>
+    <td>
+      <%= check_box_tag :month, 1, rr3.month.month==6 %>
+      มิถุนายน
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= check_box_tag :month, 1, rr3.month.month==7 %>
+      กรกฏาคม
+    </td>
+    <td>
+      <%= check_box_tag :month, 1, rr3.month.month==8 %>
+      สิงหาคม
+    </td>
+    <td>
+      <%= check_box_tag :month, 1, rr3.month.month==9 %>
+      กันยายน
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= check_box_tag :month, 1, rr3.month.month==10 %>
+      ตุลาคม
+    </td>
+    <td>
+      <%= check_box_tag :month, 1, rr3.month.month==11 %>
+      พฤศจิกายน
+    </td>
+    <td>
+      <%= check_box_tag :month, 1, rr3.month.month==12 %>
+      ธันวาคม
+    </td>
+  </tr>
+</table>
