@@ -12,6 +12,7 @@
   .zone { border: 2px solid black; font-weight: bold; display: inline-block; padding: 0 5px;}
   td { padding: 5px; }
   table { width: 90%; margin: 0 auto;}
+  td.no-border { border-top: none; border-bottom: none; }
 </style>
 <table border="1" cellspacing="0" cellpadding="0">
   <tr>
@@ -35,7 +36,7 @@
     <td colspan="2" valign="top">
       <div class="zone">ข</div>
       <%= check_box_tag :addition,1,!rr3.addition, :style=>"margin-left:10px;" %> 
-      ยื่นปรกติ
+      ยื่นปกติ
       <%= check_box_tag :addition,1,rr3.addition %> ยื่นเพิ่มเติมครั้งที่
       <%= b rr3.addition %>
       <%= render "pao/fee/month", :rr3=>rr3 %>
@@ -67,37 +68,37 @@
         <tr>
           <td>4</td>
           <td>ค่าเช่าห้องพักที่เรียกเก็บเดือนนี้ ( 1 + 2 - 3 )</td>
-          <td class="right">-</td>
+          <td class="right" style="border-bottom:none" />
           <td class="right"><%= b num(rr3.amount,2) %></td>
         </tr>
         <tr>
           <td>5</td>
           <td>ค่าธรรมเนียมที่นำส่ง ( 4 x 1% )</td>
-          <td class="right">-</td>
+          <td class="right no-border" />
           <td class="right"><%= b num(rr3.fee,2) %></td>
         </tr>
         <tr>
           <td>6</td>
           <td>ดอกเบี้ยร้อยละ 7.5 ต่อปี</td>
-          <td class="right">-</td>
+          <td class="right no-border" />
           <td class="right"><%= b num(rr3.interest,2) %></td>
         </tr>
         <tr>
           <td>7</td>
           <td>เงินเพิ่มร้อยละ 1.5 ต่อเดือน</td>
-          <td class="right">-</td>
+          <td class="right no-border" />
           <td class="right"><%= b num(rr3.fine,2) %></td>
         </tr>
         <tr>
           <td>8</td>
           <td>รวมเงินค่าธรรมเนียมที่ต้องนำส่งทั้งสิ้น ( 5 + 6 + 7 )</td>
-          <td class="right">-</td>
+          <td class="right no-border" />
           <td class="right"><%= b num(rr3.total,2) %></td>
         </tr>
         <tr>
           <td>&nbsp;</td>
-          <td><%= b "( #{thai_baht rr3.total} )" %> </td>
-          <td>&nbsp;</td>
+          <td>(ตัวอักษร) <%= b "( #{thai_baht rr3.total} )" %> </td>
+          <td class="no-border">&nbsp;</td>
           <td>&nbsp;</td>
         </tr>
       </table><p/>&nbsp;<p/>
@@ -112,8 +113,8 @@
   <tr>
     <td colspan="3">
       ได้รับเงินตามใบเสร็จรับเงินองค์การบริหารส่วนจังหวัด ใบเสร็จเล่มที่
-      <%= b rr3.receipt_book %>
-      เลขที่ <%= b rr3.receipt_no %>
+      <%= '.'*50 %>
+      เลขที่ <%= '.'*50 %><br/>
       จำนวนเงิน <%= b num(rr3.total) %> บาท
       ( <%= thai_baht rr3.total %> )
       <p />
