@@ -16,6 +16,7 @@
   can request multiple properties
   %br
   = link_to "sample RQ", "/OTA/OTA_HotelSearchRQ1.xml"
+  = link_to "sample RQ with Limit", "/OTA/OTA_HotelSearchRQ3.xml"
   = link_to "sample RS", "/OTA/OTA_HotelSearchRS2.xml"
 %h4 message OTA_HotelRes
 .url http://pob-ws.heroku.com/api/hotel_res
@@ -25,7 +26,7 @@
 %h4 message OTA_HotelStayInfoNotifRQ
 .url http://pob-ws.heroku.com/api/hotel_stay_info_notif
 .note
-  %ul(style='list-style-type:none;')
+  %ul
     %li unused for now
     %li must submit when guest check out and end of month
     %li= h "<StayInfos HotelCode> is used to indicate hotel reporting"

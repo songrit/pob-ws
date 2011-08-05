@@ -40,7 +40,7 @@ td.group {width:100px;font-weight:bold;}
 td.people {text-align:center}
 div.person {display:inline-block}
 
-
+.note ul {list-style-type:none;}
 .field-name {
   font-size:1.2em;
   color:#007B02;

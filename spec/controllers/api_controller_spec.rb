@@ -112,6 +112,15 @@ describe ApiController do
       dump_response "dump.xml"
       response.body.should have_tag("FacilityInfo")
     end
+    it "can select limit, offset when search by lat, long" do
+      post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ7.xml")
+      post_request(:hotel_search, "OTA_HotelSearchRQ1.xml")
+      dump_response "OTA_HotelSearchRS1.xml"
+      response.body.should have_tag("Property")
+      post_request(:hotel_search, "OTA_HotelSearchRQ3.xml") # limit=0
+      dump_response "OTA_HotelSearchRS3.xml"
+      response.body.should_not have_tag("Property")
+    end
   end
   
   describe "HotelAvailNotif" do

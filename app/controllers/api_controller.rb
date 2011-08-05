@@ -101,8 +101,17 @@ class ApiController < ApplicationController
     else # find by coordinates
       lat= doc.xpath('//xmlns:Position[@Latitude]').attribute('Latitude').value
       lng= doc.xpath('//xmlns:Position[@Longitude]').attribute('Longitude').value
+      select = doc.xpath('//xmlns:Select')
+      unless select.empty?
+        limit= select.attribute('Limit').value
+        offset= select.attribute('Offset').value
+      end
       @poi_coord = Geokit::LatLng.new lat,lng
-      @hotels= Hotel.find :all, :origin=>[lat,lng], :within=> distance
+      if select.empty?
+        @hotels= Hotel.find :all, :origin=>[lat,lng], :within=> distance
+      else
+        @hotels= Hotel.find :all, :origin=>[lat,lng], :within=> distance, :limit => limit, :offset => offset 
+      end
     end
     unless doc.xpath("//xmlns:StayDateRange").empty?
       @start_on= doc.xpath("//xmlns:StayDateRange").attribute("Start").try(:value).try(:to_date)
