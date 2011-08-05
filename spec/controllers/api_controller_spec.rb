@@ -27,6 +27,7 @@ describe ApiController do
 
     it "should handle HotelRes" do
       post_request :hotel_res, "OTA_HotelResRQ1.xml"
+      dump_response "OTA_HotelResRS2.xml"
       @hotel= Hotel.find_by_code 'BOSCO'
       availability= @hotel.availabilities.last(:conditions=>['inv_code=? AND limit_on=?','STD', '2004-08-02'.to_date])
       availability.limit.should == 24      

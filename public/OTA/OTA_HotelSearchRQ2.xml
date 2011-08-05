@@ -7,8 +7,7 @@
   </POS>
   <Criteria>
     <Criterion>
-      <Position Latitude="7.9103"/>
-      <Position Longitude="98.38731"/>
+      <Position Latitude="7.9103" Longitude="98.38731"/>
       <Radius DistanceMeasure="MILES" Distance="0.001"/>
       <StayDateRange Start="2011-07-28" End="2011-07-29"/>
     </Criterion>
