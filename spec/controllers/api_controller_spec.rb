@@ -121,6 +121,16 @@ describe ApiController do
       dump_response "OTA_HotelSearchRS3.xml"
       response.body.should_not have_tag("Property")
     end
+    it "should not return unavailable hotels" do
+      post_request(:hotel_search, "OTA_HotelSearchRQ1.xml")
+      dump_response "OTA_HotelSearchRS1.xml"
+      response.body.should_not have_tag("Property")
+    end
+    it "should return Property when not specify StayDateRange" do
+      post_request(:hotel_search, "OTA_HotelSearchRQ4.xml")
+      dump_response "OTA_HotelSearchRS4.xml"
+      response.body.should have_tag("Property")
+    end
   end
   
   describe "HotelAvailNotif" do

@@ -16,9 +16,8 @@ describe "/pao/fee/print_doc.rhtml" do
  
 
   it "renders multiple months" do
-    pending
     # Fail; pending copy districts, provinces into test db
     # render
-    # response.should include_text("มกราคม")
+    # response.should include_text("มกราคม กุมภาพันธ์")
   end
 end

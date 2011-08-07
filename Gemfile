@@ -26,5 +26,6 @@ gem "rspec-rails", "1.3.3"
 gem "syntax"
 group :development do
   gem "ruby-debug"
-  # gem "rails-footnotes"
+  gem "rails-footnotes"
+  gem "rcov"
 end
