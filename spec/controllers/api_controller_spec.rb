@@ -131,6 +131,14 @@ describe ApiController do
       dump_response "OTA_HotelSearchRS4.xml"
       response.body.should have_tag("Property")
     end
+    it "should not return partially available hotels" do
+      # 2004-08-02 to 2004-08-05
+      post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ7.xml")
+      # 2004-08-02 to 2004-08-10
+      post_request(:hotel_search, "OTA_HotelSearchRQ5.xml")
+      dump_response "OTA_HotelSearchRS5.xml"
+      response.body.should_not have_tag("Property")
+    end
   end
   
   describe "HotelAvailNotif" do

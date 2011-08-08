@@ -12,7 +12,7 @@ class SongritController < ApplicationController
     render :xml => f.body
   end
   def test_api1
-    body= File.open("public/OTA/OTA_HotelSearchRQ2.xml").read
+    body= File.open("tmp/search.xml").read
     f= RestClient.post "http://pob-ws.heroku.com/api/hotel_search", body
     render :xml => f.body
   end
