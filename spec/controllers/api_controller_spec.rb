@@ -232,5 +232,11 @@ describe ApiController do
       hotel= Hotel.find_by_code("BOSCO")
       hotel.facility.should have_tag("FacilityInfo")
     end
+    it "should update MultimediaDescription instead of append" do
+      post_request :hotel_descriptive_content_notif, "OTA_HotelDescriptiveContentNotifRQ.xml"
+      lambda do
+        post_request :hotel_descriptive_content_notif, "OTA_HotelDescriptiveContentNotifRQ.xml"
+      end.should_not change(MultimediaDescription, :count)
+    end
   end
 end

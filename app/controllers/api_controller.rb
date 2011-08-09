@@ -144,6 +144,7 @@ class ApiController < ApplicationController
       :facility => doc.xpath("//xmlns:FacilityInfo").try(:to_s)
 
     hotel.save
+    MultimediaDescription.delete_all :hotel_id => hotel.id
     doc.xpath("//xmlns:MultimediaDescription").each do |m|
       MultimediaDescription.create :hotel_id => hotel.id, :xml => m.to_s 
     end
