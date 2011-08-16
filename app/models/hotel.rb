@@ -5,6 +5,7 @@ class Hotel < ActiveRecord::Base
   has_many :stays
   has_many :contact_infos
   has_many :multimedia_descriptions
+  has_many :bookings
   
   def ll
     Geokit::LatLng.new lat,lng

@@ -2,6 +2,18 @@ class ApiController < ApplicationController
   # unused: rescue_from Nokogiri::XML::XPath::SyntaxError, :with=> :render_err
   rescue_from StandardError, :with=> :render_err
 
+  def hotel_book
+    doc = Nokogiri::XML(request.body)
+    LogRequest.log(request,doc.to_s)
+    hotel_code= doc.xpath("//xmlns:HotelRef").map {|h| h.attribute("HotelCode").try(:value)}
+    @hotel= Hotel.find_by_code hotel_code
+    @start_on= doc.xpath("//xmlns:TimeSpan").attribute("Start").try(:value).try(:to_date)
+    @end_on= doc.xpath("//xmlns:TimeSpan").attribute("End").try(:value).try(:to_date)-1
+    @err= "Invalid Hotel" unless @hotel
+    @err= "Invalid Start Date" unless @start_on
+    @err= "Invalid End Date" unless @end_on
+    render_response
+  end
   def hotel_avail
     doc = Nokogiri::XML(request.body)
     LogRequest.log(request,doc.to_s)
@@ -80,7 +92,10 @@ class ApiController < ApplicationController
     @end_on = doc.xpath('//xmlns:TimeSpan').attribute('End').try(:value).try(:to_date)
     if check_avail?
       update_avail
-    else
+      reservation = doc.xpath('//xmlns:HotelReservation')
+      @hotel.bookings.create :hotel_code => @hotel.code,
+        :start_on => @start_on, :reservation => reservation.to_s
+      else
       @err= "Your reservation cannot be booked"
     end
     render_response

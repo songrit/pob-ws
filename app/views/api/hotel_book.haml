@@ -1,0 +1,16 @@
+!!! XML
+%POB_HotelBookRS{"xmlns:xsi"=>"http://www.w3.org/2001/XMLSchema-instance", |
+  "xmlns"=>"http://www.opentravel.org/OTA/2003/05", |
+  "xsi:schemaLocation"=>"http://www.opentravel.org/OTA/2003/05 OTA_HotelResRS.xsd", |
+  :TimeStamp=>Time.now.strftime('%FT%T'), |
+  :Target=>TARGET, :Version=>"1.001", :SequenceNmbr=>"1"} |
+  - if @err
+    %Errors
+      %Error{:Type=>@err_type}
+        = @err
+  - else
+    %Success
+    %HotelRef{ "HotelCode"=>@hotel.code }
+    %HotelReservations
+      - @hotel.bookings.each do |b|
+        = b.reservation

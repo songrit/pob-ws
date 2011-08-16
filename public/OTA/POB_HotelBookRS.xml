@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<POB_HotelBookRS SequenceNmbr='1' Target='Test' TimeStamp='2011-08-17T05:55:27' Version='1.001' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://www.opentravel.org/OTA/2003/05' xsi:schemaLocation='http://www.opentravel.org/OTA/2003/05 OTA_HotelResRS.xsd'>
+<Success></Success>
+<HotelRef HotelCode='BOSCO'></HotelRef>
+<HotelReservations>
+<HotelReservation>
+			<RoomStays>
+				<RoomStay>
+					<RoomTypes>
+						<RoomType NumberOfUnits="1"/>
+					</RoomTypes>
+					<Inv InvCode="STD"/>
+					<GuestCounts>
+						<GuestCount AgeQualifyingCode="10" Count="1"/>
+						<!-- Age Qualifying Code 10 = adult from OTA code table AQC-->
+					</GuestCounts>
+					<TimeSpan End="2004-08-04" Start="2004-08-02"/>
+					<Guarantee>
+						<GuaranteesAccepted>
+							<GuaranteeAccepted>
+								<PaymentCard CardCode="VS" CardNumber="4111111111111202" ExpireDate="0506">
+									<CardHolderName>Costello</CardHolderName>
+								</PaymentCard>
+							</GuaranteeAccepted>
+						</GuaranteesAccepted>
+					</Guarantee>
+					<BasicPropertyInfo ChainCode="MC" HotelCode="BOSCO"/>
+					<Comments>
+						<Comment>
+							<Text>non-smoking room requested;king bed</Text>
+						</Comment>
+					</Comments>
+				</RoomStay>
+			</RoomStays>
+			<ResGuests>
+				<ResGuest>
+					<Profiles>
+						<ProfileInfo>
+							<Profile ProfileType="1">
+							<!-- Profile Type 1 = customer from OTA code table PRT -->
+								<Customer>
+									<PersonName>
+										<NamePrefix>Ms.</NamePrefix>
+										<GivenName>Charlotte</GivenName>
+										<Surname>Costello</Surname>
+									</PersonName>
+									<Telephone PhoneNumber="8145556123" PhoneTechType="1"/>
+									<!-- Phone Tech Type 1 = voice from OTA code table PTT -->
+									<Email>charlotte.costello@corp.com</Email>
+									<Address>
+										<AddressLine>123 Locust St.</AddressLine>
+										<CityName>Hyndman</CityName>
+										<PostalCode>15545</PostalCode>
+										<StateProv>PA</StateProv>
+										<CountryName>USA</CountryName>
+									</Address>
+								</Customer>
+							</Profile>
+						</ProfileInfo>
+					</Profiles>
+				</ResGuest>
+			</ResGuests>
+		</HotelReservation>
+</HotelReservations>
+</POB_HotelBookRS>

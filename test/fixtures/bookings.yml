@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  hotel_id: 1
+  hotel_code: MyString
+  start_on: 2011-08-17
+  reservation: MyText
+  gma_user_id: 1
+
+two:
+  hotel_id: 1
+  hotel_code: MyString
+  start_on: 2011-08-17
+  reservation: MyText
+  gma_user_id: 1

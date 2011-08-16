@@ -19,6 +19,19 @@ describe ApiController do
     response.should have_tag("Error")
   end
 
+  describe "POB_HotelBook" do
+    before do
+      Hotel.delete_all
+      post_request(:hotel_descriptive_content_notif, "OTA_HotelDescriptiveContentNotifRQ.xml")
+      post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ.xml")
+      post_request :hotel_res, "OTA_HotelResRQ1.xml"
+    end
+    it "should handle POB_HotelBook" do
+      post_request :hotel_book, "POB_HotelBookRQ.xml"
+      dump_response "POB_HotelBookRS.xml"
+      response.should have_tag("HotelReservation")
+    end
+  end
   describe "POB_HotelAvail" do
     before do
       Hotel.delete_all
@@ -43,6 +56,11 @@ describe ApiController do
       @hotel= Hotel.find_by_code 'BOSCO'
       availability= @hotel.availabilities.last(:conditions=>['inv_code=? AND limit_on=?','STD', '2004-08-02'.to_date])
       availability.limit.should == 24      
+    end
+    it "should create booking record" do
+      Booking.delete_all
+      post_request :hotel_res, "OTA_HotelResRQ1.xml"
+      Booking.count.should == 1
     end
   end
   
