@@ -19,6 +19,18 @@ describe ApiController do
     response.should have_tag("Error")
   end
 
+  describe "POB_HotelAvail" do
+    before do
+      Hotel.delete_all
+      post_request(:hotel_descriptive_content_notif, "OTA_HotelDescriptiveContentNotifRQ.xml")
+      post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ.xml")
+    end
+    it "should handle POB_HotelAvail" do
+      post_request :hotel_avail, "POB_HotelAvailRQ.xml"
+      dump_response "POB_HotelAvailRS.xml"
+      response.should have_tag("Availability")
+    end
+  end
   describe "HotelRes" do
     before do
       post_request(:hotel_descriptive_content_notif, "OTA_HotelDescriptiveContentNotifRQ.xml")

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<POB_HotelAvailRS SequenceNmbr='1' Target='Test' TimeStamp='2011-08-16T18:17:52' Version='1.001' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://www.opentravel.org/OTA/2003/05' xsi:schemaLocation='http://www.opentravel.org/OTA/2003/05 HotelSearchRS.xsd'>
+<Success></Success>
+<Properties>
+<Property Description="The Boston Marriott Copley Place Hotel is the perfect destination for business or pleasure.  We're located in Boston's Back Bay, off the Mass. Trnpk. at Exit 22, 4 mi from Logan Airport, &amp; in close proximity to subway." HotelCode='BOSCO' HotelName='Boston Marriott Copley Place'>
+<Availabilities>
+<Availability Date='2004-08-02' InvCode='DLX' Limit='5' Rate='0' RatePlanCode='WHLS1'></Availability>
+<Availability Date='2004-08-02' InvCode='STD' Limit='25' Rate='0' RatePlanCode='WHLS1'></Availability>
+</Availabilities>
+</Property>
+</Properties>
+
+</POB_HotelAvailRS>

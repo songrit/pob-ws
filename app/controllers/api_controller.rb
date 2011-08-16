@@ -2,6 +2,19 @@ class ApiController < ApplicationController
   # unused: rescue_from Nokogiri::XML::XPath::SyntaxError, :with=> :render_err
   rescue_from StandardError, :with=> :render_err
 
+  def hotel_avail
+    doc = Nokogiri::XML(request.body)
+    LogRequest.log(request,doc.to_s)
+    hotels= doc.xpath("//xmlns:HotelRef").map {|h| h.attribute("HotelCode").try(:value)}
+    @hotels= Hotel.all :conditions=>{:code=> hotels}
+    @start_on= doc.xpath("//xmlns:StayDateRange").attribute("Start").try(:value).try(:to_date)
+    @end_on= doc.xpath("//xmlns:StayDateRange").attribute("End").try(:value).try(:to_date)-1
+    # debugger
+    @err= "Invalid Hotel" unless @hotels
+    @err= "Invalid Start Date" unless @start_on
+    @err= "Invalid End Date" unless @end_on
+    render_response
+  end
   def hotel_stay_info_notif
     @doc = Nokogiri::XML(request.body)
     @log_request= LogRequest.log(request,@doc.to_s)

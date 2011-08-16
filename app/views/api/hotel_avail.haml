@@ -1,0 +1,25 @@
+!!! XML
+%POB_HotelAvailRS{"xmlns:xsi"=>"http://www.w3.org/2001/XMLSchema-instance", |
+  "xmlns"=>"http://www.opentravel.org/OTA/2003/05", |
+  "xsi:schemaLocation"=>"http://www.opentravel.org/OTA/2003/05 HotelSearchRS.xsd", |
+  :TimeStamp=>Time.now.strftime('%FT%T'), |
+  :Target=>TARGET, :Version=>"1.001", :SequenceNmbr=>"1"} |
+  
+  - if @err
+    %Errors
+      %Error{:Type=>@err_type}
+        = @err
+  - else
+    %Success
+    %Properties
+      - @hotels.each do |hotel|
+        - avails= hotel.availabilities.all(:conditions=>['limit_on>=? AND limit_on<=?',@start_on,@end_on],:order=>'limit_on, inv_code')
+        %Property{:HotelCode=>hotel.code, :HotelName=>hotel.name, :HotelCodeContext=>hotel.hotel_code_context, :Description=>hotel.description}
+          - if @start_on
+            %Availabilities
+              - avails.each do |availability|
+                %Availability{:Date=>availability.limit_on.to_s, :InvCode=>availability.inv_code, :Rate=> availability.rate, :RatePlanCode=> availability.rate_plan_code, :Limit=>availability.limit}
+                - unless availability.avail.multimedias.blank?
+                  %MultimediaDescriptions
+                  = availability.avail.multimedias
+    = @criteria.to_s
