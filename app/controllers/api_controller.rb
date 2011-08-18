@@ -192,7 +192,8 @@ class ApiController < ApplicationController
       :address=>(address/"AddressLine").try(:text),
       :city => (address/"CityName").try(:text), 
       :zip => (address/"PostalCode").try(:text),
-      :country => (address/"CountryName").try(:text)
+      :country => (address/"CountryName").try(:text),
+      :email => (address/"Email").try(:text)
     unless state.blank?
       contact_info.update_attribute :state, state.attribute("StateCode").try(:value)
     end
