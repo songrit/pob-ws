@@ -90,12 +90,19 @@ class ApiController < ApplicationController
     @inv_code= doc.xpath('//xmlns:Inv').attribute('InvCode').value
     @start_on = doc.xpath('//xmlns:TimeSpan').attribute('Start').try(:value).try(:to_date)
     @end_on = doc.xpath('//xmlns:TimeSpan').attribute('End').try(:value).try(:to_date)
+    @payment_card = doc.xpath('//xmlns:PaymentCard')
     if check_avail?
       update_avail
       reservation = doc.xpath('//xmlns:HotelReservation')
       @hotel.bookings.create :hotel_code => @hotel.code,
         :start_on => @start_on, :reservation => reservation.to_s
+      m= render_to_string :template => "api/hotel_res_mail.haml", :layout => false
+      if @hotel.contact_infos.last.email.blank?
+        Notifier.deliver_gma("admin@phuketcity.com", "songrit@gmail.com", "POB Hotel Reservation Notice", m )
       else
+        Notifier.deliver_gma("admin@phuketcity.com", @hotel.contact_infos.last.email, "POB Hotel Reservation Notice", m )
+      end
+    else
       @err= "Your reservation cannot be booked"
     end
     render_response
@@ -186,7 +193,7 @@ class ApiController < ApplicationController
       :city => (address/"CityName").try(:text), 
       :zip => (address/"PostalCode").try(:text),
       :country => (address/"CountryName").try(:text)
-      unless state.blank?
+    unless state.blank?
       contact_info.update_attribute :state, state.attribute("StateCode").try(:value)
     end
     if phone
@@ -254,7 +261,7 @@ class ApiController < ApplicationController
   def render_err(e)
     # debugger
     @err_type=1
-    @err ||= "Unknown"
+    @err ||= e.backtrace.inspect
     render_response
   end
   def update_avail

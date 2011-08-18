@@ -42,6 +42,7 @@ describe ApiController do
       post_request :hotel_avail, "POB_HotelAvailRQ.xml"
       dump_response "POB_HotelAvailRS.xml"
       response.should have_tag("Availability")
+      response.should have_tag("ContactInfo")
     end
   end
   describe "HotelRes" do
@@ -61,6 +62,10 @@ describe ApiController do
       Booking.delete_all
       post_request :hotel_res, "OTA_HotelResRQ1.xml"
       Booking.count.should == 1
+    end
+    it "should send email to hotel" do
+      Notifier.should_receive(:deliver_gma)
+      post_request :hotel_res, "OTA_HotelResRQ1.xml"
     end
   end
   
