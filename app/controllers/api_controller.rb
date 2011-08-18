@@ -91,11 +91,14 @@ class ApiController < ApplicationController
     @start_on = doc.xpath('//xmlns:TimeSpan').attribute('Start').try(:value).try(:to_date)
     @end_on = doc.xpath('//xmlns:TimeSpan').attribute('End').try(:value).try(:to_date)
     @payment_card = doc.xpath('//xmlns:PaymentCard')
+    @email= doc.xpath('//xmlns:Email')
     if check_avail?
       update_avail
       reservation = doc.xpath('//xmlns:HotelReservation')
       @hotel.bookings.create :hotel_code => @hotel.code,
         :start_on => @start_on, :reservation => reservation.to_s
+      m= render_to_string :template => "api/hotel_res_mail_customer.haml", :layout => false
+      Notifier.deliver_gma("admin@phuketcity.com", @email, "POB Hotel Reservation Notice", m )
       m= render_to_string :template => "api/hotel_res_mail.haml", :layout => false
       if @hotel.contact_infos.last.email.blank?
         Notifier.deliver_gma("admin@phuketcity.com", "songrit@gmail.com", "POB Hotel Reservation Notice", m )

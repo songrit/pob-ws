@@ -5,15 +5,17 @@
 .url= "http://#{request.host_with_port}/api/ping"
 %h4 message OTA_HotelDescriptiveContentNotif
 .url= "http://#{request.host_with_port}/api/hotel_descriptive_content_notif"
+.note
+  &raquo; must have valid hotel email address under ContactInfo/Email path
 %b Example (Ruby)
 .example response= RestClient.post "http://#{request.host_with_port}/api/hotel_descriptive_content_notif", xml
 %h4 message OTA_HotelAvailNotif
 .url= "http://#{request.host_with_port}/api/hotel_avail_notif"
-.note one property at a time
+.note &raquo; one property at a time
 %h4 message OTA_HotelSearch
 .url= "http://#{request.host_with_port}/api/hotel_search"
 .note
-  can request multiple properties
+  &raquo; can request multiple properties
   %br
   = link_to "sample RQ", "/OTA/OTA_HotelSearchRQ1.xml"
   = link_to "sample RQ with Limit", "/OTA/OTA_HotelSearchRQ3.xml"
@@ -21,13 +23,16 @@
 %h4 message OTA_HotelRes
 .url= "http://#{request.host_with_port}/api/hotel_res"
 .note
+  &raquo; must include customer's email
   = link_to "sample RQ", "/OTA/OTA_HotelResRQ1.xml"
   = link_to "sample RS", "/OTA/OTA_HotelResRS2.xml"
 %h4 message OTA_HotelStayInfoNotifRQ
 .url= "http://#{request.host_with_port}/api/hotel_stay_info_notif"
 .note
   %ul
-    %li unused for now
+    %li
+      %i
+        unused for now
     %li must submit when guest check out and end of month
     %li= h "<StayInfos HotelCode> is used to indicate hotel reporting"
     %li= h "<RoomRate NumberOfUnits> is used to report number of units stay"
@@ -36,13 +41,13 @@
 %h4 message POB_HotelAvail
 .url= "http://#{request.host_with_port}/api/hotel_avail"
 .note
-  can have multiple properties
+  &raquo; can have multiple properties
   = link_to "sample RQ", "/OTA/POB_HotelAvailRQ.xml"
   = link_to "sample RS", "/OTA/POB_HotelAvailRS.xml"
 %h4 message POB_HotelBook
 .url=  "http://#{request.host_with_port}/api/hotel_book"
 .note
-  1 HotelCode at a time, the time frame is based on reservation start date
+  &raquo; one HotelCode at a time, the time frame is based on reservation start date
   %br
   = link_to "sample RQ", "/OTA/POB_HotelBookRQ.xml"
   = link_to "sample RS", "/OTA/POB_HotelBookRS.xml"

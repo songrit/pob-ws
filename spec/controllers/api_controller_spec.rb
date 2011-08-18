@@ -64,7 +64,7 @@ describe ApiController do
       Booking.count.should == 1
     end
     it "should send email to hotel" do
-      Notifier.should_receive(:deliver_gma)
+      Notifier.should_receive(:deliver_gma).twice
       post_request :hotel_res, "OTA_HotelResRQ1.xml"
     end
   end
