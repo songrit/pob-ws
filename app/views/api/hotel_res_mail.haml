@@ -14,6 +14,7 @@ Check out:
 = @end_on
 %br
 Guarantee:
+- @payment_card = @doc.xpath('//xmlns:PaymentCard')
 = @payment_card.attribute('CardCode').value
 = @payment_card.attribute('CardNumber').value
 Expire: 
@@ -40,4 +41,36 @@ Total Price:
 = num(total)
 THB
 %br
-
+Customer Information:
+- @customer= @doc.xpath('//xmlns:Customer')
+%br
+= nbsp 5
+Name:
+= (@customer/'NamePrefix').text
+= (@customer/'GivenName').text
+= (@customer/'Surname').text
+%br
+= nbsp 5
+Phone:
+= (@customer/'Telephone').attribute('PhoneNumber').value
+%br
+= nbsp 5
+Email:
+= (@customer/'Email').text
+%br
+= nbsp 5
+Address:
+- address= (@customer/'Address')
+= (address/'AddressLine').text
+,
+= (address/'CityName').text
+,
+= (address/'PostalCode').text
+,
+= (address/'StateProv').text
+,
+= (address/'CountryName').text
+%br
+Comment:
+- @comment= @doc.xpath('//xmlns:Comment')
+= (@comment/'Text').text

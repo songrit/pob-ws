@@ -83,6 +83,7 @@ class ApiController < ApplicationController
   end
   def hotel_res
     doc = Nokogiri::XML(request.body)
+    @doc= doc
     @log_request= LogRequest.log(request,doc.to_s)
     @hotel_code= doc.xpath('//xmlns:BasicPropertyInfo').attribute('HotelCode').value
     @hotel= Hotel.find_by_code @hotel_code
@@ -90,8 +91,9 @@ class ApiController < ApplicationController
     @inv_code= doc.xpath('//xmlns:Inv').attribute('InvCode').value
     @start_on = doc.xpath('//xmlns:TimeSpan').attribute('Start').try(:value).try(:to_date)
     @end_on = doc.xpath('//xmlns:TimeSpan').attribute('End').try(:value).try(:to_date)
-    @payment_card = doc.xpath('//xmlns:PaymentCard')
+    # @payment_card = doc.xpath('//xmlns:PaymentCard')
     @email= doc.xpath('//xmlns:Email')
+    # @customer= doc.xpath('//xmlns:Customer')
     if check_avail?
       update_avail
       reservation = doc.xpath('//xmlns:HotelReservation')
