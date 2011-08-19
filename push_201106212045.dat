@@ -1,1 +1,0 @@
-{"session_uri":"/sessions/3528880465","table_filter":"(^gma_modules$)","local_tables_info":{"gma_modules":5},"database_url":"mysql://root@127.0.0.1/pob_ws?encoding=utf8","stream_state":{},"completed_tables":["gma_modules"],"klass":"Taps::Push","remote_url":"http://heroku:osui59a24am79x@taps3.heroku.com"}

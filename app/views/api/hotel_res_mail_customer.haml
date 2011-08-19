@@ -12,3 +12,48 @@ Check in:
 %br
 Check out:
 = @end_on
+%br
+Price Summary:
+- total= 0
+%br
+- @start_on.step(@end_on-1) do |d|
+  = nbsp(5)
+  = d.strftime('%a %b %e, %Y')
+  Price
+  - rate = @hotel.rate(@inv_code,d)
+  - total += rate
+  = num(rate)
+  THB
+  %br
+Total Price:
+= num(total)
+THB
+%br
+Hotel Information:
+- contact = @hotel.contact_infos.last
+%br
+= nbsp 5
+Hotel:
+= @hotel.name
+%br
+= nbsp 5
+Address:
+= contact.address
+,
+= contact.city
+,
+= contact.state
+,
+= contact.zip
+,
+= contact.country
+%br
+= nbsp 5
+Phone:
+= contact.phone_number
+%br
+= nbsp 5
+Email:
+= contact.email
+%br
+

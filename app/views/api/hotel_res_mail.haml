@@ -18,6 +18,26 @@ Guarantee:
 = @payment_card.attribute('CardNumber').value
 Expire: 
 = @payment_card.attribute('ExpireDate').value
+CVV:
+= @payment_card.attribute('CVV').try(:value)
 %br
 Card Holder Name:
 = (@payment_card/'CardHolderName').text
+%br
+Price Summary:
+- total= 0
+%br
+- @start_on.step(@end_on-1) do |d|
+  = nbsp(5)
+  = d.strftime('%a %b %e, %Y')
+  Price
+  - rate = @hotel.rate(@inv_code,d)
+  - total += rate
+  = num(rate)
+  THB
+  %br
+Total Price:
+= num(total)
+THB
+%br
+

@@ -6,7 +6,15 @@ class Hotel < ActiveRecord::Base
   has_many :contact_infos
   has_many :multimedia_descriptions
   has_many :bookings
-  
+
+  def rate(inv_code,d)
+    a= (Availability.all :conditions=>{:hotel_id=>id,:limit_on=>d, :inv_code=>inv_code}).last
+    if a
+      a.rate
+    else
+      "N/A"
+    end
+  end
   def ll
     Geokit::LatLng.new lat,lng
   end

@@ -6,6 +6,21 @@ class SongritController < ApplicationController
   require "rest_client"
   # require 'geokit'
 
+  def test_hotel_res
+    l = LogRequest.find 98
+    doc = Nokogiri::XML(l.content)
+    # doc = Nokogiri::XML(request.body)
+    # @log_request= LogRequest.log(request,doc.to_s)
+    @hotel_code= doc.xpath('//xmlns:BasicPropertyInfo').attribute('HotelCode').value
+    @hotel= Hotel.find_by_code @hotel_code
+    @number_of_units= doc.xpath('//xmlns:RoomType').attribute('NumberOfUnits').try(:value).try(:to_i)
+    @inv_code= doc.xpath('//xmlns:Inv').attribute('InvCode').value
+    @start_on = doc.xpath('//xmlns:TimeSpan').attribute('Start').try(:value).try(:to_date)
+    @end_on = doc.xpath('//xmlns:TimeSpan').attribute('End').try(:value).try(:to_date)
+    @payment_card = doc.xpath('//xmlns:PaymentCard')
+    @email= doc.xpath('//xmlns:Email')
+    render :template => "api/hotel_res_mail.haml", :layout => false
+  end
   def send_dloc_mail
     count= 0
     DlocMail.unsent.each do |m|
@@ -21,13 +36,18 @@ class SongritController < ApplicationController
     render :text => "#{Time.now}: sent #{count} mails\n\n"
   end
   def test_api
-    body= File.open("public/OTA/OTA_HotelDescriptiveContentNotifRQ4.xml").read
-    f= RestClient.post "http://pob-ws.heroku.com/api/hotel_descriptive_content_notif", body
+    body= File.open("public/OTA/OTA_HotelDescriptiveContentNotifRQ.xml").read
+    f= RestClient.post "http://localhost:3000/api/hotel_descriptive_content_notif", body
     render :xml => f.body
   end
   def test_api1
     body= File.open("public/OTA/OTA_HotelResRQ1.xml").read
     f= RestClient.post "http://localhost:3000/api/hotel_res", body
+    render :xml => f.body
+  end
+  def test_api2
+    body= File.open("public/OTA/OTA_HotelAvailNotifRQ1.xml").read
+    f= RestClient.post "http://localhost:3000/api/hotel_avail_notif", body
     render :xml => f.body
   end
   def fix_tambon
