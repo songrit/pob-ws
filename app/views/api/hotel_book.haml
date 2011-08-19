@@ -12,5 +12,5 @@
     %Success
     %HotelRef{ "HotelCode"=>@hotel.code }
     %HotelReservations
-      - @hotel.bookings.each do |b|
+      - (Booking.all :conditions=>['hotel_id=? AND start_on>=? AND start_on<=?',@hotel.id,@start_on,@end_on]).each do |b|
         = b.reservation
