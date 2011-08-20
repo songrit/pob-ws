@@ -14,6 +14,8 @@ describe ApiController do
   
   it "authenticate request using POS element (see Hilton pdf)"
   
+  it "should log request respponse and error status"
+  
   it "should rescue_from Nokogiri::XML::XPath::SyntaxError; http://www.simonecarletti.com/blog/2009/12/inside-ruby-on-rails-rescuable-and-rescue_from/" do
     post :hotel_stay_info_notif
     response.should have_tag("Error")
@@ -55,8 +57,8 @@ describe ApiController do
       post_request :hotel_res, "OTA_HotelResRQ1.xml"
       dump_response "OTA_HotelResRS2.xml"
       @hotel= Hotel.find_by_code 'BOSCO'
-      availability= @hotel.availabilities.last(:conditions=>['inv_code=? AND limit_on=?','STD', '2004-08-02'.to_date])
-      availability.limit.should == 24      
+      availability= Availability.last(:conditions=>['inv_code=? AND limit_on=? AND hotel_id=?','STD', '2004-08-02'.to_date, @hotel.id])
+      availability.limit.should == 24     
     end
     it "should create booking record" do
       Booking.delete_all
@@ -66,6 +68,12 @@ describe ApiController do
     it "should send email to hotel" do
       Notifier.should_receive(:deliver_gma).twice
       post_request :hotel_res, "OTA_HotelResRQ1.xml"
+    end
+    it "should update availability" do
+      a0= Availability.last :conditions=>{:limit_on=>"2004-08-02"}
+      post_request :hotel_res, "OTA_HotelResRQ1.xml"
+      a1= Availability.last :conditions=>{:limit_on=>"2004-08-02"}
+      a1.limit.should == a0.limit-1
     end
   end
   

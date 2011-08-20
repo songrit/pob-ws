@@ -276,16 +276,18 @@ class ApiController < ApplicationController
   end
   def update_avail
     @start_on.step(@end_on) do |d|
-      availability= @hotel.availabilities.last(:conditions=>['inv_code=? AND limit_on=?',@inv_code, d])
+      availability= Availability.last(:conditions=>['inv_code=? AND limit_on=? AND hotel_id=?',@inv_code, d, @hotel.id])
       availability.limit -= @number_of_units
       availability.save
     end
   end
   def check_avail?
     avail= true
+    # debugger
     @start_on.step(@end_on) do |d|
+      availability= Availability.last(:conditions=>['inv_code=? AND limit_on=? AND hotel_id=?',@inv_code, d, @hotel.id])
+      # availability= @hotel.availabilities.last(:conditions=>['inv_code=? AND limit_on=?',@inv_code, d])
       # debugger
-      availability= @hotel.availabilities.last(:conditions=>['inv_code=? AND limit_on=?',@inv_code, d])
       if availability
         avail= false if (availability.limit < @number_of_units)
       else
