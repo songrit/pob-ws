@@ -9,5 +9,6 @@ module ApiHelper
         break
       end
     end
+    return cover
   end
 end
