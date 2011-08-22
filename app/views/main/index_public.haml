@@ -54,7 +54,8 @@
 %h4 message POB_HotelBookID
 .url=  "http://#{request.host_with_port}/api/hotel_book_id"
 .note
-  &raquo; use to inquire a particular booking id
+  &raquo; use to inquire a particular booking id,
+  the system will verify if Booking ID belongs to HotelCode
   %br
   = link_to "sample RQ", "/OTA/POB_HotelBookIDRQ.xml"
   = link_to "sample RS", "/OTA/POB_HotelBookIDRS.xml"
