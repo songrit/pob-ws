@@ -19,8 +19,9 @@ class SongritController < ApplicationController
     @start_on = doc.xpath('//xmlns:TimeSpan').attribute('Start').try(:value).try(:to_date)
     @end_on = doc.xpath('//xmlns:TimeSpan').attribute('End').try(:value).try(:to_date)
     @email= doc.xpath('//xmlns:Email')
-    render :template => "api/hotel_res_mail.haml", :layout => false
-    # render :template => "api/hotel_res_mail_customer.haml", :layout => false
+    @booking= Booking.last
+    # render :template => "api/hotel_res_mail.haml", :layout => false
+    render :template => "api/hotel_res_mail_customer.haml", :layout => false
   end
   def send_dloc_mail
     count= 0

@@ -2,6 +2,17 @@ class ApiController < ApplicationController
   # unused: rescue_from Nokogiri::XML::XPath::SyntaxError, :with=> :render_err
   rescue_from StandardError, :with=> :render_err
 
+  def hotel_book_id
+    doc = Nokogiri::XML(request.body)
+    LogRequest.log(request,doc.to_s)
+    hotel_code= doc.xpath("//xmlns:HotelRef").attribute("HotelCode").try(:value)
+    @hotel= Hotel.find_by_code hotel_code
+    @booking_id= doc.xpath("//xmlns:Booking").attribute("ID").try(:value)
+    @booking= Booking.find @booking_id
+    @err= "Invalid Hotel" unless @hotel
+    @err= "Invalid booking ID for this hotel" unless @hotel.id==@booking.hotel_id
+    render_response
+  end
   def hotel_book
     doc = Nokogiri::XML(request.body)
     LogRequest.log(request,doc.to_s)
