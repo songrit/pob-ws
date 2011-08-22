@@ -3,7 +3,9 @@
 # In the development environment your application's code is reloaded on
 # every request.  This slows down response time but is perfect for development
 # since you don't have to restart the webserver when you make code changes.
-config.cache_classes = false
+
+# error nilinclude? see http://www.theirishpenguin.com/2009/01/22/bug-of-the-day-nilinclude-error-with-create_time_zone_conversion_attribute/
+config.cache_classes = true
 
 # Log error messages when you accidentally call methods on nil.
 config.whiny_nils = true
