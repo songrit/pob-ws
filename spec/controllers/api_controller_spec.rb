@@ -30,7 +30,8 @@ describe ApiController do
       dump_response "OTA_HotelResRS1.xml"
     end
     it "should handle POB_HotelBookID" do
-      Booking.should_receive(:find).and_return(Booking.last)
+      booking= Booking.last
+      Booking.should_receive(:find).and_return(booking)
       post_request :hotel_book_id, "POB_HotelBookIDRQ.xml"
       dump_response "POB_HotelBookIDRS.xml"
       response.should have_tag("HotelReservation")

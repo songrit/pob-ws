@@ -11,5 +11,5 @@
   - else
     %Success
     %HotelRef{ "HotelCode"=>@hotel.code }
-    %HotelReservationID{ "BookingID"=> b.id}
-    = b.reservation
+    %HotelReservationID{ "BookingID"=> @booking.id}
+      = @booking.reservation
