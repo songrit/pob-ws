@@ -48,8 +48,8 @@ class SongritController < ApplicationController
     render :xml => f.body
   end
   def test_api2
-    body= File.open("public/OTA/OTA_HotelAvailNotifRQ1.xml").read
-    f= RestClient.post "http://localhost:3000/api/hotel_avail_notif", body
+    body= File.open("tmp/OTA_HotelSearchRQ.xml").read
+    f= RestClient.post "http://pob-ws.heroku.com/api/hotel_search", body
     render :xml => f.body
   end
   def fix_tambon

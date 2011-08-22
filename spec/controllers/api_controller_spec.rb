@@ -14,7 +14,7 @@ describe ApiController do
   
   it "authenticate request using POS element (see Hilton pdf)"
   
-  it "should log request respponse and error status"
+  it "should log request response and error status"
   
   it "should rescue_from Nokogiri::XML::XPath::SyntaxError; http://www.simonecarletti.com/blog/2009/12/inside-ruby-on-rails-rescuable-and-rescue_from/" do
     post :hotel_stay_info_notif
@@ -27,8 +27,10 @@ describe ApiController do
       post_request(:hotel_descriptive_content_notif, "OTA_HotelDescriptiveContentNotifRQ.xml")
       post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ.xml")
       post_request :hotel_res, "OTA_HotelResRQ1.xml"
+      dump_response "OTA_HotelResRS1.xml"
     end
     it "should handle POB_HotelBookID" do
+      Booking.should_receive(:find).and_return(Booking.last)
       post_request :hotel_book_id, "POB_HotelBookIDRQ.xml"
       dump_response "POB_HotelBookIDRS.xml"
       response.should have_tag("HotelReservation")
@@ -144,7 +146,7 @@ describe ApiController do
       post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ.xml")
       post_request(:hotel_search, "OTA_HotelSearchRQ1.xml")
       assigns[:start_on].should == Date.new(2004,8,2)
-      assigns[:end_on].should == Date.new(2004,8,3)
+      assigns[:end_on].should == Date.new(2004,8,4)
       response.should have_tag("Availability")
     end      
     it "should have property description" do
@@ -178,6 +180,16 @@ describe ApiController do
       response.body.should_not have_tag("Property")
     end
     it "should not return unavailable hotels" do
+      post_request(:hotel_search, "OTA_HotelSearchRQ1.xml")
+      dump_response "OTA_HotelSearchRS1.xml"
+      response.body.should_not have_tag("Property")
+      post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ7.xml")
+      post_request(:hotel_search, "OTA_HotelSearchRQ1.xml")
+      response.body.should have_tag("Property")
+      a= Availability.first :conditions=>{:limit_on=>"2004-08-02"}
+      a.limit= 0
+      a.save
+      # Availability.all.each {|a| a.limit=0; a.save}
       post_request(:hotel_search, "OTA_HotelSearchRQ1.xml")
       dump_response "OTA_HotelSearchRS1.xml"
       response.body.should_not have_tag("Property")

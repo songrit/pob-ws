@@ -10,6 +10,7 @@ class ApiController < ApplicationController
     @booking_id= doc.xpath("//xmlns:Booking").attribute("ID").try(:value)
     @booking= Booking.find @booking_id
     @err= "Invalid Hotel" unless @hotel
+    # debugger
     @err= "Invalid booking ID for this hotel" unless @hotel.id==@booking.hotel_id
     render_response
   end
@@ -172,7 +173,7 @@ class ApiController < ApplicationController
     end
     unless doc.xpath("//xmlns:StayDateRange").empty?
       @start_on= doc.xpath("//xmlns:StayDateRange").attribute("Start").try(:value).try(:to_date)
-      @end_on= doc.xpath("//xmlns:StayDateRange").attribute("End").try(:value).try(:to_date)-1
+      @end_on= doc.xpath("//xmlns:StayDateRange").attribute("End").try(:value).try(:to_date)
     end
     render_response
   end
