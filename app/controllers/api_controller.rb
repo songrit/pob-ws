@@ -96,7 +96,9 @@ class ApiController < ApplicationController
     if check_avail?
       update_avail
       reservation = doc.xpath('//xmlns:HotelReservation')
-      @hotel.bookings.create :hotel_code => @hotel.code,
+      # @hotel.bookings.create :hotel_code => @hotel.code,
+      #   :start_on => @start_on, :reservation => reservation.to_s
+      @booking= Booking.create :hotel_code => @hotel.code, :hotel_id => @hotel.id, 
         :start_on => @start_on, :reservation => reservation.to_s
       email_pattern= /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/
       email= doc.xpath('//xmlns:Email').text
