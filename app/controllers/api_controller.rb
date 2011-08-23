@@ -1,38 +1,45 @@
 class ApiController < ApplicationController
   # unused: rescue_from Nokogiri::XML::XPath::SyntaxError, :with=> :render_err
   rescue_from StandardError, :with=> :render_err
+  before_filter :validate_pos
 
+  def validate_pos
+    @doc = Nokogiri::XML(request.body)
+    @log_request= LogRequest.log(request,@doc.to_s)
+    # pos= YAML::load(File.open 'config/pob.yml')
+    # valid_pos= valid_pos.each.map {|k,v| v['auth']}
+    # source = @doc.xpath("//xmlns:Source")
+    # pos_id = source.attribute("ID").value if source
+    # if source && valid_pos.include?(pos_id)
+    #   return
+    # else
+    #   @err= "Unauthorized Access"
+    # end
+  end
   def hotel_book_id
-    doc = Nokogiri::XML(request.body)
-    LogRequest.log(request,doc.to_s)
-    hotel_code= doc.xpath("//xmlns:HotelRef").attribute("HotelCode").try(:value)
+    hotel_code= @doc.xpath("//xmlns:HotelRef").attribute("HotelCode").try(:value)
     @hotel= Hotel.find_by_code hotel_code
-    @booking_id= doc.xpath("//xmlns:Booking").attribute("ID").try(:value)
+    @booking_id= @doc.xpath("//xmlns:Booking").attribute("ID").try(:value)
     @booking= Booking.find @booking_id
     @err= "Invalid Hotel" unless @hotel
-    # debugger
     @err= "Invalid booking ID for this hotel" unless @hotel.id==@booking.hotel_id
     render_response
   end
   def hotel_book
-    doc = Nokogiri::XML(request.body)
-    LogRequest.log(request,doc.to_s)
-    hotel_code= doc.xpath("//xmlns:HotelRef").map {|h| h.attribute("HotelCode").try(:value)}
+    hotel_code= @doc.xpath("//xmlns:HotelRef").map {|h| h.attribute("HotelCode").try(:value)}
     @hotel= Hotel.find_by_code hotel_code
-    @start_on= doc.xpath("//xmlns:TimeSpan").attribute("Start").try(:value).try(:to_date)
-    @end_on= doc.xpath("//xmlns:TimeSpan").attribute("End").try(:value).try(:to_date)-1
+    @start_on= @doc.xpath("//xmlns:TimeSpan").attribute("Start").try(:value).try(:to_date)
+    @end_on= @doc.xpath("//xmlns:TimeSpan").attribute("End").try(:value).try(:to_date)-1
     @err= "Invalid Hotel" unless @hotel
     @err= "Invalid Start Date" unless @start_on
     @err= "Invalid End Date" unless @end_on
     render_response
   end
   def hotel_avail
-    doc = Nokogiri::XML(request.body)
-    LogRequest.log(request,doc.to_s)
-    hotels= doc.xpath("//xmlns:HotelRef").map {|h| h.attribute("HotelCode").try(:value)}
+    hotels= @doc.xpath("//xmlns:HotelRef").map {|h| h.attribute("HotelCode").try(:value)}
     @hotels= Hotel.all :conditions=>{:code=> hotels}
-    @start_on= doc.xpath("//xmlns:StayDateRange").attribute("Start").try(:value).try(:to_date)
-    @end_on= doc.xpath("//xmlns:StayDateRange").attribute("End").try(:value).try(:to_date)-1
+    @start_on= @doc.xpath("//xmlns:StayDateRange").attribute("Start").try(:value).try(:to_date)
+    @end_on= @doc.xpath("//xmlns:StayDateRange").attribute("End").try(:value).try(:to_date)-1
     # debugger
     @err= "Invalid Hotel" unless @hotels
     @err= "Invalid Start Date" unless @start_on
@@ -40,8 +47,6 @@ class ApiController < ApplicationController
     render_response
   end
   def hotel_stay_info_notif
-    @doc = Nokogiri::XML(request.body)
-    @log_request= LogRequest.log(request,@doc.to_s)
     @hotel_code= (@doc/'StayInfos').first[:HotelCode]
     @number_of_units= (@doc/'RoomRate').first[:NumberOfUnits].to_i
     unless Hotel.exists?(:code=>@hotel_code)
@@ -94,26 +99,23 @@ class ApiController < ApplicationController
     end
   end
   def hotel_res
-    doc = Nokogiri::XML(request.body)
-    @doc= doc
-    @log_request= LogRequest.log(request,doc.to_s)
-    @hotel_code= doc.xpath('//xmlns:BasicPropertyInfo').attribute('HotelCode').value
+    @hotel_code= @doc.xpath('//xmlns:BasicPropertyInfo').attribute('HotelCode').value
     @hotel= Hotel.find_by_code @hotel_code
-    @number_of_units= doc.xpath('//xmlns:RoomType').attribute('NumberOfUnits').try(:value).try(:to_i)
-    @inv_code= doc.xpath('//xmlns:Inv').attribute('InvCode').value
-    @start_on = doc.xpath('//xmlns:TimeSpan').attribute('Start').try(:value).try(:to_date)
-    @end_on = doc.xpath('//xmlns:TimeSpan').attribute('End').try(:value).try(:to_date)
-    # @payment_card = doc.xpath('//xmlns:PaymentCard')
-    # @customer= doc.xpath('//xmlns:Customer')
+    @number_of_units= @doc.xpath('//xmlns:RoomType').attribute('NumberOfUnits').try(:value).try(:to_i)
+    @inv_code= @doc.xpath('//xmlns:Inv').attribute('InvCode').value
+    @start_on = @doc.xpath('//xmlns:TimeSpan').attribute('Start').try(:value).try(:to_date)
+    @end_on = @doc.xpath('//xmlns:TimeSpan').attribute('End').try(:value).try(:to_date)
+    # @payment_card = @doc.xpath('//xmlns:PaymentCard')
+    # @customer= @doc.xpath('//xmlns:Customer')
     if check_avail?
       update_avail
-      reservation = doc.xpath('//xmlns:HotelReservation')
+      reservation = @doc.xpath('//xmlns:HotelReservation')
       # @hotel.bookings.create :hotel_code => @hotel.code,
       #   :start_on => @start_on, :reservation => reservation.to_s
       @booking= Booking.create :hotel_code => @hotel.code, :hotel_id => @hotel.id, 
         :start_on => @start_on, :reservation => reservation.to_s
       email_pattern= /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/
-      email= doc.xpath('//xmlns:Email').text
+      email= @doc.xpath('//xmlns:Email').text
       if email=~ email_pattern
         m= render_to_string :template => "api/hotel_res_mail_customer.haml", :layout => false
         Notifier.deliver_gma("admin@phuketcity.com", email, "POB Hotel Reservation Notice", m )
@@ -131,24 +133,19 @@ class ApiController < ApplicationController
     render_response
   end
   def ping
-    doc = Nokogiri::XML(request.body)
-    LogRequest.log(request,doc.to_s)
-    @echo_data= doc.xpath("//xmlns:EchoData").text
+    @echo_data= @doc.xpath("//xmlns:EchoData").text
     render_response
   end
   def hotel_search
-    # debugger
-    doc = Nokogiri::XML(request.body)
-    LogRequest.log(request,doc.to_s)
     # l = LogRequest.find 9
-    # doc = Nokogiri::XML(l.content)
-    @criteria= doc.xpath("//xmlns:Criteria")
-    distance = doc.xpath("//xmlns:Radius").attribute("Distance").value
-    distance_measure = doc.xpath("//xmlns:Radius").attribute("DistanceMeasure").value
-    ref_points = doc.xpath("//xmlns:RefPoint")
+    # @doc = Nokogiri::XML(l.content)
+    @criteria= @doc.xpath("//xmlns:Criteria")
+    distance = @doc.xpath("//xmlns:Radius").attribute("Distance").value
+    distance_measure = @doc.xpath("//xmlns:Radius").attribute("DistanceMeasure").value
+    ref_points = @doc.xpath("//xmlns:RefPoint")
     unless ref_points.empty?
       ref_point = ref_points.first.text
-      hotel_city_code = doc.xpath("//xmlns:HotelRef").attribute("HotelCityCode").value
+      hotel_city_code = @doc.xpath("//xmlns:HotelRef").attribute("HotelCityCode").value
       @poi = Poi.find_by_name ref_point.upcase
       if @poi
         @poi_coord= @poi.ll
@@ -157,9 +154,9 @@ class ApiController < ApplicationController
         @hotels=[]
       end
     else # find by coordinates
-      lat= doc.xpath('//xmlns:Position[@Latitude]').attribute('Latitude').value
-      lng= doc.xpath('//xmlns:Position[@Longitude]').attribute('Longitude').value
-      select = doc.xpath('//xmlns:Select')
+      lat= @doc.xpath('//xmlns:Position[@Latitude]').attribute('Latitude').value
+      lng= @doc.xpath('//xmlns:Position[@Longitude]').attribute('Longitude').value
+      select = @doc.xpath('//xmlns:Select')
       unless select.empty?
         limit= select.attribute('Limit').value
         offset= select.attribute('Offset').value
@@ -171,42 +168,40 @@ class ApiController < ApplicationController
         @hotels= Hotel.find :all, :origin=>[lat,lng], :within=> distance, :limit => limit, :offset => offset 
       end
     end
-    unless doc.xpath("//xmlns:StayDateRange").empty?
-      @start_on= doc.xpath("//xmlns:StayDateRange").attribute("Start").try(:value).try(:to_date)
-      @end_on= doc.xpath("//xmlns:StayDateRange").attribute("End").try(:value).try(:to_date)
+    unless @doc.xpath("//xmlns:StayDateRange").empty?
+      @start_on= @doc.xpath("//xmlns:StayDateRange").attribute("Start").try(:value).try(:to_date)
+      @end_on= @doc.xpath("//xmlns:StayDateRange").attribute("End").try(:value).try(:to_date)
     end
     render_response
   end
   def hotel_descriptive_content_notif
-    doc = Nokogiri::XML(request.body)
-    LogRequest.log(request,doc.to_s)
     # l= LogRequest.find 7
     # doc = Nokogiri::XML(l.content)
-    code= doc.xpath("//xmlns:HotelDescriptiveContent").attribute("HotelCode").value
+    code= @doc.xpath("//xmlns:HotelDescriptiveContent").attribute("HotelCode").value
     hotel= Hotel.find_or_create_by_code(code)
     # debugger if code=="BOSCO"
-    hotel.update_attributes :name => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("HotelName").try(:value),
-      :brand_code => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("BrandCode").try(:value),
-      :brand_name => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("BrandName").try(:value),
-      :currency_code => doc.xpath("//xmlns:HotelDescriptiveContent").attribute("CurrencyCode").try(:value),
-      :info_updated_on => doc.xpath("//xmlns:HotelInfo").attribute("LastUpdated").try(:value),
-      :hotel_status_code => Hotel.status(doc.xpath("//xmlns:HotelInfo").attribute("HotelStatus").try(:value)),
-      :lat => doc.xpath("//xmlns:Position").attribute("Latitude").try(:value),
-      :lng => doc.xpath("//xmlns:Position").attribute("Longitude").try(:value),
-      :address => doc.xpath("//xmlns:AddressLine").try(:text),
-      :city_name => doc.xpath("//xmlns:CityName").first.try(:text),
-      :postal_code => doc.xpath("//xmlns:PostalCode").try(:text),
-      :state_prov => doc.xpath("//xmlns:StateProv").first.try(:text), 
-      :country_name => doc.xpath("//xmlns:CountryName").first.try(:text),
-      :description => doc.xpath('//xmlns:TextItem[@Title="Description"]').xpath('xmlns:Description').try(:text),
-      :facility => doc.xpath("//xmlns:FacilityInfo").try(:to_s)
+    hotel.update_attributes :name => @doc.xpath("//xmlns:HotelDescriptiveContent").attribute("HotelName").try(:value),
+      :brand_code => @doc.xpath("//xmlns:HotelDescriptiveContent").attribute("BrandCode").try(:value),
+      :brand_name => @doc.xpath("//xmlns:HotelDescriptiveContent").attribute("BrandName").try(:value),
+      :currency_code => @doc.xpath("//xmlns:HotelDescriptiveContent").attribute("CurrencyCode").try(:value),
+      :info_updated_on => @doc.xpath("//xmlns:HotelInfo").attribute("LastUpdated").try(:value),
+      :hotel_status_code => Hotel.status(@doc.xpath("//xmlns:HotelInfo").attribute("HotelStatus").try(:value)),
+      :lat => @doc.xpath("//xmlns:Position").attribute("Latitude").try(:value),
+      :lng => @doc.xpath("//xmlns:Position").attribute("Longitude").try(:value),
+      :address => @doc.xpath("//xmlns:AddressLine").try(:text),
+      :city_name => @doc.xpath("//xmlns:CityName").first.try(:text),
+      :postal_code => @doc.xpath("//xmlns:PostalCode").try(:text),
+      :state_prov => @doc.xpath("//xmlns:StateProv").first.try(:text), 
+      :country_name => @doc.xpath("//xmlns:CountryName").first.try(:text),
+      :description => @doc.xpath('//xmlns:TextItem[@Title="Description"]').xpath('xmlns:Description').try(:text),
+      :facility => @doc.xpath("//xmlns:FacilityInfo").try(:to_s)
 
     hotel.save
     MultimediaDescription.delete_all :hotel_id => hotel.id
-    doc.xpath("//xmlns:MultimediaDescription").each do |m|
+    @doc.xpath("//xmlns:MultimediaDescription").each do |m|
       MultimediaDescription.create :hotel_id => hotel.id, :xml => m.to_s 
     end
-    contact= doc.xpath("//xmlns:ContactInfo")
+    contact= @doc.xpath("//xmlns:ContactInfo")
     address= (contact/"Address").first
     phone= (contact/"Phone").first
     state= (address/"StateProv")
@@ -231,15 +226,12 @@ class ApiController < ApplicationController
     render_response
   end
   def hotel_avail_notif
-    doc = Nokogiri::XML(request.body)
-    LogRequest.log(request,doc.to_s)
     # body= File.open("public/OTA/OTA_HotelAvailNotifRQ.xml").read
     # doc = Nokogiri::XML(body)
-
-    hotel_code = doc.xpath("//xmlns:AvailStatusMessages").attribute("HotelCode").value
+    hotel_code = @doc.xpath("//xmlns:AvailStatusMessages").attribute("HotelCode").value
     hotel= Hotel.find_by_code hotel_code
     if hotel
-      doc.xpath("//xmlns:AvailStatusMessage").each do |a|
+      @doc.xpath("//xmlns:AvailStatusMessage").each do |a|
         rate_attr = a.xpath('xmlns:StatusApplicationControl').attribute('Rate')
         # debugger if a.xpath('xmlns:UniqueID').attribute('ID').try(:value) == "7"
         avail = Avail.create :hotel_id => hotel.id,
@@ -286,7 +278,6 @@ class ApiController < ApplicationController
     render :layout => false
   end
   def render_err(e)
-    # debugger
     @err_type=1
     @err ||= e.backtrace.inspect
     render_response
@@ -300,11 +291,8 @@ class ApiController < ApplicationController
   end
   def check_avail?
     avail= true
-    # debugger
     @start_on.step(@end_on) do |d|
       availability= Availability.last(:conditions=>['inv_code=? AND limit_on=? AND hotel_id=?',@inv_code, d, @hotel.id])
-      # availability= @hotel.availabilities.last(:conditions=>['inv_code=? AND limit_on=?',@inv_code, d])
-      # debugger
       if availability
         avail= false if (availability.limit < @number_of_units)
       else

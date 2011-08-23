@@ -21,7 +21,7 @@ describe ApiController do
     response.should have_tag("Error")
   end
 
-  it "should reject unauthorize access" do
+  it "should reject unauthorized access" do
     post_request(:hotel_descriptive_content_notif, "OTA_PingRQnoPOS.xml")
     response.should have_tag("Error", :text => "Unauthorized Access")
   end
