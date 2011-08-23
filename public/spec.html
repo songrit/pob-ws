@@ -264,133 +264,24 @@ a {
 <div class="example_group">
   <dl>
   <dt id="example_group_9">ApiController HotelSearch</dt>
-    <script type="text/javascript">makeRed('rspec-header');</script>
-    <script type="text/javascript">makeRed('example_group_9');</script>
     <script type="text/javascript">moveProgressBar('28.3');</script>
-    <dd class="spec failed">
-      <span class="failed_spec_name">should search by coordinates</span>
-      <div class="failure" id="failure_1">
-        <div class="message"><pre>Expected at least 1 element matching &quot;Success&quot;, found 0.
-&lt;false&gt; is not true.</pre></div>
-        <div class="backtrace"><pre>/home/songrit/apps/pob_ws/spec/controllers/api_controller_spec.rb:147:</pre></div>
-    <pre class="ruby"><code><span class="linenum">145</span>      <span class="ident">post_request</span><span class="punct">(</span><span class="symbol">:hotel_avail_notif</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">OTA_HotelAvailNotifRQ.xml</span><span class="punct">&quot;)</span>
-<span class="linenum">146</span>      <span class="ident">post_request</span><span class="punct">(</span><span class="symbol">:hotel_search</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">OTA_HotelSearchRQ1.xml</span><span class="punct">&quot;)</span>
-<span class="offending"><span class="linenum">147</span>      <span class="ident">response</span><span class="punct">.</span><span class="ident">should</span> <span class="ident">have_tag</span><span class="punct">(&quot;</span><span class="string">Success</span><span class="punct">&quot;)</span></span>
-<span class="linenum">148</span>      <span class="ident">response</span><span class="punct">.</span><span class="ident">should</span> <span class="ident">have_tag</span><span class="punct">(&quot;</span><span class="string">Property[HotelCode='BOSCO']</span><span class="punct">&quot;)</span>
-<span class="linenum">149</span>    <span class="keyword">end</span></code></pre>
-      </div>
-    </dd>
+    <dd class="spec passed"><span class="passed_spec_name">should search by coordinates</span></dd>
     <script type="text/javascript">moveProgressBar('29.8');</script>
-    <dd class="spec failed">
-      <span class="failed_spec_name">should have availability element</span>
-      <div class="failure" id="failure_2">
-        <div class="message"><pre>Expected at least 1 element matching &quot;Availability&quot;, found 0.
-&lt;false&gt; is not true.</pre></div>
-        <div class="backtrace"><pre>/home/songrit/apps/pob_ws/spec/controllers/api_controller_spec.rb:155:</pre></div>
-    <pre class="ruby"><code><span class="linenum">153</span>      <span class="ident">assigns</span><span class="punct">[</span><span class="symbol">:start_on</span><span class="punct">].</span><span class="ident">should</span> <span class="punct">==</span> <span class="constant">Date</span><span class="punct">.</span><span class="ident">new</span><span class="punct">(</span><span class="number">2004</span><span class="punct">,</span><span class="number">8</span><span class="punct">,</span><span class="number">2</span><span class="punct">)</span>
-<span class="linenum">154</span>      <span class="ident">assigns</span><span class="punct">[</span><span class="symbol">:end_on</span><span class="punct">].</span><span class="ident">should</span> <span class="punct">==</span> <span class="constant">Date</span><span class="punct">.</span><span class="ident">new</span><span class="punct">(</span><span class="number">2004</span><span class="punct">,</span><span class="number">8</span><span class="punct">,</span><span class="number">4</span><span class="punct">)</span>
-<span class="offending"><span class="linenum">155</span>      <span class="ident">response</span><span class="punct">.</span><span class="ident">should</span> <span class="ident">have_tag</span><span class="punct">(&quot;</span><span class="string">Availability</span><span class="punct">&quot;)</span></span>
-<span class="linenum">156</span>    <span class="keyword">end</span>      
-<span class="linenum">157</span>    <span class="ident">it</span> <span class="punct">&quot;</span><span class="string">should have property description</span><span class="punct">&quot;</span> <span class="keyword">do</span></code></pre>
-      </div>
-    </dd>
+    <dd class="spec passed"><span class="passed_spec_name">should have availability element</span></dd>
     <script type="text/javascript">moveProgressBar('31.3');</script>
-    <dd class="spec failed">
-      <span class="failed_spec_name">should have property description</span>
-      <div class="failure" id="failure_3">
-        <div class="message"><pre>Expected at least 1 element matching &quot;Property[Description'']&quot;, found 0.
-&lt;false&gt; is not true.</pre></div>
-        <div class="backtrace"><pre>/home/songrit/apps/pob_ws/spec/controllers/api_controller_spec.rb:160:</pre></div>
-    <pre class="ruby"><code><span class="linenum">158</span>      <span class="ident">post_request</span><span class="punct">(</span><span class="symbol">:hotel_avail_notif</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">OTA_HotelAvailNotifRQ.xml</span><span class="punct">&quot;)</span>
-<span class="linenum">159</span>      <span class="ident">post_request</span><span class="punct">(</span><span class="symbol">:hotel_search</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">OTA_HotelSearchRQ1.xml</span><span class="punct">&quot;)</span>
-<span class="offending"><span class="linenum">160</span>      <span class="ident">response</span><span class="punct">.</span><span class="ident">should</span> <span class="ident">have_tag</span><span class="punct">(&quot;</span><span class="string">Property[Description]</span><span class="punct">&quot;)</span></span>
-<span class="linenum">161</span>    <span class="keyword">end</span>
-<span class="linenum">162</span>    <span class="ident">it</span> <span class="punct">&quot;</span><span class="string">should have MultimediaDescription</span><span class="punct">&quot;</span> <span class="keyword">do</span></code></pre>
-      </div>
-    </dd>
+    <dd class="spec passed"><span class="passed_spec_name">should have property description</span></dd>
     <script type="text/javascript">moveProgressBar('32.8');</script>
-    <dd class="spec failed">
-      <span class="failed_spec_name">should have MultimediaDescription</span>
-      <div class="failure" id="failure_4">
-        <div class="message"><pre>Expected at least 1 element matching &quot;MultimediaDescription&quot;, found 0.
-&lt;false&gt; is not true.</pre></div>
-        <div class="backtrace"><pre>/home/songrit/apps/pob_ws/spec/controllers/api_controller_spec.rb:165:</pre></div>
-    <pre class="ruby"><code><span class="linenum">163</span>      <span class="ident">post_request</span><span class="punct">(</span><span class="symbol">:hotel_avail_notif</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">OTA_HotelAvailNotifRQ.xml</span><span class="punct">&quot;)</span>
-<span class="linenum">164</span>      <span class="ident">post_request</span><span class="punct">(</span><span class="symbol">:hotel_search</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">OTA_HotelSearchRQ1.xml</span><span class="punct">&quot;)</span>
-<span class="offending"><span class="linenum">165</span>      <span class="ident">response</span><span class="punct">.</span><span class="ident">should</span> <span class="ident">have_tag</span><span class="punct">(&quot;</span><span class="string">MultimediaDescription</span><span class="punct">&quot;)</span></span>
-<span class="linenum">166</span>    <span class="keyword">end</span>
-<span class="linenum">167</span>    <span class="ident">it</span> <span class="punct">&quot;</span><span class="string">returns Multimedia for Availability</span><span class="punct">&quot;</span> <span class="keyword">do</span></code></pre>
-      </div>
-    </dd>
+    <dd class="spec passed"><span class="passed_spec_name">should have MultimediaDescription</span></dd>
     <script type="text/javascript">moveProgressBar('34.3');</script>
-    <dd class="spec failed">
-      <span class="failed_spec_name">returns Multimedia for Availability</span>
-      <div class="failure" id="failure_5">
-        <div class="message"><pre>expected to find &quot;Renovation Area Completion Date 1&quot; in &quot;&lt;?xml version='1.0' encoding='utf-8' ?&gt;\n&lt;OTA_HotelSearchRS SequenceNmbr='1' Target='Test' TimeStamp='2011-08-24T00:43:45' Version='1.001' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://www.opentravel.org/OTA/2003/05' xsi:schemaLocation='http://www.opentravel.org/OTA/2003/05 HotelSearchRS.xsd'&gt;\n&lt;Errors&gt;\n&lt;Error&gt;\nUnauthorized Access\n&lt;/Error&gt;\n&lt;/Errors&gt;\n&lt;/OTA_HotelSearchRS&gt;\n&quot;</pre></div>
-        <div class="backtrace"><pre>/home/songrit/apps/pob_ws/spec/controllers/api_controller_spec.rb:170:</pre></div>
-    <pre class="ruby"><code><span class="linenum">168</span>      <span class="ident">post_request</span><span class="punct">(</span><span class="symbol">:hotel_avail_notif</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">OTA_HotelAvailNotifRQ7.xml</span><span class="punct">&quot;)</span>
-<span class="linenum">169</span>      <span class="ident">post_request</span><span class="punct">(</span><span class="symbol">:hotel_search</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">OTA_HotelSearchRQ1.xml</span><span class="punct">&quot;)</span>
-<span class="offending"><span class="linenum">170</span>      <span class="ident">response</span><span class="punct">.</span><span class="ident">body</span><span class="punct">.</span><span class="ident">should</span> <span class="ident">include_text</span><span class="punct">(&quot;</span><span class="string">Renovation Area Completion Date 1</span><span class="punct">&quot;)</span></span>
-<span class="linenum">171</span>    <span class="keyword">end</span>
-<span class="linenum">172</span>    <span class="ident">it</span> <span class="punct">&quot;</span><span class="string">returns FacilityInfo</span><span class="punct">&quot;</span> <span class="keyword">do</span></code></pre>
-      </div>
-    </dd>
+    <dd class="spec passed"><span class="passed_spec_name">returns Multimedia for Availability</span></dd>
     <script type="text/javascript">moveProgressBar('35.8');</script>
-    <dd class="spec failed">
-      <span class="failed_spec_name">returns FacilityInfo</span>
-      <div class="failure" id="failure_6">
-        <div class="message"><pre>Expected at least 1 element matching &quot;FacilityInfo&quot;, found 0.
-&lt;false&gt; is not true.</pre></div>
-        <div class="backtrace"><pre>/home/songrit/apps/pob_ws/spec/controllers/api_controller_spec.rb:176:</pre></div>
-    <pre class="ruby"><code><span class="linenum">174</span>      <span class="ident">post_request</span><span class="punct">(</span><span class="symbol">:hotel_search</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">OTA_HotelSearchRQ1.xml</span><span class="punct">&quot;)</span>
-<span class="linenum">175</span>      <span class="ident">dump_response</span> <span class="punct">&quot;</span><span class="string">dump.xml</span><span class="punct">&quot;</span>
-<span class="offending"><span class="linenum">176</span>      <span class="ident">response</span><span class="punct">.</span><span class="ident">body</span><span class="punct">.</span><span class="ident">should</span> <span class="ident">have_tag</span><span class="punct">(&quot;</span><span class="string">FacilityInfo</span><span class="punct">&quot;)</span></span>
-<span class="linenum">177</span>    <span class="keyword">end</span>
-<span class="linenum">178</span>    <span class="ident">it</span> <span class="punct">&quot;</span><span class="string">can select limit, offset when search by lat, long</span><span class="punct">&quot;</span> <span class="keyword">do</span></code></pre>
-      </div>
-    </dd>
+    <dd class="spec passed"><span class="passed_spec_name">returns FacilityInfo</span></dd>
     <script type="text/javascript">moveProgressBar('37.3');</script>
-    <dd class="spec failed">
-      <span class="failed_spec_name">can select limit, offset when search by lat, long</span>
-      <div class="failure" id="failure_7">
-        <div class="message"><pre>Expected at least 1 element matching &quot;Property&quot;, found 0.
-&lt;false&gt; is not true.</pre></div>
-        <div class="backtrace"><pre>/home/songrit/apps/pob_ws/spec/controllers/api_controller_spec.rb:182:</pre></div>
-    <pre class="ruby"><code><span class="linenum">180</span>      <span class="ident">post_request</span><span class="punct">(</span><span class="symbol">:hotel_search</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">OTA_HotelSearchRQ1.xml</span><span class="punct">&quot;)</span>
-<span class="linenum">181</span>      <span class="ident">dump_response</span> <span class="punct">&quot;</span><span class="string">OTA_HotelSearchRS1.xml</span><span class="punct">&quot;</span>
-<span class="offending"><span class="linenum">182</span>      <span class="ident">response</span><span class="punct">.</span><span class="ident">body</span><span class="punct">.</span><span class="ident">should</span> <span class="ident">have_tag</span><span class="punct">(&quot;</span><span class="string">Property</span><span class="punct">&quot;)</span></span>
-<span class="linenum">183</span>      <span class="ident">post_request</span><span class="punct">(</span><span class="symbol">:hotel_search</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">OTA_HotelSearchRQ3.xml</span><span class="punct">&quot;)</span> <span class="comment"># limit=0</span>
-<span class="linenum">184</span>      <span class="ident">dump_response</span> <span class="punct">&quot;</span><span class="string">OTA_HotelSearchRS3.xml</span><span class="punct">&quot;</span></code></pre>
-      </div>
-    </dd>
+    <dd class="spec passed"><span class="passed_spec_name">can select limit, offset when search by lat, long</span></dd>
     <script type="text/javascript">moveProgressBar('38.8');</script>
-    <dd class="spec failed">
-      <span class="failed_spec_name">should not return unavailable hotels</span>
-      <div class="failure" id="failure_8">
-        <div class="message"><pre>Expected at least 1 element matching &quot;Property&quot;, found 0.
-&lt;false&gt; is not true.</pre></div>
-        <div class="backtrace"><pre>/home/songrit/apps/pob_ws/spec/controllers/api_controller_spec.rb:193:</pre></div>
-    <pre class="ruby"><code><span class="linenum">191</span>      <span class="ident">post_request</span><span class="punct">(</span><span class="symbol">:hotel_avail_notif</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">OTA_HotelAvailNotifRQ7.xml</span><span class="punct">&quot;)</span>
-<span class="linenum">192</span>      <span class="ident">post_request</span><span class="punct">(</span><span class="symbol">:hotel_search</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">OTA_HotelSearchRQ1.xml</span><span class="punct">&quot;)</span>
-<span class="offending"><span class="linenum">193</span>      <span class="ident">response</span><span class="punct">.</span><span class="ident">body</span><span class="punct">.</span><span class="ident">should</span> <span class="ident">have_tag</span><span class="punct">(&quot;</span><span class="string">Property</span><span class="punct">&quot;)</span></span>
-<span class="linenum">194</span>      <span class="ident">a</span><span class="punct">=</span> <span class="constant">Availability</span><span class="punct">.</span><span class="ident">first</span> <span class="symbol">:conditions=</span><span class="punct">&gt;{</span><span class="symbol">:limit_on=</span><span class="punct">&gt;&quot;</span><span class="string">2004-08-02</span><span class="punct">&quot;}</span>
-<span class="linenum">195</span>      <span class="ident">a</span><span class="punct">.</span><span class="ident">limit</span><span class="punct">=</span> <span class="number">0</span></code></pre>
-      </div>
-    </dd>
+    <dd class="spec passed"><span class="passed_spec_name">should not return unavailable hotels</span></dd>
     <script type="text/javascript">moveProgressBar('40.2');</script>
-    <dd class="spec failed">
-      <span class="failed_spec_name">should return Property when not specify StayDateRange</span>
-      <div class="failure" id="failure_9">
-        <div class="message"><pre>Expected at least 1 element matching &quot;Property&quot;, found 0.
-&lt;false&gt; is not true.</pre></div>
-        <div class="backtrace"><pre>/home/songrit/apps/pob_ws/spec/controllers/api_controller_spec.rb:205:</pre></div>
-    <pre class="ruby"><code><span class="linenum">203</span>      <span class="ident">post_request</span><span class="punct">(</span><span class="symbol">:hotel_search</span><span class="punct">,</span> <span class="punct">&quot;</span><span class="string">OTA_HotelSearchRQ4.xml</span><span class="punct">&quot;)</span>
-<span class="linenum">204</span>      <span class="ident">dump_response</span> <span class="punct">&quot;</span><span class="string">OTA_HotelSearchRS4.xml</span><span class="punct">&quot;</span>
-<span class="offending"><span class="linenum">205</span>      <span class="ident">response</span><span class="punct">.</span><span class="ident">body</span><span class="punct">.</span><span class="ident">should</span> <span class="ident">have_tag</span><span class="punct">(&quot;</span><span class="string">Property</span><span class="punct">&quot;)</span></span>
-<span class="linenum">206</span>    <span class="keyword">end</span>
-<span class="linenum">207</span>    <span class="ident">it</span> <span class="punct">&quot;</span><span class="string">should not return partially available hotels</span><span class="punct">&quot;</span> <span class="keyword">do</span></code></pre>
-      </div>
-    </dd>
+    <dd class="spec passed"><span class="passed_spec_name">should return Property when not specify StayDateRange</span></dd>
     <script type="text/javascript">moveProgressBar('41.7');</script>
     <dd class="spec passed"><span class="passed_spec_name">should not return partially available hotels</span></dd>
   </dl>
@@ -437,12 +328,15 @@ a {
 <div class="example_group">
   <dl>
   <dt id="example_group_13">GmaController</dt>
+    <script type="text/javascript">makeYellow('rspec-header');</script>
     <script type="text/javascript">makeYellow('example_group_13');</script>
     <script type="text/javascript">moveProgressBar('61.1');</script>
     <dd class="spec not_implemented"><span class="not_implemented_spec_name">should annotate (PENDING: Not Yet Implemented)</span></dd>
+    <script type="text/javascript">makeYellow('rspec-header');</script>
     <script type="text/javascript">makeYellow('example_group_13');</script>
     <script type="text/javascript">moveProgressBar('62.6');</script>
     <dd class="spec not_implemented"><span class="not_implemented_spec_name">setup Time::DATE_FORMATS[:th]  http://localhost/doc/railsbrain/index.html?a=M001522&amp;name=to_formatted_s (PENDING: Not Yet Implemented)</span></dd>
+    <script type="text/javascript">makeYellow('rspec-header');</script>
     <script type="text/javascript">makeYellow('example_group_13');</script>
     <script type="text/javascript">moveProgressBar('64.1');</script>
     <dd class="spec not_implemented"><span class="not_implemented_spec_name">use formtastic (PENDING: Not Yet Implemented)</span></dd>
@@ -453,20 +347,25 @@ a {
 <div class="example_group">
   <dl>
   <dt id="example_group_14">HotelsController</dt>
+    <script type="text/javascript">makeYellow('rspec-header');</script>
     <script type="text/javascript">makeYellow('example_group_14');</script>
     <script type="text/javascript">moveProgressBar('67.1');</script>
     <dd class="spec not_implemented"><span class="not_implemented_spec_name">update correct info on calendar view (PENDING: Not Yet Implemented)</span></dd>
+    <script type="text/javascript">makeYellow('rspec-header');</script>
     <script type="text/javascript">makeYellow('example_group_14');</script>
     <script type="text/javascript">moveProgressBar('68.6');</script>
     <dd class="spec not_implemented"><span class="not_implemented_spec_name">show different colors in hotel map (PENDING: Not Yet Implemented)</span></dd>
     <script type="text/javascript">moveProgressBar('70.1');</script>
     <dd class="spec passed"><span class="passed_spec_name">should show map of all hotels</span></dd>
+    <script type="text/javascript">makeYellow('rspec-header');</script>
     <script type="text/javascript">makeYellow('example_group_14');</script>
     <script type="text/javascript">moveProgressBar('71.6');</script>
     <dd class="spec not_implemented"><span class="not_implemented_spec_name">should show reservation by year/month/day (http://pob-ws.local/songrit/cal) (PENDING: Not Yet Implemented)</span></dd>
+    <script type="text/javascript">makeYellow('rspec-header');</script>
     <script type="text/javascript">makeYellow('example_group_14');</script>
     <script type="text/javascript">moveProgressBar('73.1');</script>
     <dd class="spec not_implemented"><span class="not_implemented_spec_name">should show occupancy by year/month/day (PENDING: Not Yet Implemented)</span></dd>
+    <script type="text/javascript">makeYellow('rspec-header');</script>
     <script type="text/javascript">makeYellow('example_group_14');</script>
     <script type="text/javascript">moveProgressBar('74.6');</script>
     <dd class="spec not_implemented"><span class="not_implemented_spec_name">should have hotels management for PAO (PENDING: Not Yet Implemented)</span></dd>
@@ -483,24 +382,31 @@ a {
     <dd class="spec passed"><span class="passed_spec_name">should have report</span></dd>
     <script type="text/javascript">moveProgressBar('80.5');</script>
     <dd class="spec passed"><span class="passed_spec_name">should show list of hotels</span></dd>
+    <script type="text/javascript">makeYellow('rspec-header');</script>
     <script type="text/javascript">makeYellow('example_group_15');</script>
     <script type="text/javascript">moveProgressBar('82');</script>
     <dd class="spec not_implemented"><span class="not_implemented_spec_name">associate user to hotel (PENDING: Not Yet Implemented)</span></dd>
+    <script type="text/javascript">makeYellow('rspec-header');</script>
     <script type="text/javascript">makeYellow('example_group_15');</script>
     <script type="text/javascript">moveProgressBar('83.5');</script>
     <dd class="spec not_implemented"><span class="not_implemented_spec_name">should be able to edit rr1 hotel (PENDING: Not Yet Implemented)</span></dd>
+    <script type="text/javascript">makeYellow('rspec-header');</script>
     <script type="text/javascript">makeYellow('example_group_15');</script>
     <script type="text/javascript">moveProgressBar('85');</script>
     <dd class="spec not_implemented"><span class="not_implemented_spec_name">should assign hotel to user (PENDING: Not Yet Implemented)</span></dd>
+    <script type="text/javascript">makeYellow('rspec-header');</script>
     <script type="text/javascript">makeYellow('example_group_15');</script>
     <script type="text/javascript">moveProgressBar('86.5');</script>
     <dd class="spec not_implemented"><span class="not_implemented_spec_name">should receive fee (rr3) (PENDING: Not Yet Implemented)</span></dd>
+    <script type="text/javascript">makeYellow('rspec-header');</script>
     <script type="text/javascript">makeYellow('example_group_15');</script>
     <script type="text/javascript">moveProgressBar('88');</script>
     <dd class="spec not_implemented"><span class="not_implemented_spec_name">should have account receivable report (PENDING: Not Yet Implemented)</span></dd>
+    <script type="text/javascript">makeYellow('rspec-header');</script>
     <script type="text/javascript">makeYellow('example_group_15');</script>
     <script type="text/javascript">moveProgressBar('89.5');</script>
     <dd class="spec not_implemented"><span class="not_implemented_spec_name">should have revenue analysis report (PENDING: Not Yet Implemented)</span></dd>
+    <script type="text/javascript">makeYellow('rspec-header');</script>
     <script type="text/javascript">makeYellow('example_group_15');</script>
     <script type="text/javascript">moveProgressBar('91');</script>
     <dd class="spec not_implemented"><span class="not_implemented_spec_name">should remove hotel (PENDING: Not Yet Implemented)</span></dd>
@@ -548,8 +454,8 @@ a {
     <dd class="spec passed"><span class="passed_spec_name">should create a new instance given valid attributes</span></dd>
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>61.862305 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "67 examples, 9 failures, 18 pending";</script>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>58.580593 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "67 examples, 0 failures, 18 pending";</script>
 </div>
 </div>
 </body>

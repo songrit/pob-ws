@@ -53,6 +53,13 @@ Spec::Runner.configure do |config|
   # For more information take a look at Spec::Runner::Configuration and Spec::Runner
 end
 
+def post_request(method, xml)
+  body= File.open("public/OTA/#{xml}").read
+  request.env['content_type'] = 'application/xml'
+  request.env['RAW_POST_DATA'] =  body
+  post method
+end
+
 def dump_response(name="dump.html")
   File.open(RAILS_ROOT + "/tmp/#{name}", "w"){ |f| f.puts response.body }
 end

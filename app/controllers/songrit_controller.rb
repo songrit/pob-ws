@@ -12,7 +12,7 @@ class SongritController < ApplicationController
     public_key_file = 'config/pob.public.pem';
     private_key_file = 'config/pob.pem';
     password = 'abcd'
-    string = "public/OTA/OTA_PingRQ.xml"
+    string = "13"
     k= Key.new
     encrypted_string = k.encrypt(string,public_key_file)
     # decrypt = k.decrypt(encrypted_string,private_key_file, password)

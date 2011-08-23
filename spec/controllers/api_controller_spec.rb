@@ -1,12 +1,5 @@
 require 'spec_helper'
 
-def post_request(method, xml)
-  body= File.open("public/OTA/#{xml}").read
-  request.env['content_type'] = 'application/xml'
-  request.env['RAW_POST_DATA'] =  body
-  post method
-end
-
 describe ApiController do
   integrate_views
 
