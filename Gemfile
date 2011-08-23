@@ -1,5 +1,6 @@
 # A sample Gemfile
 source "http://rubygems.org"
+gem "ezcrypto"
 gem "rest-open-uri"
 gem "bcrypt-ruby", :require=>"bcrypt"
 gem "rails", "2.3.5"

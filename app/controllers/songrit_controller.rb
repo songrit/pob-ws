@@ -6,6 +6,23 @@ class SongritController < ApplicationController
   require "rest_client"
   # require 'geokit'
 
+  # http://stuff-things.net/2007/06/11/encrypting-sensitive-data-with-ruby-on-rails/
+  def test_key
+    require 'key'
+    public_key_file = 'config/pob.public.pem';
+    private_key_file = 'config/pob.pem';
+    password = 'abcd'
+    string = "public/OTA/OTA_PingRQ.xml"
+    k= Key.new
+    encrypted_string = k.encrypt(string,public_key_file)
+    # decrypt = k.decrypt(encrypted_string,private_key_file, password)
+    t = ["<b>message</b><br/>#{string}"]
+    t << "<b>encrypt using private key</b><br/>#{encrypted_string}"
+    s= %Q(Enpr2Eqmk8wFfFS0rNXhj+1FKwF4NcNb4m1orLV3nhDHsXaQg7X6y59NLWh2bHx0SmxPvhsmp8UG1nX3GzFnLEjUolwMA3c61GfK0RUkbk6FPXa8vmzQc27qj2ilTr2/S4Owcfhn89NhYzA8W0JmCseQmBS63XbvENgMrVYi1ixwUNN09+K1GQk+vD55+plU7HLhi8hjifF/0gvdGE5skgvqQxrYrnDyVGCaGBEATxUYyjXD2DLsQc29/6Zs1BTE/BNWyKVeWEh3P33rzyoLmmAusVbHWu8Z1J6pyw2h7NXCIGR6Jkujl3qxkTaSohAvzhOSYRvduSnnzF/allWrGg==)
+    decrypt = k.decrypt(s,private_key_file, password)
+    t << "<b>decrypt using public key</b><br/>#{decrypt}"
+    render :text=> t.join("<p/>")
+  end
   def test_hotel_res
     l = LogRequest.find 98
     doc = Nokogiri::XML(l.content)
