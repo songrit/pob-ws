@@ -28,7 +28,7 @@
             %Availabilities
               - avails.each do |availability|
                 %Availability{:Date=>availability.limit_on.to_s, :InvCode=>availability.inv_code, :Rate=> availability.rate, :RatePlanCode=> availability.rate_plan_code, :Limit=>availability.limit}
-                - unless availability.avail.multimedias.blank?
-                  %MultimediaDescriptions
-                  = availability.avail.multimedias
+                  - unless availability.avail.multimedias.blank?
+                    %MultimediaDescriptions
+                    = availability.avail.multimedias
     = @criteria.to_s

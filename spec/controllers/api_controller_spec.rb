@@ -21,6 +21,10 @@ describe ApiController do
     response.should have_tag("Error")
   end
 
+  it "should reject unauthorize access" do
+    post_request(:hotel_descriptive_content_notif, "OTA_PingRQnoPOS.xml")
+    response.should have_tag("Error", :text => "Unauthorized Access")
+  end
   describe "POB_HotelBookID" do
     before do
       Hotel.delete_all
