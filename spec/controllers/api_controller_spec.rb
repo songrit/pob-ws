@@ -22,7 +22,7 @@ describe ApiController do
   end
 
   it "should reject unauthorized access" do
-    post_request(:hotel_descriptive_content_notif, "OTA_PingRQnoPOS.xml")
+    post_request(:ping, "OTA_PingRQnoPOS.xml")
     response.should have_tag("Error", :text => "Unauthorized Access")
   end
   describe "POB_HotelBookID" do
@@ -62,7 +62,7 @@ describe ApiController do
     end
     it "should handle POB_HotelAvail" do
       post_request :hotel_avail, "POB_HotelAvailRQ.xml"
-      dump_response "POB_HotelAvailRS.xml"
+      # dump_response "POB_HotelAvailRS.xml"
       response.should have_tag("Availability")
       response.should have_tag("ContactInfo")
     end
@@ -201,7 +201,7 @@ describe ApiController do
     end
     it "should return Property when not specify StayDateRange" do
       post_request(:hotel_search, "OTA_HotelSearchRQ4.xml")
-      dump_response "OTA_HotelSearchRS4.xml"
+      # dump_response "OTA_HotelSearchRS4.xml"
       response.body.should have_tag("Property")
     end
     it "should not return partially available hotels" do

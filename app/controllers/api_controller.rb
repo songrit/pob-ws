@@ -6,15 +6,21 @@ class ApiController < ApplicationController
   def validate_pos
     @doc = Nokogiri::XML(request.body)
     @log_request= LogRequest.log(request,@doc.to_s)
-    # pos= YAML::load(File.open 'config/pob.yml')
-    # valid_pos= valid_pos.each.map {|k,v| v['auth']}
-    # source = @doc.xpath("//xmlns:Source")
-    # pos_id = source.attribute("ID").value if source
-    # if source && valid_pos.include?(pos_id)
-    #   return
-    # else
-    #   @err= "Unauthorized Access"
-    # end
+    pos= YAML::load(File.open 'config/pob.yml')
+    if Rails.env=='test'
+      valid_pos=['test']
+    else
+      valid_pos= pos.each.map {|k,v| v['auth']}
+    end
+    requestor_id = @doc.xpath("//xmlns:RequestorID")
+    if requestor_id.empty?
+      @err= "Unauthorized Access"
+    else
+      pos_id = requestor_id.attribute("ID").try(:value)
+      unless valid_pos.include?(pos_id)
+        @err= "Unauthorized Access"
+      end
+    end
   end
   def hotel_book_id
     hotel_code= @doc.xpath("//xmlns:HotelRef").attribute("HotelCode").try(:value)
