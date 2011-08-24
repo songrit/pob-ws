@@ -127,14 +127,14 @@ class ApiController < ApplicationController
       email= @doc.xpath('//xmlns:Email').text
       if email=~ email_pattern
         m= render_to_string :template => "api/hotel_res_mail_customer.haml", :layout => false
-        Notifier.deliver_gma("admin@phuketcity.com", email, "POB Hotel Reservation Notice", m )
+        Notifier.deliver_gma("reservation@phuketcity.com", email, "POB Hotel Reservation Notice", m )
       end
       email_hotel= @hotel.contact_infos.last.email
       m= render_to_string :template => "api/hotel_res_mail.haml", :layout => false
       if email_hotel =~ email_pattern
-        Notifier.deliver_gma("admin@phuketcity.com", email_hotel, "POB Hotel Reservation Notice", m )
+        Notifier.deliver_gma("reservation@phuketcity.com", email_hotel, "POB Hotel Reservation Notice", m )
       else
-        Notifier.deliver_gma("admin@phuketcity.com", "songrit@gmail.com", "POB Hotel Reservation Notice", m )
+        Notifier.deliver_gma("reservation@phuketcity.com", "songrit@gmail.com", "POB Hotel Reservation Notice", m )
       end
     else
       @err= "Your reservation cannot be booked"
