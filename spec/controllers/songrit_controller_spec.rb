@@ -9,8 +9,4 @@ describe SongritController do
   #   get :fix_tambon
   #   SubDistrict.all.map(&:name).should == ['กกก','11ตำบล22']
   # end
-  it "should decrypt encrypted elements" do
-    post_request(:decrypt_ota, "OTA_PingRQEncrypted.xml")
-    dump_response "OTA_PingRSEncrypted.xml"
-  end
 end

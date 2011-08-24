@@ -1,12 +1,17 @@
 require 'openssl'
 require 'base64'
 class Key
-  def encrypt(msg, public_key_file)
-    public_key = OpenSSL::PKey::RSA.new(File.read(public_key_file))
-    encrypted_string = Base64.encode64(public_key.public_encrypt(msg))
+  def initialize(key_file, password=nil)
+    if password
+      @key= OpenSSL::PKey::RSA.new(File.read(key_file), password)
+    else
+      @key= OpenSSL::PKey::RSA.new(File.read(key_file))
+    end
   end
-  def decrypt(msg, private_key_file, password)
-    private_key = OpenSSL::PKey::RSA.new(File.read(private_key_file),password)
-    decrypted_string = private_key.private_decrypt(Base64.decode64(msg))
+  def encrypt(msg)
+    encrypted_string = Base64.encode64(@key.public_encrypt(msg))
+  end
+  def decrypt(msg)
+    decrypted_string = @key.private_decrypt(Base64.decode64(msg))
   end
 end

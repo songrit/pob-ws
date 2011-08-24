@@ -1,6 +1,6 @@
-
 <?xml version="1.0" encoding="utf-8"?> 
 <OTA_HotelDescriptiveContentNotifRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelDescriptiveContentNotifRQ.xsd" Version="2.001"> 
+  <POS><Source><RequestorID Type="13" ID="test"/></Source></POS>
   <HotelDescriptiveContents> 
     <HotelDescriptiveContent BrandCode="SRT" BrandName="SRT" CurrencyCode="THB" HotelCode="SONGRIT" HotelName="Songrit Hotel" LanguageCode="TH"> 
       <HotelInfo HotelStatus="Open" LastUpdated="2011-07-27T07:42:26" Start="0000-00-00" WhenBuilt="0000"> 

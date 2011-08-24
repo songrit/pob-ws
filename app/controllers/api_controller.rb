@@ -6,6 +6,7 @@ class ApiController < ApplicationController
   def validate_pos
     @doc = Nokogiri::XML(request.body)
     @log_request= LogRequest.log(request,@doc.to_s)
+    decrypt_doc
     pos= YAML::load(File.open 'config/pob.yml')
     if Rails.env=='test'
       valid_pos=['test']
@@ -13,7 +14,7 @@ class ApiController < ApplicationController
       valid_pos= pos.each.map {|k,v| v['auth']}
     end
     requestor_id = @doc.xpath("//xmlns:RequestorID")
-    if requestor_id.empty?
+    if !requestor_id || requestor_id.empty?
       @err= "Unauthorized Access"
     else
       pos_id = requestor_id.attribute("ID").try(:value)
@@ -21,6 +22,8 @@ class ApiController < ApplicationController
         @err= "Unauthorized Access"
       end
     end
+    render_err if @err
+    # redirect_to :action => :error if @err 
   end
   def hotel_book_id
     hotel_code= @doc.xpath("//xmlns:HotelRef").attribute("HotelCode").try(:value)
@@ -283,7 +286,7 @@ class ApiController < ApplicationController
     response.content_type = "application/xml"
     render :layout => false
   end
-  def render_err(e)
+  def render_err(e=nil)
     @err_type=1
     @err ||= e.backtrace.inspect
     render_response
@@ -306,5 +309,27 @@ class ApiController < ApplicationController
       end
     end
     avail
+  end
+  def decrypt_doc
+    private_key= Key.new(PRIVATE_KEY_FILE, PASSPHRASE)
+    # body= File.open("public/OTA//OTA_PingRQEncrypted.xml").read
+    # @doc = Nokogiri::XML(body)
+    @doc.xpath("//*[@Encrypt='1']").each do |n|
+      n.keys.each do |k|
+        next if k=='Encrypt'
+        begin
+          n[k]= private_key.decrypt(n[k])
+        rescue
+          @err= "Invalid Encryption"
+        end
+      end
+      begin
+        n.content= private_key.decrypt(n.content) unless n.content.blank?
+      rescue
+        @err= "Invalid Encryption"
+      end
+    end
+    # response.content_type = "application/xml"
+    # render :text => @doc.to_s
   end
 end

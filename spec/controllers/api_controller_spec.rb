@@ -13,9 +13,19 @@ describe ApiController do
     post :hotel_stay_info_notif
     response.should have_tag("Error")
   end
-
+  it "should handle encryption" do
+    post_request(:ping, "OTA_PingRQEncrypted.xml")
+    # dump_response "OTA_PingRSEncrypted.xml"
+    response.should have_tag("EchoData", :text => "Are you there")
+  end
+  it "should handle invalid encryption" do
+    post_request(:ping, "OTA_PingRQEncryptedErr.xml")
+    dump_response "OTA_PingRSEncryptedErr.xml"
+    response.should have_tag("Error", :text => "Invalid Encryption")
+  end
   it "should reject unauthorized access" do
     post_request(:ping, "OTA_PingRQnoPOS.xml")
+    dump_response "OTA_PingRSnoPOS.xml"
     response.should have_tag("Error", :text => "Unauthorized Access")
   end
   describe "POB_HotelBookID" do

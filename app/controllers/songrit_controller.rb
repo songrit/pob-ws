@@ -6,20 +6,26 @@ class SongritController < ApplicationController
   require "rest_client"
   # require 'geokit'
 
+  def decrypt_ota
+    @doc = Nokogiri::XML(request.body)
+    response.content_type = "application/xml"
+    render :layout => false
+  end
   # http://stuff-things.net/2007/06/11/encrypting-sensitive-data-with-ruby-on-rails/
   def test_key
     require 'key'
     public_key_file = 'config/pob.public.pem';
+    public_key= Key.new(public_key_file)
     private_key_file = 'config/pob.pem';
     password = 'abcd'
-    string = "13"
-    k= Key.new
-    encrypted_string = k.encrypt(string,public_key_file)
-    # decrypt = k.decrypt(encrypted_string,private_key_file, password)
+    private_key= Key.new(private_key_file, password)
+    string = "Are you there"
+    encrypted_string = public_key.encrypt(string)
+    # decrypt = private_key.decrypt(encrypted_string)
     t = ["<b>message</b><br/>#{string}"]
     t << "<b>encrypt using private key</b><br/>#{encrypted_string}"
-    s= %Q(Enpr2Eqmk8wFfFS0rNXhj+1FKwF4NcNb4m1orLV3nhDHsXaQg7X6y59NLWh2bHx0SmxPvhsmp8UG1nX3GzFnLEjUolwMA3c61GfK0RUkbk6FPXa8vmzQc27qj2ilTr2/S4Owcfhn89NhYzA8W0JmCseQmBS63XbvENgMrVYi1ixwUNN09+K1GQk+vD55+plU7HLhi8hjifF/0gvdGE5skgvqQxrYrnDyVGCaGBEATxUYyjXD2DLsQc29/6Zs1BTE/BNWyKVeWEh3P33rzyoLmmAusVbHWu8Z1J6pyw2h7NXCIGR6Jkujl3qxkTaSohAvzhOSYRvduSnnzF/allWrGg==)
-    decrypt = k.decrypt(s,private_key_file, password)
+    s= %Q(ZV89dmEVYaf3MMBE8NPcwX4ZEyqs7KHERIWklsORVk8Lk28YI5wiup3sLmP+L4xLivtCQPKXp8CR RiQ5RjL9D5ympoqMiCbOxVJMpYzdTcFgUt35UlpN0clpNXMc69lG+XZ8FQ/5aSJrRwVqglY02I3A D92YkH10u1VhupHGZYU0IM851JO5de/F4kNDRYXJuZGbn4OJV2JY6zXd4cGDHB3Aad+Gxz9NwwQE dubHiylW3AjGUfyVpJUS4KnNsn0BaYo2CGKQ5F61lQIs5Dr7/vb10wXoepVqoUsidT8NmubDK+yQ +Q3f3guj7xDjGKEat0xPOF/umZ35D+28WaPlww== )
+    decrypt = private_key.decrypt(s)
     t << "<b>decrypt using public key</b><br/>#{decrypt}"
     render :text=> t.join("<p/>")
   end
@@ -55,8 +61,8 @@ class SongritController < ApplicationController
     render :text => "#{Time.now}: sent #{count} mails\n\n"
   end
   def test_api
-    body= File.open("public/OTA/OTA_HotelDescriptiveContentNotifRQ.xml").read
-    f= RestClient.post "http://localhost:3000/api/hotel_descriptive_content_notif", body
+    body= File.open("tmp/OTA_HotelRQ.xml").read
+    f= RestClient.post "http://api.phuketcity.com/api/hotel_search", body
     render :xml => f.body
   end
   def test_api1
