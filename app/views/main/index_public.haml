@@ -64,3 +64,19 @@
   &raquo; POS element must specify valid RequestorID
   %br
   &raquo; requestor id can be managed using config/pob.yml
+%h4 encryption
+.note
+  &raquo; You can use anywhere in your XML by adding attribute Encrypt='1' in any element
+  %br
+  &raquo; If you add to element then ALL attributes and text must be encrypted
+  %br
+  &raquo; Note that inner elements do not get decrypted automatically, you must use attribute Encrypt="1" in every element that needs to be decrypted. If element has attributes and text then you must encrypt all attributes as well as text.
+  %h4
+    Correct
+  = h %Q(<PaymentCard Encrypt="1" CardCode="***encrypt***" CardNumber="***encrypt***" ExpireDate="***encrypt***">)
+  %h4
+    Incorrect
+  = h %Q(<PaymentCard Encrypt="1" CardCode="VS" CardNumber="***encrypt***" ExpireDate="0506">)
+  %br
+  = link_to "sample", "/OTA/OTA_PingRQEncrypted.xml"
+  
