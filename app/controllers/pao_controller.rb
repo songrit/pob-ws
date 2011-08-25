@@ -1,4 +1,8 @@
 class PaoController < ApplicationController
+  # require "prawnto"
+  def report
+    # render :text=>"false"
+  end
   def index
     @revenues= []
     @districts= Rr3.all(:group=>:district_id, :select => "district_id", 

@@ -3,4 +3,5 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => "main"
   # See how all your routes lay out with "rake routes"
   map.connect ':controller/:action/:id.:format'
+  map.connect ':controller/:action.:format'
 end

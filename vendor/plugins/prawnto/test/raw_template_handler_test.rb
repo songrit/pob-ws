@@ -127,7 +127,7 @@ EOS
     end
   end
 
-  # ruby 1.9: uncomment below line when on 1.9
+  #TODO: ruby 1.9: uncomment below line when on 1.9
   #ensure_reference_pdfs_are_recent
 
 
