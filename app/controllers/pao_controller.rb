@@ -1,7 +1,18 @@
 class PaoController < ApplicationController
-  # require "prawnto"
+  prawnto :prawn => {
+      :page_size => 'A4',
+      :left_margin => 50,
+      :right_margin => 50,
+      :top_margin => 24,
+      :bottom_margin => 24}
+      
   def report
-    # render :text=>"false"
+    @begin_of_year= Date.new Time.now.year
+    @districts= Rr3.all(:group=>:district_id, :select => "district_id", 
+      :conditions => ['month >= ? and month<= ?', 
+      Date.new(Time.now.year,1,1), end_of_last_month]).
+      map(&:district_id)
+    render :layout => false 
   end
   def index
     @revenues= []

@@ -48,6 +48,9 @@ describe PaoController do
     end
     dd= Date.new y, m, 1
   end
+  it "should render pdf" do
+    get :report, :format=>'pdf'
+  end
   it "should add hotel" do
     Rr1.delete_all
     post :create_hotel
