@@ -1,5 +1,5 @@
 class Hotel < ActiveRecord::Base
-  acts_as_mappable
+  acts_as_mappable :default_units => :kms
   has_many :avails
   has_many :availabilities, :order => "inv_code, limit_on" 
   has_many :stays
