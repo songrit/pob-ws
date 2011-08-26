@@ -15,6 +15,7 @@ class MainController < ApplicationController
 #    render :text => "help"
   end
   def index
+    # binding.pry
     if params[:module]
       session[:module]= params[:module]
       redirect_to :controller=>params[:module]

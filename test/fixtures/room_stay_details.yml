@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  room_stay_id: 1
+  stay_on: 2011-08-27
+  rate: 1.5
+  qty: 1
+  gma_user_id: 1
+
+two:
+  room_stay_id: 1
+  stay_on: 2011-08-27
+  rate: 1.5
+  qty: 1
+  gma_user_id: 1
