@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OTA_HotelResRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelResRQ.xsd" Version="1.000">
+  <POS><Source><RequestorID Type="13" ID="test"/></Source></POS>  <HotelReservations>
+    <HotelReservation>
+      <RoomStays>
+        <RoomStay>
+          <RoomTypes>
+            <RoomType NumberOfUnits="2"/>
+          </RoomTypes>
+          <Inv InvCode="STD"/>
+          <GuestCounts>
+            <GuestCount AgeQualifyingCode="10" Count="2"/>
+          </GuestCounts>
+          <TimeSpan End="2004-08-08" Start="2004-08-06"/>
+          <Guarantee>
+            <GuaranteesAccepted>
+              <GuaranteeAccepted>
+                <PaymentCard Encrypt="1" CardCode="Pic3oWlDF9JX98w0rJbQhHMy6I1ByWFrnPtFG3Idpp7e6FTtK/nNGj2XQ3cHq99opjGDmcPZRMTfEZCCcvSryFu4t0chMezfwSzOMZmaYvJiv2bXDgpTr6PIzVvui8wEC4hlCTIu9j/jxEZfHDHtlOytIez6KvwYUBg3jCD72WSr1c3tcG3QZC0q7NYZUztR4D7w6HDMVLQO/eSMUjOFTLEEuqRIbtrYRdw8T6cFJHY+pPnILGNN7WRY4KWkPAvabuB8xaSTxMvCRsmbKIYbg3A9DxgpUDSOs+jio7FXXqKn3Y5LAhRm5Eo5HWNFFnK8V+1MJFwHVjKC25Pz/7ALlg==" CardNumber="yIUP7mJ/jgXKBkrJB7Eh4A7xhoKmDuqtMdvHjZK3lC19TNMx4CnzDHIRBHcloqEWr307nxFVBAPrRVPXONgoM00k9gAlctZAtkqNnbWw882t20lYNCqG4DjIQzrMLjNEhuQ+DwssGWqzWszL0oPNt/sqF4AKSkPAWz20esUdE3hFhZ3scp3eTKK4oIKKi2I8Qv6aCy1+gzvJ2jWnl5ncvhwawctUjOscjiLVnIGwWx7B06sQDb7ICqO/yXZYu4V2mMhf3NsuKzbK9lPeG7FiUj72dCwc/7lpMGB/eZHCE6KZjPBiq3PPXeXmBst1ot3C0ul1dWZg/YN83hBsH16BWA==" ExpireDate="KVfGC3EClRVcB0WtSzMRT47H1MBG+aVRtoLiCKRVb/Y35jzgRQ6Ef++TLYWQTIf5zrarC520gdIjJFsTsAqTa0YaZRCAGPV0RBHjdaYiFsQGflua+3iEkaDyKz7rKbj+Rv8HjYQEOGbTU1T5OsQn/zrRdmUyNkYcURx17HK/t/k7a2Z+FKE3D6oMEQJuBnQRdSuyNc4TaMui9vOBM6mTn5ln4CbrkIdhkrW6JUxB5ZMpCnAGYe1hKgsIL/gTCdOsOdql1ys1ddA8OZd7gqUMFu2tDAzZdkfpakIhd0EBNBgvP2sbknIJw/8PhSjVTWeg9fq2yBmEdeet1LFPELjQeQ==" CVV="D7M/ic9wnN+T1zREeg49tQgCD92Ro7h4k7VFI/mkYafzGM+LV4HZJZkhiV3zochg5K7AQtaFEjVG1kzzO35JN1wCY22WayPKfJXlnVybwm39FjAVgh1sEvEqFu5OfsAvQwb22h24GL6F4GYhckflZkdGWOT9wvSWaHBTxtwLTV/+0tVgEM2l1t9MjFz7SppYGphIXgC2q/r26ZyDcjrCWK5R4g29wiejw6uhgLyJMRCBy6RCAOhKUl2OZ66bV0j/qgYcm6yR+5w4c/1Fyot1C8Qi+i4lj82I25Zj6/6ZIq2QmXEBRKZ0TN6BCI9MHapCZHJsKlpzsLEGfJiSEk36xg==">
+                  <CardHolderName Encrypt="1">ab+xUOx6uLQ2La09nmsHaqldAhHra1lC1GiJJywtbVNGTqzHG/u2S5qRW41PECDo0KLxTT3aZp2htRx3kVFDHBrdh4wrcnbEqVcQDc52kJjmkGrvB0hisRqaCGxyLQpO4wrqhkfZS59RdzYgK7MvhfiafymJvwogGpP1VSnqbIccQ6jUw4jk01Q4PQ/dvZxM2kiaymPulE2mnfVbgnqcYs77UXQi2ZP0asjasjgbhXUwYpWQnC+q+QtZpVYazmDJyrEs6qV+Ti9zOUxnM0I0D+839Y+5n7LCYZFKcUEHvufTP8/UO7Hjpb1VT+VlCfk+urydiJcdE5PYSi4cl/oHAA==</CardHolderName>
+                </PaymentCard>
+              </GuaranteeAccepted>
+            </GuaranteesAccepted>
+          </Guarantee>
+          <BasicPropertyInfo ChainCode="HT" HotelCode="BOSCO"/>
+          <Comments>
+            <Comment>
+              <Text/>
+            </Comment>
+          </Comments>
+        </RoomStay>
+        <RoomStay>
+          <RoomTypes>
+            <RoomType NumberOfUnits="4"/>
+          </RoomTypes>
+          <Inv InvCode="DLX"/>
+          <GuestCounts>
+            <GuestCount AgeQualifyingCode="10" Count="2"/>
+          </GuestCounts>
+          <TimeSpan End="2004-08-04" Start="2004-08-02"/>
+          <Guarantee>
+            <GuaranteesAccepted>
+              <GuaranteeAccepted>
+                <PaymentCard Encrypt="1" CardCode="Pic3oWlDF9JX98w0rJbQhHMy6I1ByWFrnPtFG3Idpp7e6FTtK/nNGj2XQ3cHq99opjGDmcPZRMTfEZCCcvSryFu4t0chMezfwSzOMZmaYvJiv2bXDgpTr6PIzVvui8wEC4hlCTIu9j/jxEZfHDHtlOytIez6KvwYUBg3jCD72WSr1c3tcG3QZC0q7NYZUztR4D7w6HDMVLQO/eSMUjOFTLEEuqRIbtrYRdw8T6cFJHY+pPnILGNN7WRY4KWkPAvabuB8xaSTxMvCRsmbKIYbg3A9DxgpUDSOs+jio7FXXqKn3Y5LAhRm5Eo5HWNFFnK8V+1MJFwHVjKC25Pz/7ALlg==" CardNumber="yIUP7mJ/jgXKBkrJB7Eh4A7xhoKmDuqtMdvHjZK3lC19TNMx4CnzDHIRBHcloqEWr307nxFVBAPrRVPXONgoM00k9gAlctZAtkqNnbWw882t20lYNCqG4DjIQzrMLjNEhuQ+DwssGWqzWszL0oPNt/sqF4AKSkPAWz20esUdE3hFhZ3scp3eTKK4oIKKi2I8Qv6aCy1+gzvJ2jWnl5ncvhwawctUjOscjiLVnIGwWx7B06sQDb7ICqO/yXZYu4V2mMhf3NsuKzbK9lPeG7FiUj72dCwc/7lpMGB/eZHCE6KZjPBiq3PPXeXmBst1ot3C0ul1dWZg/YN83hBsH16BWA==" ExpireDate="KVfGC3EClRVcB0WtSzMRT47H1MBG+aVRtoLiCKRVb/Y35jzgRQ6Ef++TLYWQTIf5zrarC520gdIjJFsTsAqTa0YaZRCAGPV0RBHjdaYiFsQGflua+3iEkaDyKz7rKbj+Rv8HjYQEOGbTU1T5OsQn/zrRdmUyNkYcURx17HK/t/k7a2Z+FKE3D6oMEQJuBnQRdSuyNc4TaMui9vOBM6mTn5ln4CbrkIdhkrW6JUxB5ZMpCnAGYe1hKgsIL/gTCdOsOdql1ys1ddA8OZd7gqUMFu2tDAzZdkfpakIhd0EBNBgvP2sbknIJw/8PhSjVTWeg9fq2yBmEdeet1LFPELjQeQ==" CVV="D7M/ic9wnN+T1zREeg49tQgCD92Ro7h4k7VFI/mkYafzGM+LV4HZJZkhiV3zochg5K7AQtaFEjVG1kzzO35JN1wCY22WayPKfJXlnVybwm39FjAVgh1sEvEqFu5OfsAvQwb22h24GL6F4GYhckflZkdGWOT9wvSWaHBTxtwLTV/+0tVgEM2l1t9MjFz7SppYGphIXgC2q/r26ZyDcjrCWK5R4g29wiejw6uhgLyJMRCBy6RCAOhKUl2OZ66bV0j/qgYcm6yR+5w4c/1Fyot1C8Qi+i4lj82I25Zj6/6ZIq2QmXEBRKZ0TN6BCI9MHapCZHJsKlpzsLEGfJiSEk36xg==">
+                  <CardHolderName Encrypt="1">ab+xUOx6uLQ2La09nmsHaqldAhHra1lC1GiJJywtbVNGTqzHG/u2S5qRW41PECDo0KLxTT3aZp2htRx3kVFDHBrdh4wrcnbEqVcQDc52kJjmkGrvB0hisRqaCGxyLQpO4wrqhkfZS59RdzYgK7MvhfiafymJvwogGpP1VSnqbIccQ6jUw4jk01Q4PQ/dvZxM2kiaymPulE2mnfVbgnqcYs77UXQi2ZP0asjasjgbhXUwYpWQnC+q+QtZpVYazmDJyrEs6qV+Ti9zOUxnM0I0D+839Y+5n7LCYZFKcUEHvufTP8/UO7Hjpb1VT+VlCfk+urydiJcdE5PYSi4cl/oHAA==</CardHolderName>
+                </PaymentCard>
+              </GuaranteeAccepted>
+            </GuaranteesAccepted>
+          </Guarantee>
+          <BasicPropertyInfo ChainCode="HT" HotelCode="BOSCO"/>
+          <Comments>
+            <Comment>
+              <Text/>
+            </Comment>
+          </Comments>
+        </RoomStay>
+      </RoomStays>
+      <ResGuests>
+        <ResGuest>
+          <Profiles>
+            <ProfileInfo>
+              <Profile ProfileType="1">
+                <Customer>
+                  <PersonName>
+                    <NamePrefix>Mr.</NamePrefix>
+                    <GivenName>Yagami</GivenName>
+                    <Surname>Yagami</Surname>
+                  </PersonName>
+                  <Telephone PhoneNumber="0802325648" PhoneTechType="5"/>
+                  <Email>momonari@live.com</Email>
+                  <Address>
+                    <AddressLine>123</AddressLine>
+                    <CityName>Muang</CityName>
+                    <PostalCode>83000</PostalCode>
+                    <StateProv>Phuket</StateProv>
+                    <CountryName>Thailand</CountryName>
+                  </Address>
+                </Customer>
+              </Profile>
+            </ProfileInfo>
+          </Profiles>
+        </ResGuest>
+      </ResGuests>
+    </HotelReservation>
+  </HotelReservations>
+</OTA_HotelResRQ>

@@ -6,6 +6,24 @@ class SongritController < ApplicationController
   require "rest_client"
   # require 'geokit'
 
+  def test_hotel_res
+    # l = LogRequest.find 98
+    # @doc = Nokogiri::XML(l.content)
+    body = File.read('public/OTA/OTA_HotelResRQmultiple_roomstay.xml')
+    @doc = Nokogiri::XML(body)
+    @log_request= LogRequest.log(request,@doc.to_s)
+    # @doc= doc
+    @hotel_code= @doc.xpath('//xmlns:BasicPropertyInfo').attribute('HotelCode').value
+    @hotel= Hotel.find_by_code @hotel_code
+    @number_of_units= @doc.xpath('//xmlns:RoomType').attribute('NumberOfUnits').try(:value).try(:to_i)
+    @inv_code= @doc.xpath('//xmlns:Inv').attribute('InvCode').value
+    @start_on = @doc.xpath('//xmlns:TimeSpan').attribute('Start').try(:value).try(:to_date)
+    @end_on = @doc.xpath('//xmlns:TimeSpan').attribute('End').try(:value).try(:to_date)
+    @email= @doc.xpath('//xmlns:Email')
+    @booking= Booking.last
+    render :template => "api/hotel_res_mail.haml", :layout => false
+    # render :template => "api/hotel_res_mail_customer.haml", :layout => false
+  end
   def decrypt_ota
     @doc = Nokogiri::XML(request.body)
     response.content_type = "application/xml"
@@ -28,23 +46,6 @@ class SongritController < ApplicationController
     decrypt = private_key.decrypt(s)
     t << "<b>decrypt using public key</b><br/>#{decrypt}"
     render :text=> t.join("<p/>")
-  end
-  def test_hotel_res
-    l = LogRequest.find 98
-    doc = Nokogiri::XML(l.content)
-    # doc = Nokogiri::XML(request.body)
-    # @log_request= LogRequest.log(request,doc.to_s)
-    @doc= doc
-    @hotel_code= doc.xpath('//xmlns:BasicPropertyInfo').attribute('HotelCode').value
-    @hotel= Hotel.find_by_code @hotel_code
-    @number_of_units= doc.xpath('//xmlns:RoomType').attribute('NumberOfUnits').try(:value).try(:to_i)
-    @inv_code= doc.xpath('//xmlns:Inv').attribute('InvCode').value
-    @start_on = doc.xpath('//xmlns:TimeSpan').attribute('Start').try(:value).try(:to_date)
-    @end_on = doc.xpath('//xmlns:TimeSpan').attribute('End').try(:value).try(:to_date)
-    @email= doc.xpath('//xmlns:Email')
-    @booking= Booking.last
-    # render :template => "api/hotel_res_mail.haml", :layout => false
-    render :template => "api/hotel_res_mail_customer.haml", :layout => false
   end
   def send_dloc_mail
     count= 0

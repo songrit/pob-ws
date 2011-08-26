@@ -36,8 +36,11 @@ Price Summary:
   = d.strftime('%a %b %e, %Y')
   Price
   - rate = @hotel.rate(@inv_code,d)
-  - total += rate
+  - total += rate.to_f * @number_of_units.to_i
+  Rate
   = num(rate)
+  Price
+  = num(rate * @number_of_units.to_i)
   THB
   %br
 Total Price:

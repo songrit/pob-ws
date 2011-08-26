@@ -108,36 +108,37 @@ class ApiController < ApplicationController
     end
   end
   def hotel_res
-    @hotel_code= @doc.xpath('//xmlns:BasicPropertyInfo').attribute('HotelCode').value
-    @hotel= Hotel.find_by_code @hotel_code
-    @number_of_units= @doc.xpath('//xmlns:RoomType').attribute('NumberOfUnits').try(:value).try(:to_i)
-    @inv_code= @doc.xpath('//xmlns:Inv').attribute('InvCode').value
-    @start_on = @doc.xpath('//xmlns:TimeSpan').attribute('Start').try(:value).try(:to_date)
-    @end_on = @doc.xpath('//xmlns:TimeSpan').attribute('End').try(:value).try(:to_date)
-    # @payment_card = @doc.xpath('//xmlns:PaymentCard')
-    # @customer= @doc.xpath('//xmlns:Customer')
-    if check_avail?
-      update_avail
-      reservation = @doc.xpath('//xmlns:HotelReservation')
-      # @hotel.bookings.create :hotel_code => @hotel.code,
-      #   :start_on => @start_on, :reservation => reservation.to_s
-      @booking= Booking.create :hotel_code => @hotel.code, :hotel_id => @hotel.id, 
+    @doc.xpath('//xmlns:RoomStay').each do |stay|
+      @hotel_code= (stay/'BasicPropertyInfo').attribute('HotelCode').value
+      @hotel= Hotel.find_by_code @hotel_code
+      @number_of_units= (stay/'RoomType').attribute('NumberOfUnits').try(:value).try(:to_i)
+      @inv_code= (stay/'Inv').attribute('InvCode').value
+      @start_on = (stay/'TimeSpan').attribute('Start').try(:value).try(:to_date)
+      @end_on = (stay/'TimeSpan').attribute('End').try(:value).try(:to_date)
+      # debugger
+      if check_avail?
+        update_avail
+        reservation = @doc.xpath('//xmlns:HotelReservation')
+        # @hotel.bookings.create :hotel_code => @hotel.code,
+        #   :start_on => @start_on, :reservation => reservation.to_s
+        @booking= Booking.create :hotel_code => @hotel.code, :hotel_id => @hotel.id, 
         :start_on => @start_on, :reservation => reservation.to_s
-      email_pattern= /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/
-      email= @doc.xpath('//xmlns:Email').text
-      if email=~ email_pattern
-        m= render_to_string :template => "api/hotel_res_mail_customer.haml", :layout => false
-        Notifier.deliver_gma("reservation@phuketcity.com", email, "POB Hotel Reservation Notice", m )
-      end
-      email_hotel= @hotel.contact_infos.last.email
-      m= render_to_string :template => "api/hotel_res_mail.haml", :layout => false
-      if email_hotel =~ email_pattern
-        Notifier.deliver_gma("reservation@phuketcity.com", email_hotel, "POB Hotel Reservation Notice", m )
+        email_pattern= /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/
+        email= @doc.xpath('//xmlns:Email').text
+        if email=~ email_pattern
+          m= render_to_string :template => "api/hotel_res_mail_customer.haml", :layout => false
+          Notifier.deliver_gma("reservation@phuketcity.com", email, "POB Hotel Reservation Notice", m )
+        end
+        email_hotel= @hotel.contact_infos.last.email
+        m= render_to_string :template => "api/hotel_res_mail.haml", :layout => false
+        if email_hotel =~ email_pattern
+          Notifier.deliver_gma("reservation@phuketcity.com", email_hotel, "POB Hotel Reservation Notice", m )
+        else
+          Notifier.deliver_gma("reservation@phuketcity.com", "songrit@gmail.com", "POB Hotel Reservation Notice", m )
+        end
       else
-        Notifier.deliver_gma("reservation@phuketcity.com", "songrit@gmail.com", "POB Hotel Reservation Notice", m )
+        @err= "Your reservation cannot be booked"
       end
-    else
-      @err= "Your reservation cannot be booked"
     end
     render_response
   end

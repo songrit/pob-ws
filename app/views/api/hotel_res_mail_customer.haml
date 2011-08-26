@@ -10,6 +10,9 @@ Booking ID:
 Room:
 = @inv_code
 %br
+Number of units:
+= @number_of_units
+%br
 Check in:
 = @start_on
 %br
@@ -22,10 +25,12 @@ Price Summary:
 - @start_on.step(@end_on-1) do |d|
   = nbsp(5)
   = d.strftime('%a %b %e, %Y')
-  Price
   - rate = @hotel.rate(@inv_code,d)
-  - total += rate
+  - total += rate.to_f * @number_of_units.to_i
+  Rate
   = num(rate)
+  Price
+  = num(rate * @number_of_units.to_i)
   THB
   %br
 Total Price:
