@@ -81,22 +81,14 @@ describe ApiController do
       body = File.read('public/OTA/OTA_HotelResRQmultiple_roomstay.xml')
       @doc = Nokogiri::XML(body)
       Booking.delete_all
+      Notifier.should_receive(:deliver_gma).exactly(4).times
       post_request :hotel_res, "OTA_HotelResRQmultiple_roomstay.xml"
+      response.should have_tag("HotelReservationID", :count=> 2)
       dump_response "OTA_HotelResRS.xml"
       Booking.count.should == 2
       start_on = (@doc/'TimeSpan').attribute('Start').try(:value).try(:to_date)
       availability= Availability.last(:conditions=>['inv_code=? AND limit_on=? AND hotel_id=?','STD', start_on, @hotel.id])
       availability.limit.should == 33
-    end
-    it "should send email to hotel" do
-      Notifier.should_receive(:deliver_gma).twice
-      post_request :hotel_res, "OTA_HotelResRQ1.xml"
-    end
-    it "should update availability" do
-      a0= Availability.last :conditions=>{:limit_on=>"2004-08-02"}
-      post_request :hotel_res, "OTA_HotelResRQ1.xml"
-      a1= Availability.last :conditions=>{:limit_on=>"2004-08-02"}
-      a1.limit.should == a0.limit-1
     end
   end
   

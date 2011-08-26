@@ -108,6 +108,7 @@ class ApiController < ApplicationController
     end
   end
   def hotel_res
+    @bookings= []
     @doc.xpath('//xmlns:RoomStay').each do |stay|
       @hotel_code= (stay/'BasicPropertyInfo').attribute('HotelCode').value
       @hotel= Hotel.find_by_code @hotel_code
@@ -122,9 +123,11 @@ class ApiController < ApplicationController
         # @hotel.bookings.create :hotel_code => @hotel.code,
         #   :start_on => @start_on, :reservation => reservation.to_s
         @booking= Booking.create :hotel_code => @hotel.code, :hotel_id => @hotel.id, 
-        :start_on => @start_on, :reservation => reservation.to_s
+          :start_on => @start_on, :reservation => reservation.to_s
+        @bookings << @booking.id
         email_pattern= /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/
         email= @doc.xpath('//xmlns:Email').text
+        # debugger
         if email=~ email_pattern
           m= render_to_string :template => "api/hotel_res_mail_customer.haml", :layout => false
           Notifier.deliver_gma("reservation@phuketcity.com", email, "POB Hotel Reservation Notice", m )

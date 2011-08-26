@@ -14,4 +14,5 @@
       %HotelReservation
         %ResGlobalInfo
           %HotelReservationIDs
-            %HotelReservationID{ "ResID_Value"=> @log_request.id, "BookingID"=> @booking.id}
+            - @bookings.each do |b|
+              %HotelReservationID{ "ResID_Value"=> @log_request.id, "BookingID"=> b}
