@@ -78,14 +78,16 @@ describe ApiController do
     end
 
     it "should create booking record" do
-      body = File.read('public/OTA/OTA_HotelResRQmultiple_roomstay.xml')
-      @doc = Nokogiri::XML(body)
       Booking.delete_all
+      RoomStay.delete_all
       Notifier.should_receive(:deliver_gma).exactly(4).times
       post_request :hotel_res, "OTA_HotelResRQmultiple_roomstay.xml"
       response.should have_tag("HotelReservationID", :count=> 2)
       dump_response "OTA_HotelResRS.xml"
-      Booking.count.should == 2
+      Booking.count.should == 1
+      RoomStay.count.should == 2
+      body = File.read('public/OTA/OTA_HotelResRQmultiple_roomstay.xml')
+      @doc = Nokogiri::XML(body)
       start_on = (@doc/'TimeSpan').attribute('Start').try(:value).try(:to_date)
       availability= Availability.last(:conditions=>['inv_code=? AND limit_on=? AND hotel_id=?','STD', start_on, @hotel.id])
       availability.limit.should == 33
