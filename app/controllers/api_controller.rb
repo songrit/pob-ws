@@ -108,41 +108,52 @@ class ApiController < ApplicationController
     end
   end
   def hotel_res
-    @bookings= []
+    @hotel_code= @doc.xpath('//xmlns:BasicPropertyInfo').attribute('HotelCode').value
+    @hotel= Hotel.find_by_code @hotel_code
+    @start_on = @doc.xpath('//xmlns:TimeSpan').attribute('Start').try(:value).try(:to_date)
+    @reservation = @doc.xpath('//xmlns:HotelReservation')
+    # @hotel.bookings.create :hotel_code => @hotel.code,
+    #   :start_on => @start_on, :reservation => reservation.to_s
+    @booking= Booking.create :hotel_code => @hotel.code, :hotel_id => @hotel.id, 
+        :start_on => @start_on, :reservation => @reservation.to_s
     @doc.xpath('//xmlns:RoomStay').each do |stay|
-      @hotel_code= (stay/'BasicPropertyInfo').attribute('HotelCode').value
-      @hotel= Hotel.find_by_code @hotel_code
-      @number_of_units= (stay/'RoomType').attribute('NumberOfUnits').try(:value).try(:to_i)
-      @inv_code= (stay/'Inv').attribute('InvCode').value
-      @start_on = (stay/'TimeSpan').attribute('Start').try(:value).try(:to_date)
-      @end_on = (stay/'TimeSpan').attribute('End').try(:value).try(:to_date)
+      hotel_code= (stay/'BasicPropertyInfo').attribute('HotelCode').value
+      hotel= Hotel.find_by_code @hotel_code
+      number_of_units= (stay/'RoomType').attribute('NumberOfUnits').try(:value).try(:to_i)
+      inv_code= (stay/'Inv').attribute('InvCode').value
+      start_on = (stay/'TimeSpan').attribute('Start').try(:value).try(:to_date)
+      end_on = (stay/'TimeSpan').attribute('End').try(:value).try(:to_date)
       # debugger
-      if check_avail?
-        update_avail
+      if hotel.check_avail?(inv_code, start_on, end_on, number_of_units)
+        hotel.update_avail(inv_code, start_on, end_on, number_of_units)
         reservation = @doc.xpath('//xmlns:HotelReservation')
-        # @hotel.bookings.create :hotel_code => @hotel.code,
-        #   :start_on => @start_on, :reservation => reservation.to_s
-        @booking= Booking.create :hotel_code => @hotel.code, :hotel_id => @hotel.id, 
-          :start_on => @start_on, :reservation => reservation.to_s
-        @bookings << @booking.id
-        email_pattern= /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/
-        email= @doc.xpath('//xmlns:Email').text
-        # debugger
-        if email=~ email_pattern
-          m= render_to_string :template => "api/hotel_res_mail_customer.haml", :layout => false
-          Notifier.deliver_gma("reservation@phuketcity.com", email, "POB Hotel Reservation Notice", m )
-        end
-        email_hotel= @hotel.contact_infos.last.email
-        m= render_to_string :template => "api/hotel_res_mail.haml", :layout => false
-        if email_hotel =~ email_pattern
-          Notifier.deliver_gma("reservation@phuketcity.com", email_hotel, "POB Hotel Reservation Notice", m )
-        else
-          Notifier.deliver_gma("reservation@phuketcity.com", "songrit@gmail.com", "POB Hotel Reservation Notice", m )
+        room_stay= RoomStay.create :booking_id => @booking.id, :hotel_id => hotel.id,
+          :inv_code => inv_code, :qty => number_of_units, :start_on => start_on, 
+          :end_on => end_on
+        total= 0
+        start_on.step(end_on-1) do |d|
+          room_stay_detail= RoomStayDetail.create :room_stay_id => room_stay.id,
+            :stay_on => d, :rate => hotel.rate(inv_code,d), 
+            :qty => number_of_units
+          total += room_stay_detail.price
         end
       else
         @err= "Your reservation cannot be booked"
       end
     end
+    # email_pattern= /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/
+    # email= @doc.xpath('//xmlns:Email').text
+    # if email=~ email_pattern
+    #   m= render_to_string :template => "api/hotel_res_mail_customer.haml", :layout => false
+    #   Notifier.deliver_gma("reservation@phuketcity.com", email, "POB Hotel Reservation Notice", m )
+    # end
+    # email_hotel= @hotel.contact_infos.last.email
+    # m= render_to_string :template => "api/hotel_res_mail.haml", :layout => false
+    # if email_hotel =~ email_pattern
+    #   Notifier.deliver_gma("reservation@phuketcity.com", email_hotel, "POB Hotel Reservation Notice", m )
+    # else
+    #   Notifier.deliver_gma("reservation@phuketcity.com", "songrit@gmail.com", "POB Hotel Reservation Notice", m )
+    # end
     render_response
   end
   def ping
@@ -294,25 +305,6 @@ class ApiController < ApplicationController
     @err_type=1
     @err ||= e.backtrace.inspect
     render_response
-  end
-  def update_avail
-    @start_on.step(@end_on) do |d|
-      availability= Availability.last(:conditions=>['inv_code=? AND limit_on=? AND hotel_id=?',@inv_code, d, @hotel.id])
-      availability.limit -= @number_of_units
-      availability.save
-    end
-  end
-  def check_avail?
-    avail= true
-    @start_on.step(@end_on) do |d|
-      availability= Availability.last(:conditions=>['inv_code=? AND limit_on=? AND hotel_id=?',@inv_code, d, @hotel.id])
-      if availability
-        avail= false if (availability.limit < @number_of_units)
-      else
-        avail= false
-      end
-    end
-    avail
   end
   def decrypt_doc
     private_key= Key.new(PRIVATE_KEY_FILE, PASSPHRASE)
