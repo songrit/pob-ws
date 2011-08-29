@@ -1,5 +1,6 @@
 class ApiController < ApplicationController
   # unused: rescue_from Nokogiri::XML::XPath::SyntaxError, :with=> :render_err
+
   rescue_from StandardError, :with=> :render_err
   before_filter :validate_pos
 
@@ -141,19 +142,19 @@ class ApiController < ApplicationController
         @err= "Your reservation cannot be booked"
       end
     end
-    # email_pattern= /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/
-    # email= @doc.xpath('//xmlns:Email').text
-    # if email=~ email_pattern
-    #   m= render_to_string :template => "api/hotel_res_mail_customer.haml", :layout => false
-    #   Notifier.deliver_gma("reservation@phuketcity.com", email, "POB Hotel Reservation Notice", m )
-    # end
-    # email_hotel= @hotel.contact_infos.last.email
-    # m= render_to_string :template => "api/hotel_res_mail.haml", :layout => false
-    # if email_hotel =~ email_pattern
-    #   Notifier.deliver_gma("reservation@phuketcity.com", email_hotel, "POB Hotel Reservation Notice", m )
-    # else
-    #   Notifier.deliver_gma("reservation@phuketcity.com", "songrit@gmail.com", "POB Hotel Reservation Notice", m )
-    # end
+    email_pattern= /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/
+    email= @doc.xpath('//xmlns:Email').text
+    if email=~ email_pattern
+      m= render_to_string :template => "api/hotel_res_mail_customer.haml", :layout => false
+      Notifier.deliver_gma("reservation@phuketcity.com", email, "POB Hotel Reservation Notice", m )
+    end
+    email_hotel= @hotel.contact_infos.last.email
+    m= render_to_string :template => "api/hotel_res_mail.haml", :layout => false
+    if email_hotel =~ email_pattern
+      Notifier.deliver_gma("reservation@phuketcity.com", email_hotel, "POB Hotel Reservation Notice", m )
+    else
+      Notifier.deliver_gma("reservation@phuketcity.com", "songrit@gmail.com", "POB Hotel Reservation Notice", m )
+    end
     render_response
   end
   def ping
@@ -275,7 +276,7 @@ class ApiController < ApplicationController
           aa= Availability.first :conditions=>[
             'hotel_id=? AND inv_code=? AND limit_on=?', avail.hotel_id, avail.inv_code, d]
           if aa
-            aa.update_attributes :limit=> avail.booking_limit,
+            aa.update_attributes :booking_limit=> avail.booking_limit,
               :avail_id => avail.id, 
               :rate_plan_code => avail.rate_plan_code, 
               :rate => avail.rate
@@ -285,7 +286,7 @@ class ApiController < ApplicationController
               :avail_id => avail.id, 
               :rate_plan_code => avail.rate_plan_code, 
               :rate => avail.rate, 
-              :inv_code => avail.inv_code, :limit => avail.booking_limit,
+              :inv_code => avail.inv_code, :booking_limit => avail.booking_limit,
               :limit_on=> d, :max=> avail.booking_limit
           end
         end

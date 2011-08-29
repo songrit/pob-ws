@@ -5,8 +5,6 @@ describe ApiController do
 
   it "can cancel reservation (OTA_Cancel)"
   
-  it "authenticate request using POS element (see Hilton pdf)"
-  
   it "should log request response and error status"
   
   it "should rescue_from Nokogiri::XML::XPath::SyntaxError; http://www.simonecarletti.com/blog/2009/12/inside-ruby-on-rails-rescuable-and-rescue_from/" do
@@ -80,7 +78,7 @@ describe ApiController do
     it "should create booking record" do
       Booking.delete_all
       RoomStay.delete_all
-      Notifier.should_receive(:deliver_gma).exactly(4).times
+      Notifier.should_receive(:deliver_gma).exactly(2).times
       post_request :hotel_res, "OTA_HotelResRQmultiple_roomstay.xml"
       dump_response "OTA_HotelResRS.xml"
       response.should have_tag("HotelReservationID")
@@ -190,7 +188,7 @@ describe ApiController do
       post_request(:hotel_search, "OTA_HotelSearchRQ1.xml")
       response.body.should have_tag("Property")
       a= Availability.first :conditions=>{:limit_on=>"2004-08-02"}
-      a.limit= 0
+      a.booking_limit= 0
       a.save
       # Availability.all.each {|a| a.limit=0; a.save}
       post_request(:hotel_search, "OTA_HotelSearchRQ1.xml")
@@ -218,6 +216,7 @@ describe ApiController do
     end
     it "keep Multimedia from HotelAvail" do
       post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ7.xml")
+      dump_response("OTA_HotelAvailNotifRS7.xml")
       a= Availability.first
       a.avail.multimedias.should include_text("Renovation Area Completion Date 1")
     end

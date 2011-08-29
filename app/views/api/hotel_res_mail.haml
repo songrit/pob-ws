@@ -1,24 +1,78 @@
 POB Hotel Reservation Notice
 %br
 Hotel:
-= @hotel.code
-= @hotel.name
+= @booking.hotel.code
+= @booking.hotel.name
 %br
 Booking ID:
 = @booking.id
+%hr
+- total = 0
+- @booking.room_stays.each do |r|
+  Room:
+  = r.inv_code
+  %br
+  Number of units:
+  = r.qty
+  %br
+  Check in:
+  = r.start_on
+  %br
+  Check out:
+  = r.end_on
+  %br
+  Price:
+  - sub_total= 0
+  %br
+  - r.room_stay_details.each do |d|
+    = nbsp(5)
+    = d.stay_on.strftime('%a %b %e, %Y')
+    - rate = d.rate
+    - sub_total += d.price
+    Rate
+    = num(d.rate)
+    Price
+    = num(d.price)
+    THB
+    %br
+  Sub Total:
+  = num(sub_total)
+  - total += sub_total
+  THB
+  %br
+%hr
+Total:
+= num(total)
+THB
 %br
-Room:
-= @inv_code
+Hotel Information:
+- contact = @booking.hotel.contact_infos.last
 %br
-Number of units:
-= @number_of_units
+= nbsp 5
+Hotel:
+= @booking.hotel.name
 %br
-Check in:
-= @start_on
+= nbsp 5
+Address:
+= contact.address
+,
+= contact.city
+,
+= contact.state
+,
+= contact.zip
+,
+= contact.country
 %br
-Check out:
-= @end_on
+= nbsp 5
+Phone:
+= contact.phone_number
 %br
+= nbsp 5
+Email:
+= contact.email
+%br
+
 Guarantee:
 - @payment_card = @doc.xpath('//xmlns:PaymentCard')
 = @payment_card.attribute('CardCode').value
@@ -30,24 +84,6 @@ CVV:
 %br
 Card Holder Name:
 = (@payment_card/'CardHolderName').text
-%br
-Price Summary:
-- total= 0
-%br
-- @start_on.step(@end_on-1) do |d|
-  = nbsp(5)
-  = d.strftime('%a %b %e, %Y')
-  - rate = @hotel.rate(@inv_code,d)
-  - total += rate.to_f * @number_of_units.to_i
-  Rate
-  = num(rate)
-  Price
-  = num(rate * @number_of_units.to_i)
-  THB
-  %br
-Total Price:
-= num(total)
-THB
 %br
 Customer Information:
 - @customer= @doc.xpath('//xmlns:Customer')

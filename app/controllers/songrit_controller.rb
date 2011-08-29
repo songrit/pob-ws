@@ -6,6 +6,12 @@ class SongritController < ApplicationController
   require "rest_client"
   # require 'geokit'
 
+  def test_hotel_res1
+    l = LogRequest.find 140
+    @doc = Nokogiri::XML(l.content)
+    @booking= Booking.find 41
+    render :template => "api/hotel_res_mail.haml", :layout => false
+  end
   def test_hotel_res
     # l = LogRequest.find 98
     # @doc = Nokogiri::XML(l.content)
