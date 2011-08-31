@@ -14,7 +14,7 @@
     %Properties
       - @hotels.each do |hotel|
         - next if @start_on && !cover_stay_range(hotel, @start_on, @end_on)
-        %Property{:HotelCode=>hotel.code, :HotelName=>hotel.name, :HotelCodeContext=>hotel.hotel_code_context, :Description=>hotel.description}
+        %Property{:HotelCode=>hotel.code, :HotelName=>hotel.name, :HotelCodeContext=>hotel.hotel_code_context, :Description=>hotel.description, :Latitude=>hotel.lat, :Longitude=>hotel.lng}
           - contact= hotel.contact_infos.last
           %ContactInfo{:AddressLine=>contact.address, :CityName=>contact.city, :PostalCode=>contact.zip, :StateProv=>contact.state, :CountryName=>contact.country, :PhoneNumber=>contact.phone_number }
           - if @poi_coord
