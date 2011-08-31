@@ -6,7 +6,7 @@
   <POS><Source><RequestorID Type="13" ID="test"/></Source></POS>
   <Criteria>
     <Criterion>
-      <HotelRef HotelName='Marriott'>
+      <HotelRef HotelName='Marriott' />
       <Radius DistanceMeasure="MILES" Distance="10" />
       <StayDateRange Start="2004-08-02" End="2004-08-04" />
     </Criterion>

@@ -16,12 +16,17 @@
 .url= "http://#{request.host_with_port}/api/hotel_search"
 .note
   &raquo; can request multiple properties
+  %br
   &raquo; first priority is RefPoint, then HotelRef (search by name), then Position
   %br
   = link_to "sample RQ", "/OTA/OTA_HotelSearchRQ1.xml"
+  %br
   = link_to "sample RQ with Limit", "/OTA/OTA_HotelSearchRQ3.xml"
+  %br
   = link_to "sample RQ search by name", "/OTA/OTA_HotelSearchRQ_by_name.xml"
+  %br
   = link_to "sample RQ search by name with position", "/OTA/OTA_HotelSearchRQ_by_name_with_position.xml"
+  %br
   = link_to "sample RS", "/OTA/OTA_HotelSearchRS2.xml"
 %h4 message OTA_HotelRes
 .url= "http://#{request.host_with_port}/api/hotel_res"
