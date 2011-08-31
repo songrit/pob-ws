@@ -16,9 +16,12 @@
 .url= "http://#{request.host_with_port}/api/hotel_search"
 .note
   &raquo; can request multiple properties
+  &raquo; first priority is RefPoint, then HotelRef (search by name), then Position
   %br
   = link_to "sample RQ", "/OTA/OTA_HotelSearchRQ1.xml"
   = link_to "sample RQ with Limit", "/OTA/OTA_HotelSearchRQ3.xml"
+  = link_to "sample RQ search by name", "/OTA/OTA_HotelSearchRQ_by_name.xml"
+  = link_to "sample RQ search by name with position", "/OTA/OTA_HotelSearchRQ_by_name_with_position.xml"
   = link_to "sample RS", "/OTA/OTA_HotelSearchRS2.xml"
 %h4 message OTA_HotelRes
 .url= "http://#{request.host_with_port}/api/hotel_res"
@@ -26,18 +29,6 @@
   &raquo; must include customer's email
   = link_to "sample RQ", "/OTA/OTA_HotelResRQ1.xml"
   = link_to "sample RS", "/OTA/OTA_HotelResRS2.xml"
-%h4 message OTA_HotelStayInfoNotifRQ
-.url= "http://#{request.host_with_port}/api/hotel_stay_info_notif"
-.note
-  %ul
-    %li
-      %i
-        unused for now
-    %li must submit when guest check out and end of month
-    %li= h "<StayInfos HotelCode> is used to indicate hotel reporting"
-    %li= h "<RoomRate NumberOfUnits> is used to report number of units stay"
-    %li The RevenueCategoryCode value of 9 indicates this is a Room charge
-    %li The RevenueCategoryCode value of 12 indicates this is a Tax charge
 %h4 message POB_HotelAvail
 .url= "http://#{request.host_with_port}/api/hotel_avail"
 .note
@@ -79,4 +70,16 @@
   = h %Q(<PaymentCard Encrypt="1" CardCode="VS" CardNumber="***encrypt***" ExpireDate="0506">)
   %br
   = link_to "sample", "/OTA/OTA_PingRQEncrypted.xml"
+%h4 message OTA_HotelStayInfoNotifRQ
+.url= "http://#{request.host_with_port}/api/hotel_stay_info_notif"
+.note
+  %ul
+    %li
+      %i
+        unused for now
+    %li must submit when guest check out and end of month
+    %li= h "<StayInfos HotelCode> is used to indicate hotel reporting"
+    %li= h "<RoomRate NumberOfUnits> is used to report number of units stay"
+    %li The RevenueCategoryCode value of 9 indicates this is a Room charge
+    %li The RevenueCategoryCode value of 12 indicates this is a Tax charge
   

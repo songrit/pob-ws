@@ -6,7 +6,7 @@ describe ApiController do
   it "can cancel reservation (OTA_Cancel)"
   
   it "should log request response and error status"
-  
+
   it "should rescue_from Nokogiri::XML::XPath::SyntaxError; http://www.simonecarletti.com/blog/2009/12/inside-ruby-on-rails-rescuable-and-rescue_from/" do
     post :hotel_stay_info_notif
     response.should have_tag("Error")
@@ -137,6 +137,22 @@ describe ApiController do
       Hotel.delete_all
       post_request(:hotel_descriptive_content_notif, "OTA_HotelDescriptiveContentNotifRQ.xml")
     end
+
+    it "should search by hotel name" do
+      post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ.xml")
+      post_request(:hotel_search, "OTA_HotelSearchRQ_by_name.xml")
+      dump_response "OTA_HotelSearchRS_by_name.xml"
+      response.should have_tag("Success")
+      response.should have_tag("Property[HotelCode='BOSCO']")
+    end
+    it "should search by hotel name with Position" do
+      post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ.xml")
+      post_request(:hotel_search, "OTA_HotelSearchRQ_by_name_with_position.xml")
+      dump_response "OTA_HotelSearchRS_by_name_with_position.xml"
+      response.should have_tag("Success")
+      response.should have_tag("Property[HotelCode='BOSCO']")
+    end
+  
     it "should search by coordinates" do
       post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ.xml")
       post_request(:hotel_search, "OTA_HotelSearchRQ1.xml")

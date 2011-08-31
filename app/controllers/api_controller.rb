@@ -170,25 +170,53 @@ class ApiController < ApplicationController
     distance = @doc.xpath("//xmlns:Radius").attribute("Distance").value
     distance_measure = @doc.xpath("//xmlns:Radius").attribute("DistanceMeasure").value
     ref_points = @doc.xpath("//xmlns:RefPoint")
-    unless ref_points.empty?
+    hotel_ref = @doc.xpath("//xmlns:HotelRef")
+    ll= @doc.xpath('//xmlns:Position')
+    unless ll.empty?
+      lat= @doc.xpath('//xmlns:Position[@Latitude]').attribute('Latitude').value
+      lng= @doc.xpath('//xmlns:Position[@Longitude]').attribute('Longitude').value
+      @poi_coord = Geokit::LatLng.new lat,lng
+    end
+    select = @doc.xpath('//xmlns:Select')
+    unless select.empty?
+      limit= select.attribute('Limit').value
+      offset= select.attribute('Offset').value
+    end
+    if !ref_points.empty?
       ref_point = ref_points.first.text
       hotel_city_code = @doc.xpath("//xmlns:HotelRef").attribute("HotelCityCode").value
       @poi = Poi.find_by_name ref_point.upcase
       if @poi
         @poi_coord= @poi.ll
-        @hotels= Hotel.find :all, :origin=>@poi.ll, :within => distance 
+        if select.empty?
+          @hotels= Hotel.find :all, :origin=>@poi.ll, :within => distance
+        else
+          @hotels= Hotel.find :all, :origin=>@poi.ll, :within => distance , :limit => limit, :offset => offset 
+        end
+      else
+        @hotels=[]
+      end
+    elsif !hotel_ref.empty?
+      hotel_name= hotel_ref.first.attribute("HotelName").try(:value)
+      if hotel_name && !ll.empty?
+        if select.empty?
+          @hotels= Hotel.find :all, :conditions=>['name like ?', "%#{hotel_name}%"], :origin=>[lat,lng], :within=> distance
+        else
+          @hotels= Hotel.find :all, :conditions=>['name like ?', "%#{hotel_name}%"], :origin=>[lat,lng], :within=> distance, :limit => limit, :offset => offset
+        end
+      elsif hotel_name
+        if select.empty?
+          @hotels= Hotel.find :all, :conditions=>['name like ?', "%#{hotel_name}%"]
+        else
+          @hotels= Hotel.find :all, :conditions=>['name like ?', "%#{hotel_name}%"], :limit => limit, :offset => offset
+        end
       else
         @hotels=[]
       end
     else # find by coordinates
-      lat= @doc.xpath('//xmlns:Position[@Latitude]').attribute('Latitude').value
-      lng= @doc.xpath('//xmlns:Position[@Longitude]').attribute('Longitude').value
-      select = @doc.xpath('//xmlns:Select')
-      unless select.empty?
-        limit= select.attribute('Limit').value
-        offset= select.attribute('Offset').value
-      end
-      @poi_coord = Geokit::LatLng.new lat,lng
+      # lat= @doc.xpath('//xmlns:Position[@Latitude]').attribute('Latitude').value
+      # lng= @doc.xpath('//xmlns:Position[@Longitude]').attribute('Longitude').value
+      # @poi_coord = Geokit::LatLng.new lat,lng
       if select.empty?
         @hotels= Hotel.find :all, :origin=>[lat,lng], :within=> distance
       else

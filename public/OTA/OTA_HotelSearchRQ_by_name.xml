@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OTA_HotelSearchRQ xmlns="http://www.opentravel.org/OTA/2003/05"
+  PrimaryLangID="en" RetransmissionIndicator="false" SequenceNmbr="1"
+  TransactionIdentifier="1" Version="2.004" Target="Production"
+  TimeStamp="2010-07-21T21:41:52">
+  <POS><Source><RequestorID Type="13" ID="test"/></Source></POS>
+  <Criteria>
+    <Criterion>
+      <HotelRef HotelName='Marriott'>
+      <Radius DistanceMeasure="MILES" Distance="10" />
+      <StayDateRange Start="2004-08-02" End="2004-08-04" />
+    </Criterion>
+  </Criteria>
+</OTA_HotelSearchRQ>
