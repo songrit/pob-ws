@@ -8,7 +8,7 @@
     <Criterion>
       <Position Latitude="7.88806" Longitude="98.3975"/>
       <Radius DistanceMeasure="MILES" Distance="10" />
-      <StayDateRange Start="2004-08-02" End="2004-08-04" />
+      <StayDateRange Start="2004-08-02" End="2004-08-04" NumberOfUnits="2"/>
     </Criterion>
   </Criteria>
 </OTA_HotelSearchRQ>

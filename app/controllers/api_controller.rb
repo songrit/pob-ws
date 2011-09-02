@@ -226,6 +226,8 @@ class ApiController < ApplicationController
     unless @doc.xpath("//xmlns:StayDateRange").empty?
       @start_on= @doc.xpath("//xmlns:StayDateRange").attribute("Start").try(:value).try(:to_date)
       @end_on= @doc.xpath("//xmlns:StayDateRange").attribute("End").try(:value).try(:to_date)
+      units= @doc.xpath("//xmlns:StayDateRange").attribute("NumberOfUnits")
+      @number_of_units= units ? units.value.to_i : 1
     end
     render_response
   end
