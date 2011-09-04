@@ -182,7 +182,7 @@ class ApiController < ApplicationController
       limit= select.attribute('Limit').value
       offset= select.attribute('Offset').value
     end
-    if !ref_points.empty?
+    if !ref_points.empty? # find by POI
       ref_point = ref_points.first.text
       hotel_city_code = @doc.xpath("//xmlns:HotelRef").attribute("HotelCityCode").value
       @poi = Poi.find_by_name ref_point.upcase
@@ -196,19 +196,19 @@ class ApiController < ApplicationController
       else
         @hotels=[]
       end
-    elsif !hotel_ref.empty?
+    elsif !hotel_ref.empty? # find by name
       hotel_name= hotel_ref.first.attribute("HotelName").try(:value)
       if hotel_name && !ll.empty?
         if select.empty?
-          @hotels= Hotel.find :all, :conditions=>['name like ?', "%#{hotel_name}%"], :origin=>[lat,lng], :within=> distance
+          @hotels= Hotel.find :all, :conditions=>['lower(name) like ?', "%#{hotel_name.downcase}%"], :origin=>[lat,lng], :within=> distance
         else
-          @hotels= Hotel.find :all, :conditions=>['name like ?', "%#{hotel_name}%"], :origin=>[lat,lng], :within=> distance, :limit => limit, :offset => offset
+          @hotels= Hotel.find :all, :conditions=>['lower(name) like ?', "%#{hotel_name.downcase}%"], :origin=>[lat,lng], :within=> distance, :limit => limit, :offset => offset
         end
       elsif hotel_name
         if select.empty?
-          @hotels= Hotel.find :all, :conditions=>['name like ?', "%#{hotel_name}%"]
+          @hotels= Hotel.find :all, :conditions=>['lower(name) like ?', "%#{hotel_name.downcase}%"]
         else
-          @hotels= Hotel.find :all, :conditions=>['name like ?', "%#{hotel_name}%"], :limit => limit, :offset => offset
+          @hotels= Hotel.find :all, :conditions=>['lower(name) like ?', "%#{hotel_name.downcase}%"], :limit => limit, :offset => offset
         end
       else
         @hotels=[]
