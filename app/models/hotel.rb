@@ -1,10 +1,10 @@
 class Hotel < ActiveRecord::Base
   acts_as_mappable :default_units => :kms
-  has_many :avails
-  has_many :availabilities, :order => "inv_code, limit_on" 
-  has_many :stays
+  has_many :avails, :dependent => :destroy
+  has_many :availabilities, :order => "inv_code, limit_on", :dependent => :destroy
+  has_many :stays, :dependent => :destroy
   has_many :contact_infos
-  has_many :multimedia_descriptions
+  has_many :multimedia_descriptions, :dependent => :destroy
   has_many :bookings
 
   def update_avail(inv_code, start_on, end_on, number_of_units)
