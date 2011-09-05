@@ -1,0 +1,18 @@
+%h3= "ผลการค้นหา #{@q}"
+= will_paginate @bookings, :class=>'flickr_pagination', :params=>{:q=>@q}
+
+%table{:width=>"100%"}
+  %tr{:style=>"color:white; background-color:#6A6A6A;"}
+    %th วันที่จอง
+    %th โรงแรม
+    %th ลูกค้า
+    %th วันที่เข้าพัก
+  - @bookings.each do |booking|
+    - next unless booking.hotel
+    - doc = Nokogiri::XML(booking.reservation)
+    - customer= doc.xpath('//Customer')
+    %tr
+      %td= date_thai booking.created_at
+      %td= booking.hotel.name
+      %td= "#{(customer/'NamePrefix').text} #{(customer/'GivenName').text} #{(customer/'Surname').text}"
+      %td= date_thai booking.start_on, :date_only=>true

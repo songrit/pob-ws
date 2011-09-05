@@ -48,6 +48,9 @@ describe PaoController do
     end
     dd= Date.new y, m, 1
   end
+  it "should have booking report" do
+    get :booking_report
+  end
   it "should render pdf" do
     get :report, :format=>'pdf'
   end

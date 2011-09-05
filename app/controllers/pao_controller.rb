@@ -5,7 +5,10 @@ class PaoController < ApplicationController
       :right_margin => 50,
       :top_margin => 24,
       :bottom_margin => 24}
-      
+
+  def booking_report
+    @bookings= Booking.paginate :page=>params[:page], :order => "created_at DESC"
+  end
   def report
     @begin_of_year= Date.new Time.now.year
     @districts= Rr3.all(:group=>:district_id, :select => "district_id", 
