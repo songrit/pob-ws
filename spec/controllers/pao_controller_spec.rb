@@ -53,6 +53,7 @@ describe PaoController do
   end
   it "should render pdf" do
     get :report, :format=>'pdf'
+    get :booking_report, :format=>'pdf'
   end
   it "should add hotel" do
     Rr1.delete_all

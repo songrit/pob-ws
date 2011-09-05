@@ -7,7 +7,10 @@ class PaoController < ApplicationController
       :bottom_margin => 24}
 
   def booking_report
-    @bookings= Booking.paginate :page=>params[:page], :order => "created_at DESC"
+    respond_to do |format|
+      format.html { @bookings= Booking.paginate :page=>params[:page], :order => "created_at DESC" }
+      format.pdf { @bookings= Booking.all :order => "created_at DESC" }
+    end
   end
   def report
     @begin_of_year= Date.new Time.now.year
