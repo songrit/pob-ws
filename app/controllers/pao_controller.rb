@@ -6,6 +6,9 @@ class PaoController < ApplicationController
       :top_margin => 24,
       :bottom_margin => 24}
 
+  def index
+    redirect_to :action=>:booking_report
+  end
   def booking_report
     respond_to do |format|
       format.html { @bookings= Booking.paginate :page=>params[:page], :order => "created_at DESC" }
@@ -20,7 +23,7 @@ class PaoController < ApplicationController
       map(&:district_id)
     render :layout => false 
   end
-  def index
+  def revenue_report
     @revenues= []
     @districts= Rr3.all(:group=>:district_id, :select => "district_id", 
       :conditions => ['month >= ? and month<= ?', 
