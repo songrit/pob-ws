@@ -1,6 +1,6 @@
 %h3= "รายงานการจองโรงแรม"
 %div(style='text-align:right;')
-  = link_to(image_tag 'pdf.jpg'), {:action=> 'booking_report', :format=>'pdf'}, :target=>'_blank'
+  = link_to image_tag('pdf.jpg'), {:action=> 'booking_report', :format=>'pdf'}, :target=>'_blank'
 = will_paginate @bookings, :class=>'flickr_pagination', :params=>{:q=>@q}
 
 %table{:width=>"100%"}
