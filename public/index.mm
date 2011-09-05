@@ -2,7 +2,7 @@
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
 <node CREATED="1273819432637" ID="ID_1098419600" MODIFIED="1298545553548" TEXT="pob">
 <node CREATED="1296668805621" ID="ID_1544692121" MODIFIED="1296668807441" POSITION="right" TEXT="services">
-<node CREATED="1297106901190" ID="ID_262971886" MODIFIED="1313529369892" TEXT="users: &#xe1c;&#xe39;&#xe49;&#xe43;&#xe0a;&#xe49;">
+<node CREATED="1297106901190" FOLDED="true" ID="ID_262971886" MODIFIED="1315192498498" TEXT="users: &#xe1c;&#xe39;&#xe49;&#xe43;&#xe0a;&#xe49;">
 <node CREATED="1297106977700" ID="ID_84437594" MODIFIED="1297106980579" TEXT="role: m"/>
 <node CREATED="1305167395897" ID="ID_157418452" MODIFIED="1305167419560" TEXT="link: &#xe07;&#xe32;&#xe19;&#xe17;&#xe35;&#xe48;&#xe2d;&#xe22;&#xe39;&#xe48;&#xe23;&#xe30;&#xe2b;&#xe27;&#xe48;&#xe32;&#xe07;&#xe14;&#xe33;&#xe40;&#xe19;&#xe34;&#xe19;&#xe01;&#xe32;&#xe23;: /main/pending"/>
 <node CREATED="1297109431419" ID="ID_962537378" MODIFIED="1297109469754" TEXT="link: &#xe02;&#xe49;&#xe2d;&#xe21;&#xe39;&#xe25;&#xe1c;&#xe39;&#xe49;&#xe43;&#xe0a;&#xe49;: /users/user"/>
@@ -41,7 +41,8 @@
 </node>
 </node>
 </node>
-<node CREATED="1304090638634" FOLDED="true" ID="ID_769440526" MODIFIED="1310963476827" TEXT="pao: &#xe2d;&#xe1a;&#xe08;.">
+<node CREATED="1304090638634" ID="ID_769440526" MODIFIED="1315192500586" TEXT="pao: &#xe2d;&#xe1a;&#xe08;.">
+<node CREATED="1315192507636" ID="ID_1242278994" MODIFIED="1315192525683" TEXT="link: &#xe23;&#xe32;&#xe22;&#xe07;&#xe32;&#xe19;&#xe01;&#xe32;&#xe23;&#xe08;&#xe2d;&#xe07;&#xe1c;&#xe48;&#xe32;&#xe19;&#xe23;&#xe30;&#xe1a;&#xe1a;: /pao/booking_report"/>
 <node CREATED="1304090673765" ID="ID_1094049168" MODIFIED="1304091874190" TEXT="link: &#xe2a;&#xe23;&#xe38;&#xe1b;&#xe04;&#xe48;&#xe32;&#xe18;&#xe23;&#xe23;&#xe21;&#xe40;&#xe19;&#xe35;&#xe22;&#xe21;&#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;: /pao"/>
 <node CREATED="1304090820380" ID="ID_691222956" MODIFIED="1305277583488" TEXT="add_hotel: &#xe02;&#xe36;&#xe49;&#xe19;&#xe17;&#xe30;&#xe40;&#xe1a;&#xe35;&#xe22;&#xe19;&#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;">
 <node CREATED="1304090843880" ID="ID_946908530" MODIFIED="1305277605590" TEXT="enter_rr1: &#xe41;&#xe1a;&#xe1a; &#xe2d;&#xe1a;&#xe08;.&#xe23;&#xe23;.&#xe51;">
