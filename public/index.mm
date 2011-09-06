@@ -41,9 +41,9 @@
 </node>
 </node>
 </node>
-<node CREATED="1304090638634" ID="ID_769440526" MODIFIED="1315192500586" TEXT="pao: &#xe2d;&#xe1a;&#xe08;.">
+<node CREATED="1304090638634" FOLDED="true" ID="ID_769440526" MODIFIED="1315240161579" TEXT="pao: &#xe2d;&#xe1a;&#xe08;.">
 <node CREATED="1315192507636" ID="ID_1242278994" MODIFIED="1315192525683" TEXT="link: &#xe23;&#xe32;&#xe22;&#xe07;&#xe32;&#xe19;&#xe01;&#xe32;&#xe23;&#xe08;&#xe2d;&#xe07;&#xe1c;&#xe48;&#xe32;&#xe19;&#xe23;&#xe30;&#xe1a;&#xe1a;: /pao/booking_report"/>
-<node CREATED="1304090673765" ID="ID_1094049168" MODIFIED="1304091874190" TEXT="link: &#xe2a;&#xe23;&#xe38;&#xe1b;&#xe04;&#xe48;&#xe32;&#xe18;&#xe23;&#xe23;&#xe21;&#xe40;&#xe19;&#xe35;&#xe22;&#xe21;&#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;: /pao"/>
+<node CREATED="1304090673765" ID="ID_1094049168" MODIFIED="1315193856147" TEXT="link: &#xe2a;&#xe23;&#xe38;&#xe1b;&#xe04;&#xe48;&#xe32;&#xe18;&#xe23;&#xe23;&#xe21;&#xe40;&#xe19;&#xe35;&#xe22;&#xe21;&#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;: /pao/revenue_report"/>
 <node CREATED="1304090820380" ID="ID_691222956" MODIFIED="1305277583488" TEXT="add_hotel: &#xe02;&#xe36;&#xe49;&#xe19;&#xe17;&#xe30;&#xe40;&#xe1a;&#xe35;&#xe22;&#xe19;&#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;">
 <node CREATED="1304090843880" ID="ID_946908530" MODIFIED="1305277605590" TEXT="enter_rr1: &#xe41;&#xe1a;&#xe1a; &#xe2d;&#xe1a;&#xe08;.&#xe23;&#xe23;.&#xe51;">
 <icon BUILTIN="attach"/>
@@ -145,9 +145,10 @@
 <icon BUILTIN="closed"/>
 </node>
 </node>
-<node CREATED="1273706796854" FOLDED="true" ID="ID_1003882979" MODIFIED="1304090629752" TEXT="dev: &#xe1c;&#xe39;&#xe49;&#xe1e;&#xe31;&#xe12;&#xe19;&#xe32;">
+<node CREATED="1273706796854" ID="ID_1003882979" MODIFIED="1315240163983" TEXT="dev: &#xe1c;&#xe39;&#xe49;&#xe1e;&#xe31;&#xe12;&#xe19;&#xe32;">
 <node CREATED="1275373154914" ID="ID_340725299" MODIFIED="1275373158632" TEXT="role:d"/>
 <node CREATED="1273706824535" ID="ID_682167045" MODIFIED="1278500871367" TEXT="link: update app: /gma/update_app"/>
+<node CREATED="1315239767885" ID="ID_191614863" MODIFIED="1315239781578" TEXT="link: update services: /gma/update_services"/>
 <node CREATED="1281681992475" ID="ID_757791014" MODIFIED="1283285585589" TEXT="link: dbpush modules/services:/admin/db_push_ms"/>
 <node CREATED="1301274783956" ID="ID_567722653" MODIFIED="1301275106573" TEXT="link: rspec result: /spec.html"/>
 <node CREATED="1297476963476" ID="ID_1750552625" MODIFIED="1297476998622" TEXT="link: &#xe23;&#xe32;&#xe22;&#xe07;&#xe32;&#xe19;&#xe01;&#xe32;&#xe23;&#xe40;&#xe23;&#xe35;&#xe22;&#xe01;&#xe43;&#xe0a;&#xe49; ws: /admin/ws"/>

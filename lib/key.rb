@@ -14,4 +14,10 @@ class Key
   def decrypt(msg)
     decrypted_string = @key.private_decrypt(Base64.decode64(msg))
   end
+  def priv_encrypt(msg)
+    encrypted_string = Base64.encode64(@key.private_encrypt(msg))
+  end
+  def pub_decrypt(msg)
+    decrypted_string = @key.public_decrypt(Base64.decode64(msg))
+  end
 end

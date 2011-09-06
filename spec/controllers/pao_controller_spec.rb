@@ -73,7 +73,7 @@ describe PaoController do
   it "should have report" do
     rr3= Rr3.create @rr3
     District.stub(:find).and_return(mock_model(District,:name=>'test'))
-    get :index
+    get :revenue_report
     # debugger
     assigns[:revenues][0][:district_id].should == @rr1[:district_id]
     assigns[:revenues][0][:total].should be_close @rr3[:total], 0.01

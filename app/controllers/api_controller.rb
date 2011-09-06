@@ -304,22 +304,25 @@ class ApiController < ApplicationController
         # unless multimedias.empty?
         #   avail.update_attribute :multimedias, multimedias.to_s
         # end
+        max= (a/"StatusApplicationControl").attribute('MaxOccupancy').try(:value).try(:to_i)
+        # debugger
         avail.start_on.step(avail.end_on) do |d|
-          aa= Availability.first :conditions=>[
+          aa= Availability.last :conditions=>[
             'hotel_id=? AND inv_code=? AND limit_on=?', avail.hotel_id, avail.inv_code, d]
           if aa
             aa.update_attributes :booking_limit=> avail.booking_limit,
               :avail_id => avail.id, 
               :rate_plan_code => avail.rate_plan_code, 
-              :rate => avail.rate
-            aa.update_attribute(:max, avail.booking_limit) if (avail.booking_limit > aa.max)
+              :rate => avail.rate,
+              :max=>max
+            # aa.update_attribute(:max, avail.booking_limit) if (avail.booking_limit > aa.max)
           else
             aa= Availability.create :hotel_id=> avail.hotel_id,
               :avail_id => avail.id, 
               :rate_plan_code => avail.rate_plan_code, 
               :rate => avail.rate, 
               :inv_code => avail.inv_code, :booking_limit => avail.booking_limit,
-              :limit_on=> d, :max=> avail.booking_limit
+              :limit_on=> d, :max=> max
           end
         end
       end

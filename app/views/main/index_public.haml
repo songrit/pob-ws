@@ -7,11 +7,17 @@
 .url= "http://#{request.host_with_port}/api/hotel_descriptive_content_notif"
 .note
   &raquo; must have valid hotel email address under ContactInfo/Email path
+  %br
+  = link_to "sample RQ", "/OTA/OTA_HotelDescriptiveContentNotifRQ1.xml"
 %b Example (Ruby)
 .example response= RestClient.post "http://#{request.host_with_port}/api/hotel_descriptive_content_notif", xml
 %h4 message OTA_HotelAvailNotif
 .url= "http://#{request.host_with_port}/api/hotel_avail_notif"
-.note &raquo; one property at a time
+.note 
+  &raquo; one property at a time
+  &raquo; MaxOccupancy attribute can be specified in StatusApplicationControl tag (optional)
+  %br
+  = link_to "sample RQ", "/OTA/OTA_HotelAvailNotifRQ.xml"
 %h4 message OTA_HotelSearch
 .url= "http://#{request.host_with_port}/api/hotel_search"
 .note

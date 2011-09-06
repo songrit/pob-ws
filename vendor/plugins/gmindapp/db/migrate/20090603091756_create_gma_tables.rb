@@ -33,6 +33,7 @@ class AddGmaTables < ActiveRecord::Migration
       t.string   "code"
       t.string   "name"
       t.string   "role"
+      t.boolean  "starter"
       t.integer  "seq"
       t.integer  "gma_user_id"
       t.datetime "created_at"

@@ -138,6 +138,12 @@ describe ApiController do
       post_request(:hotel_descriptive_content_notif, "OTA_HotelDescriptiveContentNotifRQ.xml")
     end
 
+    it "should return MaxOccupancy" do
+      post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ.xml")
+      post_request(:hotel_search, "OTA_HotelSearchRQ_by_name.xml")
+      dump_response "OTA_HotelSearchRS_by_name.xml"
+      response.should have_tag("Availability[MaxOccupancy='2']")
+    end
     it "should search by hotel name" do
       post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ.xml")
       post_request(:hotel_search, "OTA_HotelSearchRQ_by_name.xml")
@@ -229,6 +235,11 @@ describe ApiController do
   describe "HotelAvailNotif" do
     before do
       post_request(:hotel_descriptive_content_notif, "OTA_HotelDescriptiveContentNotifRQ.xml")
+    end
+    it "should handle MaxOccupancy" do
+      post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ.xml")
+      a= Availability.first
+      a.max.should == 2
     end
     it "keep Multimedia from HotelAvail" do
       post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ7.xml")

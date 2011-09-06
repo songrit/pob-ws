@@ -1,5 +1,5 @@
 module EngineHelper
-  def currency(num,d_unit,c_unit)
+  def currency_text(num,d_unit,c_unit)
     num_dollar= num.to_i
     num_cent= ((num-num.to_i)*100).to_i
     dollar= num_dollar.en.numwords

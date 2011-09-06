@@ -60,6 +60,15 @@ class GmaController < ApplicationController
     @t << gen_controllers
     @t << gen_views
     @t << "Application Updated, please restart Rails server"
+    # need to reload route for new controllers to be recognized
+    ActionController::Routing::Routes.reload
+  end
+  def update_services
+    @title= "Update Services from Mindmap"
+    @t = [cancel_pending_xmains]
+    @t << process_roles
+    @t << process_services
+    @t << "Service Updated, please restart Rails server"
     ActionController::Routing::Routes.reload
   end
   def process_report
@@ -213,6 +222,9 @@ class GmaController < ApplicationController
         scode= name2code(scode)
         if scode=="role"
           gma_module.update_attribute :role, sname
+          next
+        elsif scode=="starter"
+          gma_module.update_attribute :starter, affirm(sname)
           next
         end
         if scode.downcase=="link"

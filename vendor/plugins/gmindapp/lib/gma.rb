@@ -530,10 +530,10 @@ module Gma
     end
   end
   def affirm(s)
-    s =~ /[y|yes|t|true]/i
+    return s =~ /[y|yes|t|true]/i ? true : false
   end
   def negate(s)
-    s =~ /[n|no|f|false]/i
+    return s =~ /[n|no|f|false]/i ? true : false
   end
   def get_xvars
     @runseq= GmaRunseq.find($runseq_id)
@@ -736,8 +736,8 @@ module ActionView
 
   //]]>
   </script>
-  Latitude: #{self.text_field :lat}
-  Longitude: #{self.text_field :lng}
+  Latitude: #{self.text_field :lat, :style=>"width:100px;" }
+  Longitude: #{self.text_field :lng, :style=>"width:100px;" }
   <p/>
   <div id='map_#{self.object_name}' style='width:#{o[:width]}; height:#{o[:height]};'></div>
   <script>
