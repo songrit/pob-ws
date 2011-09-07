@@ -138,6 +138,12 @@ describe ApiController do
       post_request(:hotel_descriptive_content_notif, "OTA_HotelDescriptiveContentNotifRQ.xml")
     end
 
+    it "should return Policies" do
+      post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ.xml")
+      post_request(:hotel_search, "OTA_HotelSearchRQ_by_name.xml")
+      dump_response "OTA_HotelSearchRS_by_name.xml"
+      response.should have_tag("Policy")
+    end
     it "should return MaxOccupancy" do
       post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ.xml")
       post_request(:hotel_search, "OTA_HotelSearchRQ_by_name.xml")
