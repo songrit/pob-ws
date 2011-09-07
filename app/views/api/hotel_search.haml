@@ -22,6 +22,10 @@
           %MultimediaDescriptions
             - hotel.multimedia_descriptions.each do |m|
               = m.xml
+          - doc = Nokogiri::XML(hotel.doc)
+          - policies= (doc/'Policies')
+          - unless policies.empty?
+            = policies.to_s
           - unless hotel.facility.blank?
             = hotel.facility
           - if @start_on

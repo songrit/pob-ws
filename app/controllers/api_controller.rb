@@ -251,7 +251,8 @@ class ApiController < ApplicationController
       :state_prov => @doc.xpath("//xmlns:StateProv").first.try(:text), 
       :country_name => @doc.xpath("//xmlns:CountryName").first.try(:text),
       :description => @doc.xpath('//xmlns:TextItem[@Title="Description"]').xpath('xmlns:Description').try(:text),
-      :facility => @doc.xpath("//xmlns:FacilityInfo").try(:to_s)
+      :facility => @doc.xpath("//xmlns:FacilityInfo").try(:to_s),
+      :doc => @doc.to_s
 
     hotel.save
     MultimediaDescription.delete_all :hotel_id => hotel.id
