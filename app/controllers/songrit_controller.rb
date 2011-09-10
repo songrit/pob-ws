@@ -6,6 +6,13 @@ class SongritController < ApplicationController
   require "rest_client"
   # require 'geokit'
 
+  def populate_hotel_doc
+    body = File.read('public/OTA/OTA_HotelDescriptiveContentNotifRQ.xml')
+    Hotel.all.each do |h|
+      h.update_attribute :doc, body
+    end
+    render :text => "done"
+  end
   def test_hotel_res1
     l = LogRequest.find 140
     @doc = Nokogiri::XML(l.content)
