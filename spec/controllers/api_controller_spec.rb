@@ -242,6 +242,15 @@ describe ApiController do
     before do
       post_request(:hotel_descriptive_content_notif, "OTA_HotelDescriptiveContentNotifRQ.xml")
     end
+    it "should update Hotel#rate_min" do
+      h= Hotel.last
+      h.rate_min.should == 99999
+      $rate_min= true
+      post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ.xml")
+      $rate_min= nil
+      h= Hotel.last
+      h.rate_min.should == 500
+    end
     it "should handle MaxOccupancy" do
       post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ.xml")
       a= Availability.first

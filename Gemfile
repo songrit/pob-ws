@@ -29,4 +29,5 @@ group :development do
   gem "ruby-debug"
   gem "rails-footnotes"
   gem "rcov"
+  gem "pry"
 end

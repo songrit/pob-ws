@@ -182,6 +182,15 @@ class ApiController < ApplicationController
       limit= select.attribute('Limit').value
       offset= select.attribute('Offset').value
     end
+    sort = @doc.xpath('//xmlns:Sort')
+    unless sort.empty?
+      case sort.attribute('By').value
+      when 'Price'
+        order= 'rate_min'
+      else
+        order= 'name'
+      end
+    end
     if !ref_points.empty? # find by POI
       ref_point = ref_points.first.text
       hotel_city_code = @doc.xpath("//xmlns:HotelRef").attribute("HotelCityCode").value
@@ -252,7 +261,7 @@ class ApiController < ApplicationController
       :country_name => @doc.xpath("//xmlns:CountryName").first.try(:text),
       :description => @doc.xpath('//xmlns:TextItem[@Title="Description"]').xpath('xmlns:Description').try(:text),
       :facility => @doc.xpath("//xmlns:FacilityInfo").try(:to_s),
-      :doc => @doc.to_s
+      :doc => @doc.to_s, :rate_min=>99999
 
     hotel.save
     MultimediaDescription.delete_all :hotel_id => hotel.id
@@ -290,14 +299,19 @@ class ApiController < ApplicationController
     hotel= Hotel.find_by_code hotel_code
     if hotel
       @doc.xpath("//xmlns:AvailStatusMessage").each do |a|
+        # debugger unless a.xpath('xmlns:StatusApplicationControl').attribute('MaxOccupancy')
         rate_attr = a.xpath('xmlns:StatusApplicationControl').attribute('Rate')
+        # debugger if $rate_min
+        next unless rate_attr
         # debugger if a.xpath('xmlns:UniqueID').attribute('ID').try(:value) == "7"
+        rate = rate_attr.value.to_f
+        hotel.update_attribute(:rate_min, rate) if (rate < hotel.rate_min)
         avail = Avail.create :hotel_id => hotel.id,
           :booking_limit => a.attribute('BookingLimit').try(:value), 
           :start_on => a.xpath('xmlns:StatusApplicationControl').attribute('Start').try(:value), 
           :end_on => a.xpath('xmlns:StatusApplicationControl').attribute('End').try(:value), 
           :rate_plan_code => a.xpath('xmlns:StatusApplicationControl').attribute('RatePlanCode').try(:value), 
-          :rate => (rate_attr ? rate_attr.try(:value).try(:to_f) : 0), 
+          :rate => rate, 
           :inv_code => a.xpath('xmlns:StatusApplicationControl').attribute('InvCode').try(:value), 
           :unique_id => a.xpath('xmlns:UniqueID').attribute('ID').try(:value), 
           :unique_id_type => a.xpath('xmlns:UniqueID').attribute('Type').try(:value),
