@@ -47,29 +47,39 @@ THB
 %br
 Hotel Information:
 - contact = @booking.hotel.contact_infos.last
+- if contact
+  %br
+  = nbsp 5
+  Hotel:
+  = @booking.hotel.name
+  %br
+  = nbsp 5
+  Address:
+  = contact.address
+  ,
+  = contact.city
+  ,
+  = contact.state
+  ,
+  = contact.zip
+  ,
+  = contact.country
+  %br
+  = nbsp 5
+  Phone:
+  = contact.phone_number
+  %br
+  = nbsp 5
+  Email:
+  = contact.email
 %br
-= nbsp 5
-Hotel:
-= @booking.hotel.name
+Disclaimer
 %br
-= nbsp 5
-Address:
-= contact.address
-,
-= contact.city
-,
-= contact.state
-,
-= contact.zip
-,
-= contact.country
-%br
-= nbsp 5
-Phone:
-= contact.phone_number
-%br
-= nbsp 5
-Email:
-= contact.email
-%br
-
+Phuketcity.com does not take any way responsiblity for any damage, 
+loss, disadvantage, harm or injury caused by using this web site, 
+applications or the presented services. The service is provided on an 
+"as is" basis without warranties of any kind, either express or implied, 
+including, but not limited to, warranties of title or implied warranties 
+of merchantability or fitness for a particular purpose, other than those 
+warranties which are implied by and incapable of exclusion, restriction 
+or modification under the laws applicable to this agreement.
