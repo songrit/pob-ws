@@ -5,11 +5,12 @@
 
 # Example:
 #
-set :path, "/home/songrit/apps/elocal"
+set :path, "/home/songrit/apps/pob_ws"
 #
 # Learn more: http://github.com/javan/whenever
-every 3.hours do
-   # command "cd #{path} && heroku db:push postgres://postgres:songrit@localhost/elocal?encoding=utf8 --force"
-   command "cd #{path} && git pull github master && bundle && bundle exec rake db:migrate"
-   runner "GmaController.new.update_services"
+every 1.day do
+  # command "cd #{path} && heroku db:push postgres://postgres:songrit@localhost/elocal?encoding=utf8 --force"
+  # command "cd #{path} && git pull github master && bundle && bundle exec rake db:migrate"
+  # runner "GmaController.new.update_services"
+  rake "tmp:sessions:clear"
 end
