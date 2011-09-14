@@ -198,9 +198,9 @@ class ApiController < ApplicationController
       if @poi
         @poi_coord= @poi.ll
         if select.empty?
-          @hotels= Hotel.find :all, :origin=>@poi.ll, :within => distance
+          @hotels= Hotel.find :all, :origin=>@poi.ll, :within => distance, :order => order 
         else
-          @hotels= Hotel.find :all, :origin=>@poi.ll, :within => distance , :limit => limit, :offset => offset 
+          @hotels= Hotel.find :all, :origin=>@poi.ll, :within => distance , :limit => limit, :offset => offset, :order => order 
         end
       else
         @hotels=[]
@@ -209,15 +209,15 @@ class ApiController < ApplicationController
       hotel_name= hotel_ref.first.attribute("HotelName").try(:value)
       if hotel_name && !ll.empty?
         if select.empty?
-          @hotels= Hotel.find :all, :conditions=>['lower(name) like ?', "%#{hotel_name.downcase}%"], :origin=>[lat,lng], :within=> distance
+          @hotels= Hotel.find :all, :conditions=>['lower(name) like ?', "%#{hotel_name.downcase}%"], :origin=>[lat,lng], :within=> distance, :order => order
         else
-          @hotels= Hotel.find :all, :conditions=>['lower(name) like ?', "%#{hotel_name.downcase}%"], :origin=>[lat,lng], :within=> distance, :limit => limit, :offset => offset
+          @hotels= Hotel.find :all, :conditions=>['lower(name) like ?', "%#{hotel_name.downcase}%"], :origin=>[lat,lng], :within=> distance, :limit => limit, :offset => offset, :order => order
         end
       elsif hotel_name
         if select.empty?
-          @hotels= Hotel.find :all, :conditions=>['lower(name) like ?', "%#{hotel_name.downcase}%"]
+          @hotels= Hotel.find :all, :conditions=>['lower(name) like ?', "%#{hotel_name.downcase}%"], :order => order
         else
-          @hotels= Hotel.find :all, :conditions=>['lower(name) like ?', "%#{hotel_name.downcase}%"], :limit => limit, :offset => offset
+          @hotels= Hotel.find :all, :conditions=>['lower(name) like ?', "%#{hotel_name.downcase}%"], :limit => limit, :offset => offset, :order => order
         end
       else
         @hotels=[]
@@ -227,9 +227,9 @@ class ApiController < ApplicationController
       # lng= @doc.xpath('//xmlns:Position[@Longitude]').attribute('Longitude').value
       # @poi_coord = Geokit::LatLng.new lat,lng
       if select.empty?
-        @hotels= Hotel.find :all, :origin=>[lat,lng], :within=> distance
+        @hotels= Hotel.find :all, :origin=>[lat,lng], :within=> distance, :order => order
       else
-        @hotels= Hotel.find :all, :origin=>[lat,lng], :within=> distance, :limit => limit, :offset => offset 
+        @hotels= Hotel.find :all, :origin=>[lat,lng], :within=> distance, :limit => limit, :offset => offset, :order => order
       end
     end
     unless @doc.xpath("//xmlns:StayDateRange").empty?

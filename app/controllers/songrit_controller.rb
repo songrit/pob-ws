@@ -6,6 +6,14 @@ class SongritController < ApplicationController
   require "rest_client"
   # require 'geokit'
 
+  def update_rate_min
+    Hotel.all.each do |h|
+      min = h.avails.minimum(:rate)
+      next if min==0
+      h.update_attribute :rate_min, min
+    end
+    render :text => "done" 
+  end
   def populate_hotel_doc
     body = File.read('public/OTA/OTA_HotelDescriptiveContentNotifRQ.xml')
     Hotel.all.each do |h|
@@ -65,7 +73,8 @@ class SongritController < ApplicationController
     private_key_file = 'config/pob.pem';
     password = 'abcd'
     private_key= Key.new(private_key_file, password)
-    string = "elocal:songrit:songrit@gmail.com:110909"
+    # string = "elocal:songrit:songrit@gmail.com:110909"
+    string = "hello"
     encrypted_string = public_key.encrypt(string)
     decrypt = private_key.decrypt(encrypted_string)
     t = ["<b>message</b><br/>#{string}"]
