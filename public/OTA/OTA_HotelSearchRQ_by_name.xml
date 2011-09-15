@@ -6,9 +6,10 @@
   <POS><Source><RequestorID Type="13" ID="test"/></Source></POS>
   <Criteria>
     <Criterion>
-      <HotelRef HotelName='Marriott' />
+      <HotelRef HotelName='marriott' />
       <Radius DistanceMeasure="MILES" Distance="10" />
       <StayDateRange Start="2004-08-02" End="2004-08-04" />
+      <Filter Minimum="500" Maximum="2000"/>
     </Criterion>
   </Criteria>
 </OTA_HotelSearchRQ>

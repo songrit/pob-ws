@@ -10,7 +10,7 @@ class SongritController < ApplicationController
     Hotel.all.each do |h|
       min = h.avails.minimum(:rate)
       if h.avails.empty? || min==0
-        h.update_attribute :rate_min, 99999
+        h.update_attribute :rate_min, MAX_PRICE
       else
         h.update_attribute :rate_min, min
       end

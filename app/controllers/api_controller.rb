@@ -188,8 +188,18 @@ class ApiController < ApplicationController
       when 'Price'
         order= 'rate_min'
       else
-        order= 'name'
+        order= 'distance'
       end
+    else
+      order= 'distance'
+    end
+    filter = @doc.xpath('//xmlns:Filter')
+    if filter.empty?
+      minimum= 0
+      maximum= MAX_PRICE
+    else
+      minimum= filter.attribute('Minimum').try(:value)|| 0
+      maximum= filter.attribute('Maximum').try(:value)|| MAX_PRICE
     end
     if !ref_points.empty? # find by POI
       ref_point = ref_points.first.text
@@ -198,26 +208,27 @@ class ApiController < ApplicationController
       if @poi
         @poi_coord= @poi.ll
         if select.empty?
-          @hotels= Hotel.find :all, :origin=>@poi.ll, :within => distance, :order => order 
+          @hotels= Hotel.find :all, :origin=>@poi.ll, :within => distance, :order => order, :conditions=>['rate_min>=? and rate_min<=?',minimum,maximum]
         else
-          @hotels= Hotel.find :all, :origin=>@poi.ll, :within => distance , :limit => limit, :offset => offset, :order => order 
+          @hotels= Hotel.find :all, :origin=>@poi.ll, :within => distance , :limit => limit, :offset => offset, :order => order, :conditions=>['rate_min>=? and rate_min<=?',minimum,maximum]
         end
       else
         @hotels=[]
       end
     elsif !hotel_ref.empty? # find by name
+      order= "name" if order=="distance" # cannot use distance without origin
       hotel_name= hotel_ref.first.attribute("HotelName").try(:value)
       if hotel_name && !ll.empty?
         if select.empty?
-          @hotels= Hotel.find :all, :conditions=>['lower(name) like ?', "%#{hotel_name.downcase}%"], :origin=>[lat,lng], :within=> distance, :order => order
+          @hotels= Hotel.find :all, :conditions=>['lower(name) like ?', "%#{hotel_name.downcase}%"], :origin=>[lat,lng], :within=> distance, :order => order, :conditions=>['rate_min>=? and rate_min<=?',minimum,maximum]
         else
-          @hotels= Hotel.find :all, :conditions=>['lower(name) like ?', "%#{hotel_name.downcase}%"], :origin=>[lat,lng], :within=> distance, :limit => limit, :offset => offset, :order => order
+          @hotels= Hotel.find :all, :conditions=>['lower(name) like ?', "%#{hotel_name.downcase}%"], :origin=>[lat,lng], :within=> distance, :limit => limit, :offset => offset, :order => order, :conditions=>['rate_min>=? and rate_min<=?',minimum,maximum]
         end
       elsif hotel_name
         if select.empty?
-          @hotels= Hotel.find :all, :conditions=>['lower(name) like ?', "%#{hotel_name.downcase}%"], :order => order
+          @hotels= Hotel.find :all, :conditions=>['lower(name) like ? AND rate_min>=? and rate_min<=?', "%#{hotel_name.downcase}%",minimum,maximum], :order => order
         else
-          @hotels= Hotel.find :all, :conditions=>['lower(name) like ?', "%#{hotel_name.downcase}%"], :limit => limit, :offset => offset, :order => order
+          @hotels= Hotel.find :all, :conditions=>['lower(name) like ? AND rate_min>=? and rate_min<=?', "%#{hotel_name.downcase}%",minimum,maximum], :limit => limit, :offset => offset, :order => order
         end
       else
         @hotels=[]
@@ -227,9 +238,9 @@ class ApiController < ApplicationController
       # lng= @doc.xpath('//xmlns:Position[@Longitude]').attribute('Longitude').value
       # @poi_coord = Geokit::LatLng.new lat,lng
       if select.empty?
-        @hotels= Hotel.find :all, :origin=>[lat,lng], :within=> distance, :order => order
+        @hotels= Hotel.find :all, :origin=>[lat,lng], :within=> distance, :order => order, :conditions=>['rate_min>=? and rate_min<=?',minimum,maximum]
       else
-        @hotels= Hotel.find :all, :origin=>[lat,lng], :within=> distance, :limit => limit, :offset => offset, :order => order
+        @hotels= Hotel.find :all, :origin=>[lat,lng], :within=> distance, :limit => limit, :offset => offset, :order => order, :conditions=>['rate_min>=? and rate_min<=?',minimum,maximum]
       end
     end
     unless @doc.xpath("//xmlns:StayDateRange").empty?
@@ -261,7 +272,7 @@ class ApiController < ApplicationController
       :country_name => @doc.xpath("//xmlns:CountryName").first.try(:text),
       :description => @doc.xpath('//xmlns:TextItem[@Title="Description"]').xpath('xmlns:Description').try(:text),
       :facility => @doc.xpath("//xmlns:FacilityInfo").try(:to_s),
-      :doc => @doc.to_s, :rate_min=>99999
+      :doc => @doc.to_s, :rate_min=>MAX_PRICE
 
     hotel.save
     MultimediaDescription.delete_all :hotel_id => hotel.id

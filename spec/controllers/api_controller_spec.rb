@@ -244,7 +244,7 @@ describe ApiController do
     end
     it "should update Hotel#rate_min" do
       h= Hotel.last
-      h.rate_min.should == 99999
+      h.rate_min.should == MAX_PRICE
       $rate_min= true
       post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ.xml")
       $rate_min= nil
