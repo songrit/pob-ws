@@ -2,11 +2,11 @@ require 'spec_helper'
 
 describe SongritController do
   integrate_views
-  # it "should fix tambon" do
-  #   SubDistrict.delete_all
-  #   SubDistrict.create :name=>"ตำบลกกก"
-  #   SubDistrict.create :name=>"ตำบล11ตำบล22"
-  #   get :fix_tambon
-  #   SubDistrict.all.map(&:name).should == ['กกก','11ตำบล22']
-  # end
+  it "should update rating" do
+    body = File.read('public/OTA/OTA_HotelDescriptiveContentNotifRQ.xml')
+    @doc = Nokogiri::XML(body)
+    # debugger
+    rating= (@doc/'Award').attribute('Rating').try(:value).try(:to_i)
+    rating.should==3
+  end
 end

@@ -290,6 +290,10 @@ describe ApiController do
       request.env['content_type'] = 'application/xml'
       request.env['RAW_POST_DATA'] =  @body
     end
+    it "should update rating" do
+      post_request :hotel_descriptive_content_notif, "OTA_HotelDescriptiveContentNotifRQ.xml"
+      Hotel.last.rating.should == 3
+    end
     it "should create new Hotel" do
       lambda do
         post :hotel_descriptive_content_notif
@@ -335,6 +339,7 @@ describe ApiController do
     end
     it "keep all digits for lat, lng" do
       post_request :hotel_descriptive_content_notif, "OTA_HotelDescriptiveContentNotifRQ4.xml"
+      dump_response "OTA_HotelDescriptiveContentNotifRS4.xml"
       hotel= Hotel.find_by_code("SONGRIT")
       hotel.lat.should == 7.771828058680014
       hotel.lng.should == 98.3205502599717

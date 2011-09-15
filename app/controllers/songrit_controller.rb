@@ -6,6 +6,12 @@ class SongritController < ApplicationController
   require "rest_client"
   # require 'geokit'
 
+  def update_rating
+    Hotel.all.each do |h|
+      h.update_attribute :rating, 0
+    end
+    render :text => "done" 
+  end
   def update_rate_min
     Hotel.all.each do |h|
       min = h.avails.minimum(:rate)

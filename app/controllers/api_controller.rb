@@ -184,9 +184,13 @@ class ApiController < ApplicationController
     end
     sort = @doc.xpath('//xmlns:Sort')
     unless sort.empty?
-      case sort.attribute('By').value
-      when 'Price'
+      case sort.attribute('By').value.downcase
+      when 'price'
         order= 'rate_min'
+      when 'rating'
+        order= 'rating'
+      when 'rating desc'
+        order= 'rating DESC'
       else
         order= 'distance'
       end
@@ -256,7 +260,8 @@ class ApiController < ApplicationController
     # doc = Nokogiri::XML(l.content)
     code= @doc.xpath("//xmlns:HotelDescriptiveContent").attribute("HotelCode").value
     hotel= Hotel.find_or_create_by_code(code)
-    # debugger if code=="BOSCO"
+    # debugger if code=="SONGRIT"
+    rating= (@doc/'Award').first.try(:attribute,'Rating').try(:value).try(:to_i)||0
     hotel.update_attributes :name => @doc.xpath("//xmlns:HotelDescriptiveContent").attribute("HotelName").try(:value),
       :brand_code => @doc.xpath("//xmlns:HotelDescriptiveContent").attribute("BrandCode").try(:value),
       :brand_name => @doc.xpath("//xmlns:HotelDescriptiveContent").attribute("BrandName").try(:value),
@@ -272,7 +277,7 @@ class ApiController < ApplicationController
       :country_name => @doc.xpath("//xmlns:CountryName").first.try(:text),
       :description => @doc.xpath('//xmlns:TextItem[@Title="Description"]').xpath('xmlns:Description').try(:text),
       :facility => @doc.xpath("//xmlns:FacilityInfo").try(:to_s),
-      :doc => @doc.to_s, :rate_min=>MAX_PRICE
+      :doc => @doc.to_s, :rate_min=> MAX_PRICE, :rating=> rating
 
     hotel.save
     MultimediaDescription.delete_all :hotel_id => hotel.id

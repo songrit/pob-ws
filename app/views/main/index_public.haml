@@ -39,6 +39,19 @@
   = link_to "sample RQ search with filter", "/OTA/OTA_HotelSearchRQ_by_name.xml"
   %br
   = link_to "sample RS", "/OTA/OTA_HotelSearchRS2.xml"
+%h4 Rating
+.note
+  &raquo; specify in <b>HotelDescriptiveContentNotifRQ</b> in first tag <b>Award</b> attribute <b>Rating</b>
+  %br
+  &raquo; invalid or unspecified Rating will be 0
+  %br
+  &raquo; in HotelSearch &lt;Sort By='Rating'/&gt; will sort ascendance
+  %br
+  &raquo; in HotelSearch &lt;Sort By='Rating DESC'/&gt; will sort descendance
+  %br
+  &raquo; Rating Sort cannot be combined with Price Sort, The first <b>Sort</b> takes precedence
+  %br
+  &raquo; in <b>HotelSearchRS</b> Rating is indicated by <b>Rating</b> attribute in <b>Property</b> tag
 %h4 message OTA_HotelRes
 .url= "http://#{request.host_with_port}/api/hotel_res"
 .note
