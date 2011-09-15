@@ -15,6 +15,15 @@ class PaoController < ApplicationController
       format.pdf { @bookings= Booking.all :order => "created_at DESC" }
     end
   end
+  def hotels_pob
+    @hotels= Hotel.all :order=>:name
+  end
+  def rm_hotel_pob
+    hotel= Hotel.find params[:id]
+    flash[:notice]= "Hotel #{hotel.name} deleted"
+    hotel.destroy
+    redirect_to :action=>:hotels_pob
+  end
   def report
     @begin_of_year= Date.new Time.now.year
     @districts= Rr3.all(:group=>:district_id, :select => "district_id", 

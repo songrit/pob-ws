@@ -64,8 +64,9 @@ class GmaController < ApplicationController
     ActionController::Routing::Routes.reload
   end
   def update_services
-    @title= "Update Services from Mindmap"
+    @title= "Git Pull & Update Services from Mindmap"
     @t = [cancel_pending_xmains]
+    @t << exec_cmd("cd #{Rails.root} && git pull github master && bundle && bundle exec rake db:migrate").gsub("\n","<br/>")
     @t << process_roles
     @t << process_services
     @t << "Service Updated, please restart Rails server"

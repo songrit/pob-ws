@@ -1,0 +1,11 @@
+%h4(style='text-align:center;') ทะเบียนโรงแรม
+%table{:class=>'budget_table', :width=>"100%"}
+  %tr{:style=>"color:white; background-color:#6A6A6A;"}
+    %th &nbsp;
+    %th รหัส
+    %th ชื่อ
+  - @hotels.each do |h|
+    %tr
+      %td(align='center')= link_to image_tag('cross.png'), {:action=>:rm_hotel_pob, :id=>h.id}, :confirm=>"Delete hotel #{h.name} ?"
+      %td= h.code
+      %td= h.name
