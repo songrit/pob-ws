@@ -1,0 +1,15 @@
+<table id="doc" width="100%">
+  <tr>
+    <td class="field-name">วันที่เริ่มต้น</td>
+    <td colspan="2"><%= select_date Date.today, :prefix => "begin", :use_month_names=>THAI_MONTHS, :order=>[:day, :month, :year] %></td>
+  </tr>
+  <tr>
+    <td class="field-name">วันที่สิ้นสุด</td>
+    <td colspan="2"><%= select_date Date.today, :prefix => "end", :use_month_names=>THAI_MONTHS, :order=>[:day, :month, :year] %></td>
+  </tr>
+</table>
+<script type="text/javascript" charset="utf-8">
+    jQuery('select[id$=_year] option').each(function(i) {
+      this.text= parseInt(this.text)+543;
+    });
+</script>

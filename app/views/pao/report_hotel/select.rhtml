@@ -1,0 +1,10 @@
+<% hotels= Hotel.all :conditions=>['name like ?', "%#{$xvars[:search][:hotel_name]}%"] %>
+<table id="doc" width="100%">
+  <tr>
+    <td class="field-name">โรงแรมที่ต้องการออกรายงาน</td>
+    <td><%= select_tag :hotel_id,
+      options_from_collection_for_select(hotels, :id, :name) %></td>
+    <td style="width:50%;">&nbsp;</td>
+  </tr>
+</table>
+

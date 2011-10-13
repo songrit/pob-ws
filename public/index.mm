@@ -28,7 +28,7 @@
 <node CREATED="1276062721100" ID="ID_982357600" MODIFIED="1276062727685" TEXT="rule: login?"/>
 </node>
 </node>
-<node CREATED="1300502021784" ID="ID_715202980" MODIFIED="1316069288971" TEXT="hotels: &#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;">
+<node CREATED="1300502021784" FOLDED="true" ID="ID_715202980" MODIFIED="1318488376184" TEXT="hotels: &#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;">
 <node CREATED="1300489647312" ID="ID_1764050059" MODIFIED="1302761628482" TEXT="link: &#xe2a;&#xe16;&#xe32;&#xe19;&#xe30;&#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;: /hotels/hotels"/>
 <node CREATED="1300499137051" ID="ID_670577063" MODIFIED="1300502956261" TEXT="link: &#xe2a;&#xe16;&#xe32;&#xe19;&#xe17;&#xe35;&#xe48;&#xe2d;&#xe49;&#xe32;&#xe07;&#xe2d;&#xe34;&#xe07;: /hotels/pois"/>
 <node CREATED="1300499089130" ID="ID_341637428" MODIFIED="1300503631658" TEXT="add_poi">
@@ -43,8 +43,30 @@
 </node>
 <node CREATED="1304090638634" ID="ID_769440526" MODIFIED="1316069291713" TEXT="pao: &#xe2d;&#xe1a;&#xe08;.">
 <node CREATED="1315192507636" ID="ID_1242278994" MODIFIED="1315192525683" TEXT="link: &#xe23;&#xe32;&#xe22;&#xe07;&#xe32;&#xe19;&#xe01;&#xe32;&#xe23;&#xe08;&#xe2d;&#xe07;&#xe1c;&#xe48;&#xe32;&#xe19;&#xe23;&#xe30;&#xe1a;&#xe1a;: /pao/booking_report"/>
+<node CREATED="1318488378200" ID="ID_1780890427" MODIFIED="1318488405923" TEXT="report_date: &#xe23;&#xe32;&#xe22;&#xe07;&#xe32;&#xe19;&#xe01;&#xe32;&#xe23;&#xe08;&#xe2d;&#xe07;&#xe15;&#xe32;&#xe21;&#xe27;&#xe31;&#xe19;&#xe17;&#xe35;&#xe48;">
+<node CREATED="1318488405927" ID="ID_1867417036" MODIFIED="1318488477312" TEXT="get_date: &#xe23;&#xe30;&#xe1a;&#xe38;&#xe27;&#xe31;&#xe19;&#xe17;&#xe35;&#xe48;">
+<icon BUILTIN="attach"/>
+</node>
+<node CREATED="1318488441347" ID="ID_108036214" MODIFIED="1318488487077" TEXT="report: &#xe08;&#xe31;&#xe14;&#xe1e;&#xe34;&#xe21;&#xe1e;&#xe4c;&#xe23;&#xe32;&#xe22;&#xe07;&#xe32;&#xe19;">
+<icon BUILTIN="pencil"/>
+</node>
+</node>
+<node CREATED="1318488378200" ID="ID_384287376" MODIFIED="1318488509418" TEXT="report_hotel: &#xe23;&#xe32;&#xe22;&#xe07;&#xe32;&#xe19;&#xe01;&#xe32;&#xe23;&#xe08;&#xe2d;&#xe07;&#xe15;&#xe32;&#xe21;&#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;">
+<node CREATED="1318488518264" ID="ID_413186225" MODIFIED="1318488557789" TEXT="search: &#xe04;&#xe49;&#xe19;&#xe2b;&#xe32;&#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;">
+<icon BUILTIN="attach"/>
+</node>
+<node CREATED="1318488538939" ID="ID_753924243" MODIFIED="1318488580504" TEXT="select: &#xe40;&#xe25;&#xe37;&#xe2d;&#xe01;&#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;">
+<icon BUILTIN="attach"/>
+</node>
+<node CREATED="1318488405927" ID="ID_267084775" MODIFIED="1318488477312" TEXT="get_date: &#xe23;&#xe30;&#xe1a;&#xe38;&#xe27;&#xe31;&#xe19;&#xe17;&#xe35;&#xe48;">
+<icon BUILTIN="attach"/>
+</node>
+<node CREATED="1318488441347" ID="ID_1061564930" MODIFIED="1318488487077" TEXT="report: &#xe08;&#xe31;&#xe14;&#xe1e;&#xe34;&#xe21;&#xe1e;&#xe4c;&#xe23;&#xe32;&#xe22;&#xe07;&#xe32;&#xe19;">
+<icon BUILTIN="pencil"/>
+</node>
+</node>
 <node CREATED="1304090673765" ID="ID_1094049168" MODIFIED="1315193856147" TEXT="link: &#xe2a;&#xe23;&#xe38;&#xe1b;&#xe04;&#xe48;&#xe32;&#xe18;&#xe23;&#xe23;&#xe21;&#xe40;&#xe19;&#xe35;&#xe22;&#xe21;&#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;: /pao/revenue_report"/>
-<node CREATED="1304090820380" FOLDED="true" ID="ID_691222956" MODIFIED="1316069294588" TEXT="add_hotel: &#xe02;&#xe36;&#xe49;&#xe19;&#xe17;&#xe30;&#xe40;&#xe1a;&#xe35;&#xe22;&#xe19;&#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;">
+<node CREATED="1304090820380" ID="ID_691222956" MODIFIED="1318488417312" TEXT="add_hotel: &#xe02;&#xe36;&#xe49;&#xe19;&#xe17;&#xe30;&#xe40;&#xe1a;&#xe35;&#xe22;&#xe19;&#xe42;&#xe23;&#xe07;&#xe41;&#xe23;&#xe21;">
 <node CREATED="1304090843880" ID="ID_946908530" MODIFIED="1305277605590" TEXT="enter_rr1: &#xe41;&#xe1a;&#xe1a; &#xe2d;&#xe1a;&#xe08;.&#xe23;&#xe23;.&#xe51;">
 <icon BUILTIN="attach"/>
 </node>

@@ -1,0 +1,30 @@
+<% d_begin=  @xvars[:get_date][:begin]; d_end=  @xvars[:get_date][:end] %>
+<% begin_on = Time.local d_begin[:year], d_begin[:month], d_begin[:day] %>
+<% end_on = Time.local d_end[:year], d_end[:month], d_end[:day] %>
+<% hotel = Hotel.find $xvars[:select][:hotel_id] %>
+<% @bookings= Booking.all :conditions => ['hotel_id=? AND created_at >= ? AND created_at <= ?', hotel.id, begin_on, end_on], :order => "created_at" %>
+<h3 style="text-align:center;">รายงานการจองโรงแรม</h3>
+<h3 style="text-align:center;"><%= hotel.name %></h3>
+<h3 style="text-align:center;">
+  วันที่ <%= date_thai begin_on, :date_only=>true, :month_full=>true %> - 
+  <%= date_thai end_on, :date_only=>true, :month_full=>true %>
+</h3>
+<table border="0" cellspacing="5" cellpadding="5" style="width:100%">
+  <tr style="color:white; background-color:#6A6A6A;">
+    <th>วันที่จอง</th>
+    <th>โรงแรม</th>
+    <th>ลูกค้า</th>
+    <th>วันที่เข้าพัก</th>
+  </tr>
+  <% @bookings.each do |booking| %>
+    <% next unless booking.hotel %>
+    <% doc = Nokogiri::XML(booking.reservation) %>
+    <% customer= doc.xpath('//Customer') %>
+    <tr>
+      <td><%= date_thai booking.created_at %></td>
+      <td><%= booking.hotel.name %></td>
+      <td><%= "#{(customer/'NamePrefix').text} #{(customer/'GivenName').text} #{(customer/'Surname').text}" %></td>
+      <td><%= date_thai booking.start_on, :date_only=>true %></td>
+    </tr>
+  <% end %>
+</table>
