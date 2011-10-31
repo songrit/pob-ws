@@ -10,12 +10,13 @@
     %th โรงแรม
     %th ลูกค้า
     %th วันที่เข้าพัก
-  - @bookings.each_with_index do |booking,i|
+  - i = 1
+  - @bookings.each do |booking|
     - next unless booking.hotel
     - doc = Nokogiri::XML(booking.reservation)
     - customer= doc.xpath('//Customer')
     %tr
-      %td= i+1
+      %td= i
       %td= date_thai booking.created_at
       %td= booking.hotel.name
       %td= "#{(customer/'NamePrefix').text} #{(customer/'GivenName').text} #{(customer/'Surname').text}"
