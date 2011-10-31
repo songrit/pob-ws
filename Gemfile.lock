@@ -2,7 +2,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     Ascii85 (1.0.0)
-    RedCloth (4.2.7)
+    RedCloth (4.2.3)
     actionmailer (2.3.5)
       actionpack (= 2.3.5)
     actionpack (2.3.5)
@@ -107,7 +107,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  RedCloth
+  RedCloth (= 4.2.3)
   backup
   bcrypt-ruby
   ezcrypto

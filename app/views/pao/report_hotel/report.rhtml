@@ -11,16 +11,19 @@
 </h3>
 <table border="0" cellspacing="5" cellpadding="5" style="width:100%">
   <tr style="color:white; background-color:#6A6A6A;">
+    <th>ลำดับ</th>
     <th>วันที่จอง</th>
     <th>โรงแรม</th>
     <th>ลูกค้า</th>
     <th>วันที่เข้าพัก</th>
   </tr>
+  <% i= 1 %>
   <% @bookings.each do |booking| %>
     <% next unless booking.hotel %>
     <% doc = Nokogiri::XML(booking.reservation) %>
     <% customer= doc.xpath('//Customer') %>
     <tr>
+      <td><%= i %></td>
       <td><%= date_thai booking.created_at %></td>
       <td><%= booking.hotel.name %></td>
       <td><%= "#{(customer/'NamePrefix').text} #{(customer/'GivenName').text} #{(customer/'Surname').text}" %></td>

@@ -11,7 +11,7 @@ gem 'ruby-mysql'
 # gem 'pg', :group=>"test" # use for heroku db:push
 gem "linguistics"
 gem "will_paginate"
-gem "RedCloth"
+gem "RedCloth", "4.2.3"
 gem "mechanize"
 # gem "rmagick", :require => "RMagick"
 gem "geokit"
