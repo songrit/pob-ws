@@ -1,5 +1,13 @@
 class AdminController < ApplicationController
   before_filter :admin_action, :except=>[:daily_housekeeping, :hourly_housekeeping]
+  def update_rate_min
+    Hotel.all.each do |h|
+      h.avails.each do |a|
+        h.update_attribute(:rate_min, a.rate) if (a.rate < h.rate_min)
+      end
+    end
+    render :text => "rate_min updated for all hotels", :layout => true 
+  end
   def view_rq
     l= LogRequest.find params[:id]
     # response.content_type = "application/xml"
