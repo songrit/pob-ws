@@ -27,5 +27,6 @@
       <td><%= "#{(customer/'NamePrefix').text} #{(customer/'GivenName').text} #{(customer/'Surname').text}" %></td>
       <td><%= date_thai booking.start_on, :date_only=>true %></td>
     </tr>
+    <% i += 1 %>
   <% end %>
 </table>
