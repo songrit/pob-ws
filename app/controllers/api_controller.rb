@@ -179,7 +179,10 @@ class ApiController < ApplicationController
     end
     select = @doc.xpath('//xmlns:Select')
     unless select.empty?
-      limit= select.attribute('Limit').value
+      # bug when selected hotels does not all have available room
+      # fix by set limit to limit*3 and cut off in view
+      @limit= select.attribute('Limit').value
+      limit= @limit*3
       offset= select.attribute('Offset').value
     end
     sort = @doc.xpath('//xmlns:Sort')
