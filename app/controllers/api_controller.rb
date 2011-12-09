@@ -181,7 +181,7 @@ class ApiController < ApplicationController
     unless select.empty?
       # bug when selected hotels does not all have available room
       # fix by set limit to limit*3 and cut off in view
-      @limit= select.attribute('Limit').value
+      @limit= select.attribute('Limit').value.to_i
       limit= @limit*3
       offset= select.attribute('Offset').value
     end
