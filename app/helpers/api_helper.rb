@@ -3,8 +3,9 @@ module ApiHelper
   def cover_stay_range(hotel,start_on,end_on, number_of_units)
     @cover= true
     start_on.upto(end_on-1) do |d|
-      a= Availability.last :conditions=>['hotel_id=? AND limit_on=?',hotel.id,d]
-      unless (a && a.booking_limit>=number_of_units)
+      a = Availability.sum :booking_limit, :conditions=>['hotel_id=? AND limit_on=?',hotel.id,d]
+      # a= Availability.last :conditions=>['hotel_id=? AND limit_on=?',hotel.id,d]
+      unless (a >= number_of_units)
         @cover= false
         break
       end
