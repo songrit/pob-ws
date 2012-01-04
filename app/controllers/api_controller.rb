@@ -18,8 +18,8 @@ class ApiController < ApplicationController
     if !requestor_id || requestor_id.empty?
       @err= "Unauthorized Access"
     else
-      pos_id = requestor_id.attribute("ID").try(:value)
-      unless valid_pos.include?(pos_id)
+      @pos_id = requestor_id.attribute("ID").try(:value)
+      unless valid_pos.include?(@pos_id)
         @err= "Unauthorized Access"
       end
     end

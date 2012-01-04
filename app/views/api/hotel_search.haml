@@ -15,7 +15,8 @@
       - @count = 0
       - @hotels.each do |hotel|
         - break if (@limit && (@limit <= @count))
-        /- next if @start_on && !cover_stay_range(hotel, @start_on, @end_on, @number_of_units)
+        - cover_stay = cover_stay_range(hotel, @start_on, @end_on, @number_of_units)
+        - next if mobile? && @start_on && !cover_stay
         - @count += 1
         %Property{:HotelCode=>hotel.code, :HotelName=>hotel.name, :HotelCodeContext=>hotel.hotel_code_context, :Description=>hotel.description, :Latitude=>hotel.lat, :Longitude=>hotel.lng, :Rating=>hotel.rating}
           - contact= hotel.contact_infos.last
@@ -32,7 +33,7 @@
               = policies.to_s
           - unless hotel.facility.blank?
             = hotel.facility
-          - if @start_on && cover_stay_range(hotel, @start_on, @end_on, @number_of_units)
+          - if @start_on && cover_stay
             - avails= hotel.availabilities.all(:conditions=>['limit_on>=? AND limit_on<=?',@start_on,@end_on-1],:order=>'limit_on, inv_code')
             %Availabilities
               - avails.each do |availability|
