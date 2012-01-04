@@ -1,0 +1,12 @@
+<OTA_HotelSearchRQ xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opentravel.org/OTA/2003/05 OTA_HotelSearchRQ.xsd" EchoToken="HL" Target="Production" Version="2.004" PrimaryLangID="EN-US" ResponseType="PropertyList">
+  <POS><Source><RequestorID Type="13" ID="test"/></Source></POS>
+  <Criteria>
+    <Criterion>
+      <Select Limit="5" Offset="0"/>
+      <Position Latitude="7.970838"/>
+      <Position Longitude="98.329697"/>
+      <Radius DistanceMeasure="MILES" Distance="50"/>
+      <StayDateRange Start="2012-08-06" End="2012-08-07"/>
+    </Criterion>
+  </Criteria>
+</OTA_HotelSearchRQ>

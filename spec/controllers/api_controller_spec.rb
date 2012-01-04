@@ -138,6 +138,12 @@ describe ApiController do
       post_request(:hotel_descriptive_content_notif, "OTA_HotelDescriptiveContentNotifRQ.xml")
     end
 
+    it "should show all hotels even if it's not available (K. Paiboon request Jan 4, 12)" do
+      post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ.xml")
+      post_request(:hotel_search, "OTA_HotelSearchRQ_all.xml")
+      dump_response "OTA_HotelSearchRS_all.xml"
+      response.should have_tag("Property")
+    end
     it "should return Policies" do
       post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ.xml")
       post_request(:hotel_search, "OTA_HotelSearchRQ_by_name.xml")
