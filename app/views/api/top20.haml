@@ -1,0 +1,28 @@
+!!! XML
+%POB_Top20RS{"xmlns:xsi"=>"http://www.w3.org/2001/XMLSchema-instance", |
+  "xmlns"=>"http://www.opentravel.org/OTA/2003/05", |
+  "xsi:schemaLocation"=>"http://www.opentravel.org/OTA/2003/05 HotelSearchRS.xsd", |
+  :TimeStamp=>Time.now.strftime('%FT%T'), |
+  :Target=>TARGET, :Version=>"1.001", :SequenceNmbr=>"1"} |
+  
+  - if @err
+    %Errors
+      %Error{:Type=>@err_type}
+        = @err
+  - else
+    %Success
+    %Properties
+      - @hotels.each do |hotel|
+        %Property{:HotelCode=>hotel.code, :HotelName=>hotel.name, :HotelCodeContext=>hotel.hotel_code_context, :Description=>hotel.description, :Latitude=>hotel.lat, :Longitude=>hotel.lng, :Rating=>hotel.rating}
+          - contact= hotel.contact_infos.last
+          %ContactInfo{:AddressLine=>contact.address, :CityName=>contact.city, :PostalCode=>contact.zip, :StateProv=>contact.state, :CountryName=>contact.country, :PhoneNumber=>contact.phone_number }
+          %MultimediaDescriptions
+            - hotel.multimedia_descriptions.each do |m|
+              = m.xml
+          - if hotel.doc
+            - doc = Nokogiri::XML(hotel.doc)
+            - policies= (doc/'Policies')
+            - unless policies.empty?
+              = policies.to_s
+          - unless hotel.facility.blank?
+            = hotel.facility

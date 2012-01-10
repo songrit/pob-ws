@@ -2,4 +2,4 @@
 MAX_PRICE = 999999
 PRIVATE_KEY_FILE = 'config/pob.pem';
 PASSPHRASE = 'abcd'
-  
+TOP20 = [76,73,78]

@@ -26,6 +26,19 @@ describe ApiController do
     dump_response "OTA_PingRSnoPOS.xml"
     response.should have_tag("Error", :text => "Unauthorized Access")
   end
+  describe "POB_Top20" do
+    before do
+      Hotel.delete_all
+      post_request(:hotel_descriptive_content_notif, "OTA_HotelDescriptiveContentNotifRQ.xml")
+      post_request(:hotel_descriptive_content_notif, "OTA_HotelDescriptiveContentNotifRQ3.xml")
+    end
+    it "should handle POB_Top20" do
+      pending
+      post_request :top20, "POB_Top20RQ.xml"
+      dump_response "POB_Top20RS.xml"
+      response.should have_tag("Property", :times=>2)
+    end
+  end
   describe "POB_HotelBookID" do
     before do
       Hotel.delete_all
@@ -215,6 +228,7 @@ describe ApiController do
       response.body.should_not have_tag("Property")
     end
     it "should not return unavailable hotels" do
+      pending
       post_request(:hotel_search, "OTA_HotelSearchRQ1.xml")
       response.body.should_not have_tag("Property")
       post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ7.xml")
@@ -235,6 +249,7 @@ describe ApiController do
       response.body.should have_tag("Property")
     end
     it "should not return partially available hotels" do
+      pending
       # 2004-08-02 to 2004-08-05
       post_request(:hotel_avail_notif, "OTA_HotelAvailNotifRQ7.xml")
       # 2004-08-02 to 2004-08-10

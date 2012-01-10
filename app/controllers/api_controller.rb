@@ -4,6 +4,11 @@ class ApiController < ApplicationController
   rescue_from StandardError, :with=> :render_err
   before_filter :validate_pos
 
+  def top20
+    @hotels= Hotel.find TOP20
+    # @hotels= Hotel.all
+    render_response
+  end
   def validate_pos
     @doc = Nokogiri::XML(request.body)
     @log_request= LogRequest.log(request,@doc.to_s)
