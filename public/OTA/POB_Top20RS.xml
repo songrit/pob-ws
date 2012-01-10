@@ -1,0 +1,876 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<POB_Top20RS SequenceNmbr='1' Target='Test' TimeStamp='2012-01-10T18:06:29' Version='1.001' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://www.opentravel.org/OTA/2003/05' xsi:schemaLocation='http://www.opentravel.org/OTA/2003/05 HotelSearchRS.xsd'>
+<Success></Success>
+<Properties>
+<Property Description="The Boston Marriott Copley Place Hotel is the perfect destination for business or pleasure.  We're located in Boston's Back Bay, off the Mass. Trnpk. at Exit 22, 4 mi from Logan Airport, &amp; in close proximity to subway." HotelCode='BOSCO' HotelName='Boston Marriott Copley Place' Latitude='7.88906' Longitude='98.3935' Rating='3'>
+<ContactInfo AddressLine='110 Huntington Avenue' CityName='Boston' CountryName='USA' PhoneNumber='1-800-228-9290' PostalCode='02116' StateProv='MA'></ContactInfo>
+<MultimediaDescriptions>
+<MultimediaDescription>
+								<TextItems>
+									<TextItem Title="Renovation Area Completion Date 1">
+										<Description>2000-02-13</Description>
+									</TextItem>
+								</TextItems>
+							</MultimediaDescription>
+<MultimediaDescription>
+								<TextItems>
+									<TextItem Title="Renovation Area Description 2">
+										<Description>Guest Rooms</Description>
+									</TextItem>
+								</TextItems>
+							</MultimediaDescription>
+<MultimediaDescription>
+								<TextItems>
+									<TextItem Title="Renovation Area Completion Date 2">
+										<Description>2002-10-01</Description>
+									</TextItem>
+								</TextItems>
+							</MultimediaDescription>
+<MultimediaDescription>
+							<TextItems>
+								<TextItem Title="Description">
+									<Description>The Boston Marriott Copley Place Hotel is the perfect destination for business or pleasure.  We're located in Boston's Back Bay, off the Mass. Trnpk. at Exit 22, 4 mi from Logan Airport, &amp; in close proximity to subway.</Description>
+								</TextItem>
+								<TextItem Title="PropertyLongDescription">
+									<Description>Boston Marriott Copley Place hotel is ideally located in Boston's Back Bay. This Copley Square hotel is easily accessible for business convenience. Centrally located in Copley Place for leisure activities. And technology-driven for dynamic meetings. For your trip to Boston, Massachusetts, the Copley Marriott is the perfect choice.</Description>
+								</TextItem>
+								<TextItem Title="Top Selling Feature 1">
+									<Description>Boston's historic Back Bay, just off the Massachusetts Turnpike;  four miles from Logan Airport</Description>
+								</TextItem>
+								<TextItem Title="Top Selling Feature 2">
+									<Description>,147 rooms and suites, the largest hotel ballroom in the area, and 65,000 square feet of event room</Description>
+								</TextItem>
+								<TextItem Title="Property Service Level">
+									<Description>Service</Description>
+								</TextItem>
+								<TextItem Title="Guest Room Highlights">
+									<Description ListItem="1">internet access</Description>
+									<Description ListItem="2">" color TV with cable movies, in-room pay movies, Web TV and Gameboy</Description>
+									<Description ListItem="3">and refrigerators</Description>
+								</TextItem>
+								<TextItem Title="Business/Group Highlights">
+									<Description ListItem="1">&amp; Service Team consistently awarded the highest Guest Satisfaction Scores</Description>
+									<Description ListItem="2">the Gold Key Award and the Corporate &amp; lncentive Travel Award of Excellence</Description>
+									<Description ListItem="3">Exhibit Hall 22,500 square feet</Description>
+								</TextItem>
+							</TextItems>
+						</MultimediaDescription>
+<MultimediaDescription>
+								<TextItems>
+									<TextItem Title="Language Spoken By Staff">
+										<Description>Spanish, French, Vietnamese, English, Russian</Description>
+									</TextItem>
+								</TextItems>
+							</MultimediaDescription>
+<MultimediaDescription>
+								<TextItems>
+									<TextItem Title="Number of Food and Beverage Outlets">
+										<Description>2</Description>
+									</TextItem>
+								</TextItems>
+							</MultimediaDescription>
+<MultimediaDescription>
+								<TextItems>
+									<TextItem Title="Number of Lounges/Bars">
+										<Description>1</Description>
+									</TextItem>
+								</TextItems>
+							</MultimediaDescription>
+<MultimediaDescription>
+										<TextItems>
+											<TextItem Title="Address of Nearest Police Station">
+												<Description>Area D, District 4, 7 Warren Ave.</Description>
+											</TextItem>
+										</TextItems>
+									</MultimediaDescription>
+<MultimediaDescription>
+										<TextItems>
+											<TextItem Title="Dist to Nearest Police Station">
+												<Description>2</Description>
+											</TextItem>
+										</TextItems>
+									</MultimediaDescription>
+<MultimediaDescription>
+										<TextItems>
+											<TextItem Title="Phone # of Nearest Police Station">
+												<Description>343-4250</Description>
+											</TextItem>
+										</TextItems>
+									</MultimediaDescription>
+<MultimediaDescription>
+										<TextItems>
+											<TextItem Title="Bathroom Vanity in Guest rooms for wheel chaired person height">
+												<Description>32</Description>
+											</TextItem>
+										</TextItems>
+									</MultimediaDescription>
+<MultimediaDescription>
+										<TextItems>
+											<TextItem Title="Other Services Available for Disabled">
+												<Description>The hotel does provide shower chairs for handicapped guests.   The beds in the hotel are not elevated any higher than a normal mattress height.</Description>
+											</TextItem>
+										</TextItems>
+									</MultimediaDescription>
+<MultimediaDescription>
+										<TextItems>
+											<TextItem Title="Floors with Handicapped Rooms">
+												<Description>Yes</Description>
+											</TextItem>
+										</TextItems>
+									</MultimediaDescription>
+<MultimediaDescription>
+									<TextItems>
+										<TextItem Title="Other Equipment &amp; Facilities Available in Meeting Room">
+											<Description>Red Coat Program, Event Services Hotline</Description>
+										</TextItem>
+									</TextItems>
+								</MultimediaDescription>
+<MultimediaDescription>
+										<TextItems>
+											<TextItem Title="Bathroom Amenities">
+												<Description>Soap, shampoo, rinse, shower cap, lotions</Description>
+											</TextItem>
+										</TextItems>
+									</MultimediaDescription>
+<MultimediaDescription>
+								<TextItems>
+									<TextItem Title="Sort Order">
+										<Description>1</Description>
+									</TextItem>
+									<TextItem Title="Features of Room Type">
+										<Description>GENR Standard 1 King Bed/or 2 Dbl beds, Coffee Maker, Hair Dryer, Desk w/ chair</Description>
+									</TextItem>
+								</TextItems>
+							</MultimediaDescription>
+<MultimediaDescription>
+								<TextItems>
+									<TextItem Title="Sort Order">
+										<Description>2</Description>
+									</TextItem>
+									<TextItem Title="Features of Room Type">
+										<Description>CONC Concierge Upgraded Amenities &amp; Private Lounge, 1 King bed or 2 Double beds</Description>
+									</TextItem>
+								</TextItems>
+							</MultimediaDescription>
+<MultimediaDescription>
+								<TextItems>
+									<TextItem Title="Sort Order">
+										<Description>1</Description>
+									</TextItem>
+									<TextItem Title="Restaurant Short Description">
+										<Description>Upscale family restaurant with daily theme buffets and both a la carte and children"s menus</Description>
+									</TextItem>
+								</TextItems>
+							</MultimediaDescription>
+<MultimediaDescription>
+											<TextItems>
+												<TextItem Title="Restaurant Location">
+													<Description>Onsite</Description>
+												</TextItem>
+											</TextItems>
+										</MultimediaDescription>
+<MultimediaDescription>
+								<TextItems>
+									<TextItem Title="Sort Order">
+										<Description>2</Description>
+									</TextItem>
+									<TextItem Title="Restaurant Short Description">
+										<Description>A place to relax and enjoy drinks and light fare. Live entertainment on Saturday Nights.</Description>
+									</TextItem>
+								</TextItems>
+							</MultimediaDescription>
+<MultimediaDescription>
+											<TextItems>
+												<TextItem Title="Restaurant Location">
+													<Description>Onsite</Description>
+												</TextItem>
+											</TextItems>
+										</MultimediaDescription>
+<MultimediaDescription>
+										<TextItems>
+											<TextItem Title="Directions to Highway from Property">
+												<Description>Please call the hotel for directions</Description>
+											</TextItem>
+										</TextItems>
+									</MultimediaDescription>
+<MultimediaDescription>
+								<TextItems>
+									<TextItem Title="Sort Order">
+										<Description>1</Description>
+									</TextItem>
+									<TextItem Title="AirportName/Code">
+										<Description>Boston (BOS)</Description>
+									</TextItem>
+									<TextItem Title="Driving Instructions from Airport">
+										<Description>East on Mass Turnpike (Route 90).  Take the Copley Square exit which exits onto Stuart Street.  At the first light turn left onto Dartmouth Street.  At the next light turn left onto Huntington Avenue and stay in the left lane.  At the light under the skybridge make a u-turn to the left.  The hotel is in the right.</Description>
+									</TextItem>
+								</TextItems>
+							</MultimediaDescription>
+<MultimediaDescription>
+												<TextItems>
+													<TextItem Title="Alternate Transportation Name">
+														<Description>Boston Hotels Shuttle</Description>
+													</TextItem>
+												</TextItems>
+											</MultimediaDescription>
+<MultimediaDescription>
+								<TextItems>
+									<TextItem Title="Recreational Summary">
+										<Description>Full health club with indoor pool and workout facilities.  Nearby are many jogging areas and other health facilities with more complete information available through our concierge.  Golf and tennis nearby.</Description>
+									</TextItem>
+								</TextItems>
+							</MultimediaDescription>
+<MultimediaDescription>
+								<TextItems>
+									<TextItem Title="Sort Order">
+										<Description>1</Description>
+									</TextItem>
+									<TextItem Title="Year fitness center equipment was most recently replaced">
+										<Description>2000</Description>
+									</TextItem>
+									<TextItem Title="Fitness Center Type">
+										<Description>EXTENSIVE</Description>
+									</TextItem>
+								</TextItems>
+							</MultimediaDescription>
+<MultimediaDescription>
+								<TextItems>
+									<TextItem Title="Sort Order">
+										<Description>1</Description>
+									</TextItem>
+								</TextItems>
+							</MultimediaDescription>
+</MultimediaDescriptions>
+<Policies>
+				<Policy>
+					<CancelPolicy>Cancellations or changes to bookings for this room must be made at
+least 72 hours prior to the check in date and time or you will be
+charged the full amount of the first changed or cancelled night.
+					</CancelPolicy>
+					<GuaranteePaymentPolicy>
+						<GuaranteePayment PaymentCode="2"/>
+						<!--Payment Code 2 = Direct bill from OTA Code Table PMT-->
+					</GuaranteePaymentPolicy>
+					<PolicyInfoCodes>
+						<PolicyInfoCode>
+							<Description Name="Oversold - Phone Call Home/Business">
+								<Text>Y</Text>
+							</Description>
+						</PolicyInfoCode>
+						<PolicyInfoCode Name="OversoldArrangeAccommodations"/>
+						<PolicyInfoCode Name="OversoldPayOneNightRoom"/>
+						<PolicyInfoCode Name="OversoldArrangeTransportation"/>
+					</PolicyInfoCodes>
+					<CheckoutCharges>
+						<CheckoutCharge CodeDetail="Late Check-Out Available" Type="Late">
+							<Description Name="Late Check-Out Fees">
+								<Text>00</Text>
+							</Description>
+						</CheckoutCharge>
+					</CheckoutCharges>
+					<PolicyInfo CheckInTime="16:00:00" CheckOutTime="12:00:00" KidsStayFree="true" TotalGuestCount="5"/>
+					<TaxPolicies>
+						<TaxPolicy Amount="5" Code="7"/>
+						<!--Code 7 = Food & beverage tax from OTA Code Table FTT-->
+						<TaxPolicy Code="10" NightsForTaxExemptionQuantity="90" Percent="5.7"/>
+						<!--Code 10 = Occupancy tax from OTA Code Table FTT-->
+						<TaxPolicy Code="17" Percent="12.45"/>
+						<!--Code 17 = Total tax from OTA Code Table FTT-->
+						<TaxPolicy Amount="2.75" Code="27"/>
+						<!--Code 27 = Miscellaneous from OTA Code Table FTT-->
+					</TaxPolicies>
+				</Policy>
+			</Policies>
+<FacilityInfo LastUpdated="2004-12-04T16:00:12">
+				<MeetingRooms LargestRoomSpace="23431" LargestSeatingCapacity="3640" MeetingRoomCount="1" TotalRoomSpace="65000" UnitOfMeasure="Square Feet">
+					<MeetingRoom Irregular="false" RoomName="Grand Ballroom">
+						<Dimension Area="23431" Height="18.1" Length="108" Width="221"/>
+						<AvailableCapacities>
+							<MeetingRoomCapacity MeetingRoomFormatCode="1">
+								<!--Meeting Room Format Code 1 = Banquet from OTA Code Table MRF-->
+								<Occupancy MaxOccupancy="1990"/>
+							</MeetingRoomCapacity>
+							<MeetingRoomCapacity MeetingRoomFormatCode="2">
+								<!--Meeting Room Format Code 2 = Classroom from OTA Code Table MRF-->
+								<Occupancy MaxOccupancy="1866"/>
+							</MeetingRoomCapacity>
+							<MeetingRoomCapacity MeetingRoomFormatCode="5">
+								<!--Meeting Room Format Code 5 = Theatre from OTA Code Table MRF-->
+								<Occupancy MaxOccupancy="3138"/>
+							</MeetingRoomCapacity>
+							<MeetingRoomCapacity MeetingRoomFormatCode="7">
+								<!--Meeting Room Format Code 7 = Reception from OTA Code Table MRF-->
+								<Occupancy MaxOccupancy="3640"/>
+							</MeetingRoomCapacity>
+						</AvailableCapacities>
+					</MeetingRoom>
+					<Codes>
+						<Code Code="92">
+							<!--Code 92 = Other equipment and facilities from OTA Code Table MRC-->
+							<MultimediaDescriptions>
+								<MultimediaDescription>
+									<TextItems>
+										<TextItem Title="Other Equipment &amp; Facilities Available in Meeting Room">
+											<Description>Red Coat Program, Event Services Hotline</Description>
+										</TextItem>
+									</TextItems>
+								</MultimediaDescription>
+							</MultimediaDescriptions>
+						</Code>
+					</Codes>
+				</MeetingRooms>
+				<GuestRooms>
+					<GuestRoom>
+						<Amenities>
+							<Amenity RoomAmenityCode="11">
+								<!--Room Amenity Code 11 = Bathroom amenities from OTA Code Table RMA-->
+								<MultimediaDescriptions>
+									<MultimediaDescription>
+										<TextItems>
+											<TextItem Title="Bathroom Amenities">
+												<Description>Soap, shampoo, rinse, shower cap, lotions</Description>
+											</TextItem>
+										</TextItems>
+									</MultimediaDescription>
+								</MultimediaDescriptions>
+							</Amenity>
+						</Amenities>
+					</GuestRoom>
+					<GuestRoom CodeContext="MARSHA Room Type" MaxOccupancy="5" NonsmokingQuantity="923" Quantity="1033" RoomTypeName="General Rooms">
+						<MultimediaDescriptions>
+							<MultimediaDescription>
+								<TextItems>
+									<TextItem Title="Sort Order">
+										<Description>1</Description>
+									</TextItem>
+									<TextItem Title="Features of Room Type">
+										<Description>GENR Standard 1 King Bed/or 2 Dbl beds, Coffee Maker, Hair Dryer, Desk w/ chair</Description>
+									</TextItem>
+								</TextItems>
+							</MultimediaDescription>
+						</MultimediaDescriptions>
+					</GuestRoom>
+					<GuestRoom CodeContext="MARSHA Room Type" MaxOccupancy="5" NonsmokingQuantity="58" Quantity="67" RoomTypeName="Concierge">
+						<MultimediaDescriptions>
+							<MultimediaDescription>
+								<TextItems>
+									<TextItem Title="Sort Order">
+										<Description>2</Description>
+									</TextItem>
+									<TextItem Title="Features of Room Type">
+										<Description>CONC Concierge Upgraded Amenities &amp; Private Lounge, 1 King bed or 2 Double beds</Description>
+									</TextItem>
+								</TextItems>
+							</MultimediaDescription>
+						</MultimediaDescriptions>
+					</GuestRoom>
+				</GuestRooms>
+				<Restaurants>
+					<Restaurant OfferBreakfast="true" OfferDinner="true" OfferLunch="true" RestaurantName="Gourmeli&quot;s (Casual)">
+						<MultimediaDescriptions Attire="Casual">
+							<MultimediaDescription>
+								<TextItems>
+									<TextItem Title="Sort Order">
+										<Description>1</Description>
+									</TextItem>
+									<TextItem Title="Restaurant Short Description">
+										<Description>Upscale family restaurant with daily theme buffets and both a la carte and children"s menus</Description>
+									</TextItem>
+								</TextItems>
+							</MultimediaDescription>
+						</MultimediaDescriptions>
+						<RelativePosition Distance="0">
+							<Transportations>
+								<Transportation>
+									<MultimediaDescriptions>
+										<MultimediaDescription>
+											<TextItems>
+												<TextItem Title="Restaurant Location">
+													<Description>Onsite</Description>
+												</TextItem>
+											</TextItems>
+										</MultimediaDescription>
+									</MultimediaDescriptions>
+								</Transportation>
+							</Transportations>
+						</RelativePosition>
+						<OperationSchedules>
+							<OperationSchedule>
+								<OperationTimes>
+									<OperationTime End="14:00:00" Fri="true" Mon="true" Sat="true" Start="06:30:00" Sun="true" Thur="true" Tue="true" Weds="true"/>
+									<OperationTime End="22:00:00" Fri="true" Mon="true" Sat="true" Start="17:00:00" Sun="true" Thur="true" Tue="true" Weds="true"/>
+								</OperationTimes>
+							</OperationSchedule>
+						</OperationSchedules>
+						<CuisineCodes>
+							<CuisineCode Code="1" CodeDetail="American"/>
+							<!--Code 1 = American from OTA Code Table CUI-->
+						</CuisineCodes>
+					</Restaurant>
+					<Restaurant OfferBreakfast="false" OfferDinner="true" OfferLunch="false" RestaurantName="The Terrace Bar">
+						<MultimediaDescriptions Attire="Casual">
+							<MultimediaDescription>
+								<TextItems>
+									<TextItem Title="Sort Order">
+										<Description>2</Description>
+									</TextItem>
+									<TextItem Title="Restaurant Short Description">
+										<Description>A place to relax and enjoy drinks and light fare. Live entertainment on Saturday Nights.</Description>
+									</TextItem>
+								</TextItems>
+							</MultimediaDescription>
+						</MultimediaDescriptions>
+						<RelativePosition>
+							<Transportations>
+								<Transportation>
+									<MultimediaDescriptions>
+										<MultimediaDescription>
+											<TextItems>
+												<TextItem Title="Restaurant Location">
+													<Description>Onsite</Description>
+												</TextItem>
+											</TextItems>
+										</MultimediaDescription>
+									</MultimediaDescriptions>
+								</Transportation>
+							</Transportations>
+						</RelativePosition>
+						<OperationSchedules>
+							<OperationSchedule>
+								<OperationTimes>
+									<OperationTime End="12:00:00" Start="14:00:00" Sun="true"/>
+									<OperationTime End="12:00:00" Mon="true" Start="15:00:00" Thur="true" Tue="true" Weds="true"/>
+									<OperationTime End="01:00:00" Fri="true" Sat="true" Start="14:00:00"/>
+								</OperationTimes>
+							</OperationSchedule>
+						</OperationSchedules>
+						<CuisineCodes>
+							<CuisineCode Code="52" CodeDetail="Other"/>
+							<!--Code 52 = Other from OTA Code Table CUI-->
+						</CuisineCodes>
+					</Restaurant>
+				</Restaurants>
+			</FacilityInfo>
+</Property>
+<Property Description='' HotelCode='RTPPTSOF' HotelName='Sofitel MaevaTahiti' Latitude='-17.569999' Longitude='-149.613006' Rating='4'>
+<ContactInfo AddressLine="BP 60008FAA'A TAHITI" CityName="FAA'A" CountryName='FRENCH POLYNESIA' PhoneNumber='689/866600' PostalCode='98702'></ContactInfo>
+<MultimediaDescriptions>
+<MultimediaDescription> <!-- description of the guest room using video -->
+   <VideoItems> <!-- description of the suite with a video in English and in French--> 
+				<VideoItem Caption="streaming video of a Suite" Category="7" Language="en" Version="1.00"> 
+					<!-- video of the Suite -->
+				<VideoFormat BitRate="128" UnitOfMeasureCode="11" Format="AVI">
+					<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_STR_03_A.AVI</URL>
+				</VideoFormat>
+				</VideoItem>
+				<VideoItem Caption="Video de la Suite" Category="7" Language="fr" Version="1.00"> 
+					<!-- video of the Suite -->
+				<VideoFormat BitRate="128" UnitOfMeasureCode="11" Format="AVI">
+					<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_STR_04_A.AVI</URL>
+				</VideoFormat>
+				</VideoItem>
+	</VideoItems> 
+	</MultimediaDescription>
+<MultimediaDescription> <!-- description of the guest room using images  -->
+	<ImageItems>
+		<ImageItem Category="6"> <!-- 6 is Guest room --> 
+			<ImageFormat Author="HotelImages" CopyrightNotice="HotelImage" IsOriginalIndicator="true " Height="170" Width="300" UnitOfMeasureCode="9" Format="JPG">
+		<!-- format is 9 for pixel , this image is the original file and format --> 
+			<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_ROOM_05_A.JPG</URL>
+			</ImageFormat>
+			<ImageFormat Author="HotelImages" CopyrightNotice="HotelImage" IsOriginalIndicator="false " Height="50" Width="70" UnitOfMeasureCode="9" Format="JPG">		<!-- format is 9 for pixel , this image format has been modified from the original   --> 
+			<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_ROOM_06_A.JPG</URL>
+			</ImageFormat>
+			<ImageFormat Author="HotelImages" CopyrightNotice="HotelImage" IsOriginalIndicator="false " Height="100" Width="200" UnitOfMeasureCode="9" Format="JPG">		<!-- format is 9 for pixel , this image format has been modified from the original   --> 
+			<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_ROOM_07_A.JPG</URL>
+			</ImageFormat>
+			<ImageFormat Author="HotelImages" CopyrightNotice="HotelImage" IsOriginalIndicator="false " Height="120" Width="200" UnitOfMeasureCode="9" Format="JPG">		<!-- format is 9 for pixel , this image format has been modified from the original   --> 
+			<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_ROOM_08_A.JPG</URL>
+			</ImageFormat>
+			<Description Caption="La chambre standard" Language="fr"/>
+			<Description Caption="The Standard room" Language="en"/>
+		</ImageItem>
+		<ImageItem Category="7"> <!-- 7 is suite --> 
+			<ImageFormat Author="HotelImages" CopyrightNotice="HotelImage" IsOriginalIndicator="true " Height="170" Width="300" UnitOfMeasureCode="9" Format="JPG">
+		<!-- format is 9 for pixel , this image is the original file and format --> 
+			<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_ROOM_09_A.JPG</URL>
+			</ImageFormat>
+			<ImageFormat Author="HotelImages" CopyrightNotice="HotelImage" IsOriginalIndicator="false " Height="50" Width="70" UnitOfMeasureCode="9" Format="JPG">		<!-- format is 9 for pixel , this image format has been modified from the original   --> 
+			<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_ROOM_10_A.JPG</URL>
+			</ImageFormat>
+			<ImageFormat Author="HotelImages" CopyrightNotice="HotelImage" IsOriginalIndicator="false " Height="100" Width="200" UnitOfMeasureCode="9" Format="JPG">		<!-- format is 9 for pixel , this image format has been modified from the original   --> 
+			<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_ROOM_11_A.JPG</URL>
+			</ImageFormat>
+			<ImageFormat Author="HotelImages" CopyrightNotice="HotelImage" IsOriginalIndicator="false " Height="120" Width="200" UnitOfMeasureCode="9" Format="JPG">		<!-- format is 9 for pixel , this image format has been modified from the original   --> 
+			<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_ROOM_12_A.JPG</URL>
+			</ImageFormat>
+			<ImageFormat Author="HotelImages" CopyrightNotice="HotelImage" IsOriginalIndicator="false " Height="600" Width="700" UnitOfMeasureCode="9" Format="JPG">		<!-- format is 9 for pixel , this image format has been modified from the original   --> 
+			<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_ROOM_13_A.JPG</URL>
+			</ImageFormat>
+           <Description Caption="Une Suite" Language="fr"/>
+           <Description Caption="A Suite" Language="en"/>
+		</ImageItem>
+	</ImageItems>
+   </MultimediaDescription>
+<MultimediaDescription> <!-- view of the renovation process using images  -->
+		<ImageItems>
+			<ImageItem Category="1"> <!-- 1 is exterior view  , of the renovation work --> 
+				<ImageFormat Author="HotelImages" CopyrightNotice="HotelImage" IsOriginalIndicator="true " Height="167" Width="250" UnitOfMeasureCode="9" Format="JPG">
+				<!-- format is 9 for pixel , this image is the original file and format --> 
+				<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_EXT_03_A.JPG</URL>
+				</ImageFormat>
+				<ImageFormat Author="HotelImages" CopyrightNotice="HotelImage" IsOriginalIndicator="false " Height="50" Width="70" UnitOfMeasureCode="9" Format="JPG">		<!-- format is 9 for pixel , this image format has been modified from the original   --> 
+				<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_EXT_04_A.JPG</URL>
+				</ImageFormat>
+				<Description Caption="Image de l'hotel en cours de renovation" Language="fr"/>
+				<Description Caption="Picture of the Hotel being renovated" Language="en"/>
+			</ImageItem>
+		</ImageItems>
+	</MultimediaDescription>
+<MultimediaDescription>
+		<TextItems>
+			<TextItem Title="Property Description">
+				<Description Language="de">Das Zimmer mit 218 Zimmern liegt am Ufer einer Lagune mit Blick auf die Insel. In 5 Minuten sind Sie am Flughafen und in 10 Minuten im Stadtzentrum. Das Hotel verf&#xFC;gt
+&#xFC;ber ein internationales Restaurant f&#xFC;r bis zu 160 Personen, ein japanisches Re</Description>
+				<Description Language="de">staurant, einen gro&#xDF;en Swimmingpool mit Sonnendeck, Poolbar mit Blickdie Lagune, 2 Tennispl&#xE4;tze und eine Driving-Range. Das Tahiti-Museum ist in 20 Minuten zu.Zum Gauguin-Museum sind es 30 Minuten und zum 18-Loch-Golfplatz 45 Minuten.</Description>
+				<Description Language=" es">&gt;Hotel de 218 habitaciones al borde de una laguna con vista a la isla Moorea. A 5del aeropuerto y a 10 mins del centro de la ciudad. Restaurante internacional con capacidad para 160, restaurante japon&#xE9;s, piscina grande con plataforma, bar j</Description>
+				<Description Language=" es">unto a la piscina y vista sobre la laguna, 2 canchas de tenis y campo de&#xE1;ctica para golf. Museo de Tahiti a 20 mins, museo Gauguin a 30mins, campo de golf de 18 hoyos a
+mins.</Description>
+				<Description Language="fr">H&#xF4;tel de 218 chambres en bordure du lagon, face &#xE0; l'&#xEE;le de. &#xC0; 5 minutes de l'a&#xE9;roport et 10 minutes du centre-ville. Restaurant international de 160, restaurant japonais, grande piscine avec deck, bar au bord de la piscine avec vue sur le</Description>
+				<Description Language="fr">lagon, 2 courts de tennis, practice de golf sur le site. Mus&#xE9;e de Tahiti &#xE0;
+minutes, mus&#xE9;e Gauguin &#xE0; 30 minutes et golf 18 trous &#xE0; 45 minutes.</Description>
+				<Description Language="en">218 room hotel on the edge of the lagoon looking across to Moorea Island. 5from the airport and 10 minutes from the centre of town. International restaurant with seating for 160,restaurant, large swimming pool with deck, poolside bar</Description>
+				<Description Language="en">with views of the lagoon, 2 tennis courts, golf driving range on site. Museum of20 minutes away, Gauguin museum 30 minutes away, 18 hole golf course 45 minutes away.</Description>
+				<Description Language="pt">Hotel de 218 quartos que fica &#xE0; beira da lagoa, com vista sobre a Moorea. Fica a 5 min do aeroporto e a 10 min do centro da cidade. Restaurante internacional com 160 lugares,japon&#xEA;s, ampla piscina, bar &#xE0; beira da piscina, com vista pa</Description>
+				<Description Language="pt">ra a lagoa, 2 quadras de t&#xEA;nis e driving range para golfe. O museu do Taitia 20 min e o museu Gauguin est&#xE1; a 30 min. Campo de golfe 18 holes a 45 minutos de&#xE2;ncia.</Description>
+			</TextItem>
+		</TextItems></MultimediaDescription>
+<MultimediaDescription>
+		<TextItems>
+			<TextItem>
+				<Description Language="en">MARK 1 KGBLG</Description>
+				<Description Language="en">MARK 2 KGBLG</Description>
+				<Description Language="en">ROOM DESRIPTION I GB FOR KGBLG</Description>
+				<Description Language="fr">Chambre Sup&#xE9;rieure avec 1 lit king-size,</Description>
+				<Description Language="fr">vue Lagon</Description>	
+				<Description Language="fr">Dispose d'un balcon, air conditionn&#xE9;e,t&#xE9;l&#xE9;phone direct,prise,coffre fort,t&#xE9;l&#xE9;vision &#xE0; &#xE9;cran plat,cha&#xEE;nes locales et par satellite,mini bar,et coffee facilities,salle de bain avec douche et toilettes.</Description>		
+			</TextItem>
+		</TextItems>
+	</MultimediaDescription>
+<MultimediaDescription>
+		<TextItems>
+			<TextItem>
+				<Description Language="en">Superior Room with 2 single beds,</Description>
+				<Description Language="en">Mountain view</Description>
+				<Description Language="fr">Chambre Sup&#xE9;rieure avec 2 lits simples,</Description>
+				<Description Language="fr">vue sur la Montagne</Description>	
+				<Description Language="fr">Dispose d'un balcon, air conditionn&#xE9;e,t&#xE9;l&#xE9;phone direct,prise,coffre fort,t&#xE9;l&#xE9;vision &#xE0; &#xE9;cran plat,cha&#xEE;nes locales et par satellite,mini bar,et coffee facilities,salle de bain avec douche et toilettes.</Description>		
+			</TextItem>
+		</TextItems>
+	</MultimediaDescription>
+<MultimediaDescription>
+		<TextItems>
+			<TextItem>
+				<Description Language="de">Das offene Restaurant mit Blick auf die Lagune bietet Ihnen regionale&#xE4;ten und internationale K&#xFC;che.</Description>
+				<Description Language="es">Abierto al aire libre y ofreciendo vista sobre la laguna, este restaurante sirvelocal e internacional.</Description>
+				<Description Language="fr">Restaurant ouvert avec vue sur le lagon proposant une cuisine internationale et.</Description>
+				<Description Language="en">Open to the outdoors and offering a view of the lagoon, this restaurant servesand international cuisine.</Description>
+				<Description Language="it">Aperto all'esterno e con vista della laguna, questo ristorante serve cucina localeinternazionale.</Description>	
+				<Description Language="pt">Restaurante aberto, com vista para a lagoa, que serve pratos da culin&#xE1;riae internacional.</Description>		
+			</TextItem>
+		</TextItems>
+	</MultimediaDescription>
+<MultimediaDescription>
+		<TextItems>
+			<TextItem>
+				<Description Language="es">Restaurante japon&#xE9;s teppan yaki. Aire acondicionado. Sirve alta calidadcocina tipo demostraci&#xF3;n.</Description>
+				<Description Language="fr">Restaurant japonais teppaniaky. Enti&#xE8;rement climatis&#xE9; et offrant une"spectacle" de grande qualit&#xE9;.</Description>
+				<Description Language="en">Japanese teppan yaki restaurant. Fully airconditioned and serving high qualitycooking.</Description>
+				<Description Language="pt">Restaurante japon&#xEA;s teppanyaki. Com ar-condicionado, que oferece show&#xE1;rio de alta-qualidade.</Description>
+				<Description Language="de">In unserem klimatisierten japanischen Teppanyaki-Restaurant werden Ihnenam Tisch hervorragende Gerichte zubereitet.</Description>	
+				<Description Language="it">Ristorante giapponese teppan yaki. Climatizzato e con cucina dimostrativa di alta&#xE0;.</Description>		
+			</TextItem>
+		</TextItems>
+	</MultimediaDescription>
+<MultimediaDescription> <!-- description of the restaurant using video -->
+   <VideoItems> <!-- description of the restaurant with videos in English and in French--> 
+				<VideoItem Caption="streaming video of the view in the restaurant" Category="4" Language="en" Version="2.00"> 
+					<!-- video of the Restaurant in English -->
+				<VideoFormat BitRate="128" UnitOfMeasureCode="11" Format="AVI">
+					<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_STR_09_A.AVI</URL>
+				</VideoFormat>
+				</VideoItem>
+				<VideoItem Caption="Video de la vue dans lerestaurant " Category="4" Language="fr" Version="2.00"> 
+					<!-- video of the restaurant in French-->
+				<VideoFormat BitRate="128" UnitOfMeasureCode="11" Format="AVI">
+					<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_STR_10_A.AVI</URL>
+				</VideoFormat>
+				</VideoItem>
+	</VideoItems> 
+	</MultimediaDescription>
+<MultimediaDescription> <!-- description of the restaurant using images  -->
+	<ImageItems>
+		<ImageItem Category="4"> <!-- 4 is restaurant--> 
+			<ImageFormat Author="HotelImages" CopyrightNotice="HotelImage" IsOriginalIndicator="true " Height="170" Width="300" UnitOfMeasureCode="9" Format="JPG">
+		<!-- format is 9 for pixel , this image is the original file and format --> 
+			<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_ROOM_105_A.JPG</URL>
+			</ImageFormat>
+			<ImageFormat Author="HotelImages" CopyrightNotice="HotelImage" IsOriginalIndicator="false " Height="50" Width="70" UnitOfMeasureCode="9" Format="JPG">		<!-- format is 9 for pixel , this image format has been modified from the original   --> 
+			<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_ROOM_1016_A.JPG</URL>
+			</ImageFormat>
+			<ImageFormat Author="HotelImages" CopyrightNotice="HotelImage" IsOriginalIndicator="false " Height="100" Width="200" UnitOfMeasureCode="9" Format="JPG">		<!-- format is 9 for pixel , this image format has been modified from the original   --> 
+			<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_ROOM_107_A.JPG</URL>
+			</ImageFormat>
+			<ImageFormat Author="HotelImages" CopyrightNotice="HotelImage" IsOriginalIndicator="false " Height="120" Width="200" UnitOfMeasureCode="9" Format="JPG">		<!-- format is 9 for pixel , this image format has been modified from the original   --> 
+			<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_ROOM_108_A.JPG</URL>
+			</ImageFormat>
+			<Description Caption="Restaurant LE SAKURA" Language="fr"/>
+			<Description Caption="Restaurant LE SAKURA" Language="en"/>
+		</ImageItem>
+	</ImageItems>
+   </MultimediaDescription>
+<MultimediaDescription>
+	<ImageItems>
+		<ImageItem Category="14"> <!-- 14 is attraction--> 
+			<ImageFormat Author="HotelImages" CopyrightNotice="HotelImage" IsOriginalIndicator="true " Height="170" Width="300" UnitOfMeasureCode="9" Format="JPG">
+		<!-- format is 9 for pixel , this image is the original file and format --> 
+			<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_ROOM_205_A.JPG</URL>
+			</ImageFormat>
+			<ImageFormat Author="HotelImages" CopyrightNotice="HotelImage" IsOriginalIndicator="false " Height="50" Width="70" UnitOfMeasureCode="9" Format="JPG">		<!-- format is 9 for pixel , this image format has been modified from the original   --> 
+			<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_ROOM_316_A.JPG</URL>
+			</ImageFormat>
+			<ImageFormat Author="HotelImages" CopyrightNotice="HotelImage" IsOriginalIndicator="false " Height="100" Width="200" UnitOfMeasureCode="9" Format="JPG">		<!-- format is 9 for pixel , this image format has been modified from the original   --> 
+			<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_ROOM_1207_A.JPG</URL>
+			</ImageFormat>
+			<ImageFormat Author="HotelImages" CopyrightNotice="HotelImage" IsOriginalIndicator="false " Height="120" Width="200" UnitOfMeasureCode="9" Format="JPG">		<!-- format is 9 for pixel , this image format has been modified from the original   --> 
+			<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_ROOM_1018_A.JPG</URL>
+			</ImageFormat>
+			<Description Caption="Le Parc d'attraction TAHITI" Language="fr"/>
+			<Description Caption="The recreational parc TAHITI" Language="en"/>
+		</ImageItem>
+	</ImageItems>
+	</MultimediaDescription>
+</MultimediaDescriptions>
+<Policies>
+<Policy>
+<TaxPolicies>
+<TaxPolicy Code="3" Percent="10.00" ChargeUnit="18" EffectiveDate="2006-01-01" ExpireDate="2006-12-31"/>
+<TaxPolicy Code="3" Percent="15.00" ChargeUnit="20" EffectiveDate="2006-01-01" ExpireDate="2006-12-31"/>
+<TaxPolicy Code="7" Percent="9.00" ChargeUnit="21" EffectiveDate="2006-08-04" ExpireDate="2006-12-31"/>
+<TaxPolicy Code="4" Amount="1800" DecimalPlaces="2" CurrencyCode="USD" ChargeUnit="19" EffectiveDate="2006-07-10" ExpireDate="2006-12-31"/>
+<TaxPolicy Type="Inclusive" Code="27" EffectiveDate="2006-01-01" ExpireDate="2006-12-31"/>
+<TaxPolicy Type="Inclusive" Code="7" EffectiveDate="2006-07-06" ExpireDate="2050-12-31"/>
+<TaxPolicy Code="14" Amount="500" DecimalPlaces="2" CurrencyCode="EUR" ChargeUnit="18" EffectiveDate="2006-08-04" ExpireDate="2008-01-15"/>
+<TaxPolicy Code="19" Percent="10.00" ChargeUnit="21" EffectiveDate="2006-07-05" ExpireDate="2006-08-31"/>
+</TaxPolicies>
+</Policy>
+<Policy>
+<GuaranteePaymentPolicy>
+<GuaranteePayment PaymentCode="5" GuaranteeCode="5">
+<AcceptedPayments>
+<AcceptedPayment>
+<PaymentCard CardCode="AP"/>
+</AcceptedPayment>
+<AcceptedPayment>
+<PaymentCard CardCode="AX"/>
+</AcceptedPayment>
+<AcceptedPayment>
+<PaymentCard CardCode="CA"/>
+</AcceptedPayment>
+<AcceptedPayment>
+<PaymentCard CardCode="DC"/>
+</AcceptedPayment>
+<AcceptedPayment>
+<PaymentCard CardCode="EC"/>
+</AcceptedPayment>
+<AcceptedPayment>
+<PaymentCard CardCode="MC"/>
+</AcceptedPayment>
+<AcceptedPayment>
+<PaymentCard CardCode="VI"/>
+</AcceptedPayment>
+</AcceptedPayments>
+</GuaranteePayment>
+<GuaranteePayment GuaranteeCode="21">
+<Description/>
+</GuaranteePayment>
+<GuaranteePayment GuaranteeCode="30">
+<Description/>
+</GuaranteePayment>
+<GuaranteePayment GuaranteeCode="19">
+<Description>
+<Text Language="en">Under Contract~</Text>
+</Description>
+</GuaranteePayment>
+</GuaranteePaymentPolicy>
+</Policy>
+<Policy>
+<CancelPolicy>
+<CancelPenalty>
+<AmountPercent/>
+<PenaltyDescription>
+<Text Language="fr">CANPOL FR NIVEAU HOTEL</Text>
+</PenaltyDescription>
+<PenaltyDescription>
+<Text Language="en">CANPOL GB NIVEAU HOTEL</Text>
+</PenaltyDescription>
+</CancelPenalty>
+</CancelPolicy>
+</Policy>
+<Policy>
+<PolicyInfo CheckInTime="10:00:00">
+<Description>
+<Text Language="fr">Le Check in est possible dans l'h&#xF4;tel &#xE0; partir de : 10:00</Text>
+<Text Language="en">The room is at your disposal at : 10:00</Text>
+</Description>
+</PolicyInfo>
+</Policy>
+<Policy>
+<PolicyInfo CheckOutTime="12:00:00"/>
+</Policy>
+<Policy>
+<PolicyInfo MaxChildAge="3">
+<Description>
+<Text Language="en">2 Children sharing parent's room. Accomodation: from 0 to 3: Included;: Included; From 4 to 9: fee: 20.00 &#x80;; breakfast: fee: 3.00 &#x80;,</Text>
+</Description>
+</PolicyInfo>
+</Policy>
+</Policies>
+<FacilityInfo>
+<GuestRooms>
+<GuestRoom Code="B1D" MaxOccupancy="2" MaxAdultOccupancy="3" ID="KGBLG">
+<TypeRoom Name="1 Kg bed Sup Lagoon V"/>
+<MultimediaDescriptions>
+	<MultimediaDescription>
+		<TextItems>
+			<TextItem>
+				<Description Language="en">MARK 1 KGBLG</Description>
+				<Description Language="en">MARK 2 KGBLG</Description>
+				<Description Language="en">ROOM DESRIPTION I GB FOR KGBLG</Description>
+				<Description Language="fr">Chambre Sup&#xE9;rieure avec 1 lit king-size,</Description>
+				<Description Language="fr">vue Lagon</Description>	
+				<Description Language="fr">Dispose d'un balcon, air conditionn&#xE9;e,t&#xE9;l&#xE9;phone direct,prise,coffre fort,t&#xE9;l&#xE9;vision &#xE0; &#xE9;cran plat,cha&#xEE;nes locales et par satellite,mini bar,et coffee facilities,salle de bain avec douche et toilettes.</Description>		
+			</TextItem>
+		</TextItems>
+	</MultimediaDescription>
+</MultimediaDescriptions>
+</GuestRoom>
+<GuestRoom Code="C2T" MaxOccupancy="2" MaxAdultOccupancy="2" ID="TWBMV">
+<TypeRoom Name="2 Sg beds Sup Mount V" BedTypeCode="8"/>
+<MultimediaDescriptions>
+	<MultimediaDescription>
+		<TextItems>
+			<TextItem>
+				<Description Language="en">Superior Room with 2 single beds,</Description>
+				<Description Language="en">Mountain view</Description>
+				<Description Language="fr">Chambre Sup&#xE9;rieure avec 2 lits simples,</Description>
+				<Description Language="fr">vue sur la Montagne</Description>	
+				<Description Language="fr">Dispose d'un balcon, air conditionn&#xE9;e,t&#xE9;l&#xE9;phone direct,prise,coffre fort,t&#xE9;l&#xE9;vision &#xE0; &#xE9;cran plat,cha&#xEE;nes locales et par satellite,mini bar,et coffee facilities,salle de bain avec douche et toilettes.</Description>		
+			</TextItem>
+		</TextItems>
+	</MultimediaDescription>
+</MultimediaDescriptions>
+</GuestRoom>
+</GuestRooms>
+<Restaurants Quantity="22">
+<Restaurant RestaurantName="LE BOUGAINVILLE" MaxSeatingCapacity="160" ProximityCode="1">
+<MultimediaDescriptions>
+	<MultimediaDescription>
+		<TextItems>
+			<TextItem>
+				<Description Language="de">Das offene Restaurant mit Blick auf die Lagune bietet Ihnen regionale&#xE4;ten und internationale K&#xFC;che.</Description>
+				<Description Language="es">Abierto al aire libre y ofreciendo vista sobre la laguna, este restaurante sirvelocal e internacional.</Description>
+				<Description Language="fr">Restaurant ouvert avec vue sur le lagon proposant une cuisine internationale et.</Description>
+				<Description Language="en">Open to the outdoors and offering a view of the lagoon, this restaurant servesand international cuisine.</Description>
+				<Description Language="it">Aperto all'esterno e con vista della laguna, questo ristorante serve cucina localeinternazionale.</Description>	
+				<Description Language="pt">Restaurante aberto, com vista para a lagoa, que serve pratos da culin&#xE1;riae internacional.</Description>		
+			</TextItem>
+		</TextItems>
+	</MultimediaDescription>
+</MultimediaDescriptions>
+</Restaurant>
+<Restaurant RestaurantName="LE SAKURA" MaxSeatingCapacity="32" ProximityCode="1">
+<MultimediaDescriptions>
+	<MultimediaDescription>
+		<TextItems>
+			<TextItem>
+				<Description Language="es">Restaurante japon&#xE9;s teppan yaki. Aire acondicionado. Sirve alta calidadcocina tipo demostraci&#xF3;n.</Description>
+				<Description Language="fr">Restaurant japonais teppaniaky. Enti&#xE8;rement climatis&#xE9; et offrant une"spectacle" de grande qualit&#xE9;.</Description>
+				<Description Language="en">Japanese teppan yaki restaurant. Fully airconditioned and serving high qualitycooking.</Description>
+				<Description Language="pt">Restaurante japon&#xEA;s teppanyaki. Com ar-condicionado, que oferece show&#xE1;rio de alta-qualidade.</Description>
+				<Description Language="de">In unserem klimatisierten japanischen Teppanyaki-Restaurant werden Ihnenam Tisch hervorragende Gerichte zubereitet.</Description>	
+				<Description Language="it">Ristorante giapponese teppan yaki. Climatizzato e con cucina dimostrativa di alta&#xE0;.</Description>		
+			</TextItem>
+		</TextItems>
+	</MultimediaDescription>
+</MultimediaDescriptions>
+<OperationSchedules>
+<OperationSchedule>
+<OperationTimes>
+<OperationTime Mon="true"/>
+<OperationTime Tue="true"/>
+<OperationTime Weds="true"/>
+<OperationTime Thur="true"/>
+<OperationTime Fri="true"/>
+<OperationTime Sat="true"/>
+<OperationTime Sun="true"/>
+</OperationTimes>
+</OperationSchedule>
+</OperationSchedules>
+<CuisineCodes>
+<CuisineCode Code="14"/>
+<CuisineCode Code="6"/>
+</CuisineCodes>
+</Restaurant>
+<Restaurant RestaurantName="LE SAKURA ">
+<MultimediaDescriptions>
+	<MultimediaDescription> <!-- description of the restaurant using video -->
+   <VideoItems> <!-- description of the restaurant with videos in English and in French--> 
+				<VideoItem Caption="streaming video of the view in the restaurant" Category="4" Language="en" Version="2.00"> 
+					<!-- video of the Restaurant in English -->
+				<VideoFormat BitRate="128" UnitOfMeasureCode="11" Format="AVI">
+					<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_STR_09_A.AVI</URL>
+				</VideoFormat>
+				</VideoItem>
+				<VideoItem Caption="Video de la vue dans lerestaurant " Category="4" Language="fr" Version="2.00"> 
+					<!-- video of the restaurant in French-->
+				<VideoFormat BitRate="128" UnitOfMeasureCode="11" Format="AVI">
+					<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_STR_10_A.AVI</URL>
+				</VideoFormat>
+				</VideoItem>
+	</VideoItems> 
+	</MultimediaDescription>
+	<MultimediaDescription> <!-- description of the restaurant using images  -->
+	<ImageItems>
+		<ImageItem Category="4"> <!-- 4 is restaurant--> 
+			<ImageFormat Author="HotelImages" CopyrightNotice="HotelImage" IsOriginalIndicator="true " Height="170" Width="300" UnitOfMeasureCode="9" Format="JPG">
+		<!-- format is 9 for pixel , this image is the original file and format --> 
+			<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_ROOM_105_A.JPG</URL>
+			</ImageFormat>
+			<ImageFormat Author="HotelImages" CopyrightNotice="HotelImage" IsOriginalIndicator="false " Height="50" Width="70" UnitOfMeasureCode="9" Format="JPG">		<!-- format is 9 for pixel , this image format has been modified from the original   --> 
+			<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_ROOM_1016_A.JPG</URL>
+			</ImageFormat>
+			<ImageFormat Author="HotelImages" CopyrightNotice="HotelImage" IsOriginalIndicator="false " Height="100" Width="200" UnitOfMeasureCode="9" Format="JPG">		<!-- format is 9 for pixel , this image format has been modified from the original   --> 
+			<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_ROOM_107_A.JPG</URL>
+			</ImageFormat>
+			<ImageFormat Author="HotelImages" CopyrightNotice="HotelImage" IsOriginalIndicator="false " Height="120" Width="200" UnitOfMeasureCode="9" Format="JPG">		<!-- format is 9 for pixel , this image format has been modified from the original   --> 
+			<URL>http://multimedia.amart.com/retrieveHotelItem?cos=2ent=MDBOBMER_ROOM_108_A.JPG</URL>
+			</ImageFormat>
+			<Description Caption="Restaurant LE SAKURA" Language="fr"/>
+			<Description Caption="Restaurant LE SAKURA" Language="en"/>
+		</ImageItem>
+	</ImageItems>
+   </MultimediaDescription>
+</MultimediaDescriptions>
+<OperationSchedules>
+<OperationSchedule/>
+</OperationSchedules>
+<InfoCodes>
+<InfoCode Code="13" Name="RestaurantCategory"/>
+</InfoCodes>
+</Restaurant>
+</Restaurants>
+</FacilityInfo>
+</Property>
+</Properties>
+</POB_Top20RS>
