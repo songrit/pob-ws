@@ -2,4 +2,5 @@
 MAX_PRICE = 999999
 PRIVATE_KEY_FILE = 'config/pob.pem';
 PASSPHRASE = 'abcd'
-TOP20 = [76, 73, 78, 72, 81, 100, 54, 77, 83, 86, 90, 82, 71, 80, 87, 75, 91, 45, 85, 84]
+# 35 = The Royal Phuket Yatch Club
+TOP20 = [76, 73, 78, 72, 81, 100, 54, 77, 83, 86, 90, 82, 71, 80, 87, 75, 91, 45, 85, 84, 35]
