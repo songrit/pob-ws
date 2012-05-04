@@ -33,3 +33,4 @@ group :development do
   gem "pry"
   gem "wirble"
 end
+gem 'thin'
