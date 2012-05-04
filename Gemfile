@@ -7,7 +7,8 @@ gem "rails", "2.3.5"
 gem "heroku"
 gem "taps"
 # gem 'mysql'
-gem 'ruby-mysql'
+# gem 'ruby-mysql'
+gem 'pg'
 # gem 'pg', :group=>"test" # use for heroku db:push
 gem "linguistics"
 gem "will_paginate"
@@ -30,4 +31,5 @@ group :development do
   gem "rails-footnotes"
   gem "rcov"
   gem "pry"
+  gem "wirble"
 end

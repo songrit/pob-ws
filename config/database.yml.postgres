@@ -1,23 +1,50 @@
 development:
+  # adapter: mysql
+  # encoding: utf8
+  # reconnect: false
+  # database: pob_ws
+  # pool: 5
+  # username: root
+  # password:
+  # socket: /var/run/mysqld/mysqld.sock
+  # host: localhost
   adapter: postgresql
   encoding: utf8
-  database: elocal
-  username: postgres
-  password: songrit
+  database: pob_ws
+  username: songrit
+  password: elocal
   host: localhost
 
 test:
+  # adapter: mysql
+  # encoding: utf8
+  # reconnect: false
+  # database: pob_ws_test
+  # pool: 5
+  # username: root
+  # password:
+  # socket: /var/run/mysqld/mysqld.sock
+  # host: localhost
   adapter: postgresql
   encoding: utf8
-  database: elocal_test
-  username: postgres
-  password: songrit
+  database: pob_ws_test
+  username: songrit
+  password: elocal
   host: localhost
 
 production:
+  # adapter: mysql
+  # encoding: utf8
+  # reconnect: false
+  # database: pob_ws
+  # pool: 5
+  # username: root
+  # password:
+  # socket: /var/run/mysqld/mysqld.sock
+  # host: localhost
   adapter: postgresql
   encoding: utf8
-  database: elocal
-  username: postgres
-  password: songrit
+  database: pob_ws
+  username: songrit
+  password: elocal
   host: localhost
